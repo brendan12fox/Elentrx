@@ -1,0 +1,82 @@
+# Therapeutic sectors for hourly rotation.
+# sector_index = hour_utc % len(sectors)
+sectors:
+  - id: oncology
+    name: Oncology
+    query_cond: "cancer OR carcinoma OR melanoma OR lymphoma OR leukemia OR tumor OR neoplasm"
+    keywords:
+      - cancer
+      - oncology
+      - carcinoma
+      - melanoma
+      - lymphoma
+      - leukemia
+
+  - id: immunology
+    name: Immunology / Inflammation
+    query_cond: "autoimmune OR rheumatoid arthritis OR psoriasis OR inflammatory bowel OR lupus OR inflammation"
+    keywords:
+      - autoimmune
+      - immunology
+      - inflammation
+      - rheumatoid
+      - psoriasis
+
+  - id: cns
+    name: CNS / Neurology
+    query_cond: "Alzheimer OR Parkinson OR epilepsy OR multiple sclerosis OR depression OR schizophrenia OR neurology"
+    keywords:
+      - alzheimer
+      - parkinson
+      - epilepsy
+      - neurology
+      - depression
+
+  - id: cardiology
+    name: Cardiology / Metabolic
+    query_cond: "heart failure OR hypertension OR diabetes OR obesity OR cardiovascular OR metabolic"
+    keywords:
+      - cardiovascular
+      - heart
+      - diabetes
+      - metabolic
+      - hypertension
+
+  - id: infectious
+    name: Infectious Disease
+    query_cond: "HIV OR hepatitis OR influenza OR COVID OR bacterial infection OR viral infection OR sepsis"
+    keywords:
+      - infectious
+      - hiv
+      - hepatitis
+      - covid
+      - sepsis
+
+  - id: rare
+    name: Rare Disease / Orphan
+    query_cond: "rare disease OR orphan drug OR genetic disorder OR cystic fibrosis OR muscular dystrophy"
+    keywords:
+      - rare disease
+      - orphan
+      - genetic disorder
+      - cystic fibrosis
+
+  - id: hematology
+    name: Hematology
+    query_cond: "anemia OR hemophilia OR sickle cell OR thrombosis OR hematology OR blood disorder"
+    keywords:
+      - hematology
+      - anemia
+      - hemophilia
+      - sickle cell
+      - thrombosis
+
+  - id: other
+    name: Other / Multi-indication
+    query_cond: "pain OR dermatology OR ophthalmology OR respiratory OR allergy"
+    keywords:
+      - pain
+      - dermatology
+      - ophthalmology
+      - respiratory
+      - allergy

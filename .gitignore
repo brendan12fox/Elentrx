@@ -1,0 +1,22 @@
+.env
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.DS_Store
+*.log
+.pytest_cache/
+.mypy_cache/
+
+# Streamlit agent skills (environment-specific symlinks)
+.agents/skills/developing-with-streamlit
+
+# Cached news search results (rebuilt during historical eval)
+data/news_cache/
+data/serper_usage.json
+data/training_progress.json
+data/historical_dataset.json
+data/evaluation_report.json
+data/snapshots.db
+models/*.pkl
