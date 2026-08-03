@@ -1,6 +1,8 @@
-# StonkScraper — Healthcare Clinical Trial Scraper & Alerter
+# Elentrx™ — Healthcare Clinical Trial Scraper & Alerter
 
 Monitors **ClinicalTrials.gov** for phase changes on trials led by **publicly traded** sponsors, rotates through therapeutic sectors hourly at **minute :58 UTC**, runs LLM research + ML favorability scoring, and texts you on bullish signals.
+
+> **Legal:** Not financial advice. See [DISCLAIMER.md](DISCLAIMER.md), [TERMS_OF_USE.md](TERMS_OF_USE.md), [PRIVACY_POLICY.md](PRIVACY_POLICY.md), and [TRADEMARKS.md](TRADEMARKS.md). Elentrx™ is a trademark of Brendan Fox.
 
 ## Architecture
 
@@ -108,6 +110,17 @@ Workflow: [`.github/workflows/hourly.yml`](.github/workflows/hourly.yml)
 
 Trials are kept only when the lead sponsor fuzzy-matches [`data/sponsor_tickers.csv`](data/sponsor_tickers.csv). Expand this file to widen coverage.
 
-## Disclaimer
+## Legal
 
-Not financial advice. Classifier labels are bootstrapped from weak historical return signals and will be noisy early on. Tune `FAVORABILITY_THRESHOLD` and retrain with `python -m src.ml.train`.
+| Document | Purpose |
+|----------|---------|
+| [LICENSE](LICENSE) | Proprietary license — all rights reserved |
+| [DISCLAIMER.md](DISCLAIMER.md) | Not financial/medical advice; ML & AI limitations |
+| [TERMS_OF_USE.md](TERMS_OF_USE.md) | Acceptable use, liability limits, SMS responsibilities |
+| [PRIVACY_POLICY.md](PRIVACY_POLICY.md) | Data handling for self-hosted deployments |
+| [TRADEMARKS.md](TRADEMARKS.md) | Elentrx™ brand and third-party mark attributions |
+| [NOTICE.md](NOTICE.md) | Open-source and data-source attributions |
+
+**Elentrx™** is a trademark of Brendan Fox. ClinicalTrials.gov®, OpenAI®, Twilio®, Streamlit®, and other marks are property of their respective owners. This software is not affiliated with or endorsed by NIH, FDA, SEC, or any listed company.
+
+By using or deploying this software, you agree to the Terms of Use and Disclaimer.

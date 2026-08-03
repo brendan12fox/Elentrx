@@ -14,10 +14,17 @@ from src.db.schema import get_connection, init_db
 from src.ml.historical import HISTORICAL_DATASET_PATH, load_dataset
 
 st.set_page_config(
-    page_title="StonkScraper — Clinical Trial Alerter",
+    page_title="Elentrx™ — Clinical Trial Alerter",
     page_icon="🧬",
     layout="wide",
 )
+
+LEGAL_FILES = {
+    "Disclaimer": DATA_DIR.parent / "DISCLAIMER.md",
+    "Terms of Use": DATA_DIR.parent / "TERMS_OF_USE.md",
+    "Privacy Policy": DATA_DIR.parent / "PRIVACY_POLICY.md",
+    "Trademarks": DATA_DIR.parent / "TRADEMARKS.md",
+}
 
 init_db()
 
@@ -230,12 +237,28 @@ def config_panel() -> None:
     st.json({"sectors": [s["name"] for s in sectors]})
 
 
+def legal_panel() -> None:
+    st.subheader("Legal")
+    st.warning(
+        "**Not financial, medical, or investment advice.** Elentrx is a research and "
+        "notification tool. You are solely responsible for investment decisions. "
+        "ML scores and AI summaries may be incorrect."
+    )
+    doc = st.selectbox("Document", list(LEGAL_FILES.keys()))
+    path = LEGAL_FILES[doc]
+    if path.exists():
+        st.markdown(path.read_text(encoding="utf-8"))
+    else:
+        st.error(f"Missing file: {path.name}")
+    st.caption("Elentrx™ is a trademark of Brendan Fox. See TRADEMARKS.md for third-party marks.")
+
+
 def main() -> None:
-    st.title("StonkScraper")
+    st.title("Elentrx™")
     st.caption("Healthcare clinical trial phase tracker — public sponsors only, sector rotation at :58 UTC")
 
-    tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs(
-        ["Rotation", "Trials", "Changes", "Alerts", "Runs", "Evaluation", "Config"]
+    tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8 = st.tabs(
+        ["Rotation", "Trials", "Changes", "Alerts", "Runs", "Evaluation", "Config", "Legal"]
     )
 
     with tab1:
@@ -252,6 +275,14 @@ def main() -> None:
         evaluation_panel()
     with tab7:
         config_panel()
+    with tab8:
+        legal_panel()
+
+    st.divider()
+    st.caption(
+        "Elentrx™ © Brendan Fox. Not financial advice. "
+        "See Legal tab for Terms, Privacy, and Disclaimer."
+    )
 
 
 if __name__ == "__main__":

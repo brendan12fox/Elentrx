@@ -3,9 +3,9 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "stonkscraper"
+name = "elentrx"
 version = "0.1.0"
-description = "Healthcare clinical trial phase scraper and alerter"
+description = "Elentrx — healthcare clinical trial phase scraper and alerter"
 requires-python = ">=3.11"
 dependencies = []
 

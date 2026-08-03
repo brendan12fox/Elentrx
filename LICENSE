@@ -1,0 +1,49 @@
+Copyright (c) 2026 Brendan Fox. All Rights Reserved.
+
+ELENTRX PROPRIETARY SOFTWARE LICENSE
+
+This software and associated documentation (the "Software"), including the
+Elentrx™ name, logo, and branding, are the exclusive property of Brendan Fox
+("Licensor") unless otherwise noted.
+
+GRANT OF LICENSE
+
+No license is granted to copy, modify, merge, publish, distribute, sublicense,
+sell, or otherwise exploit the Software, in whole or in part, without prior
+written permission from the Licensor.
+
+Permitted use is limited to:
+
+  (a) Cloning or forking this repository for personal, non-commercial use by
+      the individual who deployed it for their own alerts and dashboard; and
+
+  (b) Running the Software privately with API keys and credentials supplied by
+      the end user.
+
+All other uses require explicit written authorization.
+
+DISCLAIMER OF WARRANTIES
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT. THE SOFTWARE IS NOT
+FINANCIAL, MEDICAL, LEGAL, OR INVESTMENT ADVICE.
+
+LIMITATION OF LIABILITY
+
+IN NO EVENT SHALL THE LICENSOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING LOSS OF PROFITS, TRADING
+LOSSES, DATA, OR GOODWILL) ARISING FROM USE OF THE SOFTWARE, EVEN IF ADVISED OF
+THE POSSIBILITY OF SUCH DAMAGE.
+
+THIRD-PARTY COMPONENTS
+
+Third-party libraries and services remain subject to their respective licenses.
+See NOTICE.md and TRADEMARKS.md.
+
+GOVERNING LAW
+
+This license is governed by the laws of the United States and the State in
+which the Licensor resides, without regard to conflict-of-law principles.
+
+For licensing inquiries: see the repository owner contact on GitHub.

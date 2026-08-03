@@ -21,8 +21,9 @@ def _build_message(
     if len(thesis) > 140:
         thesis = thesis[:137] + "..."
     return (
-        f"[StonkScraper] {ticker} {nct_id} {phase_text} "
-        f"score={probability:.2f} | {thesis}"
+        f"[Elentrx] {ticker} {nct_id} {phase_text} "
+        f"score={probability:.2f} | {thesis} "
+        f"| Not financial advice."
     )
 
 
