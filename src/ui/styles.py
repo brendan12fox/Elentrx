@@ -121,10 +121,22 @@ def inject_styles() -> None:
         padding: 0.45rem 0.55rem;
         margin-bottom: 0.35rem;
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+        width: fit-content;
+        max-width: 100%;
     }
     [data-testid="stSidebar"] [data-testid="stImage"] img {
-        width: 100% !important;
+        width: auto !important;
+        max-width: 100% !important;
         height: auto !important;
+        display: block;
+        image-rendering: auto;
+    }
+    [data-testid="stImage"]:has(+ .auth-tagline) img {
+        width: auto !important;
+        max-width: 100% !important;
+        height: auto !important;
+        display: block;
+        margin: 0 auto;
     }
 
     .sidebar-logo-wrap {
