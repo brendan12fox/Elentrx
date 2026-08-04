@@ -49,9 +49,7 @@ from src.ui.styles import (
     render_sidebar_brand,
     render_trial_cards_grid,
     render_trial_list_cards,
-    render_demo_gallery,
 )
-from src.ui.demo import get_demo_scenarios, preview_alerts
 from src.market.quotes import fetch_quotes
 
 st.set_page_config(
@@ -73,7 +71,6 @@ _NAV_LABELS = {
     "Trials": "Trials",
     "Updates": "Updates",
     "Alerts": "Alerts",
-    "Demo": "Alert demo",
     "Activity": "Activity",
     "Settings": "Settings",
 }
@@ -169,7 +166,7 @@ def _cached_digest() -> tuple[dict | None, bool]:
 
 @st.cache_data(show_spinner=False, ttl=300)
 def _cached_trials() -> list[dict]:
-    return fetch_trials_enriched(limit=24)
+    return fetch_trials_enriched(limit=200, active_first=True)
 
 
 @st.cache_data(show_spinner=False, ttl=60)
@@ -199,10 +196,11 @@ def _cached_eval_samples() -> list[dict]:
 
 
 def watchlist_panel() -> None:
-    """Instant read — full digest or DB preview fallback."""
+    """Instant read — full cross-sector catalogue, with AI digest enrichment when available."""
     raw_digest, stale = _cached_digest()
     digest, is_preview = merge_digest_with_preview(raw_digest)
     user = get_user(st.session_state.get("user_id", 0))
+    focus, _ = get_sector_for_hour()
 
     if user and user.is_admin:
         if st.button("Rebuild full digest", type="secondary"):
@@ -210,7 +208,8 @@ def watchlist_panel() -> None:
             _cached_digest.clear()
             st.rerun()
 
-    if not digest.get("trials"):
+    trials = digest.get("trials") or []
+    if not trials:
         render_empty_watchlist(
             "Trial data will show here once the scraper runs. "
             "Sample trials load automatically on first deploy."
@@ -219,13 +218,28 @@ def watchlist_panel() -> None:
 
     render_pulse_banner(
         market_pulse=digest.get("market_pulse", ""),
-        sector_name=digest.get("sector_name", "—"),
+        sector_name=digest.get("focus_sector_name") or digest.get("sector_name") or focus["name"],
         generated_at=digest.get("generated_at", ""),
-        trial_count=digest.get("trial_count", len(digest.get("trials", []))),
+        trial_count=digest.get("trial_count", len(trials)),
         stale=stale and not is_preview,
         preview=is_preview,
+        sectors_covered=digest.get("sectors_covered"),
+        all_sectors=bool(digest.get("all_sectors", True)),
     )
-    render_trial_cards_grid(digest.get("trials", []), quotes=_quotes_for(digest.get("trials", [])))
+
+    sector_options = ["All sectors"] + sorted(
+        {t.get("sector") for t in trials if t.get("sector")}
+    )
+    sector_filter = st.selectbox(
+        "Filter by sector",
+        sector_options,
+        index=0,
+        help=f"Hourly scraper is currently scanning {focus['name']}.",
+    )
+    if sector_filter != "All sectors":
+        trials = [t for t in trials if t.get("sector") == sector_filter]
+
+    render_trial_cards_grid(trials, quotes=_quotes_for(trials))
 
 
 def rotation_panel() -> None:
@@ -409,14 +423,6 @@ def config_panel() -> None:
     st.caption("When a trial change scores above the threshold, Elentrx sends one email alert.")
 
 
-def demo_panel() -> None:
-    scenarios = get_demo_scenarios()
-    previews = {s.id: preview_alerts(s) for s in scenarios}
-    quotes = _cached_quotes(tuple(s.ticker.upper() for s in scenarios))
-    st.caption(f"Sample formats only · live delayed quotes · threshold {FAVORABILITY_THRESHOLD:.0%}")
-    render_demo_gallery(scenarios, previews, quotes=quotes)
-
-
 def legal_panel() -> None:
     st.subheader("Legal")
     st.warning(
@@ -439,8 +445,7 @@ def main() -> None:
     inject_styles()
 
     username = st.session_state.get("username", "user")
-    if st.session_state.get("nav_page") == "Alert demo":
-        st.session_state.nav_page = "Demo"
+    # Drop removed pages (e.g. old Demo) from session so nav stays valid.
     if st.session_state.get("nav_page") not in NAV_PAGES:
         st.session_state.nav_page = NAV_PAGES[0]
 
@@ -453,6 +458,16 @@ def main() -> None:
                 st.session_state.pop(key, None)
             st.rerun()
 
+    # Keep nav clear of the Streamlit header so pill tops aren't clipped.
+    st.markdown(
+        '<div style="height:0.75rem;"></div>'
+        '<style>'
+        '.block-container{padding-top:3.25rem!important;}'
+        '[data-testid="stVerticalBlockBorderWrapper"]{overflow:visible!important;'
+        'padding:0.55rem 0.65rem!important;margin-bottom:1rem!important;}'
+        '</style>',
+        unsafe_allow_html=True,
+    )
     with st.container(border=True):
         st.pills(
             "Navigate",
@@ -477,9 +492,6 @@ def main() -> None:
     elif page == "Alerts":
         render_page_header("Alerts", "Email notifications and test delivery")
         alerts_panel()
-    elif page == "Alert demo":
-        render_page_header("Alert demo", "Preview what favorable, neutral, and negative alerts look like")
-        demo_panel()
     elif page == "Activity":
         render_page_header("Activity", "Rotation schedule, pipeline runs, and model evaluation")
         tab = st.segmented_control(

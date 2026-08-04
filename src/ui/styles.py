@@ -42,7 +42,28 @@ def inject_styles() -> None:
             linear-gradient(180deg, #ffffff 0%, #f5f8fa 100%) !important;
     }
 
-    .block-container { padding-top: 1rem; max-width: 1180px; }
+    .block-container {
+        padding-top: 3.25rem !important;
+        padding-bottom: 2rem !important;
+        max-width: 1180px;
+    }
+
+    /* Give the top nav pills room so their borders aren't clipped */
+    [data-testid="stVerticalBlockBorderWrapper"] {
+        overflow: visible !important;
+        margin-top: 0.35rem !important;
+        margin-bottom: 1rem !important;
+        padding: 0.55rem 0.65rem !important;
+    }
+    [data-testid="stVerticalBlockBorderWrapper"] [data-testid="stPills"] {
+        overflow: visible !important;
+    }
+    [data-testid="stPills"] button {
+        border-radius: 10px !important;
+        font-size: 0.8rem !important;
+        font-weight: 600 !important;
+        padding: 0.4rem 0.75rem !important;
+    }
 
     [data-testid="stSidebar"] {
         background: linear-gradient(180deg, #001d3d 0%, #002847 100%) !important;
@@ -112,11 +133,11 @@ def inject_styles() -> None:
     }
 
     [data-testid="stSidebar"] [data-testid="stImage"] {
-        background: transparent;
-        border-radius: 0;
-        padding: 0;
-        margin-bottom: 0.35rem;
-        box-shadow: none;
+        background: #ffffff;
+        border-radius: 14px;
+        padding: 0.55rem 0.65rem;
+        margin-bottom: 0.45rem;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
         width: fit-content;
         max-width: 100%;
     }
@@ -687,6 +708,8 @@ def render_pulse_banner(
     *,
     stale: bool = False,
     preview: bool = False,
+    sectors_covered: int | None = None,
+    all_sectors: bool = False,
 ) -> None:
     updated = generated_at[:16].replace("T", " ") + " UTC" if generated_at else "—"
     notes = []
@@ -700,15 +723,29 @@ def render_pulse_banner(
         if preview
         else ""
     )
+    focus_label = (
+        f"All sectors · hourly focus {html.escape(sector_name)}"
+        if all_sectors
+        else f"Today's focus · {html.escape(sector_name)}"
+    )
+    chips = [
+        f'<span class="stat-chip" style="background:#f0fdfa;border:1px solid #cbd5e1;border-radius:10px;padding:0.35rem 0.75rem;font-size:0.78rem;font-weight:600;color:#475569;">{trial_count} trials</span>'
+    ]
+    if sectors_covered:
+        chips.append(
+            f'<span class="stat-chip" style="background:#f0fdfa;border:1px solid #cbd5e1;border-radius:10px;padding:0.35rem 0.75rem;font-size:0.78rem;font-weight:600;color:#475569;">{sectors_covered} sectors</span>'
+        )
+    chips.append(
+        f'<span class="stat-chip" style="background:#f0fdfa;border:1px solid #cbd5e1;border-radius:10px;padding:0.35rem 0.75rem;font-size:0.78rem;font-weight:600;color:#475569;">As of {html.escape(updated)}</span>'
+    )
     st.markdown(preview_badge, unsafe_allow_html=True)
     st.markdown(
         f"""
 <div class="pulse-banner" style="background:linear-gradient(135deg,#ffffff 0%,#f0fdfb 100%);border:1px solid #b8ebe3;border-radius:20px;padding:1.75rem 2rem;margin-bottom:1.5rem;box-shadow:0 8px 32px rgba(0,196,167,0.1);">
-  <div class="pulse-label" style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#00c4a7;margin-bottom:0.65rem;">Today's focus · {html.escape(sector_name)}{html.escape(note)}</div>
+  <div class="pulse-label" style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#00c4a7;margin-bottom:0.65rem;">{focus_label}{html.escape(note)}</div>
   <p class="pulse-text" style="font-size:1.05rem;font-weight:500;line-height:1.6;color:#001d3d;margin:0 0 1rem 0;">{html.escape(market_pulse)}</p>
   <div class="stat-row" style="display:flex;flex-wrap:wrap;gap:0.5rem;">
-    <span class="stat-chip" style="background:#f0fdfa;border:1px solid #cbd5e1;border-radius:10px;padding:0.35rem 0.75rem;font-size:0.78rem;font-weight:600;color:#475569;">{trial_count} trials</span>
-    <span class="stat-chip" style="background:#f0fdfa;border:1px solid #cbd5e1;border-radius:10px;padding:0.35rem 0.75rem;font-size:0.78rem;font-weight:600;color:#475569;">As of {html.escape(updated)}</span>
+    {''.join(chips)}
   </div>
 </div>
         """,

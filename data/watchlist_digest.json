@@ -7,49 +7,6 @@
   "error": "Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': 'insufficient_quota', 'param': None, 'code': 'credit_balance_exhausted'}}",
   "trials": [
     {
-      "nct_id": "NCT00000001",
-      "ticker": "PFE",
-      "sponsor": "Pfizer Inc",
-      "drug": "test-drug",
-      "phase": "PHASE3",
-      "status": "ACTIVE_NOT_RECRUITING",
-      "title": null,
-      "change_type": "phase_upgrade",
-      "watch_reason": "Recent Phase Upgrade",
-      "score": 0.7969078314899454,
-      "detected_at": "2026-08-03T20:37:34.369029+00:00",
-      "headline": "PFE \u00b7 Recent Phase Upgrade",
-      "brief": "No brief generated.",
-      "analyst_tone": "neutral",
-      "catalysts": [],
-      "news": [
-        {
-          "title": "Pfizer (PFE) Announces FDA Approval of PADCEV plus Keytruda in MIBC - Yahoo Finance",
-          "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNcm8zalJ0ckZzQ3ppQThtZTd2OEFjeVpZbGJ3VXNONVJDbDlVeVk5T1NZc2NIYjJ3WDcwNy1IX296bmNjaGZzZVlsXzI0RUF2MnQtMmZTTVFHMFFaUTNTOER6TU9GWGlEMktwcG9oUUxrdTYydEtDMmdoU3A1akdRTHhLRnlqODNYQWdlZURBbW85TTdCVjJuUW9R?oc=5",
-          "source": "google_news_rss",
-          "published_at": "2026-07-15"
-        },
-        {
-          "title": "Pfizer's oral drug restores skin pigmentation in late-stage vitiligo trials - Reuters",
-          "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxPN0puNTRZdXZpbGNLVHRGT1F0cURqM1otVGdNU3A0dFhqN2JSeVJoRkdEOTlrekhXbzhOUGRJNmNsZ2FheVBjbk9kX1djTlZkQ2NuZWE4YkVuc2VXb0s2T3JFdUNKRW1VRVExVnBCazNkcGxtNE0xaWM2SUFfcDdRRFRlTWpPeDNwTFhrdjl2RGkwbmlqa29RUERkYUpMOVgzZWRKY0hHYkhkTnduekkzczBxekMwdzVtOHZuQjFHM3VOQ3pvY2JKZURHMjRrcDBXV3B5R0ZGYUtEUlE?oc=5",
-          "source": "google_news_rss",
-          "published_at": "2026-07-30"
-        },
-        {
-          "title": "AstraZeneca stock drops 9% after heart drug trial miss deals rare blow to pharma powerhouse - CNBC",
-          "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPMDQyN2hzSzZrYVFOY3F1RUtzSENYRlUyZk5zaHBZVERYQVY1V0UwN2thZXNqQW5vdXctUFR4emVhVjdSaGt0WjdIMFMwZ1A3LXYzczFpWkJ5TDIxd0E4RGNfYzR1SndVU3lXcm9yUFhZT0c5MExOM0xkRjl5VGJjSS1NN2jSAYoBQVVfeXFMT1J2UFFLZ2huendrTThlUnVkTU4zUHFMd3dfMVJyYmxSSVNaanBmbFNELTVGMjZuVGlnWk1sQThWMmlaVUNZTFBNblRGWTBSb1NGeXBacW9hamlGNjFKZnB5V2VmMlVfYjRsQjlZdkZJM2RxUGpHX0MyMXJmUTM0ZGtzWVlEZ2RtcVhn?oc=5",
-          "source": "google_news_rss",
-          "published_at": "2026-07-09"
-        },
-        {
-          "title": "Pfizer posts late-stage trial wins for Litfulo in vitiligo - Seeking Alpha",
-          "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxNTWZMMHhGQXcwVlpOUTIxRjF4ZWZIY3VkV1QzdUpZc0pCa1BzN1I4Y1ZnbWN0LThqdWFXaUQ2dXlUWGRibFF5T3RRUm42T3phT1pwcWNIVXJmeXFMT0xWVXZGNUw3dGE5Y2RhejhlUi1hRkhuQXlnUWhYRHhfRWVaelNtd2ZXdFlySWR3Q0RoVQ?oc=5",
-          "source": "google_news_rss",
-          "published_at": "2026-07-30"
-        }
-      ]
-    },
-    {
       "nct_id": "NCT04585750",
       "ticker": "REGN",
       "sponsor": "PMV Pharmaceuticals, Inc",
@@ -154,5 +111,5 @@
       ]
     }
   ],
-  "trial_count": 4
+  "trial_count": 3
 }

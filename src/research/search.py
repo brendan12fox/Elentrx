@@ -317,11 +317,18 @@ def _search_google_news_rss(
         if getattr(entry, "summary", None):
             snippet = re.sub(r"<[^>]+>", "", entry.summary)[:500]
 
+        title = getattr(entry, "title", "") or ""
+        link = getattr(entry, "link", "") or ""
+        # Google News RSS article wrappers often fail to open — store a working search URL.
+        if "news.google.com" in link and ("/articles/" in link or "/rss/articles/" in link or "/read/" in link):
+            q = urllib.parse.quote_plus(title[:160] or query)
+            link = f"https://news.google.com/search?q={q}&hl=en-US&gl=US&ceid=US:en"
+
         results.append(
             SearchResult(
-                title=getattr(entry, "title", ""),
-                url=getattr(entry, "link", ""),
-                snippet=snippet or getattr(entry, "title", ""),
+                title=title,
+                url=link,
+                snippet=snippet or title,
                 source="google_news_rss",
                 published_at=pub,
             )

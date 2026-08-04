@@ -16,7 +16,7 @@ from src.research.search import build_fallback_queries, search_news
 
 WATCHLIST_JSON_PATH = DATA_DIR / "watchlist_digest.json"
 CACHE_TTL_HOURS = int(os.getenv("WATCHLIST_CACHE_HOURS", "24"))
-MAX_WATCH_TRIALS = int(os.getenv("WATCHLIST_MAX_TRIALS", "10"))
+MAX_WATCH_TRIALS = int(os.getenv("WATCHLIST_MAX_TRIALS", "16"))
 NEWS_PER_TRIAL = 4
 
 
@@ -47,10 +47,17 @@ def _tone_css(tone: str) -> str:
 
 
 def fetch_watch_trials(limit: int = MAX_WATCH_TRIALS) -> list[WatchTrial]:
-    """Priority: recent phase changes, then active phase 2/3 in current sector."""
+    """Cross-sector watch targets: recent phase changes, then active mid/late-phase trials.
+
+    Hourly scraper still rotates by sector; the digest/UI pull from all sectors so
+    opening the app shows the full catalogue. Current-hour sector is slightly prioritized.
+    """
     init_db()
-    sector, _ = get_sector_for_hour()
-    sector_id = sector["id"]
+    from src.config import load_sectors
+
+    focus, _ = get_sector_for_hour()
+    focus_id = focus["id"]
+    sectors = load_sectors()
     seen: set[str] = set()
     trials: list[WatchTrial] = []
 
@@ -66,10 +73,12 @@ def fetch_watch_trials(limit: int = MAX_WATCH_TRIALS) -> list[WatchTrial]:
             FROM phase_changes pc
             LEFT JOIN trials t ON t.nct_id = pc.nct_id
             LEFT JOIN classifier_scores cs ON cs.phase_change_id = pc.id
-            ORDER BY pc.detected_at DESC
+            ORDER BY
+              CASE WHEN pc.sector_id = ? THEN 0 ELSE 1 END,
+              pc.detected_at DESC
             LIMIT ?
             """,
-            (limit * 2,),
+            (focus_id, limit * 2),
         ).fetchall()
 
         for row in change_rows:
@@ -77,18 +86,20 @@ def fetch_watch_trials(limit: int = MAX_WATCH_TRIALS) -> list[WatchTrial]:
                 continue
             seen.add(row["nct_id"])
             reason = (row["change_type"] or "update").replace("_", " ").title()
+            sid = row["sector_id"] or "other"
+            sector_label = next((s["name"] for s in sectors if s["id"] == sid), sid)
             trials.append(
                 WatchTrial(
                     nct_id=row["nct_id"],
                     ticker=row["ticker"],
                     sponsor=row["sponsor"],
                     drug=row["drug"],
-                    sector_id=row["sector_id"],
+                    sector_id=sid,
                     phase=row["phase"],
                     status=row["status"],
                     title=row["title"],
                     change_type=row["change_type"],
-                    watch_reason=f"Recent {reason}",
+                    watch_reason=f"Recent {reason} · {sector_label}",
                     score=float(row["score"]) if row["score"] is not None else None,
                     detected_at=row["detected_at"],
                 )
@@ -96,42 +107,60 @@ def fetch_watch_trials(limit: int = MAX_WATCH_TRIALS) -> list[WatchTrial]:
             if len(trials) >= limit:
                 return trials[:limit]
 
+        # Round-robin active trials across sectors so one sector can't dominate.
+        per_sector: dict[str, list] = {s["id"]: [] for s in sectors}
         active_rows = conn.execute(
             """
             SELECT nct_id, ticker, sponsor, drug, sector_id, phase,
                    overall_status AS status, title, last_seen_at
             FROM trials
-            WHERE sector_id = ?
-              AND phase IN ('PHASE2', 'PHASE3', 'PHASE4')
+            WHERE phase IN ('PHASE2', 'PHASE3', 'PHASE4')
               AND overall_status IN (
                   'RECRUITING', 'ACTIVE_NOT_RECRUITING', 'ENROLLING_BY_INVITATION'
               )
-            ORDER BY last_seen_at DESC
+            ORDER BY
+              CASE WHEN sector_id = ? THEN 0 ELSE 1 END,
+              last_seen_at DESC
             LIMIT ?
             """,
-            (sector_id, limit * 2),
+            (focus_id, max(limit * 4, 40)),
         ).fetchall()
 
         for row in active_rows:
-            if row["nct_id"] in seen:
-                continue
-            seen.add(row["nct_id"])
-            trials.append(
-                WatchTrial(
-                    nct_id=row["nct_id"],
-                    ticker=row["ticker"],
-                    sponsor=row["sponsor"],
-                    drug=row["drug"],
-                    sector_id=row["sector_id"],
-                    phase=row["phase"],
-                    status=row["status"],
-                    title=row["title"],
-                    change_type=None,
-                    watch_reason=f"Active {row['phase'] or 'trial'} · {sector['name']}",
-                )
-            )
-            if len(trials) >= limit:
-                break
+            sid = row["sector_id"] or "other"
+            per_sector.setdefault(sid, []).append(row)
+
+        # Focus sector first in the rotation order.
+        sector_order = [focus_id] + [s["id"] for s in sectors if s["id"] != focus_id]
+        progressed = True
+        while len(trials) < limit and progressed:
+            progressed = False
+            for sid in sector_order:
+                bucket = per_sector.get(sid) or []
+                while bucket:
+                    row = bucket.pop(0)
+                    if row["nct_id"] in seen:
+                        continue
+                    seen.add(row["nct_id"])
+                    sector_label = next((s["name"] for s in sectors if s["id"] == sid), sid)
+                    trials.append(
+                        WatchTrial(
+                            nct_id=row["nct_id"],
+                            ticker=row["ticker"],
+                            sponsor=row["sponsor"],
+                            drug=row["drug"],
+                            sector_id=sid,
+                            phase=row["phase"],
+                            status=row["status"],
+                            title=row["title"],
+                            change_type=None,
+                            watch_reason=f"Active {row['phase'] or 'trial'} · {sector_label}",
+                        )
+                    )
+                    progressed = True
+                    break
+                if len(trials) >= limit:
+                    break
 
     return trials[:limit]
 
@@ -190,14 +219,14 @@ def _synthesize_briefs(trials: list[WatchTrial], news_map: dict[str, list[dict]]
             f"Recent headlines:\n{news_lines}"
         )
 
-    user_prompt = f"""Sector focus today: {sector['name']}
+    user_prompt = f"""Catalogue covers all therapeutic sectors. Hourly scan focus right now: {sector['name']}.
 
 Trials on the watchlist:
 {'---'.join(trial_blocks)}
 
 Return JSON only:
 {{
-  "market_pulse": "2 sentences on sector/trial momentum for biotech investors",
+  "market_pulse": "2 sentences on cross-sector biotech trial momentum; mention that {sector['name']} is this hour's scan focus",
   "trials": [
     {{
       "nct_id": "must match input",
@@ -279,7 +308,10 @@ def _fallback_digest(
         "generated_at": now,
         "sector_id": sector["id"],
         "sector_name": sector["name"],
-        "market_pulse": "Automated brief unavailable. Showing cached headlines only.",
+        "market_pulse": (
+            f"Automated brief unavailable. Showing trials across all sectors. "
+            f"Hourly scan focus: {sector['name']}."
+        ),
         "error": error,
         "trials": [
             {
