@@ -65,20 +65,39 @@ def inject_styles() -> None:
     }
 
     #MainMenu, footer { visibility: hidden; height: 0; }
-    /* Keep header visible so sidebar collapse/expand control works */
-    [data-testid="stHeader"] { background: transparent !important; }
-    [data-testid="stToolbar"] { display: none !important; }
+    [data-testid="stHeader"] {
+        background: rgba(255,255,255,0.85) !important;
+        backdrop-filter: blur(8px);
+    }
+    /* Keep toolbar visible — it contains the sidebar expand/collapse button */
+    [data-testid="stToolbar"] {
+        visibility: visible !important;
+        display: flex !important;
+        opacity: 1 !important;
+        z-index: 999998 !important;
+    }
     [data-testid="stSidebarCollapsedControl"],
-    [data-testid="collapsedControl"] {
+    [data-testid="collapsedControl"],
+    button[kind="header"] {
         visibility: visible !important;
         display: flex !important;
         opacity: 1 !important;
         z-index: 999999 !important;
-        color: #0d9488 !important;
-        background: #ffffff !important;
-        border: 1px solid #e2e8f0 !important;
-        border-radius: 8px !important;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important;
+    }
+    .stAppDeployButton, [data-testid="stMainMenu"] { display: none !important; }
+
+    .top-nav-wrap {
+        background: #ffffff;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 0.35rem 0.5rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+    }
+    .top-nav-wrap [data-testid="stPills"] button,
+    .top-nav-wrap [data-testid="stSegmentedControl"] button {
+        font-size: 0.82rem !important;
+        font-weight: 600 !important;
     }
 
     .stApp {

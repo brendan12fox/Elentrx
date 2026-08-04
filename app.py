@@ -9,7 +9,7 @@ from datetime import datetime, timezone
 import pandas as pd
 import streamlit as st
 
-from src.alert.email import email_configured, send_trial_alert
+from src.alert.email import email_configured, normalize_app_password, send_trial_alert, verify_smtp_login
 from src.auth.users import (
     authenticate,
     create_user,
@@ -65,6 +65,16 @@ LEGAL_FILES = {
     "Privacy Policy": DATA_DIR.parent / "PRIVACY_POLICY.md",
     "Trademarks": DATA_DIR.parent / "TRADEMARKS.md",
 }
+
+NAV_PAGES = [
+    "Watchlist",
+    "Trials",
+    "Updates",
+    "Alerts",
+    "Alert demo",
+    "Activity",
+    "Settings",
+]
 
 init_db()
 ensure_bootstrap_admin()
@@ -299,13 +309,37 @@ def render_send_test_alert(*, key_prefix: str = "alert") -> None:
     else:
         st.warning("Set `SMTP_USER` in `.env` or Streamlit secrets.")
 
-    if st.button(
-        "Send test alert now",
-        type="primary",
-        use_container_width=True,
-        key=f"{key_prefix}_send_btn",
-    ):
-        pw = app_password.replace(" ", "") or None
+    col_a, col_b = st.columns(2)
+    with col_a:
+        test_login = st.button("Test login only", use_container_width=True, key=f"{key_prefix}_test_login")
+    with col_b:
+        send_now = st.button(
+            "Send test alert now",
+            type="primary",
+            use_container_width=True,
+            key=f"{key_prefix}_send_btn",
+        )
+
+    pw = normalize_app_password(app_password) or None
+
+    if test_login:
+        with st.spinner("Testing Gmail login…"):
+            ok, msg = verify_smtp_login(pw)
+        if ok:
+            st.success(msg)
+        else:
+            st.error(msg)
+            st.markdown(
+                "**Fix checklist:**\n"
+                "1. Open an **incognito** window and sign in as **eletrx.trials@gmail.com** only\n"
+                "2. Turn on **2-Step Verification** (Google Account → Security)\n"
+                "3. Go to [App Passwords](https://myaccount.google.com/apppasswords) → Mail → Other → name it Elentrx\n"
+                "4. Copy all **16 letters** (no spaces) into the field above\n"
+                "5. Click **Test login only** again\n\n"
+                "Also update `SMTP_PASSWORD` in Streamlit Cloud secrets if testing on the deployed app."
+            )
+
+    if send_now:
         if not email_configured(pw):
             st.error("SMTP not configured — need SMTP_HOST, SMTP_USER, and an app password.")
         elif not recipient.strip():
@@ -318,10 +352,6 @@ def render_send_test_alert(*, key_prefix: str = "alert") -> None:
                 st.balloons()
             else:
                 st.error(msg)
-                st.info(
-                    "If auth failed: sign into **eletrx.trials@gmail.com**, enable 2FA, "
-                    "generate a new App Password, paste it above, and click again."
-                )
 
 
 def alerts_panel() -> None:
@@ -441,22 +471,44 @@ def main() -> None:
     inject_styles()
 
     username = st.session_state.get("username", "user")
+    if "nav_page" not in st.session_state:
+        st.session_state.nav_page = NAV_PAGES[0]
 
     with st.sidebar:
         render_sidebar_brand()
-        page = st.radio(
+        sidebar_page = st.radio(
             "Navigation",
-            ["Watchlist", "Trials", "Updates", "Alerts", "Alert demo", "Activity", "Settings"],
+            NAV_PAGES,
+            index=NAV_PAGES.index(st.session_state.nav_page),
             label_visibility="collapsed",
+            key="sidebar_nav",
         )
+        if sidebar_page != st.session_state.nav_page:
+            st.session_state.nav_page = sidebar_page
         st.markdown("---")
         st.caption(f"Signed in · {username}")
-        st.caption("Tip: use the **›** button top-left to reopen this menu.")
+        st.caption("Use the **›** button top-left or the nav bar below to switch pages.")
         if st.button("Sign out", use_container_width=True):
             _cached_digest.clear()
             for key in ("authenticated", "user_id", "username"):
                 st.session_state.pop(key, None)
             st.rerun()
+
+    st.markdown('<div class="top-nav-wrap">', unsafe_allow_html=True)
+    top_page = st.pills(
+        "Pages",
+        NAV_PAGES,
+        default=st.session_state.nav_page,
+        selection_mode="single",
+        label_visibility="collapsed",
+        key="top_nav_pills",
+    )
+    st.markdown("</div>", unsafe_allow_html=True)
+    if top_page and top_page != st.session_state.nav_page:
+        st.session_state.nav_page = top_page
+        st.rerun()
+
+    page = st.session_state.nav_page
 
     if page == "Watchlist":
         watchlist_panel()
