@@ -30,7 +30,7 @@ def inject_styles() -> None:
         --sidebar: #0b0f19;
     }
 
-    html, body, [class*="css"] { font-family: 'Inter', system-ui, sans-serif; }
+    html, body, [class*="css"] { font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; }
 
     .block-container { padding-top: 1.25rem; max-width: 1200px; }
 

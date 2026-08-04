@@ -9,7 +9,7 @@ from datetime import datetime, timezone
 import pandas as pd
 import streamlit as st
 
-from src.alert.email import email_configured, normalize_app_password, resend_configured, send_trial_alert
+from src.alert.email import email_configured, resend_configured, send_trial_alert
 from src.auth.users import (
     authenticate,
     create_user,
@@ -67,20 +67,26 @@ LEGAL_FILES = {
     "Trademarks": DATA_DIR.parent / "TRADEMARKS.md",
 }
 
-NAV_PAGES = [
-    "Watchlist",
-    "Trials",
-    "Updates",
-    "Alerts",
-    "Alert demo",
-    "Activity",
-    "Settings",
-]
+_NAV_LABELS = {
+    "Watchlist": "Watchlist",
+    "Trials": "Trials",
+    "Updates": "Updates",
+    "Alerts": "Alerts",
+    "Demo": "Alert demo",
+    "Activity": "Activity",
+    "Settings": "Settings",
+}
+NAV_PAGES = list(_NAV_LABELS.keys())
 
-init_db()
-ensure_bootstrap_admin()
-seed_if_empty()
-hydrate_streamlit_secrets()
+
+def _ensure_app_ready() -> None:
+    if st.session_state.get("_app_ready"):
+        return
+    init_db()
+    ensure_bootstrap_admin()
+    seed_if_empty()
+    hydrate_streamlit_secrets()
+    st.session_state._app_ready = True
 
 
 def _auth_disabled() -> bool:
@@ -206,6 +212,32 @@ def _cached_trials() -> list[dict]:
     return fetch_trials_enriched(limit=24)
 
 
+@st.cache_data(show_spinner=False, ttl=60)
+def _cached_alerts() -> list[dict]:
+    return fetch_alerts(limit=30)
+
+
+@st.cache_data(show_spinner=False, ttl=60)
+def _cached_changes() -> list[dict]:
+    return fetch_phase_changes(limit=20)
+
+
+@st.cache_data(show_spinner=False, ttl=60)
+def _cached_runs() -> list[dict]:
+    return fetch_runs(limit=15)
+
+
+@st.cache_data(show_spinner=False, ttl=300)
+def _cached_dataset_count() -> int:
+    return len(load_dataset())
+
+
+@st.cache_data(show_spinner=False, ttl=300)
+def _cached_eval_samples() -> list[dict]:
+    samples = load_dataset()
+    return [s.to_dict() for s in samples[:12]] if samples else []
+
+
 def watchlist_panel() -> None:
     """Instant read — full digest or DB preview fallback."""
     raw_digest, stale = _cached_digest()
@@ -269,7 +301,7 @@ def trials_panel() -> None:
 
 
 def changes_panel() -> None:
-    changes = fetch_phase_changes(limit=20)
+    changes = _cached_changes()
     if not changes:
         st.info("No phase changes detected yet — these appear when trials advance or halt.")
         return
@@ -282,7 +314,7 @@ def _default_alert_recipient() -> str:
     return (user.alert_email if user else None) or os.getenv("ALERT_EMAIL", "")
 
 
-def render_send_test_alert(*, key_prefix: str = "alert") -> None:
+def render_send_test_alert() -> None:
     """Send a sample trial alert email."""
     recipient_default = _default_alert_recipient()
     using_resend = resend_configured()
@@ -307,36 +339,27 @@ def render_send_test_alert(*, key_prefix: str = "alert") -> None:
         unsafe_allow_html=True,
     )
 
-    recipient = st.text_input("Send to", value=recipient_default, key=f"{key_prefix}_recipient")
-    app_password = ""
-    if not using_resend:
-        with st.expander("Gmail SMTP settings"):
-            app_password = st.text_input(
-                "Gmail App Password",
-                type="password",
-                placeholder="16-character app password",
-                key=f"{key_prefix}_app_password",
-            )
+    with st.form("send_test_alert", clear_on_submit=False):
+        recipient = st.text_input("Send to", value=recipient_default)
+        submitted = st.form_submit_button("Send test alert", type="primary", use_container_width=True)
 
-    if st.button("Send test alert", type="primary", use_container_width=True, key=f"{key_prefix}_send_btn"):
-        pw = normalize_app_password(app_password) or None
-        if not email_configured(pw):
+    if submitted:
+        if not email_configured():
             st.error("Email not configured — add RESEND_API_KEY to secrets.")
         elif not recipient.strip():
             st.error("Enter a recipient email.")
         else:
             with st.spinner("Sending…"):
-                ok, msg = send_trial_alert(recipient.strip(), smtp_password=pw)
+                ok, msg = send_trial_alert(recipient.strip())
             if ok:
                 st.success(msg)
-                st.balloons()
             else:
                 st.error(msg)
 
 
 def alerts_panel() -> None:
-    render_send_test_alert(key_prefix="alerts")
-    alerts = fetch_alerts(limit=30)
+    render_send_test_alert()
+    alerts = _cached_alerts()
     if not alerts:
         st.info("No emails sent yet — favorable trial changes above your threshold will appear here.")
         return
@@ -345,7 +368,7 @@ def alerts_panel() -> None:
 
 
 def runs_panel() -> None:
-    runs = fetch_runs(limit=15)
+    runs = _cached_runs()
     if not runs:
         st.info("No pipeline runs logged yet.")
         return
@@ -390,10 +413,10 @@ def evaluation_panel() -> None:
     else:
         st.info("No evaluation report yet. Run `python -m src.ml.evaluate --rebuild` locally.")
 
-    samples = load_dataset()
-    if samples:
-        st.markdown(f"**Historical samples cached:** {len(samples)}")
-        preview = pd.DataFrame([s.to_dict() for s in samples[:12]])[
+    sample_rows = _cached_eval_samples()
+    if sample_rows:
+        st.markdown(f"**Historical samples cached:** {_cached_dataset_count()}")
+        preview = pd.DataFrame(sample_rows)[
             ["event_date", "ticker", "nct_id", "label", "analyst_tone"]
         ].rename(columns={
             "event_date": "Date",
@@ -440,47 +463,36 @@ def legal_panel() -> None:
 
 
 def main() -> None:
+    _ensure_app_ready()
     _require_login()
     inject_styles()
 
     username = st.session_state.get("username", "user")
-    if "nav_page" not in st.session_state:
+    if st.session_state.get("nav_page") == "Alert demo":
+        st.session_state.nav_page = "Demo"
+    if st.session_state.get("nav_page") not in NAV_PAGES:
         st.session_state.nav_page = NAV_PAGES[0]
 
     with st.sidebar:
         render_sidebar_brand()
-        sidebar_page = st.radio(
-            "Navigation",
-            NAV_PAGES,
-            index=NAV_PAGES.index(st.session_state.nav_page),
-            label_visibility="collapsed",
-            key="sidebar_nav",
-        )
-        if sidebar_page != st.session_state.nav_page:
-            st.session_state.nav_page = sidebar_page
-        st.markdown("---")
         st.caption(f"Signed in · {username}")
         if st.button("Sign out", use_container_width=True):
             _cached_digest.clear()
-            for key in ("authenticated", "user_id", "username"):
+            for key in ("authenticated", "user_id", "username", "_app_ready"):
                 st.session_state.pop(key, None)
             st.rerun()
 
-    st.markdown('<div class="nav-bar">', unsafe_allow_html=True)
-    top_page = st.pills(
-        "Navigate",
-        NAV_PAGES,
-        default=st.session_state.nav_page,
-        selection_mode="single",
-        label_visibility="collapsed",
-        key="top_nav_pills",
-    )
-    st.markdown("</div>", unsafe_allow_html=True)
-    if top_page and top_page != st.session_state.nav_page:
-        st.session_state.nav_page = top_page
-        st.rerun()
+    with st.container(border=True):
+        st.pills(
+            "Navigate",
+            NAV_PAGES,
+            selection_mode="single",
+            key="nav_page",
+            label_visibility="collapsed",
+        )
 
-    page = st.session_state.nav_page
+    page_key = st.session_state.nav_page
+    page = _NAV_LABELS.get(page_key, page_key)
 
     if page == "Watchlist":
         render_page_header("Watchlist", "Daily sector digest and tracked trials")
@@ -499,21 +511,33 @@ def main() -> None:
         demo_panel()
     elif page == "Activity":
         render_page_header("Activity", "Rotation schedule, pipeline runs, and model evaluation")
-        t1, t2, t3 = st.tabs(["Rotation", "Runs", "Evaluation"])
-        with t1:
+        tab = st.segmented_control(
+            "Activity section",
+            ["Rotation", "Runs", "Evaluation"],
+            default="Rotation",
+            label_visibility="collapsed",
+            key="activity_tab",
+        )
+        if tab == "Rotation":
             rotation_panel()
-        with t2:
+        elif tab == "Runs":
             runs_panel()
-        with t3:
+        else:
             evaluation_panel()
     elif page == "Settings":
         render_page_header("Settings", "Account, configuration, and legal")
-        t1, t2, t3 = st.tabs(["Account", "Config", "Legal"])
-        with t1:
+        tab = st.segmented_control(
+            "Settings section",
+            ["Account", "Config", "Legal"],
+            default="Account",
+            label_visibility="collapsed",
+            key="settings_tab",
+        )
+        if tab == "Account":
             account_panel()
-        with t2:
+        elif tab == "Config":
             config_panel()
-        with t3:
+        else:
             legal_panel()
 
 
