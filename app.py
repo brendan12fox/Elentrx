@@ -9,7 +9,7 @@ from datetime import datetime, timezone
 import pandas as pd
 import streamlit as st
 
-from src.alert.email import email_configured
+from src.alert.email import email_configured, send_trial_alert
 from src.auth.users import (
     authenticate,
     create_user,
@@ -19,7 +19,7 @@ from src.auth.users import (
     update_password,
     user_count,
 )
-from src.config import DATA_DIR, FAVORABILITY_THRESHOLD, get_sector_for_hour, load_sectors
+from src.config import DATA_DIR, FAVORABILITY_THRESHOLD, get_sector_for_hour, hydrate_streamlit_secrets, load_sectors
 from src.db.schema import init_db
 from src.db.seed import seed_if_empty
 from src.ml.historical import HISTORICAL_DATASET_PATH, load_dataset
@@ -69,6 +69,7 @@ LEGAL_FILES = {
 init_db()
 ensure_bootstrap_admin()
 seed_if_empty()
+hydrate_streamlit_secrets()
 
 
 def _auth_disabled() -> bool:
@@ -265,12 +266,72 @@ def changes_panel() -> None:
     render_change_cards(changes)
 
 
+def _default_alert_recipient() -> str:
+    user = get_user(st.session_state.get("user_id", 0))
+    return (user.alert_email if user else None) or os.getenv("ALERT_EMAIL", "")
+
+
+def render_send_test_alert(*, key_prefix: str = "alert") -> None:
+    """One-click test alert with optional Gmail app-password override."""
+    recipient_default = _default_alert_recipient()
+    smtp_user = os.getenv("SMTP_USER", "")
+
+    st.markdown("#### Send a test alert")
+    recipient = st.text_input(
+        "Send to",
+        value=recipient_default,
+        placeholder="you@gmail.com",
+        key=f"{key_prefix}_recipient",
+    )
+    app_password = st.text_input(
+        "Gmail App Password",
+        type="password",
+        placeholder="16 characters — paste from Google App Passwords",
+        help=(
+            "This is NOT your Gmail login password. "
+            "Create one at https://myaccount.google.com/apppasswords "
+            "(2-Step Verification must be on for eletrx.trials@gmail.com)."
+        ),
+        key=f"{key_prefix}_app_password",
+    )
+    if smtp_user:
+        st.caption(f"Sending from **{smtp_user}** via Gmail SMTP")
+    else:
+        st.warning("Set `SMTP_USER` in `.env` or Streamlit secrets.")
+
+    if st.button(
+        "Send test alert now",
+        type="primary",
+        use_container_width=True,
+        key=f"{key_prefix}_send_btn",
+    ):
+        pw = app_password.replace(" ", "") or None
+        if not email_configured(pw):
+            st.error("SMTP not configured — need SMTP_HOST, SMTP_USER, and an app password.")
+        elif not recipient.strip():
+            st.error("Enter a recipient email address.")
+        else:
+            with st.spinner("Sending test alert…"):
+                ok, msg = send_trial_alert(recipient.strip(), smtp_password=pw)
+            if ok:
+                st.success(f"Test alert sent! {msg}")
+                st.balloons()
+            else:
+                st.error(msg)
+                st.info(
+                    "If auth failed: sign into **eletrx.trials@gmail.com**, enable 2FA, "
+                    "generate a new App Password, paste it above, and click again."
+                )
+
+
 def alerts_panel() -> None:
+    render_send_test_alert(key_prefix="alerts")
+    st.markdown("---")
     alerts = fetch_alerts(limit=30)
     if not alerts:
         st.info("No emails sent yet — favorable trial changes above your threshold will appear here.")
         return
-        st.markdown(f"**{len(alerts)} emails sent**")
+    st.markdown(f"**{len(alerts)} emails sent**")
     render_alert_timeline(alerts)
 
 
@@ -347,6 +408,8 @@ def config_panel() -> None:
 
 
 def demo_panel() -> None:
+    render_send_test_alert(key_prefix="demo")
+    st.markdown("---")
     scenarios = get_demo_scenarios()
     previews = {s.id: preview_alerts(s) for s in scenarios}
     st.markdown(

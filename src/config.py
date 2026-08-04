@@ -10,6 +10,18 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+
+def hydrate_streamlit_secrets() -> None:
+    """Mirror Streamlit Cloud secrets into os.environ (local .env still wins)."""
+    try:
+        import streamlit as st
+
+        for key, value in st.secrets.items():
+            if isinstance(value, (str, int, float, bool)):
+                os.environ.setdefault(str(key), str(value))
+    except Exception:
+        pass
+
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG_DIR = ROOT / "config"
 DATA_DIR = ROOT / "data"
