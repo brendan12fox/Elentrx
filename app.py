@@ -52,6 +52,7 @@ from src.ui.styles import (
     render_demo_gallery,
 )
 from src.ui.demo import get_demo_scenarios, preview_alerts
+from src.market.quotes import fetch_quotes
 
 st.set_page_config(
     page_title="Elentrx™ — Clinical Trial Alerter",
@@ -200,6 +201,18 @@ def account_panel() -> None:
         st.rerun()
 
 
+@st.cache_data(show_spinner=False, ttl=120)
+def _cached_quotes(tickers: tuple[str, ...]) -> dict[str, object]:
+    return fetch_quotes(list(tickers))
+
+
+def _quotes_for(items: list[dict], key: str = "ticker") -> dict:
+    tickers = tuple(sorted({(i.get(key) or "").upper() for i in items if i.get(key)}))
+    if not tickers:
+        return {}
+    return _cached_quotes(tickers)
+
+
 @st.cache_data(show_spinner=False, ttl=300)
 def _cached_digest() -> tuple[dict | None, bool]:
     digest = load_digest_for_display()
@@ -265,7 +278,7 @@ def watchlist_panel() -> None:
         stale=stale and not is_preview,
         preview=is_preview,
     )
-    render_trial_cards_grid(digest.get("trials", []))
+    render_trial_cards_grid(digest.get("trials", []), quotes=_quotes_for(digest.get("trials", [])))
 
 
 def rotation_panel() -> None:
@@ -297,7 +310,7 @@ def trials_panel() -> None:
             if q in t["ticker"].lower() or q in t["sponsor"].lower() or q in (t.get("drug") or "").lower()
         ]
 
-    render_trial_list_cards(trials)
+    render_trial_list_cards(trials, quotes=_quotes_for(trials))
 
 
 def changes_panel() -> None:
@@ -306,7 +319,7 @@ def changes_panel() -> None:
         st.info("No phase changes detected yet — these appear when trials advance or halt.")
         return
     st.markdown(f"**{len(changes)} recent updates**")
-    render_change_cards(changes)
+    render_change_cards(changes, quotes=_quotes_for(changes))
 
 
 def _default_alert_recipient() -> str:
@@ -442,8 +455,9 @@ def config_panel() -> None:
 def demo_panel() -> None:
     scenarios = get_demo_scenarios()
     previews = {s.id: preview_alerts(s) for s in scenarios}
-    st.caption(f"Sample formats only · live threshold {FAVORABILITY_THRESHOLD:.0%} · send a real test from **Alerts**")
-    render_demo_gallery(scenarios, previews)
+    quotes = _cached_quotes(tuple(s.ticker.upper() for s in scenarios))
+    st.caption(f"Sample formats only · live delayed quotes · threshold {FAVORABILITY_THRESHOLD:.0%}")
+    render_demo_gallery(scenarios, previews, quotes=quotes)
 
 
 def legal_panel() -> None:

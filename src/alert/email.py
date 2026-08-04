@@ -286,25 +286,34 @@ def build_alert_email(
     probability: float,
     summary: str,
 ) -> tuple[str, str, str]:
+    from src.market.quotes import fetch_quote, format_quote_html, format_quote_text
+
+    quote = fetch_quote(ticker)
     phase_text = f"{old_phase or 'NA'} → {new_phase or 'NA'}"
+    quote_line = format_quote_text(quote)
     subject = f"[Elentrx] {ticker} trial update — score {probability:.0%}"
+    if quote and quote.available and quote.change_pct is not None:
+        sign = "+" if quote.change_pct >= 0 else ""
+        subject = f"[Elentrx] {ticker} {sign}{quote.change_pct:.1f}% · trial update — score {probability:.0%}"
     thesis = (summary or "No summary available.").strip()
     body = (
         f"Elentrx trial alert\n\n"
         f"Ticker: {ticker}\n"
+        f"{quote_line}\n"
         f"NCT ID: {nct_id}\n"
         f"Phase: {phase_text}\n"
         f"Favorability score: {probability:.2f}\n\n"
         f"Summary:\n{thesis}\n\n"
         f"---\n"
-        f"Not financial advice. See dashboard for full brief.\n"
+        f"Delayed market data · not financial advice.\n"
     )
     html = (
         f"<h2>Elentrx trial alert</h2>"
         f"<p><b>{ticker}</b> · {nct_id}<br>"
         f"Phase: {phase_text}<br>"
         f"Score: {probability:.2f}</p>"
+        f"{format_quote_html(quote)}"
         f"<p>{thesis}</p>"
-        f"<p><small>Not financial advice.</small></p>"
+        f"<p><small>Delayed market data · not financial advice.</small></p>"
     )
     return subject, body, html

@@ -190,6 +190,19 @@ def inject_styles() -> None:
         font-weight: 500;
         margin-top: 0.25rem;
     }
+    .quote-chip {
+        display: inline-block;
+        margin-top: 0.35rem;
+        background: #f1f5f9;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 0.2rem 0.55rem;
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: #334155;
+    }
+    .quote-chip.quote-up { border-color: #a7f3d0; background: #ecfdf5; color: #047857; }
+    .quote-chip.quote-down { border-color: #fecaca; background: #fef2f2; color: #b91c1c; }
     .tone-pill {
         font-size: 0.65rem;
         font-weight: 700;
@@ -540,15 +553,21 @@ def render_pulse_banner(
     )
 
 
-def render_trial_cards_grid(trials: list[dict]) -> None:
+def render_trial_cards_grid(trials: list[dict], quotes: dict | None = None) -> None:
     cards_html = ['<div class="cards-grid">']
     for trial in trials:
-        cards_html.append(_trial_card_html(trial))
+        ticker = (trial.get("ticker") or "").upper()
+        quote = (quotes or {}).get(ticker)
+        cards_html.append(_trial_card_html(trial, quote))
     cards_html.append("</div>")
     st.markdown("\n".join(cards_html), unsafe_allow_html=True)
 
 
-def _trial_card_html(trial: dict) -> str:
+def _trial_card_html(trial: dict, quote=None) -> str:
+    from src.market.quotes import StockQuote, format_quote_chip
+
+    if quote and not isinstance(quote, StockQuote):
+        quote = None
     tone = (trial.get("analyst_tone") or "neutral").lower()
     fg, bg, arrow = TONE.get(tone, TONE["neutral"])
     score = trial.get("score")
@@ -557,6 +576,7 @@ def _trial_card_html(trial: dict) -> str:
     )
     phase = html.escape((trial.get("phase") or "—").replace("_", " "))
     ticker = html.escape(str(trial.get("ticker", "—")))
+    quote_html = format_quote_chip(quote)
     nct_id = html.escape(str(trial.get("nct_id", "")))
     headline = html.escape(str(trial.get("headline", "")))
     brief = html.escape(str(trial.get("brief", "")))
@@ -578,6 +598,7 @@ def _trial_card_html(trial: dict) -> str:
   <div class="card-top">
     <div>
       <div class="card-ticker">{ticker}</div>
+      {quote_html}
       <div class="card-nct">{nct_id}</div>
     </div>
     <span class="tone-pill" style="color:{fg};background:{bg};">{arrow} {tone}</span>
@@ -601,10 +622,18 @@ def render_empty_watchlist(message: str) -> None:
     )
 
 
-def render_trial_list_cards(trials: list[dict]) -> None:
+def render_trial_list_cards(trials: list[dict], quotes: dict | None = None) -> None:
+    from src.market.quotes import StockQuote, format_quote_chip
+
     for t in trials:
         score = t.get("score")
         score_badge = f" · {score:.0%} favorability" if score is not None else ""
+        ticker = (t.get("ticker") or "").upper()
+        quote = (quotes or {}).get(ticker)
+        if quote and not isinstance(quote, StockQuote):
+            quote = None
+        quote_html = format_quote_chip(quote)
+        quote_row = f'<div style="margin:0.35rem 0;">{quote_html}</div>' if quote_html else ""
         st.markdown(
             f"""
 <div class="list-card">
@@ -612,6 +641,7 @@ def render_trial_list_cards(trials: list[dict]) -> None:
     <span class="list-ticker">{html.escape(t.get('ticker',''))}</span>
     <span class="tag">{html.escape(t.get('phase_label',''))}</span>
   </div>
+  {quote_row}
   <div class="list-meta">
     {html.escape(t.get('drug') or 'Unknown drug')} · {html.escape(t.get('sponsor',''))}<br>
     {html.escape(t.get('status_label',''))} · {html.escape(t.get('sector',''))}{html.escape(score_badge)}
@@ -624,12 +654,20 @@ def render_trial_list_cards(trials: list[dict]) -> None:
         )
 
 
-def render_change_cards(changes: list[dict]) -> None:
+def render_change_cards(changes: list[dict], quotes: dict | None = None) -> None:
+    from src.market.quotes import StockQuote, format_quote_chip
+
     for c in changes:
         when = (c.get("detected_at") or "")[:16].replace("T", " ")
         tone = (c.get("analyst_tone") or "neutral").lower()
         fg, bg, arrow = TONE.get(tone, TONE["neutral"])
         score_line = f"Favorability {c['score']:.0%}" if c.get("score") is not None else "Not scored yet"
+        ticker = (c.get("ticker") or "").upper()
+        quote = (quotes or {}).get(ticker)
+        if quote and not isinstance(quote, StockQuote):
+            quote = None
+        quote_html = format_quote_chip(quote)
+        quote_row = f'<div style="margin:0.35rem 0;">{quote_html}</div>' if quote_html else ""
         st.markdown(
             f"""
 <div class="list-card">
@@ -637,6 +675,7 @@ def render_change_cards(changes: list[dict]) -> None:
     <span class="list-ticker">{html.escape(c.get('ticker',''))}</span>
     <span class="tone-pill" style="color:{fg};background:{bg};font-size:0.65rem;">{arrow} {tone}</span>
   </div>
+  {quote_row}
   <div class="list-meta">{html.escape(c.get('change_label',''))} · {when} UTC</div>
   <div class="list-meta">Phase: {html.escape(c.get('phase_from',''))} → {html.escape(c.get('phase_to',''))}</div>
   <div class="list-snippet">{html.escape(c.get('summary',''))}</div>
@@ -722,13 +761,21 @@ def render_settings_rows(items: list[tuple[str, str]]) -> None:
     st.markdown(rows, unsafe_allow_html=True)
 
 
-def render_demo_gallery(scenarios: list, previews: dict) -> None:
+def render_demo_gallery(scenarios: list, previews: dict, quotes: dict | None = None) -> None:
+    from src.market.quotes import StockQuote, format_quote_chip
+
     cards = ['<div class="demo-grid">']
     for s in scenarios:
         prev = previews[s.id]
         alert_cls = "demo-alert-yes" if s.alert_fires else "demo-alert-no"
         alert_icon = "✉ Email would send" if s.alert_fires else "○ No email"
         score_pct = int(s.score * 100)
+        quote = (quotes or {}).get(s.ticker.upper())
+        if quote and not isinstance(quote, StockQuote):
+            quote = None
+        quote_html = format_quote_chip(quote)
+        quote_block = f'<div style="margin:0.35rem 0 0.5rem;">{quote_html}</div>' if quote_html else ""
+        body_html = html.escape(prev["body"]).replace(chr(10), "<br>")
         cards.append(f"""
 <div class="demo-scenario">
   <div class="demo-scenario-header" style="background:{s.accent};">
@@ -740,6 +787,7 @@ def render_demo_gallery(scenarios: list, previews: dict) -> None:
       <span style="font-size:1.35rem;font-weight:800;color:#0f172a;">{html.escape(s.ticker)}</span>
       <span class="tone-pill" style="color:{TONE.get(s.analyst_tone, TONE['neutral'])[0]};background:{TONE.get(s.analyst_tone, TONE['neutral'])[1]};">{s.analyst_tone}</span>
     </div>
+    {quote_block}
     <div class="list-meta" style="margin-top:0.35rem;">{html.escape(s.drug)} · {html.escape(s.change_label)}</div>
     <div class="list-meta">Phase: {html.escape(s.phase_from)} → {html.escape(s.phase_to)}</div>
     <div class="list-snippet">{html.escape(s.summary)}</div>
@@ -752,7 +800,7 @@ def render_demo_gallery(scenarios: list, previews: dict) -> None:
       <div class="email-mock-inner">
         <div class="email-from">From: Elentrx Alerts</div>
         <div class="email-subject">{html.escape(prev['subject'])}</div>
-        {html.escape(prev['body']).replace(chr(10), '<br>')}
+        {body_html}
       </div>
     </div>
   </div>
