@@ -7,7 +7,7 @@ import sqlite3
 import streamlit as st
 
 from src.auth.users import authenticate, create_user, signup_allowed, user_count, username_exists
-from src.ui.brand import LOGO_SVG_LIGHT, TAGLINE
+from src.ui.brand import render_auth_logo
 from src.ui.styles import inject_styles
 
 
@@ -24,16 +24,21 @@ def render_auth_page() -> None:
     can_signup = signup_allowed() or first_user
 
     st.markdown(
-        f"""
+        """
 <div class="auth-backdrop">
   <div class="auth-glow auth-glow-a"></div>
   <div class="auth-glow auth-glow-b"></div>
 </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    render_auth_logo()
+
+    st.markdown(
+        """
 <div class="auth-shell">
   <div class="auth-hero">
-    {LOGO_SVG_LIGHT}
-    <div class="auth-brand">Elentrx<span class="auth-tm">™</span></div>
-    <div class="auth-tagline">{TAGLINE}</div>
     <ul class="auth-features">
       <li>Hourly trial scans across biotech sectors</li>
       <li>ML favorability scores + AI research briefs</li>

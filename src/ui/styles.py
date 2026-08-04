@@ -6,6 +6,9 @@ import html
 
 import streamlit as st
 
+from src.ui.brand import render_sidebar_logo
+from src.ui.links import inline_ctgov_link, trial_links_html
+
 TONE = {
     "bullish": ("#059669", "#ecfdf5", "↑"),
     "bearish": ("#dc2626", "#fef2f2", "↓"),
@@ -14,18 +17,22 @@ TONE = {
 
 
 def inject_styles() -> None:
+    if st.session_state.get("_styles_loaded"):
+        return
+    st.session_state._styles_loaded = True
     st.markdown(
         """
 <style>
     :root {
-        --bg: #f4f5f7;
-        --surface: #ffffff;
-        --text: #0b0f19;
-        --muted: #64748b;
-        --border: #e8eaef;
-        --accent: #0d9488;
-        --accent-soft: #ccfbf1;
-        --sidebar: #0b0f19;
+        --bg: #ffffff;
+        --surface: #f5f8fa;
+        --text: #001d3d;
+        --muted: #4a6278;
+        --border: #dce4ec;
+        --accent: #00c4a7;
+        --accent-dark: #001d3d;
+        --accent-soft: #e6faf6;
+        --sidebar: #001d3d;
     }
 
     html, body, [class*="css"] {
@@ -34,17 +41,17 @@ def inject_styles() -> None:
 
     .stApp {
         background:
-            radial-gradient(ellipse 80% 60% at 10% -10%, rgba(45, 212, 191, 0.12), transparent),
-            radial-gradient(ellipse 60% 50% at 90% 0%, rgba(99, 102, 241, 0.1), transparent),
-            linear-gradient(160deg, #f0fdfa 0%, #f4f5f7 40%, #eef2ff 100%) !important;
+            radial-gradient(ellipse 70% 50% at 0% 0%, rgba(0, 196, 167, 0.08), transparent),
+            radial-gradient(ellipse 50% 40% at 100% 0%, rgba(0, 29, 61, 0.05), transparent),
+            linear-gradient(180deg, #ffffff 0%, #f5f8fa 100%) !important;
     }
 
     .block-container { padding-top: 1rem; max-width: 1180px; }
 
     [data-testid="stSidebar"] {
-        background: linear-gradient(180deg, #0f172a 0%, #1e1b4b 100%) !important;
+        background: linear-gradient(180deg, #001d3d 0%, #002847 100%) !important;
         border-right: none !important;
-        box-shadow: 4px 0 24px rgba(15, 23, 42, 0.15);
+        box-shadow: 4px 0 24px rgba(0, 29, 61, 0.2);
     }
     [data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p,
     [data-testid="stSidebar"] label,
@@ -61,8 +68,8 @@ def inject_styles() -> None:
         border-radius: 8px !important;
     }
     [data-testid="stSidebar"] .stRadio label[data-baseweb="radio"]:has(input:checked) {
-        background: rgba(94, 234, 212, 0.15) !important;
-        border: 1px solid rgba(94, 234, 212, 0.35) !important;
+        background: rgba(0, 196, 167, 0.15) !important;
+        border: 1px solid rgba(0, 196, 167, 0.45) !important;
     }
     [data-testid="stSidebar"] hr { border-color: rgba(255,255,255,0.1); }
     [data-testid="stSidebar"] .stButton button {
@@ -108,38 +115,55 @@ def inject_styles() -> None:
         padding: 0.4rem 0.75rem !important;
     }
 
-    .sidebar-brand {
-        display: flex;
-        align-items: center;
-        gap: 0.65rem;
+    [data-testid="stSidebar"] [data-testid="stImage"] {
+        background: #ffffff;
+        border-radius: 14px;
+        padding: 0.45rem 0.55rem;
         margin-bottom: 0.35rem;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
     }
-    .elentrx-logo { width: 36px; height: 36px; flex-shrink: 0; }
-    .elentrx-logo-lg { width: 56px; height: 56px; }
-    .brand-mark {
-        font-size: 1.35rem;
-        font-weight: 700;
-        letter-spacing: -0.04em;
-        color: #5eead4 !important;
-        -webkit-text-fill-color: #5eead4 !important;
-        margin: 0;
-        line-height: 1.1;
+    [data-testid="stSidebar"] [data-testid="stImage"] img {
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    .sidebar-logo-wrap {
+        background: #ffffff;
+        border-radius: 14px;
+        padding: 0.65rem 0.75rem;
+        margin-bottom: 0.35rem;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        text-align: center;
+    }
+    .elentrx-logo-img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 0 auto;
+    }
+    .auth-logo-wrap {
+        text-align: center;
+        margin-bottom: 0.5rem;
+    }
+    [data-testid="stImage"]:has(+ .auth-tagline) {
+        display: flex;
+        justify-content: center;
     }
     .brand-sub {
         font-size: 0.72rem;
-        color: #94a3b8;
+        color: #7eb8aa;
         text-transform: uppercase;
         letter-spacing: 0.08em;
         margin-bottom: 1.5rem;
     }
 
     .pulse-banner {
-        background: linear-gradient(135deg, #ffffff 0%, #f0fdfa 100%);
-        border: 1px solid #99f6e4;
+        background: linear-gradient(135deg, #ffffff 0%, #f0fdfb 100%);
+        border: 1px solid #b8ebe3;
         border-radius: 20px;
         padding: 1.75rem 2rem;
         margin-bottom: 1.5rem;
-        box-shadow: 0 8px 32px rgba(13, 148, 136, 0.08);
+        box-shadow: 0 8px 32px rgba(0, 196, 167, 0.1);
         position: relative;
         overflow: hidden;
     }
@@ -148,7 +172,7 @@ def inject_styles() -> None:
         position: absolute;
         top: 0; left: 0; right: 0;
         height: 4px;
-        background: linear-gradient(90deg, #0d9488, #6366f1, #ec4899);
+        background: linear-gradient(90deg, #001d3d, #00c4a7);
     }
     .pulse-label {
         font-size: 0.7rem;
@@ -261,32 +285,39 @@ def inject_styles() -> None:
         border: 1px solid var(--border);
     }
     .tag-score { background: #eff6ff; color: #1d4ed8; border-color: #bfdbfe; }
-    .tag-catalyst { background: var(--accent-soft); color: #0f766e; border-color: #99f6e4; }
+    .tag-catalyst { background: var(--accent-soft); color: #001d3d; border-color: #b8ebe3; }
 
-    .news-block {
+    .links-block {
         border-top: 1px solid var(--border);
         padding-top: 0.65rem;
         margin-top: auto;
     }
-    .news-label {
+    .links-label {
         font-size: 0.65rem;
-        font-weight: 600;
+        font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 0.08em;
-        color: #94a3b8;
-        margin-bottom: 0.4rem;
+        color: var(--muted);
+        margin-bottom: 0.45rem;
     }
-    .news-link {
+    .link-row {
         display: block;
         font-size: 0.78rem;
-        color: #334155;
+        color: #001d3d;
         text-decoration: none;
-        padding: 0.3rem 0;
+        padding: 0.45rem 0;
         line-height: 1.4;
-        border-bottom: 1px solid #f1f5f9;
+        border-bottom: 1px solid #eef2f6;
     }
-    .news-link:hover { color: var(--accent); }
-    .news-src { color: #94a3b8; font-size: 0.7rem; }
+    .link-row:hover { color: var(--accent); }
+    .link-row:last-child { border-bottom: none; }
+    .link-title { display: block; font-weight: 600; color: inherit; }
+    .link-meta, .link-hint { color: #94a3b8; font-size: 0.7rem; }
+    .link-hint { display: block; margin-top: 0.35rem; }
+    .ctgov-link { font-weight: 600; }
+    .link-icon { color: var(--accent); margin-right: 0.2rem; }
+    .inline-link { color: var(--accent); font-weight: 600; text-decoration: none; }
+    .inline-link:hover { text-decoration: underline; }
 
     .empty-state {
         text-align: center;
@@ -394,11 +425,11 @@ def inject_styles() -> None:
         border: 1px solid var(--border);
         border-radius: 14px;
         padding: 0.85rem 1rem;
-        border-top: 3px solid #0d9488;
+        border-top: 3px solid #00c4a7;
     }
-    .metric-box:nth-child(2) { border-top-color: #6366f1; }
-    .metric-box:nth-child(3) { border-top-color: #ec4899; }
-    .metric-box:nth-child(4) { border-top-color: #f59e0b; }
+    .metric-box:nth-child(2) { border-top-color: #001d3d; }
+    .metric-box:nth-child(3) { border-top-color: #00c4a7; }
+    .metric-box:nth-child(4) { border-top-color: #4a6278; }
     .metric-label { font-size: 0.72rem; color: var(--muted); font-weight: 500; }
     .metric-value { font-size: 1.25rem; font-weight: 700; color: var(--text); margin-top: 0.15rem; }
 
@@ -462,7 +493,7 @@ def inject_styles() -> None:
         margin-top: 0.75rem;
     }
     .email-mock-bar {
-        background: linear-gradient(90deg, #0d9488, #6366f1);
+        background: linear-gradient(90deg, #001d3d, #00c4a7);
         padding: 0.5rem 1rem;
         font-size: 0.7rem;
         font-weight: 600;
@@ -470,7 +501,7 @@ def inject_styles() -> None:
         letter-spacing: 0.04em;
     }
     .email-mock-inner { padding: 1rem; font-size: 0.82rem; color: #334155; line-height: 1.55; }
-    .email-subject { font-weight: 700; color: #0f172a; margin-bottom: 0.65rem; }
+    .email-subject { font-weight: 700; color: #001d3d; margin-bottom: 0.65rem; }
     .email-from { font-size: 0.72rem; color: #64748b; margin-bottom: 0.5rem; }
 
     /* Auth screen */
@@ -489,28 +520,17 @@ def inject_styles() -> None:
     }
     .auth-glow-a {
         width: 420px; height: 420px;
-        background: rgba(45, 212, 191, 0.35);
+        background: rgba(0, 196, 167, 0.25);
         top: -120px; left: -80px;
     }
     .auth-glow-b {
         width: 380px; height: 380px;
-        background: rgba(99, 102, 241, 0.28);
+        background: rgba(0, 29, 61, 0.12);
         top: 10%; right: -100px;
     }
     .auth-shell { text-align: center; padding: 2.5rem 1rem 1rem; position: relative; z-index: 1; }
     .auth-hero { max-width: 520px; margin: 0 auto 1.5rem; }
-    .auth-brand {
-        font-size: 2.25rem;
-        font-weight: 800;
-        letter-spacing: -0.05em;
-        background: linear-gradient(135deg, #0f766e 0%, #0d9488 40%, #6366f1 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        margin-top: 0.75rem;
-    }
-    .auth-tm { font-size: 0.85rem; vertical-align: super; opacity: 0.6; -webkit-text-fill-color: #64748b; }
-    .auth-tagline { color: #64748b; font-size: 1rem; margin-top: 0.35rem; }
+    .auth-tagline { color: #4a6278; font-size: 1rem; margin-top: 0.35rem; }
     .auth-features {
         list-style: none;
         padding: 0;
@@ -531,7 +551,7 @@ def inject_styles() -> None:
         left: 0; top: 0.75rem;
         width: 8px; height: 8px;
         border-radius: 50%;
-        background: linear-gradient(135deg, #2dd4bf, #6366f1);
+        background: linear-gradient(135deg, #00c4a7, #001d3d);
     }
     .auth-card-label {
         font-size: 0.72rem;
@@ -551,8 +571,8 @@ def inject_styles() -> None:
     }
 
     .alert-send-card {
-        background: linear-gradient(135deg, #ffffff 0%, #f0fdfa 100%);
-        border: 1px solid #99f6e4;
+        background: linear-gradient(135deg, #ffffff 0%, #f0fdfb 100%);
+        border: 1px solid #b8ebe3;
         border-radius: 16px;
         padding: 1.25rem 1.5rem;
         margin-bottom: 1.25rem;
@@ -584,22 +604,8 @@ def render_page_header(title: str, subtitle: str) -> None:
     st.markdown(f'<p class="page-sub">{subtitle}</p>', unsafe_allow_html=True)
 
 
-from src.ui.brand import LOGO_SVG, TAGLINE
-
-
 def render_sidebar_brand() -> None:
-    st.markdown(
-        f"""
-<div class="sidebar-brand">
-  {LOGO_SVG}
-  <div>
-    <p class="brand-mark">Elentrx</p>
-    <p class="brand-sub" style="color:#94a3b8!important;margin-bottom:0;">{TAGLINE}</p>
-  </div>
-</div>
-        """,
-        unsafe_allow_html=True,
-    )
+    render_sidebar_logo()
 
 
 def render_login_shell(title: str = "Welcome back") -> None:
@@ -682,15 +688,7 @@ def _trial_card_html(trial: dict, quote=None) -> str:
     reason = html.escape(str(trial.get("watch_reason", "")))
     catalysts = trial.get("catalysts") or []
     cat_tags = "".join(f'<span class="tag tag-catalyst">{html.escape(str(c))}</span>' for c in catalysts[:2])
-    news = trial.get("news") or []
-    news_links = ""
-    for item in news[:3]:
-        title = html.escape(str(item.get("title", "Untitled")))
-        url = html.escape(str(item.get("url", "#")), quote=True)
-        source = html.escape(str(item.get("source", "")))
-        news_links += f'<a class="news-link" href="{url}" target="_blank">{title}<br><span class="news-src">{source}</span></a>'
-    if not news_links:
-        news_links = '<span class="news-src">No headlines cached</span>'
+    links_html = trial_links_html(trial)
 
     return f"""
 <div class="card" style="border-left-color:{fg};">
@@ -705,7 +703,7 @@ def _trial_card_html(trial: dict, quote=None) -> str:
   <div class="card-headline">{headline}</div>
   <div class="card-brief">{brief}</div>
   <div class="tag-row">{score_tag}<span class="tag">{phase}</span><span class="tag">{reason}</span>{cat_tags}</div>
-  <div class="news-block"><div class="news-label">Recent news</div>{news_links}</div>
+  {links_html}
 </div>"""
 
 
@@ -733,6 +731,7 @@ def render_trial_list_cards(trials: list[dict], quotes: dict | None = None) -> N
             quote = None
         quote_html = format_quote_chip(quote)
         quote_row = f'<div style="margin:0.35rem 0;">{quote_html}</div>' if quote_html else ""
+        nct_link = inline_ctgov_link(t.get("nct_id", ""))
         st.markdown(
             f"""
 <div class="list-card">
@@ -746,7 +745,7 @@ def render_trial_list_cards(trials: list[dict], quotes: dict | None = None) -> N
     {html.escape(t.get('status_label',''))} · {html.escape(t.get('sector',''))}{html.escape(score_badge)}
   </div>
   <div class="list-snippet">{html.escape(t.get('brief',''))}</div>
-  <div class="list-meta" style="margin-top:0.4rem;">{html.escape(t.get('nct_id',''))}</div>
+  <div class="list-meta" style="margin-top:0.4rem;">{nct_link}</div>
 </div>
             """,
             unsafe_allow_html=True,
@@ -767,6 +766,7 @@ def render_change_cards(changes: list[dict], quotes: dict | None = None) -> None
             quote = None
         quote_html = format_quote_chip(quote)
         quote_row = f'<div style="margin:0.35rem 0;">{quote_html}</div>' if quote_html else ""
+        nct_link = inline_ctgov_link(c.get("nct_id", ""))
         st.markdown(
             f"""
 <div class="list-card">
@@ -778,7 +778,7 @@ def render_change_cards(changes: list[dict], quotes: dict | None = None) -> None
   <div class="list-meta">{html.escape(c.get('change_label',''))} · {when} UTC</div>
   <div class="list-meta">Phase: {html.escape(c.get('phase_from',''))} → {html.escape(c.get('phase_to',''))}</div>
   <div class="list-snippet">{html.escape(c.get('summary',''))}</div>
-  <div class="list-meta" style="margin-top:0.35rem;">{score_line} · {html.escape(c.get('nct_id',''))}</div>
+  <div class="list-meta" style="margin-top:0.35rem;">{score_line} · {nct_link}</div>
 </div>
             """,
             unsafe_allow_html=True,
@@ -883,7 +883,7 @@ def render_demo_gallery(scenarios: list, previews: dict, quotes: dict | None = N
   </div>
   <div class="demo-scenario-body">
     <div style="display:flex;justify-content:space-between;align-items:center;">
-      <span style="font-size:1.35rem;font-weight:800;color:#0f172a;">{html.escape(s.ticker)}</span>
+      <span style="font-size:1.35rem;font-weight:800;color:#001d3d;">{html.escape(s.ticker)}</span>
       <span class="tone-pill" style="color:{TONE.get(s.analyst_tone, TONE['neutral'])[0]};background:{TONE.get(s.analyst_tone, TONE['neutral'])[1]};">{s.analyst_tone}</span>
     </div>
     {quote_block}

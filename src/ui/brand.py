@@ -1,23 +1,49 @@
-"""Elentrx brand assets (inline SVG — no external files)."""
+"""Elentrx brand assets — logo and color tokens from elentrx.png."""
 
-LOGO_SVG = """
-<svg class="elentrx-logo" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <defs>
-    <linearGradient id="elx-g" x1="8" y1="4" x2="40" y2="44" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#5eead4"/>
-      <stop offset="0.5" stop-color="#2dd4bf"/>
-      <stop offset="1" stop-color="#6366f1"/>
-    </linearGradient>
-  </defs>
-  <rect x="4" y="4" width="40" height="40" rx="12" fill="url(#elx-g)" opacity="0.15"/>
-  <path d="M14 24c0-5.523 4.477-10 10-10s10 4.477 10 10" stroke="url(#elx-g)" stroke-width="3" stroke-linecap="round"/>
-  <path d="M14 24c0 5.523 4.477 10 10 10" stroke="url(#elx-g)" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
-  <circle cx="24" cy="24" r="3.5" fill="url(#elx-g)"/>
-  <path d="M24 10v4M24 34v4M10 24h4M34 24h4" stroke="#99f6e4" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
-</svg>
-"""
+from __future__ import annotations
 
-LOGO_SVG_LIGHT = LOGO_SVG.replace('class="elentrx-logo"', 'class="elentrx-logo elentrx-logo-lg"')
+from pathlib import Path
+
+import streamlit as st
+
+ROOT = Path(__file__).resolve().parents[2]
+LOGO_PATH = ROOT / "assets" / "elentrx.png"
+LOGO_UI_PATH = ROOT / "assets" / "elentrx-ui.png"
+
+# Official palette
+NAVY = "#001D3D"
+TEAL = "#00C4A7"
+WHITE = "#FFFFFF"
+MUTED = "#4A6278"
+SURFACE = "#F5F8FA"
 
 BRAND_NAME = "Elentrx"
 TAGLINE = "Clinical trial intelligence"
+
+SIDEBAR_LOGO_WIDTH = 152
+AUTH_LOGO_WIDTH = 240
+
+
+def ctgov_study_url(nct_id: str) -> str:
+    nct = (nct_id or "").strip().upper()
+    if not nct.startswith("NCT"):
+        return ""
+    return f"https://clinicaltrials.gov/study/{nct}"
+
+
+def render_sidebar_logo() -> None:
+    st.image(str(LOGO_UI_PATH), width=SIDEBAR_LOGO_WIDTH)
+    st.markdown(
+        f'<p class="brand-sub">{TAGLINE}</p>',
+        unsafe_allow_html=True,
+    )
+
+
+def render_auth_logo() -> None:
+    _, col, _ = st.columns([1, 1.4, 1])
+    with col:
+        st.image(str(LOGO_UI_PATH), width=AUTH_LOGO_WIDTH)
+        st.markdown(
+            f'<p class="auth-tagline">{TAGLINE}</p>',
+            unsafe_allow_html=True,
+        )

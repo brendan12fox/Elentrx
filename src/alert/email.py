@@ -287,10 +287,13 @@ def build_alert_email(
     summary: str,
 ) -> tuple[str, str, str]:
     from src.market.quotes import fetch_quote, format_quote_html, format_quote_text
+    from src.ui.brand import ctgov_study_url
 
     quote = fetch_quote(ticker)
     phase_text = f"{old_phase or 'NA'} → {new_phase or 'NA'}"
     quote_line = format_quote_text(quote)
+    ctgov = ctgov_study_url(nct_id)
+    ctgov_line = f"ClinicalTrials.gov: {ctgov}\n" if ctgov else ""
     subject = f"[Elentrx] {ticker} trial update — score {probability:.0%}"
     if quote and quote.available and quote.change_pct is not None:
         sign = "+" if quote.change_pct >= 0 else ""
@@ -301,11 +304,17 @@ def build_alert_email(
         f"Ticker: {ticker}\n"
         f"{quote_line}\n"
         f"NCT ID: {nct_id}\n"
+        f"{ctgov_line}"
         f"Phase: {phase_text}\n"
         f"Favorability score: {probability:.2f}\n\n"
         f"Summary:\n{thesis}\n\n"
         f"---\n"
         f"Delayed market data · not financial advice.\n"
+    )
+    ctgov_html = (
+        f'<p><a href="{ctgov}" style="color:#00c4a7;">View on ClinicalTrials.gov ↗</a></p>'
+        if ctgov
+        else ""
     )
     html = (
         f"<h2>Elentrx trial alert</h2>"
@@ -314,6 +323,7 @@ def build_alert_email(
         f"Score: {probability:.2f}</p>"
         f"{format_quote_html(quote)}"
         f"<p>{thesis}</p>"
+        f"{ctgov_html}"
         f"<p><small>Delayed market data · not financial advice.</small></p>"
     )
     return subject, body, html
