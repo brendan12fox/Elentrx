@@ -10,14 +10,13 @@ import pandas as pd
 import streamlit as st
 
 from src.alert.email import email_configured, resend_configured, send_trial_alert
+from src.ui.auth_page import render_auth_page
 from src.auth.users import (
     authenticate,
-    create_user,
     ensure_bootstrap_admin,
     get_user,
     update_alert_email,
     update_password,
-    user_count,
 )
 from src.config import DATA_DIR, FAVORABILITY_THRESHOLD, get_sector_for_hour, hydrate_streamlit_secrets, load_sectors
 from src.db.schema import init_db
@@ -103,60 +102,7 @@ def _require_login() -> None:
     if st.session_state.get("authenticated") and st.session_state.get("user_id"):
         return
 
-    inject_styles()
-    st.markdown(
-        """
-<div style="text-align:center;padding:3rem 1rem 1.5rem;">
-  <div style="font-size:2rem;font-weight:700;letter-spacing:-0.04em;color:#0b0f19;">Elentrx</div>
-  <div style="color:#64748b;font-size:0.9rem;margin-top:0.35rem;">Clinical trial intelligence</div>
-</div>
-        """,
-        unsafe_allow_html=True,
-    )
-
-    col1, col2, col3 = st.columns([1, 1.2, 1])
-    with col2:
-        if user_count() == 0:
-            st.markdown("##### Create account")
-            with st.form("setup_form"):
-                username = st.text_input("Username")
-                email = st.text_input("Email")
-                password = st.text_input("Password", type="password")
-                confirm = st.text_input("Confirm password", type="password")
-                submitted = st.form_submit_button("Get started", type="primary", use_container_width=True)
-                if submitted:
-                    if len(password) < 8:
-                        st.error("Password must be at least 8 characters.")
-                    elif password != confirm:
-                        st.error("Passwords do not match.")
-                    elif not username.strip():
-                        st.error("Username is required.")
-                    else:
-                        user = create_user(
-                            username=username,
-                            password=password,
-                            email=email or None,
-                            alert_email=email or None,
-                            is_admin=True,
-                        )
-                        st.session_state.authenticated = True
-                        st.session_state.user_id = user.id
-                        st.session_state.username = user.username
-                        st.rerun()
-        else:
-            st.markdown("##### Sign in")
-            with st.form("login_form"):
-                username = st.text_input("Username")
-                password = st.text_input("Password", type="password")
-                submitted = st.form_submit_button("Sign in", type="primary", use_container_width=True)
-                if submitted:
-                    user = authenticate(username, password)
-                    if user:
-                        st.session_state.authenticated = True
-                        st.session_state.user_id = user.id
-                        st.session_state.username = user.username
-                        st.rerun()
-                    st.error("Invalid username or password.")
+    render_auth_page()
     st.stop()
 
 

@@ -17,8 +17,6 @@ def inject_styles() -> None:
     st.markdown(
         """
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
     :root {
         --bg: #f4f5f7;
         --surface: #ffffff;
@@ -30,9 +28,18 @@ def inject_styles() -> None:
         --sidebar: #0b0f19;
     }
 
-    html, body, [class*="css"] { font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; }
+    html, body, [class*="css"] {
+        font-family: "SF Pro Display", system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
 
-    .block-container { padding-top: 1.25rem; max-width: 1200px; }
+    .stApp {
+        background:
+            radial-gradient(ellipse 80% 60% at 10% -10%, rgba(45, 212, 191, 0.12), transparent),
+            radial-gradient(ellipse 60% 50% at 90% 0%, rgba(99, 102, 241, 0.1), transparent),
+            linear-gradient(160deg, #f0fdfa 0%, #f4f5f7 40%, #eef2ff 100%) !important;
+    }
+
+    .block-container { padding-top: 1rem; max-width: 1180px; }
 
     [data-testid="stSidebar"] {
         background: linear-gradient(180deg, #0f172a 0%, #1e1b4b 100%) !important;
@@ -87,16 +94,36 @@ def inject_styles() -> None:
     .stAppDeployButton, [data-testid="stMainMenu"] { display: none !important; }
 
     .nav-bar {
-        background: linear-gradient(160deg, #f0fdfa 0%, #f4f5f7 35%, #eef2ff 100%) !important;
+        background: #ffffff;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 0.5rem 0.65rem;
+        margin-bottom: 1.25rem;
+        box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+    }
+    .nav-bar [data-testid="stPills"] button {
+        border-radius: 10px !important;
+        font-size: 0.8rem !important;
+        font-weight: 600 !important;
+        padding: 0.4rem 0.75rem !important;
     }
 
+    .sidebar-brand {
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+        margin-bottom: 0.35rem;
+    }
+    .elentrx-logo { width: 36px; height: 36px; flex-shrink: 0; }
+    .elentrx-logo-lg { width: 56px; height: 56px; }
     .brand-mark {
         font-size: 1.35rem;
         font-weight: 700;
         letter-spacing: -0.04em;
         color: #5eead4 !important;
         -webkit-text-fill-color: #5eead4 !important;
-        margin: 0 0 0.15rem 0;
+        margin: 0;
+        line-height: 1.1;
     }
     .brand-sub {
         font-size: 0.72rem;
@@ -446,20 +473,81 @@ def inject_styles() -> None:
     .email-subject { font-weight: 700; color: #0f172a; margin-bottom: 0.65rem; }
     .email-from { font-size: 0.72rem; color: #64748b; margin-bottom: 0.5rem; }
 
-    .nav-bar {
-        background: #ffffff;
-        border: 1px solid var(--border);
-        border-radius: 14px;
-        padding: 0.5rem 0.65rem;
-        margin-bottom: 1.25rem;
-        box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+    /* Auth screen */
+    .auth-backdrop {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        overflow: hidden;
     }
-    .nav-bar [data-testid="stPills"] { gap: 0.35rem; }
-    .nav-bar [data-testid="stPills"] button {
-        border-radius: 10px !important;
-        font-size: 0.8rem !important;
-        font-weight: 600 !important;
-        padding: 0.4rem 0.75rem !important;
+    .auth-glow {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.45;
+    }
+    .auth-glow-a {
+        width: 420px; height: 420px;
+        background: rgba(45, 212, 191, 0.35);
+        top: -120px; left: -80px;
+    }
+    .auth-glow-b {
+        width: 380px; height: 380px;
+        background: rgba(99, 102, 241, 0.28);
+        top: 10%; right: -100px;
+    }
+    .auth-shell { text-align: center; padding: 2.5rem 1rem 1rem; position: relative; z-index: 1; }
+    .auth-hero { max-width: 520px; margin: 0 auto 1.5rem; }
+    .auth-brand {
+        font-size: 2.25rem;
+        font-weight: 800;
+        letter-spacing: -0.05em;
+        background: linear-gradient(135deg, #0f766e 0%, #0d9488 40%, #6366f1 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-top: 0.75rem;
+    }
+    .auth-tm { font-size: 0.85rem; vertical-align: super; opacity: 0.6; -webkit-text-fill-color: #64748b; }
+    .auth-tagline { color: #64748b; font-size: 1rem; margin-top: 0.35rem; }
+    .auth-features {
+        list-style: none;
+        padding: 0;
+        margin: 1.25rem auto 0;
+        max-width: 340px;
+        text-align: left;
+    }
+    .auth-features li {
+        color: #475569;
+        font-size: 0.88rem;
+        padding: 0.45rem 0 0.45rem 1.5rem;
+        position: relative;
+        line-height: 1.45;
+    }
+    .auth-features li::before {
+        content: '';
+        position: absolute;
+        left: 0; top: 0.75rem;
+        width: 8px; height: 8px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #2dd4bf, #6366f1);
+    }
+    .auth-card-label {
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: #94a3b8;
+        margin-bottom: 0.5rem;
+    }
+    [data-testid="stForm"] {
+        background: rgba(255,255,255,0.92) !important;
+        border: 1px solid #e2e8f0 !important;
+        border-radius: 18px !important;
+        padding: 1.25rem 1.35rem !important;
+        box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08) !important;
+        backdrop-filter: blur(12px);
     }
 
     .alert-send-card {
@@ -496,9 +584,20 @@ def render_page_header(title: str, subtitle: str) -> None:
     st.markdown(f'<p class="page-sub">{subtitle}</p>', unsafe_allow_html=True)
 
 
+from src.ui.brand import LOGO_SVG, TAGLINE
+
+
 def render_sidebar_brand() -> None:
     st.markdown(
-        '<p class="brand-mark">Elentrx</p><p class="brand-sub" style="color:#94a3b8!important;">Trial intelligence</p>',
+        f"""
+<div class="sidebar-brand">
+  {LOGO_SVG}
+  <div>
+    <p class="brand-mark">Elentrx</p>
+    <p class="brand-sub" style="color:#94a3b8!important;margin-bottom:0;">{TAGLINE}</p>
+  </div>
+</div>
+        """,
         unsafe_allow_html=True,
     )
 

@@ -50,6 +50,20 @@ class User:
     is_admin: bool
 
 
+def signup_allowed() -> bool:
+    return os.getenv("ALLOW_SIGNUP", "true").lower() in ("1", "true", "yes")
+
+
+def username_exists(username: str) -> bool:
+    init_auth_tables()
+    with get_connection() as conn:
+        row = conn.execute(
+            "SELECT 1 FROM users WHERE username = ?",
+            (username.strip().lower(),),
+        ).fetchone()
+        return row is not None
+
+
 def ensure_bootstrap_admin() -> None:
     """Create the first admin from ADMIN_USERNAME / ADMIN_PASSWORD env vars."""
     init_auth_tables()
