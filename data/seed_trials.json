@@ -1,0 +1,104 @@
+{
+  "trials": [
+    {
+      "nct_id": "NCT03627963",
+      "ticker": "LLY",
+      "sponsor": "Eli Lilly and Company",
+      "drug": "Donanemab",
+      "sector_id": "cns",
+      "phase": "PHASE3",
+      "overall_status": "ACTIVE_NOT_RECRUITING",
+      "title": "Study of Donanemab in Participants With Early Symptomatic Alzheimer's Disease"
+    },
+    {
+      "nct_id": "NCT04382651",
+      "ticker": "NVS",
+      "sponsor": "Novartis Pharmaceuticals",
+      "drug": "Iptacopan",
+      "sector_id": "immunology",
+      "phase": "PHASE3",
+      "overall_status": "RECRUITING",
+      "title": "Study of Iptacopan in Patients With Paroxysmal Nocturnal Hemoglobinuria"
+    },
+    {
+      "nct_id": "NCT04487092",
+      "ticker": "REGN",
+      "sponsor": "Regeneron Pharmaceuticals",
+      "drug": "Odronextamab",
+      "sector_id": "oncology",
+      "phase": "PHASE2",
+      "overall_status": "RECRUITING",
+      "title": "Odronextamab in Relapsed/Refractory B-Cell Non-Hodgkin Lymphoma"
+    },
+    {
+      "nct_id": "NCT04784715",
+      "ticker": "VRTX",
+      "sponsor": "Vertex Pharmaceuticals",
+      "drug": "VX-548",
+      "sector_id": "cns",
+      "phase": "PHASE3",
+      "overall_status": "RECRUITING",
+      "title": "VX-548 for Acute Pain After Bunionectomy or Abdominoplasty"
+    },
+    {
+      "nct_id": "NCT04816669",
+      "ticker": "MRNA",
+      "sponsor": "ModernaTX, Inc.",
+      "drug": "mRNA-4157",
+      "sector_id": "oncology",
+      "phase": "PHASE2",
+      "overall_status": "RECRUITING",
+      "title": "Personalized Cancer Vaccine mRNA-4157 With Pembrolizumab in Melanoma"
+    },
+    {
+      "nct_id": "NCT04104683",
+      "ticker": "AMGN",
+      "sponsor": "Amgen",
+      "drug": "Tezepelumab",
+      "sector_id": "immunology",
+      "phase": "PHASE3",
+      "overall_status": "COMPLETED",
+      "title": "Tezepelumab in Severe Uncontrolled Asthma (SOURCE)"
+    },
+    {
+      "nct_id": "NCT03939274",
+      "ticker": "BIIB",
+      "sponsor": "Biogen",
+      "drug": "Lecanemab",
+      "sector_id": "cns",
+      "phase": "PHASE3",
+      "overall_status": "COMPLETED",
+      "title": "Clarity AD: Lecanemab in Early Alzheimer's Disease"
+    },
+    {
+      "nct_id": "NCT04245506",
+      "ticker": "GILD",
+      "sponsor": "Gilead Sciences",
+      "drug": "Magrolimab",
+      "sector_id": "hematology",
+      "phase": "PHASE3",
+      "overall_status": "RECRUITING",
+      "title": "Magrolimab Plus Azacitidine in Higher-Risk MDS"
+    },
+    {
+      "nct_id": "NCT03778931",
+      "ticker": "BMY",
+      "sponsor": "Bristol-Myers Squibb",
+      "drug": "Deucravacitinib",
+      "sector_id": "immunology",
+      "phase": "PHASE3",
+      "overall_status": "ACTIVE_NOT_RECRUITING",
+      "title": "Deucravacitinib Versus Placebo in Active Psoriatic Arthritis"
+    },
+    {
+      "nct_id": "NCT04516746",
+      "ticker": "PFE",
+      "sponsor": "Pfizer",
+      "drug": "Elranatamab",
+      "sector_id": "oncology",
+      "phase": "PHASE2",
+      "overall_status": "RECRUITING",
+      "title": "Elranatamab in Relapsed/Refractory Multiple Myeloma"
+    }
+  ]
+}

@@ -6,12 +6,12 @@ Monitors **ClinicalTrials.gov** for phase changes on trials led by **publicly tr
 
 ## Architecture
 
-- **GitHub Actions** (`58 * * * *`) — scraper + analysis + SMS
+- **GitHub Actions** (`58 * * * *`) — scraper + analysis + email alerts
 - **Streamlit Community Cloud** — dashboard reading committed SQLite snapshots
 - **ClinicalTrials.gov v2 API** — trial registry (no brittle FDA HTML scraping)
 - **OpenAI Responses API** — built-in `web_search` tool for news + structured research briefs (one API key)
 - **sklearn GradientBoosting** — favorability classifier (bootstrapped on historical returns)
-- **Twilio** — SMS alerts
+- **SMTP email** — free/cheap alert delivery (Gmail, SendGrid, etc.)
 
 ## Sector rotation
 
@@ -47,10 +47,9 @@ Copy `.env.example` to `.env` and fill in:
 |----------|---------|
 | `OPENAI_API_KEY` | LLM + web search (Responses API) |
 | `OPENAI_SEARCH_MODEL` | Model with web search support (default `gpt-4o`) |
-| `TWILIO_ACCOUNT_SID` | SMS |
-| `TWILIO_AUTH_TOKEN` | SMS |
-| `TWILIO_FROM_NUMBER` | SMS sender |
-| `ALERT_PHONE` | Your phone (+1...) |
+| `ADMIN_USERNAME` / `ADMIN_PASSWORD` | Bootstrap dashboard login (or create first user in UI) |
+| `ALERT_EMAIL` | Where trial alert emails are sent |
+| `SMTP_HOST`, `SMTP_USER`, `SMTP_PASSWORD` | Email delivery (Gmail, SendGrid, etc.) |
 | `FAVORABILITY_THRESHOLD` | Default `0.65` |
 
 Add the same secrets to **GitHub Actions** repo secrets for the cron job.
@@ -90,13 +89,61 @@ python -m src.ml.evaluate --rebuild --max-events 200 --no-llm
 
 Reports saved to `data/evaluation_report.json` and shown in the Streamlit **Evaluation** tab.
 
-### 5. Streamlit dashboard
+### 5. Streamlit dashboard (the UI)
+
+**Local:**
 
 ```bash
 streamlit run app.py
 ```
 
-Deploy to [Streamlit Community Cloud](https://streamlit.io/cloud) pointing at this repo with `app.py` as the entrypoint.
+Open **http://localhost:8501** in your browser.
+
+**First visit:** create an admin username/password on the login screen (or set `ADMIN_USERNAME` + `ADMIN_PASSWORD` in `.env` before starting).
+
+**Tabs:** Rotation · Trials · Changes · Alerts · Runs · Evaluation · Config · **Account** · Legal
+
+**Cloud deploy:** [Streamlit Community Cloud](https://streamlit.io/cloud) → connect https://github.com/brendan12fox/Elentrx → entrypoint `app.py` → add secrets (`ADMIN_PASSWORD`, `OPENAI_API_KEY`, SMTP vars, etc.).
+
+### 6. Email alerts
+
+Alerts are **email only** (free/cheap via Gmail or SendGrid):
+
+| Provider | Free tier |
+|----------|-----------|
+| **Gmail** | Free (~500/day); use an [App Password](https://support.google.com/accounts/answer/185833) |
+| **SendGrid** | 100 emails/day free |
+| **Resend** | 3,000/month free |
+| **Amazon SES** | ~$0.10 per 1,000 emails |
+
+Example Gmail `.env`:
+
+```env
+ALERT_EMAIL=you@gmail.com
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=you@gmail.com
+SMTP_PASSWORD=your-16-char-app-password
+SMTP_FROM=Elentrx Alerts <you@gmail.com>
+```
+
+Set your alert address in the **Account** tab after login.
+
+### 7. Daily watchlist (shared cache)
+
+The **Watchlist** tab shows a shared daily digest for all users — fast load, no per-user LLM calls.
+
+```bash
+# Build or refresh manually
+python -m src.research.refresh_watchlist
+
+# Force rebuild even if cache is fresh
+python -m src.research.refresh_watchlist --force
+```
+
+- Refreshes automatically when stale (~24h) during the hourly pipeline
+- Caches headlines (RSS) + one batched LLM brief (`gpt-4o-mini` by default)
+- Stored in SQLite + `data/watchlist_digest.json`
 
 ## GitHub Actions
 

@@ -11,7 +11,7 @@ on:
         required: false
         type: string
       dry_run:
-        description: "Skip SMS alerts"
+        description: "Skip email alerts"
         required: false
         type: boolean
         default: true
@@ -41,12 +41,15 @@ jobs:
       - name: Run hourly pipeline
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          WATCHLIST_LLM_MODEL: ${{ vars.WATCHLIST_LLM_MODEL }}
           TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
           SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
-          TWILIO_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
-          TWILIO_AUTH_TOKEN: ${{ secrets.TWILIO_AUTH_TOKEN }}
-          TWILIO_FROM_NUMBER: ${{ secrets.TWILIO_FROM_NUMBER }}
-          ALERT_PHONE: ${{ secrets.ALERT_PHONE }}
+          ALERT_EMAIL: ${{ secrets.ALERT_EMAIL }}
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          SMTP_FROM: ${{ secrets.SMTP_FROM }}
           FAVORABILITY_THRESHOLD: ${{ vars.FAVORABILITY_THRESHOLD }}
         run: |
           ARGS=""
@@ -64,7 +67,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/snapshots.db models/favorability.pkl || true
+          git add data/snapshots.db data/watchlist_digest.json models/favorability.pkl || true
           if git diff --staged --quiet; then
             echo "No data changes to commit"
           else

@@ -92,6 +92,14 @@ CREATE INDEX IF NOT EXISTS idx_trials_sector ON trials(sector_id);
 CREATE INDEX IF NOT EXISTS idx_trials_ticker ON trials(ticker);
 CREATE INDEX IF NOT EXISTS idx_phase_changes_detected ON phase_changes(detected_at);
 CREATE INDEX IF NOT EXISTS idx_alerts_sent ON alerts(sent_at);
+
+CREATE TABLE IF NOT EXISTS watchlist_cache (
+    cache_key TEXT PRIMARY KEY,
+    sector_id TEXT NOT NULL,
+    sector_name TEXT NOT NULL,
+    payload_json TEXT NOT NULL,
+    generated_at TEXT NOT NULL
+);
 """
 
 

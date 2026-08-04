@@ -7,7 +7,7 @@ import sys
 import traceback
 from datetime import datetime, timezone
 
-from src.alert.sms import alert_if_new
+from src.alert.notify import alert_if_new
 from src.config import get_sector_for_hour, load_sectors
 from src.db.schema import get_connection, init_db
 from src.ml.infer import save_score, score_change
@@ -111,13 +111,23 @@ def run_hourly(hour_utc: int | None = None, dry_run: bool = False) -> dict:
                 ),
             )
 
+    _maybe_refresh_watchlist()
     return stats
+
+
+def _maybe_refresh_watchlist() -> None:
+    try:
+        from src.research.watchlist import get_watchlist_digest
+
+        get_watchlist_digest(force_refresh=False)
+    except Exception:
+        pass
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Run hourly clinical trial scraper")
     parser.add_argument("--hour-utc", type=int, default=None, help="Override UTC hour for sector rotation")
-    parser.add_argument("--dry-run", action="store_true", help="Skip SMS alerts")
+    parser.add_argument("--dry-run", action="store_true", help="Skip email alerts")
     parser.add_argument("--list-sectors", action="store_true", help="Print sector rotation schedule")
     args = parser.parse_args()
 

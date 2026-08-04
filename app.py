@@ -9,14 +9,54 @@ from datetime import datetime, timezone
 import pandas as pd
 import streamlit as st
 
+from src.alert.email import email_configured
+from src.auth.users import (
+    authenticate,
+    create_user,
+    ensure_bootstrap_admin,
+    get_user,
+    update_alert_email,
+    update_password,
+    user_count,
+)
 from src.config import DATA_DIR, FAVORABILITY_THRESHOLD, get_sector_for_hour, load_sectors
-from src.db.schema import get_connection, init_db
+from src.db.schema import init_db
+from src.db.seed import seed_if_empty
 from src.ml.historical import HISTORICAL_DATASET_PATH, load_dataset
+from src.research.watchlist import (
+    build_daily_digest,
+    cache_is_fresh,
+    load_digest_for_display,
+)
+from src.ui.trial_data import (
+    fetch_alerts,
+    fetch_phase_changes,
+    fetch_runs,
+    fetch_trials_enriched,
+    merge_digest_with_preview,
+)
+from src.ui.styles import (
+    inject_styles,
+    render_alert_timeline,
+    render_change_cards,
+    render_empty_watchlist,
+    render_metric_grid,
+    render_pulse_banner,
+    render_rotation_schedule,
+    render_run_cards,
+    render_settings_rows,
+    render_sidebar_brand,
+    render_trial_cards_grid,
+    render_trial_list_cards,
+    render_demo_gallery,
+)
+from src.ui.demo import get_demo_scenarios, preview_alerts
 
 st.set_page_config(
     page_title="Elentrx™ — Clinical Trial Alerter",
     page_icon="🧬",
     layout="wide",
+    initial_sidebar_state="expanded",
 )
 
 LEGAL_FILES = {
@@ -27,11 +67,161 @@ LEGAL_FILES = {
 }
 
 init_db()
+ensure_bootstrap_admin()
+seed_if_empty()
 
 
-def _load_df(query: str, params: tuple = ()) -> pd.DataFrame:
-    with get_connection() as conn:
-        return pd.read_sql_query(query, conn, params=params)
+def _auth_disabled() -> bool:
+    return os.getenv("AUTH_DISABLED", "").lower() in ("1", "true", "yes")
+
+
+def _require_login() -> None:
+    if _auth_disabled():
+        if "user" not in st.session_state:
+            st.session_state.user = {"username": "dev", "id": 0, "is_admin": True}
+        return
+
+    if st.session_state.get("authenticated") and st.session_state.get("user_id"):
+        return
+
+    inject_styles()
+    st.markdown(
+        """
+<div style="text-align:center;padding:3rem 1rem 1.5rem;">
+  <div style="font-size:2rem;font-weight:700;letter-spacing:-0.04em;color:#0b0f19;">Elentrx</div>
+  <div style="color:#64748b;font-size:0.9rem;margin-top:0.35rem;">Clinical trial intelligence</div>
+</div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    col1, col2, col3 = st.columns([1, 1.2, 1])
+    with col2:
+        if user_count() == 0:
+            st.markdown("##### Create account")
+            with st.form("setup_form"):
+                username = st.text_input("Username")
+                email = st.text_input("Email")
+                password = st.text_input("Password", type="password")
+                confirm = st.text_input("Confirm password", type="password")
+                submitted = st.form_submit_button("Get started", type="primary", use_container_width=True)
+                if submitted:
+                    if len(password) < 8:
+                        st.error("Password must be at least 8 characters.")
+                    elif password != confirm:
+                        st.error("Passwords do not match.")
+                    elif not username.strip():
+                        st.error("Username is required.")
+                    else:
+                        user = create_user(
+                            username=username,
+                            password=password,
+                            email=email or None,
+                            alert_email=email or None,
+                            is_admin=True,
+                        )
+                        st.session_state.authenticated = True
+                        st.session_state.user_id = user.id
+                        st.session_state.username = user.username
+                        st.rerun()
+        else:
+            st.markdown("##### Sign in")
+            with st.form("login_form"):
+                username = st.text_input("Username")
+                password = st.text_input("Password", type="password")
+                submitted = st.form_submit_button("Sign in", type="primary", use_container_width=True)
+                if submitted:
+                    user = authenticate(username, password)
+                    if user:
+                        st.session_state.authenticated = True
+                        st.session_state.user_id = user.id
+                        st.session_state.username = user.username
+                        st.rerun()
+                    st.error("Invalid username or password.")
+    st.stop()
+
+
+def account_panel() -> None:
+    user = get_user(st.session_state.user_id)
+    if not user:
+        st.error("Session expired. Please sign in again.")
+        return
+
+    render_settings_rows([
+        ("Username", user.username),
+        ("Role", "Administrator" if user.is_admin else "User"),
+        ("Alert email", user.alert_email or "Not set"),
+    ])
+
+    with st.form("alert_email_form"):
+        alert_email = st.text_input("Alert email", value=user.alert_email or "")
+        if st.form_submit_button("Save alert email"):
+            update_alert_email(user.id, alert_email)
+            st.success("Alert email updated.")
+
+    with st.form("password_form"):
+        st.markdown("**Change password**")
+        current = st.text_input("Current password", type="password")
+        new_pw = st.text_input("New password", type="password")
+        confirm = st.text_input("Confirm new password", type="password")
+        if st.form_submit_button("Update password"):
+            if not authenticate(user.username, current):
+                st.error("Current password is incorrect.")
+            elif len(new_pw) < 8:
+                st.error("New password must be at least 8 characters.")
+            elif new_pw != confirm:
+                st.error("New passwords do not match.")
+            else:
+                update_password(user.id, new_pw)
+                st.success("Password updated.")
+
+    if st.button("Sign out"):
+        _cached_digest.clear()
+        for key in ("authenticated", "user_id", "username"):
+            st.session_state.pop(key, None)
+        st.rerun()
+
+
+@st.cache_data(show_spinner=False, ttl=300)
+def _cached_digest() -> tuple[dict | None, bool]:
+    digest = load_digest_for_display()
+    stale = bool(digest and not cache_is_fresh(digest))
+    return digest, stale
+
+
+@st.cache_data(show_spinner=False, ttl=300)
+def _cached_trials() -> list[dict]:
+    return fetch_trials_enriched(limit=24)
+
+
+def watchlist_panel() -> None:
+    """Instant read — full digest or DB preview fallback."""
+    raw_digest, stale = _cached_digest()
+    digest, is_preview = merge_digest_with_preview(raw_digest)
+    user = get_user(st.session_state.get("user_id", 0))
+
+    if user and user.is_admin:
+        if st.button("Rebuild full digest", type="secondary"):
+            build_daily_digest(force=True)
+            _cached_digest.clear()
+            st.rerun()
+
+    if not digest.get("trials"):
+        render_empty_watchlist(
+            "Trial data will show here once the scraper runs. "
+            "Sample trials load automatically on first deploy."
+        )
+        return
+
+    render_pulse_banner(
+        market_pulse=digest.get("market_pulse", ""),
+        sector_name=digest.get("sector_name", "—"),
+        generated_at=digest.get("generated_at", ""),
+        trial_count=digest.get("trial_count", len(digest.get("trials", []))),
+        stale=stale and not is_preview,
+        preview=is_preview,
+    )
+    render_trial_cards_grid(digest.get("trials", []))
 
 
 def rotation_panel() -> None:
@@ -39,202 +229,132 @@ def rotation_panel() -> None:
     now = datetime.now(timezone.utc)
     current, index = get_sector_for_hour(now.hour)
 
-    st.subheader("Sector rotation")
-    col1, col2, col3 = st.columns(3)
-    col1.metric("Current sector", current["name"])
-    col2.metric("Sector index", f"{index + 1} / {len(sectors)}")
-    col3.metric("Full cycle", f"{len(sectors)} hours")
-
-    schedule_rows = []
-    for offset in range(len(sectors)):
-        hour = (now.hour + offset) % 24
-        sector = sectors[hour % len(sectors)]
-        schedule_rows.append(
-            {
-                "offset_hours": offset,
-                "utc_hour": hour,
-                "sector": sector["name"],
-                "active": offset == 0,
-            }
-        )
-    st.dataframe(pd.DataFrame(schedule_rows), width="stretch", hide_index=True)
+    render_metric_grid([
+        ("Focus now", current["name"]),
+        ("Rotation slot", f"{index + 1} of {len(sectors)}"),
+        ("Full cycle", f"Every {len(sectors)} hours"),
+    ])
+    st.markdown("**Upcoming schedule**")
+    render_rotation_schedule(sectors, index, now.hour)
 
 
 def trials_panel() -> None:
-    st.subheader("Public-company trials (latest snapshot)")
-    df = _load_df(
-        """
-        SELECT nct_id, ticker, sponsor, drug, sector_id, phase, overall_status,
-               title, last_seen_at
-        FROM trials
-        ORDER BY last_seen_at DESC
-        LIMIT 500
-        """
-    )
-    if df.empty:
-        st.info("No trials in snapshot yet. The hourly job will populate this table.")
-    else:
-        st.dataframe(df, width="stretch", hide_index=True)
+    trials = _cached_trials()
+    if not trials:
+        st.info("No trials yet — the hourly scraper will populate this list.")
+        return
+
+    st.markdown(f"**{len(trials)} trials** from publicly traded sponsors")
+    ticker_filter = st.text_input("Filter by ticker or company", placeholder="e.g. LLY or Lilly")
+    if ticker_filter.strip():
+        q = ticker_filter.strip().lower()
+        trials = [
+            t for t in trials
+            if q in t["ticker"].lower() or q in t["sponsor"].lower() or q in (t.get("drug") or "").lower()
+        ]
+
+    render_trial_list_cards(trials)
 
 
 def changes_panel() -> None:
-    st.subheader("Phase changes & research briefs")
-    df = _load_df(
-        """
-        SELECT
-            pc.id,
-            pc.detected_at,
-            pc.ticker,
-            pc.nct_id,
-            pc.change_type,
-            pc.old_phase,
-            pc.new_phase,
-            pc.old_status,
-            pc.new_status,
-            rb.summary,
-            rb.analyst_tone,
-            cs.probability,
-            cs.favorable
-        FROM phase_changes pc
-        LEFT JOIN research_briefs rb ON rb.phase_change_id = pc.id
-        LEFT JOIN classifier_scores cs ON cs.phase_change_id = pc.id
-        ORDER BY pc.detected_at DESC
-        LIMIT 100
-        """
-    )
-    if df.empty:
-        st.info("No phase changes detected yet.")
+    changes = fetch_phase_changes(limit=20)
+    if not changes:
+        st.info("No phase changes detected yet — these appear when trials advance or halt.")
         return
-
-    st.dataframe(df, width="stretch", hide_index=True)
-
-    for _, row in df.head(10).iterrows():
-        with st.expander(f"{row['ticker']} {row['nct_id']} — {row['change_type']}"):
-            st.write(row.get("summary") or "No brief yet.")
-            st.caption(
-                f"Score: {row.get('probability', 'n/a')} | "
-                f"Tone: {row.get('analyst_tone', 'n/a')} | "
-                f"Favorable: {row.get('favorable', 'n/a')}"
-            )
+    st.markdown(f"**{len(changes)} recent updates**")
+    render_change_cards(changes)
 
 
 def alerts_panel() -> None:
-    st.subheader("Alert history")
-    df = _load_df(
-        """
-        SELECT sent_at, ticker, nct_id, message
-        FROM alerts
-        ORDER BY sent_at DESC
-        LIMIT 100
-        """
-    )
-    if df.empty:
-        st.info("No alerts sent yet.")
-    else:
-        st.dataframe(df, width="stretch", hide_index=True)
+    alerts = fetch_alerts(limit=30)
+    if not alerts:
+        st.info("No emails sent yet — favorable trial changes above your threshold will appear here.")
+        return
+        st.markdown(f"**{len(alerts)} emails sent**")
+    render_alert_timeline(alerts)
 
 
 def runs_panel() -> None:
-    st.subheader("Hourly run log")
-    df = _load_df(
-        """
-        SELECT started_at, finished_at, sector_name, trials_fetched, trials_matched,
-               changes_detected, alerts_sent, status, error
-        FROM run_log
-        ORDER BY started_at DESC
-        LIMIT 50
-        """
-    )
-    if df.empty:
-        st.info("No runs logged yet.")
-    else:
-        st.dataframe(df, width="stretch", hide_index=True)
+    runs = fetch_runs(limit=15)
+    if not runs:
+        st.info("No pipeline runs logged yet.")
+        return
+    st.markdown("**Recent scraper runs**")
+    render_run_cards(runs)
 
 
 def evaluation_panel() -> None:
-    st.subheader("Historical classifier evaluation")
     report_path = DATA_DIR / "evaluation_report.json"
-
     from src.ml.progress import load_progress
 
     live = load_progress()
     if live and live.get("status") == "running":
-        st.info("Training in progress…")
-        c1, c2, c3, c4 = st.columns(4)
-        processed = live.get("processed", 0)
-        total = live.get("total_events_fetched", 0)
-        c1.metric("Events", f"{processed}/{total}")
-        c2.metric("Samples", live.get("samples_built", 0))
-        c3.metric("OpenAI searches", live.get("openai_searches", live.get("serper_calls", 0)))
-        eta = live.get("eta_seconds")
-        c4.metric("ETA", f"{int(eta // 60)}m" if eta else "—")
-        if live.get("recent_events"):
-            st.dataframe(
-                pd.DataFrame(live["recent_events"])[
-                    ["at", "ticker", "nct_id", "event_date", "news_count", "label"]
-                ],
-                width="stretch",
-                hide_index=True,
-            )
-        st.code("python -m src.ml.watch_progress", language="bash")
+        st.info("Model training in progress…")
+        render_metric_grid([
+            ("Events processed", f"{live.get('processed', 0)}/{live.get('total_events_fetched', 0)}"),
+            ("Samples built", str(live.get("samples_built", 0))),
+            ("Searches", str(live.get("openai_searches", live.get("serper_calls", 0)))),
+            ("Time left", f"{int(live.get('eta_seconds', 0) // 60)} min" if live.get("eta_seconds") else "—"),
+        ])
 
-    st.markdown(
-        "Point-in-time backtest: news is cut off at each trial **event date**, "
-        "labels use **5-day forward returns** after the event (no lookahead in features)."
+    st.caption(
+        "How we score the model: news is cut off at each event date; "
+        "labels use 5-day stock returns after the event."
     )
 
     if report_path.exists():
         report = json.loads(report_path.read_text(encoding="utf-8"))
         metrics = report.get("metrics", {})
-        m1, m2, m3, m4 = st.columns(4)
-        m1.metric("Accuracy", f"{metrics.get('accuracy', 0):.1%}" if metrics.get("accuracy") is not None else "n/a")
-        m2.metric("F1", f"{metrics.get('f1', 0):.2f}" if metrics.get("f1") is not None else "n/a")
-        m3.metric("ROC-AUC", f"{metrics.get('roc_auc', 0):.2f}" if metrics.get("roc_auc") is not None else "n/a")
-        m4.metric("Baseline", f"{metrics.get('baseline_accuracy', 0):.1%}" if metrics.get("baseline_accuracy") is not None else "n/a")
-
-        st.json(report.get("methodology", {}))
+        render_metric_grid([
+            ("Test accuracy", f"{metrics.get('accuracy', 0):.1%}" if metrics.get("accuracy") is not None else "—"),
+            ("F1 score", f"{metrics.get('f1', 0):.2f}" if metrics.get("f1") is not None else "—"),
+            ("ROC-AUC", f"{metrics.get('roc_auc', 0):.2f}" if metrics.get("roc_auc") is not None else "—"),
+            ("Baseline", f"{metrics.get('baseline_accuracy', 0):.1%}" if metrics.get("baseline_accuracy") is not None else "—"),
+        ])
         ds = report.get("dataset", {})
-        st.write(
-            f"Train: {ds.get('train_date_range', [])} | "
-            f"Test: {ds.get('test_date_range', [])} | "
-            f"Samples: {ds.get('total_samples', 0)}"
+        st.markdown(
+            f"**Dataset:** {ds.get('total_samples', 0)} samples · "
+            f"train {ds.get('train_date_range', ['',''])[0]} → "
+            f"test {ds.get('test_date_range', ['',''])[-1]}"
         )
-        if report.get("classification_report"):
-            st.write("Classification report (test set)")
-            st.json(report["classification_report"])
     else:
-        st.info("No evaluation report yet. Run the historical batch below.")
+        st.info("No evaluation report yet. Run `python -m src.ml.evaluate --rebuild` locally.")
 
     samples = load_dataset()
     if samples:
-        st.write(f"Cached historical dataset: {len(samples)} samples")
-        df = pd.DataFrame([s.to_dict() for s in samples])
-        st.dataframe(
-            df[["event_date", "ticker", "nct_id", "label", "forward_return_5d", "news_count", "analyst_tone"]],
-            width="stretch",
-            hide_index=True,
-        )
-    elif HISTORICAL_DATASET_PATH.exists():
-        st.warning("Dataset file exists but could not be loaded.")
-
-    st.code(
-        "python -m src.ml.watch_progress          # live timeline in terminal\n"
-        "python -m src.ml.evaluate --rebuild --max-events 200\n"
-        "python -m src.ml.evaluate --rebuild --max-events 100 --use-llm",
-        language="bash",
-    )
+        st.markdown(f"**Historical samples cached:** {len(samples)}")
+        preview = pd.DataFrame([s.to_dict() for s in samples[:12]])[
+            ["event_date", "ticker", "nct_id", "label", "analyst_tone"]
+        ].rename(columns={
+            "event_date": "Date",
+            "ticker": "Ticker",
+            "nct_id": "Trial ID",
+            "label": "Favorable",
+            "analyst_tone": "Tone",
+        })
+        st.dataframe(preview, hide_index=True, use_container_width=True)
 
 
 def config_panel() -> None:
-    st.subheader("Configuration")
-    st.write(f"Favorability threshold: `{FAVORABILITY_THRESHOLD}`")
-    st.write(f"Alert phone configured: `{bool(os.getenv('ALERT_PHONE'))}`")
-    st.write(f"Twilio configured: `{bool(os.getenv('TWILIO_ACCOUNT_SID'))}`")
-    st.write(f"OpenAI configured: `{bool(os.getenv('OPENAI_API_KEY'))}`")
-    st.caption("News + research via **OpenAI Responses API web_search** (no Serper/RSS needed).")
+    render_settings_rows([
+        ("Notifications", "Email only"),
+        ("Alert email", os.getenv("ALERT_EMAIL", "") or "Not set"),
+        ("Email configured", "Yes" if email_configured() else "No — add SMTP in secrets"),
+        ("OpenAI configured", "Yes" if os.getenv("OPENAI_API_KEY") else "No"),
+        ("Score threshold", f"{FAVORABILITY_THRESHOLD:.0%}"),
+    ])
+    st.caption("When a trial change scores above the threshold, Elentrx sends one email alert.")
 
-    sectors = load_sectors()
-    st.json({"sectors": [s["name"] for s in sectors]})
+
+def demo_panel() -> None:
+    scenarios = get_demo_scenarios()
+    previews = {s.id: preview_alerts(s) for s in scenarios}
+    st.markdown(
+        f'<p class="page-sub">Examples only — not real alerts. '
+        f"Your threshold is <b>{FAVORABILITY_THRESHOLD:.0%}</b>.</p>",
+        unsafe_allow_html=True,
+    )
+    render_demo_gallery(scenarios, previews)
 
 
 def legal_panel() -> None:
@@ -254,35 +374,63 @@ def legal_panel() -> None:
 
 
 def main() -> None:
-    st.title("Elentrx™")
-    st.caption("Healthcare clinical trial phase tracker — public sponsors only, sector rotation at :58 UTC")
+    _require_login()
+    inject_styles()
 
-    tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8 = st.tabs(
-        ["Rotation", "Trials", "Changes", "Alerts", "Runs", "Evaluation", "Config", "Legal"]
-    )
+    username = st.session_state.get("username", "user")
 
-    with tab1:
-        rotation_panel()
-    with tab2:
+    with st.sidebar:
+        render_sidebar_brand()
+        page = st.radio(
+            "Navigation",
+            ["Watchlist", "Trials", "Updates", "Alerts", "Alert demo", "Activity", "Settings"],
+            label_visibility="collapsed",
+        )
+        st.markdown("---")
+        st.caption(f"Signed in · {username}")
+        st.caption("Tip: use the **›** button top-left to reopen this menu.")
+        if st.button("Sign out", use_container_width=True):
+            _cached_digest.clear()
+            for key in ("authenticated", "user_id", "username"):
+                st.session_state.pop(key, None)
+            st.rerun()
+
+    if page == "Watchlist":
+        watchlist_panel()
+    elif page == "Trials":
+        st.markdown('<p class="page-title">Trials</p><p class="page-sub">Public biotech studies we\'re tracking</p>', unsafe_allow_html=True)
         trials_panel()
-    with tab3:
+    elif page == "Updates":
+        st.markdown('<p class="page-title">Updates</p><p class="page-sub">Phase advances, completions, and halts</p>', unsafe_allow_html=True)
         changes_panel()
-    with tab4:
+    elif page == "Alerts":
+        st.markdown('<p class="page-title">Alerts</p><p class="page-sub">Email notifications we\'ve sent you</p>', unsafe_allow_html=True)
         alerts_panel()
-    with tab5:
-        runs_panel()
-    with tab6:
-        evaluation_panel()
-    with tab7:
-        config_panel()
-    with tab8:
-        legal_panel()
-
-    st.divider()
-    st.caption(
-        "Elentrx™ © Brendan Fox. Not financial advice. "
-        "See Legal tab for Terms, Privacy, and Disclaimer."
-    )
+    elif page == "Alert demo":
+        st.markdown(
+            '<p class="page-title">Alert demo</p><p class="page-sub">'
+            "See what favorable, neutral, and negative changes look like</p>",
+            unsafe_allow_html=True,
+        )
+        demo_panel()
+    elif page == "Activity":
+        st.markdown('<p class="page-title">Activity</p><p class="page-sub">Rotation, runs & model eval</p>', unsafe_allow_html=True)
+        t1, t2, t3 = st.tabs(["Rotation", "Runs", "Evaluation"])
+        with t1:
+            rotation_panel()
+        with t2:
+            runs_panel()
+        with t3:
+            evaluation_panel()
+    elif page == "Settings":
+        st.markdown('<p class="page-title">Settings</p><p class="page-sub">Account, config & legal</p>', unsafe_allow_html=True)
+        t1, t2, t3 = st.tabs(["Account", "Config", "Legal"])
+        with t1:
+            account_panel()
+        with t2:
+            config_panel()
+        with t3:
+            legal_panel()
 
 
 if __name__ == "__main__":
