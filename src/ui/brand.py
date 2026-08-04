@@ -42,8 +42,7 @@ def render_sidebar_logo() -> None:
 def render_auth_logo() -> None:
     _, col, _ = st.columns([1, 1.4, 1])
     with col:
-        # Full-res source downscales crisply on retina displays.
-        st.image(str(LOGO_PATH), width=AUTH_LOGO_WIDTH)
+        st.image(str(LOGO_UI_PATH), width=AUTH_LOGO_WIDTH)
         st.markdown(
             f'<p class="auth-tagline">{TAGLINE}</p>',
             unsafe_allow_html=True,

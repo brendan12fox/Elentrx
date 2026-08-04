@@ -55,7 +55,7 @@ from src.market.quotes import fetch_quotes
 
 st.set_page_config(
     page_title="Elentrx™ — Clinical Trial Alerter",
-    page_icon="assets/elentrx.png",
+    page_icon="assets/elentrx-ui.png",
     layout="wide",
     initial_sidebar_state="expanded",
 )

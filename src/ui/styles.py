@@ -116,11 +116,11 @@ def inject_styles() -> None:
     }
 
     [data-testid="stSidebar"] [data-testid="stImage"] {
-        background: #ffffff;
-        border-radius: 14px;
-        padding: 0.45rem 0.55rem;
+        background: transparent;
+        border-radius: 0;
+        padding: 0;
         margin-bottom: 0.35rem;
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+        box-shadow: none;
         width: fit-content;
         max-width: 100%;
     }
