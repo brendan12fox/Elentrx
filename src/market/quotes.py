@@ -155,7 +155,15 @@ def format_quote_chip(quote: StockQuote | None) -> str:
         return ""
     direction = "up" if (quote.change_pct or 0) >= 0 else "down"
     change = _fmt_change(quote.change_pct, quote.change_abs, quote.currency)
+    if direction == "up":
+        style = "border-color:#a7f3d0;background:#ecfdf5;color:#047857;"
+    else:
+        style = "border-color:#fecaca;background:#fef2f2;color:#b91c1c;"
+    base_style = (
+        "display:inline-block;margin-top:0.35rem;border-radius:8px;"
+        "padding:0.2rem 0.55rem;font-size:0.78rem;font-weight:600;border:1px solid;"
+    )
     return (
-        f'<span class="quote-chip quote-{direction}">'
+        f'<span class="quote-chip quote-{direction}" style="{base_style}{style}">'
         f'{_fmt_price(quote.price, quote.currency)} {change}</span>'
     )

@@ -44,6 +44,7 @@ from src.ui.styles import (
     render_pulse_banner,
     render_rotation_schedule,
     render_run_cards,
+    render_section_label,
     render_settings_rows,
     render_sidebar_brand,
     render_trial_cards_grid,
@@ -247,7 +248,7 @@ def trials_panel() -> None:
         st.info("No trials yet — the hourly scraper will populate this list.")
         return
 
-    st.markdown(f"**{len(trials)} trials** from publicly traded sponsors")
+    render_section_label(f"{len(trials)} trials from publicly traded sponsors")
     ticker_filter = st.text_input("Filter by ticker or company", placeholder="e.g. LLY or Lilly")
     if ticker_filter.strip():
         q = ticker_filter.strip().lower()
@@ -283,15 +284,25 @@ def render_send_test_alert() -> None:
     status_label = "Ready to send" if ready else "Not configured"
     provider = "Resend" if using_resend else "SMTP"
 
+    status_pill_style = (
+        "display:inline-block;padding:0.3rem 0.7rem;border-radius:999px;font-size:0.72rem;"
+        "font-weight:700;letter-spacing:0.02em;border:1px solid;"
+    )
+    status_pill_style += (
+        "background:#ecfdf5;color:#047857;border-color:#6ee7b7;"
+        if ready
+        else "background:#fef2f2;color:#b91c1c;border-color:#fecaca;"
+    )
+
     st.markdown(
         f"""
-<div class="alert-send-card">
+<div class="alert-send-card" style="background:linear-gradient(135deg,#ffffff 0%,#f0fdfb 100%);border:1px solid #b8ebe3;border-radius:16px;padding:1.25rem 1.5rem;margin-bottom:1.25rem;">
   <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;">
     <div>
-      <h4>Send a test alert</h4>
+      <h4 style="margin:0 0 0.25rem 0;font-size:1.05rem;font-weight:700;color:#001d3d;">Send a test alert</h4>
       <p style="margin:0;color:#64748b;font-size:0.85rem;">Deliver via {provider} · threshold {FAVORABILITY_THRESHOLD:.0%}</p>
     </div>
-    <span class="status-pill {status_class}">{status_label}</span>
+    <span class="status-pill {status_class}" style="{status_pill_style}">{status_label}</span>
   </div>
 </div>
         """,
