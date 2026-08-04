@@ -16,9 +16,24 @@ from src.scrape.ctgov import ClinicalTrialsClient
 from src.scrape.diff import upsert_trials
 
 
-def run_hourly(hour_utc: int | None = None, dry_run: bool = False) -> dict:
+def run_hourly(
+    hour_utc: int | None = None,
+    dry_run: bool = False,
+    sector_id: str | None = None,
+) -> dict:
+    """Run the scrape/diff/research pipeline for one sector.
+
+    Prefer ``sector_id`` for manual refreshes; otherwise rotate by UTC hour.
+    """
     init_db()
-    sector, sector_index = get_sector_for_hour(hour_utc)
+    sectors = load_sectors()
+    if sector_id:
+        matches = [(i, s) for i, s in enumerate(sectors) if s["id"] == sector_id]
+        if not matches:
+            raise ValueError(f"Unknown sector_id: {sector_id}")
+        sector_index, sector = matches[0]
+    else:
+        sector, sector_index = get_sector_for_hour(hour_utc)
     started_at = datetime.now(timezone.utc).isoformat()
 
     stats = {
@@ -127,6 +142,7 @@ def _maybe_refresh_watchlist() -> None:
 def main() -> None:
     parser = argparse.ArgumentParser(description="Run hourly clinical trial scraper")
     parser.add_argument("--hour-utc", type=int, default=None, help="Override UTC hour for sector rotation")
+    parser.add_argument("--sector", type=str, default=None, help="Run a specific sector id (e.g. oncology)")
     parser.add_argument("--dry-run", action="store_true", help="Skip email alerts")
     parser.add_argument("--list-sectors", action="store_true", help="Print sector rotation schedule")
     args = parser.parse_args()
@@ -137,7 +153,7 @@ def main() -> None:
             print(f"{idx}: {sector['name']} ({sector['id']})")
         return
 
-    stats = run_hourly(hour_utc=args.hour_utc, dry_run=args.dry_run)
+    stats = run_hourly(hour_utc=args.hour_utc, dry_run=args.dry_run, sector_id=args.sector)
     print(stats)
     if stats["status"] == "error":
         sys.exit(1)

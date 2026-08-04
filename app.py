@@ -22,6 +22,7 @@ from src.config import DATA_DIR, FAVORABILITY_THRESHOLD, get_sector_for_hour, hy
 from src.db.schema import init_db
 from src.db.seed import seed_if_empty
 from src.ml.historical import HISTORICAL_DATASET_PATH, load_dataset
+from src.pipeline.run_hourly import run_hourly
 from src.research.watchlist import (
     build_daily_digest,
     cache_is_fresh,
@@ -195,6 +196,115 @@ def _cached_eval_samples() -> list[dict]:
     return [s.to_dict() for s in samples[:12]] if samples else []
 
 
+def _clear_data_caches() -> None:
+    """Force Streamlit panels to re-read DB / digest after a manual scan."""
+    for fn in (
+        _cached_digest,
+        _cached_trials,
+        _cached_alerts,
+        _cached_changes,
+        _cached_runs,
+        _cached_quotes,
+    ):
+        try:
+            fn.clear()
+        except Exception:
+            pass
+
+
+def render_manual_refresh(*, key_prefix: str = "manual") -> None:
+    """Manual sector scan + view reload controls."""
+    sectors = load_sectors()
+    focus, _ = get_sector_for_hour()
+    names = [s["name"] for s in sectors]
+    try:
+        default_idx = names.index(focus["name"])
+    except ValueError:
+        default_idx = 0
+
+    result_key = f"{key_prefix}_last_result"
+    if result_key in st.session_state:
+        result = st.session_state.pop(result_key)
+        if result.get("ok"):
+            st.success(result["message"])
+        else:
+            st.error(result["message"])
+
+    st.markdown(
+        '<div style="background:#f5f8fa;border:1px solid #dce4ec;border-radius:14px;'
+        'padding:1rem 1.15rem;margin-bottom:1rem;">'
+        '<div style="font-weight:700;color:#001d3d;margin-bottom:0.25rem;">Manual sector refresh</div>'
+        '<div style="font-size:0.82rem;color:#4a6278;">Scan ClinicalTrials.gov for a sector now, '
+        "or reload the page data without scraping.</div></div>",
+        unsafe_allow_html=True,
+    )
+
+    c1, c2 = st.columns([2.2, 1.2])
+    with c1:
+        selected_name = st.selectbox(
+            "Sector to scan",
+            names,
+            index=default_idx,
+            key=f"{key_prefix}_sector",
+            help=f"Current hourly rotation focus: {focus['name']}",
+        )
+    with c2:
+        send_alerts = st.checkbox(
+            "Send alerts",
+            value=False,
+            key=f"{key_prefix}_alerts",
+            help="If checked, favorable hits can email. Off by default for manual scans.",
+        )
+
+    b1, b2 = st.columns(2)
+    with b1:
+        scan = st.button(
+            "Scan sector now",
+            type="primary",
+            use_container_width=True,
+            key=f"{key_prefix}_scan",
+        )
+    with b2:
+        reload_view = st.button(
+            "Reload view",
+            use_container_width=True,
+            key=f"{key_prefix}_reload",
+        )
+
+    if reload_view:
+        _clear_data_caches()
+        st.session_state[result_key] = {
+            "ok": True,
+            "message": "View reloaded from the latest saved data.",
+        }
+        st.rerun()
+
+    if scan:
+        sector = next(s for s in sectors if s["name"] == selected_name)
+        with st.spinner(f"Scanning {sector['name']} on ClinicalTrials.gov… this can take a minute"):
+            try:
+                stats = run_hourly(sector_id=sector["id"], dry_run=not send_alerts)
+            except Exception as exc:
+                st.session_state[result_key] = {"ok": False, "message": f"Scan failed: {exc}"}
+                st.rerun()
+                return
+        _clear_data_caches()
+        if stats.get("status") == "error":
+            st.session_state[result_key] = {
+                "ok": False,
+                "message": f"Scan error: {stats.get('error') or 'unknown error'}",
+            }
+        else:
+            st.session_state[result_key] = {
+                "ok": True,
+                "message": (
+                    f"{stats['sector_name']}: {stats['trials_fetched']} trials fetched · "
+                    f"{stats['changes_detected']} changes · {stats['alerts_sent']} alerts"
+                ),
+            }
+        st.rerun()
+
+
 def watchlist_panel() -> None:
     """Instant read — full cross-sector catalogue, with AI digest enrichment when available."""
     raw_digest, stale = _cached_digest()
@@ -205,8 +315,11 @@ def watchlist_panel() -> None:
     if user and user.is_admin:
         if st.button("Rebuild full digest", type="secondary"):
             build_daily_digest(force=True)
-            _cached_digest.clear()
+            _clear_data_caches()
             st.rerun()
+
+    with st.expander("Manual sector refresh", expanded=False):
+        render_manual_refresh(key_prefix="watchlist")
 
     trials = digest.get("trials") or []
     if not trials:
@@ -252,6 +365,7 @@ def rotation_panel() -> None:
         ("Rotation slot", f"{index + 1} of {len(sectors)}"),
         ("Full cycle", f"Every {len(sectors)} hours"),
     ])
+    render_manual_refresh(key_prefix="rotation")
     st.markdown("**Upcoming schedule**")
     render_rotation_schedule(sectors, index, now.hour)
 
