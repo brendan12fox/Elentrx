@@ -86,21 +86,7 @@ def inject_styles() -> None:
     }
     .stAppDeployButton, [data-testid="stMainMenu"] { display: none !important; }
 
-    .top-nav-wrap {
-        background: #ffffff;
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        padding: 0.35rem 0.5rem;
-        margin-bottom: 1rem;
-        box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
-    }
-    .top-nav-wrap [data-testid="stPills"] button,
-    .top-nav-wrap [data-testid="stSegmentedControl"] button {
-        font-size: 0.82rem !important;
-        font-weight: 600 !important;
-    }
-
-    .stApp {
+    .nav-bar {
         background: linear-gradient(160deg, #f0fdfa 0%, #f4f5f7 35%, #eef2ff 100%) !important;
     }
 
@@ -446,10 +432,55 @@ def inject_styles() -> None:
     .email-mock-inner { padding: 1rem; font-size: 0.82rem; color: #334155; line-height: 1.55; }
     .email-subject { font-weight: 700; color: #0f172a; margin-bottom: 0.65rem; }
     .email-from { font-size: 0.72rem; color: #64748b; margin-bottom: 0.5rem; }
+
+    .nav-bar {
+        background: #ffffff;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 0.5rem 0.65rem;
+        margin-bottom: 1.25rem;
+        box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+    }
+    .nav-bar [data-testid="stPills"] { gap: 0.35rem; }
+    .nav-bar [data-testid="stPills"] button {
+        border-radius: 10px !important;
+        font-size: 0.8rem !important;
+        font-weight: 600 !important;
+        padding: 0.4rem 0.75rem !important;
+    }
+
+    .alert-send-card {
+        background: linear-gradient(135deg, #ffffff 0%, #f0fdfa 100%);
+        border: 1px solid #99f6e4;
+        border-radius: 16px;
+        padding: 1.25rem 1.5rem;
+        margin-bottom: 1.25rem;
+    }
+    .alert-send-card h4 {
+        margin: 0 0 0.25rem 0;
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: var(--text);
+    }
+    .status-pill {
+        display: inline-block;
+        padding: 0.3rem 0.7rem;
+        border-radius: 999px;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+    }
+    .status-pill.ok { background: #ecfdf5; color: #047857; border: 1px solid #6ee7b7; }
+    .status-pill.warn { background: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; }
 </style>
         """,
         unsafe_allow_html=True,
     )
+
+
+def render_page_header(title: str, subtitle: str) -> None:
+    st.markdown(f'<p class="page-title">{html.escape(title)}</p>', unsafe_allow_html=True)
+    st.markdown(f'<p class="page-sub">{subtitle}</p>', unsafe_allow_html=True)
 
 
 def render_sidebar_brand() -> None:

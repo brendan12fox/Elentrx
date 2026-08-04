@@ -9,7 +9,7 @@ from datetime import datetime, timezone
 import pandas as pd
 import streamlit as st
 
-from src.alert.email import email_configured, normalize_app_password, send_trial_alert, verify_smtp_login
+from src.alert.email import email_configured, normalize_app_password, resend_configured, send_trial_alert
 from src.auth.users import (
     authenticate,
     create_user,
@@ -41,6 +41,7 @@ from src.ui.styles import (
     render_change_cards,
     render_empty_watchlist,
     render_metric_grid,
+    render_page_header,
     render_pulse_banner,
     render_rotation_schedule,
     render_run_cards,
@@ -282,73 +283,52 @@ def _default_alert_recipient() -> str:
 
 
 def render_send_test_alert(*, key_prefix: str = "alert") -> None:
-    """One-click test alert with optional Gmail app-password override."""
+    """Send a sample trial alert email."""
     recipient_default = _default_alert_recipient()
-    smtp_user = os.getenv("SMTP_USER", "")
+    using_resend = resend_configured()
+    ready = email_configured()
 
-    st.markdown("#### Send a test alert")
-    recipient = st.text_input(
-        "Send to",
-        value=recipient_default,
-        placeholder="you@gmail.com",
-        key=f"{key_prefix}_recipient",
+    status_class = "ok" if ready else "warn"
+    status_label = "Ready to send" if ready else "Not configured"
+    provider = "Resend" if using_resend else "SMTP"
+
+    st.markdown(
+        f"""
+<div class="alert-send-card">
+  <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;">
+    <div>
+      <h4>Send a test alert</h4>
+      <p style="margin:0;color:#64748b;font-size:0.85rem;">Deliver via {provider} · threshold {FAVORABILITY_THRESHOLD:.0%}</p>
+    </div>
+    <span class="status-pill {status_class}">{status_label}</span>
+  </div>
+</div>
+        """,
+        unsafe_allow_html=True,
     )
-    app_password = st.text_input(
-        "Gmail App Password",
-        type="password",
-        placeholder="16 characters — paste from Google App Passwords",
-        help=(
-            "This is NOT your Gmail login password. "
-            "Create one at https://myaccount.google.com/apppasswords "
-            "(2-Step Verification must be on for eletrx.trials@gmail.com)."
-        ),
-        key=f"{key_prefix}_app_password",
-    )
-    if smtp_user:
-        st.caption(f"Sending from **{smtp_user}** via Gmail SMTP")
-    else:
-        st.warning("Set `SMTP_USER` in `.env` or Streamlit secrets.")
 
-    col_a, col_b = st.columns(2)
-    with col_a:
-        test_login = st.button("Test login only", use_container_width=True, key=f"{key_prefix}_test_login")
-    with col_b:
-        send_now = st.button(
-            "Send test alert now",
-            type="primary",
-            use_container_width=True,
-            key=f"{key_prefix}_send_btn",
-        )
-
-    pw = normalize_app_password(app_password) or None
-
-    if test_login:
-        with st.spinner("Testing Gmail login…"):
-            ok, msg = verify_smtp_login(pw)
-        if ok:
-            st.success(msg)
-        else:
-            st.error(msg)
-            st.markdown(
-                "**Fix checklist:**\n"
-                "1. Open an **incognito** window and sign in as **eletrx.trials@gmail.com** only\n"
-                "2. Turn on **2-Step Verification** (Google Account → Security)\n"
-                "3. Go to [App Passwords](https://myaccount.google.com/apppasswords) → Mail → Other → name it Elentrx\n"
-                "4. Copy all **16 letters** (no spaces) into the field above\n"
-                "5. Click **Test login only** again\n\n"
-                "Also update `SMTP_PASSWORD` in Streamlit Cloud secrets if testing on the deployed app."
+    recipient = st.text_input("Send to", value=recipient_default, key=f"{key_prefix}_recipient")
+    app_password = ""
+    if not using_resend:
+        with st.expander("Gmail SMTP settings"):
+            app_password = st.text_input(
+                "Gmail App Password",
+                type="password",
+                placeholder="16-character app password",
+                key=f"{key_prefix}_app_password",
             )
 
-    if send_now:
+    if st.button("Send test alert", type="primary", use_container_width=True, key=f"{key_prefix}_send_btn"):
+        pw = normalize_app_password(app_password) or None
         if not email_configured(pw):
-            st.error("SMTP not configured — need SMTP_HOST, SMTP_USER, and an app password.")
+            st.error("Email not configured — add RESEND_API_KEY to secrets.")
         elif not recipient.strip():
-            st.error("Enter a recipient email address.")
+            st.error("Enter a recipient email.")
         else:
-            with st.spinner("Sending test alert…"):
+            with st.spinner("Sending…"):
                 ok, msg = send_trial_alert(recipient.strip(), smtp_password=pw)
             if ok:
-                st.success(f"Test alert sent! {msg}")
+                st.success(msg)
                 st.balloons()
             else:
                 st.error(msg)
@@ -356,7 +336,6 @@ def render_send_test_alert(*, key_prefix: str = "alert") -> None:
 
 def alerts_panel() -> None:
     render_send_test_alert(key_prefix="alerts")
-    st.markdown("---")
     alerts = fetch_alerts(limit=30)
     if not alerts:
         st.info("No emails sent yet — favorable trial changes above your threshold will appear here.")
@@ -428,25 +407,19 @@ def evaluation_panel() -> None:
 
 def config_panel() -> None:
     render_settings_rows([
-        ("Notifications", "Email only"),
+        ("Notifications", "Email via Resend" if resend_configured() else "Email via SMTP"),
         ("Alert email", os.getenv("ALERT_EMAIL", "") or "Not set"),
-        ("Email configured", "Yes" if email_configured() else "No — add SMTP in secrets"),
-        ("OpenAI configured", "Yes" if os.getenv("OPENAI_API_KEY") else "No"),
+        ("Delivery", "Configured" if email_configured() else "Not configured"),
+        ("OpenAI", "Configured" if os.getenv("OPENAI_API_KEY") else "Missing"),
         ("Score threshold", f"{FAVORABILITY_THRESHOLD:.0%}"),
     ])
     st.caption("When a trial change scores above the threshold, Elentrx sends one email alert.")
 
 
 def demo_panel() -> None:
-    render_send_test_alert(key_prefix="demo")
-    st.markdown("---")
     scenarios = get_demo_scenarios()
     previews = {s.id: preview_alerts(s) for s in scenarios}
-    st.markdown(
-        f'<p class="page-sub">Examples only — not real alerts. '
-        f"Your threshold is <b>{FAVORABILITY_THRESHOLD:.0%}</b>.</p>",
-        unsafe_allow_html=True,
-    )
+    st.caption(f"Sample formats only · live threshold {FAVORABILITY_THRESHOLD:.0%} · send a real test from **Alerts**")
     render_demo_gallery(scenarios, previews)
 
 
@@ -487,16 +460,15 @@ def main() -> None:
             st.session_state.nav_page = sidebar_page
         st.markdown("---")
         st.caption(f"Signed in · {username}")
-        st.caption("Use the **›** button top-left or the nav bar below to switch pages.")
         if st.button("Sign out", use_container_width=True):
             _cached_digest.clear()
             for key in ("authenticated", "user_id", "username"):
                 st.session_state.pop(key, None)
             st.rerun()
 
-    st.markdown('<div class="top-nav-wrap">', unsafe_allow_html=True)
+    st.markdown('<div class="nav-bar">', unsafe_allow_html=True)
     top_page = st.pills(
-        "Pages",
+        "Navigate",
         NAV_PAGES,
         default=st.session_state.nav_page,
         selection_mode="single",
@@ -511,25 +483,22 @@ def main() -> None:
     page = st.session_state.nav_page
 
     if page == "Watchlist":
+        render_page_header("Watchlist", "Daily sector digest and tracked trials")
         watchlist_panel()
     elif page == "Trials":
-        st.markdown('<p class="page-title">Trials</p><p class="page-sub">Public biotech studies we\'re tracking</p>', unsafe_allow_html=True)
+        render_page_header("Trials", "Public biotech studies we're tracking")
         trials_panel()
     elif page == "Updates":
-        st.markdown('<p class="page-title">Updates</p><p class="page-sub">Phase advances, completions, and halts</p>', unsafe_allow_html=True)
+        render_page_header("Updates", "Phase advances, completions, and halts")
         changes_panel()
     elif page == "Alerts":
-        st.markdown('<p class="page-title">Alerts</p><p class="page-sub">Email notifications we\'ve sent you</p>', unsafe_allow_html=True)
+        render_page_header("Alerts", "Email notifications and test delivery")
         alerts_panel()
     elif page == "Alert demo":
-        st.markdown(
-            '<p class="page-title">Alert demo</p><p class="page-sub">'
-            "See what favorable, neutral, and negative changes look like</p>",
-            unsafe_allow_html=True,
-        )
+        render_page_header("Alert demo", "Preview what favorable, neutral, and negative alerts look like")
         demo_panel()
     elif page == "Activity":
-        st.markdown('<p class="page-title">Activity</p><p class="page-sub">Rotation, runs & model eval</p>', unsafe_allow_html=True)
+        render_page_header("Activity", "Rotation schedule, pipeline runs, and model evaluation")
         t1, t2, t3 = st.tabs(["Rotation", "Runs", "Evaluation"])
         with t1:
             rotation_panel()
@@ -538,7 +507,7 @@ def main() -> None:
         with t3:
             evaluation_panel()
     elif page == "Settings":
-        st.markdown('<p class="page-title">Settings</p><p class="page-sub">Account, config & legal</p>', unsafe_allow_html=True)
+        render_page_header("Settings", "Account, configuration, and legal")
         t1, t2, t3 = st.tabs(["Account", "Config", "Legal"])
         with t1:
             account_panel()
