@@ -54,6 +54,18 @@ def signup_allowed() -> bool:
     return os.getenv("ALLOW_SIGNUP", "true").lower() in ("1", "true", "yes")
 
 
+def expected_access_code() -> str:
+    """Invite / access code required before new-user signup."""
+    return os.getenv("ACCESS_CODE", "FOXFAM").strip()
+
+
+def access_code_valid(code: str) -> bool:
+    expected = expected_access_code()
+    if not expected:
+        return False
+    return (code or "").strip().upper() == expected.upper()
+
+
 def username_exists(username: str) -> bool:
     init_auth_tables()
     with get_connection() as conn:
