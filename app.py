@@ -56,7 +56,7 @@ from src.ui.styles import (
 from src.market.quotes import fetch_quotes
 
 st.set_page_config(
-    page_title="Elentrx™ — Clinical Trial Alerter",
+    page_title="Elentrx - Clinical Trial Alerter",
     page_icon="assets/elentrx-ui.png",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -622,4 +622,9 @@ def main() -> None:
             admin_panel()
 
 
-main()
+if __name__ == "__main__":
+    try:
+        main()
+    except Exception as exc:
+        st.exception(exc)
+        raise
