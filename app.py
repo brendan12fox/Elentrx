@@ -622,9 +622,8 @@ def main() -> None:
             admin_panel()
 
 
-if __name__ == "__main__":
-    try:
-        main()
-    except Exception as exc:
-        st.exception(exc)
-        raise
+try:
+    main()
+except Exception as exc:
+    st.exception(exc)
+    raise

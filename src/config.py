@@ -56,7 +56,38 @@ CONFIG_DIR = ROOT / "config"
 DATA_DIR = ROOT / "data"
 MODELS_DIR = ROOT / "models"
 
-DB_PATH = Path(_env("SNAPSHOT_DB_PATH", str(DATA_DIR / "snapshots.db")))
+
+def _is_streamlit_cloud() -> bool:
+    """Heuristic for Streamlit Community Cloud (read-only app dir)."""
+    if os.getenv("SNAPSHOT_DB_PATH"):
+        return False
+    if os.getenv("USER") == "appuser":
+        return True
+    return Path("/home/appuser/.streamlit").exists()
+
+
+def _resolve_db_path() -> Path:
+    explicit = _env("SNAPSHOT_DB_PATH", "")
+    if explicit:
+        return Path(explicit)
+    if _is_streamlit_cloud():
+        cloud_dir = Path("/tmp/elentrx")
+        cloud_dir.mkdir(parents=True, exist_ok=True)
+        return cloud_dir / "snapshots.db"
+    default = DATA_DIR / "snapshots.db"
+    try:
+        DATA_DIR.mkdir(parents=True, exist_ok=True)
+        probe = DATA_DIR / ".write_probe"
+        probe.write_text("ok", encoding="utf-8")
+        probe.unlink(missing_ok=True)
+        return default
+    except OSError:
+        fallback = Path("/tmp/elentrx")
+        fallback.mkdir(parents=True, exist_ok=True)
+        return fallback / "snapshots.db"
+
+
+DB_PATH = _resolve_db_path()
 SPONSOR_MAP_PATH = DATA_DIR / "sponsor_tickers.csv"
 SECTORS_PATH = CONFIG_DIR / "sectors.yaml"
 MODEL_PATH = MODELS_DIR / "favorability.pkl"
@@ -103,5 +134,8 @@ def get_sector_for_hour(hour_utc: int | None = None) -> tuple[dict, int]:
 
 
 def ensure_dirs() -> None:
-    DATA_DIR.mkdir(parents=True, exist_ok=True)
-    MODELS_DIR.mkdir(parents=True, exist_ok=True)
+    for path in (DATA_DIR, MODELS_DIR, DB_PATH.parent):
+        try:
+            path.mkdir(parents=True, exist_ok=True)
+        except OSError:
+            pass
