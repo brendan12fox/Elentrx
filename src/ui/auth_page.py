@@ -73,12 +73,12 @@ def render_auth_page() -> None:
             st.caption("New accounts are invite-only. Contact your admin for access.")
             return
 
-        tab = st.radio(
+        tab = st.segmented_control(
             "Auth mode",
             ["Sign in", "Create account"],
-            horizontal=True,
-            key="auth_mode",
+            default="Sign in",
             label_visibility="collapsed",
+            key="auth_mode",
         )
         if tab == "Create account":
             _render_gated_signup()
