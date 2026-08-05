@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import json
 import os
 from datetime import datetime, timezone
 
@@ -20,9 +19,6 @@ from src.auth.users import (
 from src.config import DATA_DIR, FAVORABILITY_THRESHOLD, get_sector_for_hour, hydrate_streamlit_secrets, load_sectors
 from src.db.schema import init_db
 from src.db.seed import seed_if_empty
-from src.ml.historical import HISTORICAL_DATASET_PATH, load_dataset
-from src.ml.progress import load_progress
-from src.pipeline.run_hourly import run_hourly
 from src.research.watchlist import (
     build_daily_digest,
     cache_is_fresh,
@@ -238,6 +234,8 @@ def render_manual_refresh(*, key_prefix: str = "manual") -> None:
         st.rerun()
 
     if scan:
+        from src.pipeline.run_hourly import run_hourly
+
         sector = next(s for s in sectors if s["name"] == selected_name)
         with st.spinner(f"Scanning {sector['name']} on ClinicalTrials.gov… this can take a minute"):
             try:
@@ -280,11 +278,14 @@ def sector_detail_panel(sector_id: str) -> None:
     render_sector_header(sector, activity)
 
     raw_digest, _ = _cached_digest()
-    trials = enrich_trials_with_news(
-        _cached_sector_trials(sector_id),
-        raw_digest,
-        max_fetch=8,
-    )
+    try:
+        trials = enrich_trials_with_news(
+            _cached_sector_trials(sector_id),
+            raw_digest,
+            max_fetch=8,
+        )
+    except Exception:
+        trials = _cached_sector_trials(sector_id)
 
     if not trials:
         render_empty_sector(
@@ -520,6 +521,8 @@ def admin_panel() -> None:
     else:
         st.info("No pipeline runs logged yet.")
 
+    from src.ml.progress import load_progress
+
     live = load_progress()
     if live and live.get("status") == "running":
         st.info("Model training in progress…")
@@ -540,7 +543,9 @@ def admin_panel() -> None:
             ("ROC-AUC", f"{metrics.get('roc_auc', 0):.2f}" if metrics.get("roc_auc") is not None else "—"),
             ("Dataset", f"{ds.get('total_samples', 0)} samples"),
         ])
-    elif HISTORICAL_DATASET_PATH.exists():
+    elif (DATA_DIR / "historical_dataset.json").exists():
+        from src.ml.historical import load_dataset
+
         st.caption(f"Historical dataset: {len(load_dataset())} samples on disk.")
     else:
         st.caption("No evaluation report yet. Run `python -m src.ml.evaluate --rebuild` locally.")
@@ -617,5 +622,4 @@ def main() -> None:
             admin_panel()
 
 
-if __name__ == "__main__":
-    main()
+main()
