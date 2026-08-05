@@ -552,7 +552,12 @@ def admin_panel() -> None:
 
 
 def main() -> None:
-    _ensure_app_ready()
+    try:
+        _ensure_app_ready()
+    except Exception as exc:
+        st.error("Elentrx failed to initialize. Database or seed data may be unavailable.")
+        st.exception(exc)
+        return
     _require_login()
     inject_styles()
 

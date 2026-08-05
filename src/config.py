@@ -63,6 +63,9 @@ def _is_streamlit_cloud() -> bool:
         return False
     if os.getenv("USER") == "appuser":
         return True
+    hostname = os.getenv("HOSTNAME", "").lower()
+    if "streamlit" in hostname:
+        return True
     return Path("/home/appuser/.streamlit").exists()
 
 
