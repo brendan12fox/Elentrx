@@ -56,7 +56,18 @@ CONFIG_DIR = ROOT / "config"
 DATA_DIR = ROOT / "data"
 MODELS_DIR = ROOT / "models"
 
-DB_PATH = Path(_env("SNAPSHOT_DB_PATH", str(DATA_DIR / "snapshots.db")))
+
+def _cloud_db_path() -> Path | None:
+    if _env("SNAPSHOT_DB_PATH", ""):
+        return None
+    if os.getenv("USER") != "appuser":
+        return None
+    cloud_dir = Path("/tmp/elentrx")
+    cloud_dir.mkdir(parents=True, exist_ok=True)
+    return cloud_dir / "snapshots.db"
+
+
+DB_PATH = Path(_env("SNAPSHOT_DB_PATH", str(_cloud_db_path() or (DATA_DIR / "snapshots.db"))))
 SPONSOR_MAP_PATH = DATA_DIR / "sponsor_tickers.csv"
 SECTORS_PATH = CONFIG_DIR / "sectors.yaml"
 MODEL_PATH = MODELS_DIR / "favorability.pkl"
@@ -103,5 +114,8 @@ def get_sector_for_hour(hour_utc: int | None = None) -> tuple[dict, int]:
 
 
 def ensure_dirs() -> None:
-    DATA_DIR.mkdir(parents=True, exist_ok=True)
-    MODELS_DIR.mkdir(parents=True, exist_ok=True)
+    for path in (DATA_DIR, MODELS_DIR, DB_PATH.parent):
+        try:
+            path.mkdir(parents=True, exist_ok=True)
+        except OSError:
+            pass
