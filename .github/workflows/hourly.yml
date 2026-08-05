@@ -41,7 +41,7 @@ jobs:
       - name: Run hourly pipeline
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          WATCHLIST_LLM_MODEL: ${{ vars.WATCHLIST_LLM_MODEL }}
+          WATCHLIST_LLM_MODEL: ${{ vars.WATCHLIST_LLM_MODEL || 'gpt-4o-mini' }}
           TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
           SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
           ALERT_EMAIL: ${{ secrets.ALERT_EMAIL }}
@@ -52,8 +52,12 @@ jobs:
           SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
           SMTP_FROM: ${{ secrets.SMTP_FROM }}
-          FAVORABILITY_THRESHOLD: ${{ vars.FAVORABILITY_THRESHOLD }}
+          FAVORABILITY_THRESHOLD: ${{ vars.FAVORABILITY_THRESHOLD || '0.65' }}
         run: |
+          if [ -z "$OPENAI_API_KEY" ]; then
+            echo "::error::OPENAI_API_KEY secret is missing. Add it under Settings → Secrets and variables → Actions."
+            exit 1
+          fi
           ARGS=""
           if [ -n "${{ github.event.inputs.hour_utc }}" ]; then
             ARGS="$ARGS --hour-utc ${{ github.event.inputs.hour_utc }}"

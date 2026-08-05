@@ -22,28 +22,57 @@ def hydrate_streamlit_secrets() -> None:
     except Exception:
         pass
 
+
+def _env(name: str, default: str = "") -> str:
+    """Read env var; treat missing/blank (common in Actions) as default."""
+    value = os.getenv(name)
+    if value is None or not str(value).strip():
+        return default
+    return str(value).strip()
+
+
+def _env_float(name: str, default: float) -> float:
+    raw = _env(name, "")
+    if not raw:
+        return default
+    try:
+        return float(raw)
+    except ValueError:
+        return default
+
+
+def _env_int(name: str, default: int) -> int:
+    raw = _env(name, "")
+    if not raw:
+        return default
+    try:
+        return int(raw)
+    except ValueError:
+        return default
+
+
 ROOT = Path(__file__).resolve().parents[1]
 CONFIG_DIR = ROOT / "config"
 DATA_DIR = ROOT / "data"
 MODELS_DIR = ROOT / "models"
 
-DB_PATH = Path(os.getenv("SNAPSHOT_DB_PATH", str(DATA_DIR / "snapshots.db")))
+DB_PATH = Path(_env("SNAPSHOT_DB_PATH", str(DATA_DIR / "snapshots.db")))
 SPONSOR_MAP_PATH = DATA_DIR / "sponsor_tickers.csv"
 SECTORS_PATH = CONFIG_DIR / "sectors.yaml"
 MODEL_PATH = MODELS_DIR / "favorability.pkl"
 
-FAVORABILITY_THRESHOLD = float(os.getenv("FAVORABILITY_THRESHOLD", "0.65"))
-OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
-OPENAI_SEARCH_MODEL = os.getenv("OPENAI_SEARCH_MODEL", "gpt-4o")
+FAVORABILITY_THRESHOLD = _env_float("FAVORABILITY_THRESHOLD", 0.65)
+OPENAI_MODEL = _env("OPENAI_MODEL", "gpt-4o-mini")
+OPENAI_SEARCH_MODEL = _env("OPENAI_SEARCH_MODEL", "gpt-4o")
 
 # News: production = free RSS/GDELT only; training = Serper (budget-limited) + free fill
 NEWS_MODE_PRODUCTION = "production"
 NEWS_MODE_TRAINING = "training"
-SERPER_MONTHLY_LIMIT = int(os.getenv("SERPER_MONTHLY_LIMIT", "2500"))
+SERPER_MONTHLY_LIMIT = _env_int("SERPER_MONTHLY_LIMIT", 2500)
 CTGOV_BASE_URL = "https://clinicaltrials.gov/api/v2"
-CTGOV_PAGE_SIZE = int(os.getenv("CTGOV_PAGE_SIZE", "100"))
-CTGOV_MAX_PAGES = int(os.getenv("CTGOV_MAX_PAGES", "20"))
-CTGOV_REQUEST_DELAY = float(os.getenv("CTGOV_REQUEST_DELAY", "0.15"))
+CTGOV_PAGE_SIZE = _env_int("CTGOV_PAGE_SIZE", 100)
+CTGOV_MAX_PAGES = _env_int("CTGOV_MAX_PAGES", 20)
+CTGOV_REQUEST_DELAY = _env_float("CTGOV_REQUEST_DELAY", 0.15)
 
 # Phase ordering for upgrade detection
 PHASE_ORDER = {
