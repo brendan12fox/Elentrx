@@ -1,115 +1,441 @@
 {
-  "cache_key": "2026-08-03",
-  "generated_at": "2026-08-04T00:07:27.140531+00:00",
-  "sector_id": "oncology",
-  "sector_name": "Oncology",
-  "market_pulse": "Automated brief unavailable. Showing cached headlines only.",
+  "cache_key": "2026-08-05",
+  "generated_at": "2026-08-05T13:07:05.350063+00:00",
+  "sector_id": "rare",
+  "sector_name": "Rare Disease / Orphan",
+  "market_pulse": "Automated brief unavailable. Showing trials across all sectors. Hourly scan focus: Rare Disease / Orphan.",
   "error": "Error code: 429 - {'error': {'message': 'You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.', 'type': 'insufficient_quota', 'param': None, 'code': 'credit_balance_exhausted'}}",
   "trials": [
     {
-      "nct_id": "NCT04585750",
-      "ticker": "REGN",
-      "sponsor": "PMV Pharmaceuticals, Inc",
-      "drug": "rezatapopt",
+      "nct_id": "NCT06765980",
+      "ticker": "BMRN",
+      "sponsor": "Kriya Therapeutics, Inc.",
+      "drug": "VV-14295",
       "phase": "PHASE2",
       "status": "RECRUITING",
-      "title": "The Evaluation of PC14586 in Patients With Advanced Solid Tumors Harboring a TP53 Y220C Mutation (PYNNACLE)",
+      "title": "A Study to Evaluate KRIYA-825 (VV-14295) in Adults With Geographic Atrophy Secondary to Age-related Macular Degeneration",
       "change_type": null,
-      "watch_reason": "Active PHASE2 \u00b7 Oncology",
+      "watch_reason": "Active PHASE2 \u00b7 Infectious Disease",
       "score": null,
       "detected_at": null,
-      "headline": "REGN \u00b7 Active PHASE2 \u00b7 Oncology",
-      "brief": "The Evaluation of PC14586 in Patients With Advanced Solid Tumors Harboring a TP53 Y220C Mutation (PYNNACLE)",
+      "headline": "BMRN \u00b7 Active PHASE2 \u00b7 Infectious Disease",
+      "brief": "A Study to Evaluate KRIYA-825 (VV-14295) in Adults With Geographic Atrophy Secondary to Age-related Macular Degeneration",
       "analyst_tone": "neutral",
       "catalysts": [],
       "news": []
     },
     {
-      "nct_id": "NCT07527858",
-      "ticker": "GILD",
-      "sponsor": "Gilead Sciences",
-      "drug": "Denikitug",
-      "phase": "PHASE2",
-      "status": "RECRUITING",
-      "title": "Study of Denikitug (GS-1811) Given Alone or With Nivolumab or With Chemotherapy in Adults With Advanced Colorectal Cancer",
+      "nct_id": "NCT07545564",
+      "ticker": "VIR",
+      "sponsor": "Changchun BCHT Biotechnology Co.",
+      "drug": "LAIV",
+      "phase": "PHASE4",
+      "status": "ENROLLING_BY_INVITATION",
+      "title": "A Study on Mucosal Specific IgA Immunokinetics After Administration of Nasal Spray Live Attenuated Influenza Vaccine",
       "change_type": null,
-      "watch_reason": "Active PHASE2 \u00b7 Oncology",
+      "watch_reason": "Active PHASE4 \u00b7 Infectious Disease",
       "score": null,
       "detected_at": null,
-      "headline": "GILD \u00b7 Active PHASE2 \u00b7 Oncology",
-      "brief": "Study of Denikitug (GS-1811) Given Alone or With Nivolumab or With Chemotherapy in Adults With Advanced Colorectal Cancer",
+      "headline": "VIR \u00b7 Active PHASE4 \u00b7 Infectious Disease",
+      "brief": "A Study on Mucosal Specific IgA Immunokinetics After Administration of Nasal Spray Live Attenuated Influenza Vaccine",
       "analyst_tone": "neutral",
       "catalysts": [],
       "news": [
         {
-          "title": "Kalshi to allow bets on clinical trials, FDA decisions - Reuters",
-          "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxObVRoRHYyMk9HNTJuZ2VIZ085LWZTaVhFWWZUS1JfOFhkTXFHMEtROGlienlyaWg1LWVVTk9iT3lLYktoYS1YLXVTRjdzS2oyS2RKZ1VSUS1sUldDWVNLa2NOV1ZybDYxU1EyTzJYZFZaLTVTZUtmVmRhNE1ybmFXMTJfSnZRMnFXYm85Mzk2OGlVakpTNFZRMlhtTl9VWkRwbHc?oc=5",
+          "title": "Yarrow Bioscience Announces Closing of Merger with VYNE Therapeutics and Initiation of Dosing in Phase 2a/2b Trial of YB-101, a Potential First-in-Class Treatment for Graves\u2019 Disease and Thyroid Eye Disease - BioSpace",
+          "url": "https://news.google.com/search?q=Yarrow+Bioscience+Announces+Closing+of+Merger+with+VYNE+Therapeutics+and+Initiation+of+Dosing+in+Phase+2a%2F2b+Trial+of+YB-101%2C+a+Potential+First-in-Class+Treatme&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
-          "published_at": "2026-07-16"
-        },
-        {
-          "title": "Kalshi Allows Betting On Clinical Trials And FDA Drug Decisions - Yahoo Finance",
-          "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQVlFKaHQyZGZhWVlDSC1mZGhiWUp1c0N1Snl4WWE2aUtHZFNtLW9sZGVUWkFZSjJuQ3d2LVItRlFEempZMDU0SUJ0REtWUTRUQm1UZjlSdnZTREVBOF8zeEp5TjF6TS15S2wzLW9xR3hnYjk4bTQ0V01jSHBwQ2NhakdzUEJwbF9YMVBDRXVqU09fdTVNUW9ONGM3UVRpeVU?oc=5",
-          "source": "google_news_rss",
-          "published_at": "2026-07-16"
-        },
-        {
-          "title": "Kalshi Will Let Traders Bet on FDA Drug Approvals Despite Critics' Insider Trading Warnings - Sahm",
-          "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxOMnJTUDFSWGZuaXVpQkVNUzJLMmlnNUlaZzZWMnNyVUJnNTlCQkNHNldaeTBoQ1Q5LS10N1RmX1JpNkM0ZThTQmNWUTB4VE83M25KemNzNzBsbXllV0hJYklLeGtua0tGc0tJeU1BWVpqSkZzeGtKclgwVXdydDFpUmtsY3kwZ08wQzk0M1JTZzBTajdHZlJVby02aW1xb2F6QzBYUHFoNUpfMmNmTHF2Qmo3TTdQYUVfbWszakZGdF9JUW1PQWttdEVaSzNqdEwyWFphWGktUUNSdw?oc=5",
-          "source": "google_news_rss",
-          "published_at": "2026-07-17"
-        },
-        {
-          "title": "Kalshi Launches First Public Betting Markets on FDA Drug Approvals and Clinical Trial Outcomes - finance.biggo.com",
-          "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1rY3BCbmhobEhEdzBJeXBlOXJmQTBMRnh1YnE0M3d5aTA3WDlMcWZ1dzBwbE1ycG9FdlZHOC1yNXBRS1FVQVkycG5GeWpMU0g1bjgxSDBDb195WUFMeDV2LVVrT29lM2YzMGNERmp2YzAzbEVOZnc?oc=5",
-          "source": "google_news_rss",
-          "published_at": "2026-07-16"
+          "published_at": "2026-07-28"
         }
       ]
     },
     {
-      "nct_id": "NCT06892548",
-      "ticker": "BNTX",
-      "sponsor": "BioNTech SE",
-      "drug": "BNT324",
+      "nct_id": "NCT05776004",
+      "ticker": "AGIO",
+      "sponsor": "Eagle Pharmaceuticals, Inc.",
+      "drug": "CAL02",
       "phase": "PHASE2",
-      "status": "RECRUITING",
-      "title": "A Clinical Study to Investigate the Efficacy and Safety of an Investigational Combination Therapy With BNT324 and BNT327 in Patients With Advanced Lung Cancer",
+      "status": "ACTIVE_NOT_RECRUITING",
+      "title": "Blinded Efficacy and Safety Study of CAL02 IV Plus SOC in Subjects With Severe Community-Acquired Bacterial Pneumonia",
       "change_type": null,
-      "watch_reason": "Active PHASE2 \u00b7 Oncology",
+      "watch_reason": "Active PHASE2 \u00b7 Infectious Disease",
       "score": null,
       "detected_at": null,
-      "headline": "BNTX \u00b7 Active PHASE2 \u00b7 Oncology",
-      "brief": "A Clinical Study to Investigate the Efficacy and Safety of an Investigational Combination Therapy With BNT324 and BNT327 in Patients With Advanced Lung Cancer",
+      "headline": "AGIO \u00b7 Active PHASE2 \u00b7 Infectious Disease",
+      "brief": "Blinded Efficacy and Safety Study of CAL02 IV Plus SOC in Subjects With Severe Community-Acquired Bacterial Pneumonia",
       "analyst_tone": "neutral",
       "catalysts": [],
       "news": [
         {
-          "title": "European Commission Authorizes Pfizer and BioNTech XFG-adapted COVID-19 Vaccine in the European Union - businesswire.com",
-          "url": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxQLUt1YmNONms4eFlPcUFiajJhMjQ2MWN6OGtNNHRkNlZ6WU1aeTdoY25LY0k2aUNXRFdVQzJyTFdONVY5aGppaGk1bE4yNjFJQUNpWDRHRE1VR3pzdWdlWHluSXpoOVZLWkN2dVZZdDZBOG5jQU55elR1SGJxUEhfZDF3bE1XTGtZMFB3YnNQRjRVMXF4NE9FT1R3TDFCZ1Z0Nzg0WWM1c0c1TXdKblNLU0M4bXhYVC02U1RPNmg0RE1EM21ITWJhSEZpZGlZOEQtU2NSc21qTEF2QnVmV2JnbjNlbzlXbUhZQk5JME5Saw?oc=5",
-          "source": "google_news_rss",
-          "published_at": "2026-07-29"
-        },
-        {
-          "title": "EU Authorizes Pfizer-BioNTech COVID Vaccine for Ages 6 Months+ - Stock Titan",
-          "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNUF82R0stX0d6QVBNT3E1MzRDekRyUVFRVlJuUWNVenI0WXF3TW1fcDZHOEJHaVQzc3BGNzFjN3VMcFIwRVNpVThTa3EzTkxmXy1uZXpmb3hVUHR5YTIwNl83V3YwN3FrUVhzM0RSN2RXanY4bldWUi1kTzZ4dzVUTTMyaHdSNHlLOE1PWkhpdWZrMTkwOXFkdENGSTlDdURPYzZoMDhUVmZiUFdCWFpiQnc1U0c2d0pGQzk0?oc=5",
-          "source": "google_news_rss",
-          "published_at": "2026-07-29"
-        },
-        {
-          "title": "5 Best Biotech Stocks for 2026 and How to Invest - The Motley Fool",
-          "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQUzJDQTRnQ2pOU0JoUUJRT2YxYm9Qc3hIaFY4WktwR09HeDFLaVRCQ0dRRzF4RHJ1RnN3cTFVUFUyVzVjVFJjZmpuS3VCbTlpQ1RTQi1OcnhPWFZ1ZUJWTHpDN1hwbW51UGlBdUlFU3NrYzdXSWRob1Y0Q3F1QUs3c3dNcl9sNU16amtjT2lB?oc=5",
+          "title": "Biopharma Vital Signs \u2013 Part 5: Capabilities for a Changing Landscape - The Medicine Maker",
+          "url": "https://news.google.com/search?q=Biopharma+Vital+Signs+%E2%80%93+Part+5%3A+Capabilities+for+a+Changing+Landscape+-+The+Medicine+Maker&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
           "published_at": "2026-07-17"
         },
         {
-          "title": "FDA Grants Priority Review for Pfizer\u2019s TALZENNA Plus XTANDI for the Treatment of Metastatic Prostate Cancer - businesswire.com",
-          "url": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxQaWJLNzBTSnRLNnZZRzkwLU93MERMbmlsX1IzZHhLQmpZT09hNmNteUp3WWlNdjJNUHYxbm9iWUdnRXhKem9TMmxDeWdjUURDRUlhMzFFNFNBNkxEMG1rSG9oaVJxaTFlNWpQdUx4TTZTUnFCbTRSeElKSVZqSTRIQndJbVVxVG96ZFNzZ2Yyd0xwT1VLblBYYlBzNi1UMFU3UHRrYWFSWXl3TGh0MFA3MnpaZGNBUHFDLW1lbjBkMS00czMtTDlzZFRFSjFyZ0VvVUtGeElhTUk5WG05b0tacTZVenR5d0w1Vi1TMHNMbWd0MzJCZGpJ?oc=5",
+          "title": "The Speak Foundation Announces 2026 LGMD Scientific Summit - The Berkshire Eagle",
+          "url": "https://news.google.com/search?q=The+Speak+Foundation+Announces+2026+LGMD+Scientific+Summit+-+The+Berkshire+Eagle&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-27"
+        },
+        {
+          "title": "4Moving Biotech Completes Enrollment in Phase 2a INFLAM MOTION Study Evaluating First-in-class Intra-articular GLP-1 Therapy Targeting Synovitis as a Driver of Pain and Disease Progression in Knee Osteoarthritis - eagletribune.com",
+          "url": "https://news.google.com/search?q=4Moving+Biotech+Completes+Enrollment+in+Phase+2a+INFLAM+MOTION+Study+Evaluating+First-in-class+Intra-articular+GLP-1+Therapy+Targeting+Synovitis+as+a+Driver+of+&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-04"
+        },
+        {
+          "title": "Biopharma Vital Signs \u2013 Part 6: Advice for Emerging Biotechs - The Medicine Maker",
+          "url": "https://news.google.com/search?q=Biopharma+Vital+Signs+%E2%80%93+Part+6%3A+Advice+for+Emerging+Biotechs+-+The+Medicine+Maker&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-24"
+        }
+      ]
+    },
+    {
+      "nct_id": "NCT07500506",
+      "ticker": "PFE",
+      "sponsor": "Pfizer",
+      "drug": "VLA15",
+      "phase": "PHASE3",
+      "status": "RECRUITING",
+      "title": "A Study to Learn About the Safety, Tolerability, and Immunogenicity of a Fifth Dose of 6-Valent OspA-Based Lyme Disease Vaccine",
+      "change_type": null,
+      "watch_reason": "Active PHASE3 \u00b7 Infectious Disease",
+      "score": null,
+      "detected_at": null,
+      "headline": "PFE \u00b7 Active PHASE3 \u00b7 Infectious Disease",
+      "brief": "A Study to Learn About the Safety, Tolerability, and Immunogenicity of a Fifth Dose of 6-Valent OspA-Based Lyme Disease Vaccine",
+      "analyst_tone": "neutral",
+      "catalysts": [],
+      "news": [
+        {
+          "title": "Pfizer (PFE) Announces FDA Approval of PADCEV plus Keytruda in MIBC - Yahoo Finance",
+          "url": "https://news.google.com/search?q=Pfizer+%28PFE%29+Announces+FDA+Approval+of+PADCEV+plus+Keytruda+in+MIBC+-+Yahoo+Finance&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-15"
+        },
+        {
+          "title": "Pfizer's prostate cancer drug combination gets US FDA priority review - Reuters",
+          "url": "https://news.google.com/search?q=Pfizer%27s+prostate+cancer+drug+combination+gets+US+FDA+priority+review+-+Reuters&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-22"
+        },
+        {
+          "title": "FDA Grants Priority Review for Pfizer\u2019s TALZENNA Plus XTANDI for the Treatment of Metastatic Prostate Cancer - Business Wire",
+          "url": "https://news.google.com/search?q=FDA+Grants+Priority+Review+for+Pfizer%E2%80%99s+TALZENNA+Plus+XTANDI+for+the+Treatment+of+Metastatic+Prostate+Cancer+-+Business+Wire&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-22"
+        },
+        {
+          "title": "Is Pfizer (PFE) Undervalued On Its FDA Priority Review In Prostate Cancer? - simplywall.st",
+          "url": "https://news.google.com/search?q=Is+Pfizer+%28PFE%29+Undervalued+On+Its+FDA+Priority+Review+In+Prostate+Cancer%3F+-+simplywall.st&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-27"
+        }
+      ]
+    },
+    {
+      "nct_id": "NCT03827798",
+      "ticker": "NVS",
+      "sponsor": "Novartis Pharmaceuticals",
+      "drug": "CFZ533",
+      "phase": "PHASE2",
+      "status": "ACTIVE_NOT_RECRUITING",
+      "title": "Study of Efficacy and Safety of Investigational Treatments in Patients With Moderate to Severe Hidradenitis Suppurativa",
+      "change_type": null,
+      "watch_reason": "Active PHASE2 \u00b7 Infectious Disease",
+      "score": null,
+      "detected_at": null,
+      "headline": "NVS \u00b7 Active PHASE2 \u00b7 Infectious Disease",
+      "brief": "Study of Efficacy and Safety of Investigational Treatments in Patients With Moderate to Severe Hidradenitis Suppurativa",
+      "analyst_tone": "neutral",
+      "catalysts": [],
+      "news": [
+        {
+          "title": "Novartis gains full FDA nod for Fabhalta in kidney disorder IgAN - Fierce Pharma",
+          "url": "https://news.google.com/search?q=Novartis+gains+full+FDA+nod+for+Fabhalta+in+kidney+disorder+IgAN+-+Fierce+Pharma&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-17"
+        },
+        {
+          "title": "This Novartis Drug Could Help Delay Dialysis\u2014FDA Grants Full Approval - Benzinga",
+          "url": "https://news.google.com/search?q=This+Novartis+Drug+Could+Help+Delay+Dialysis%E2%80%94FDA+Grants+Full+Approval+-+Benzinga&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-17"
+        },
+        {
+          "title": "Novartis' Pluvicto Gets US FDA Nod for Metastatic Prostate Cancer Treatment - Moomoo",
+          "url": "https://news.google.com/search?q=Novartis%27+Pluvicto+Gets+US+FDA+Nod+for+Metastatic+Prostate+Cancer+Treatment+-+Moomoo&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-02"
+        },
+        {
+          "title": "This Analyst Sees 34% Upside For SRPT Stock \u2014 Here's Why They Expect A Sustained Rally Next - TradingView",
+          "url": "https://news.google.com/search?q=This+Analyst+Sees+34%25+Upside+For+SRPT+Stock+%E2%80%94+Here%27s+Why+They+Expect+A+Sustained+Rally+Next+-+TradingView&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-09"
+        }
+      ]
+    },
+    {
+      "nct_id": "NCT07013474",
+      "ticker": "PFE",
+      "sponsor": "Pfizer",
+      "drug": "ibuzatrelvir",
+      "phase": "PHASE3",
+      "status": "RECRUITING",
+      "title": "A Study to Learn About the Study Medicine Ibuzatrelvir in Adults With COVID-19 Who Are Severely Immunocompromised",
+      "change_type": null,
+      "watch_reason": "Active PHASE3 \u00b7 Infectious Disease",
+      "score": null,
+      "detected_at": null,
+      "headline": "PFE \u00b7 Active PHASE3 \u00b7 Infectious Disease",
+      "brief": "A Study to Learn About the Study Medicine Ibuzatrelvir in Adults With COVID-19 Who Are Severely Immunocompromised",
+      "analyst_tone": "neutral",
+      "catalysts": [],
+      "news": [
+        {
+          "title": "EC authorizes Pfizer, BioNTech XFG-adapted COVID-19 vaccine in EU - TipRanks",
+          "url": "https://news.google.com/search?q=EC+authorizes+Pfizer%2C+BioNTech+XFG-adapted+COVID-19+vaccine+in+EU+-+TipRanks&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-29"
+        },
+        {
+          "title": "Pfizer\u2019s Quiet Pipeline Push Could Ignite PFE Rally - TipRanks",
+          "url": "https://news.google.com/search?q=Pfizer%E2%80%99s+Quiet+Pipeline+Push+Could+Ignite+PFE+Rally+-+TipRanks&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-01"
+        },
+        {
+          "title": "Pfizer (PFE) Announces FDA Approval of PADCEV plus Keytruda in MIBC - Yahoo Finance",
+          "url": "https://news.google.com/search?q=Pfizer+%28PFE%29+Announces+FDA+Approval+of+PADCEV+plus+Keytruda+in+MIBC+-+Yahoo+Finance&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-15"
+        },
+        {
+          "title": "Pfizer's prostate cancer drug combination gets US FDA priority review - Reuters",
+          "url": "https://news.google.com/search?q=Pfizer%27s+prostate+cancer+drug+combination+gets+US+FDA+priority+review+-+Reuters&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
           "published_at": "2026-07-22"
         }
       ]
+    },
+    {
+      "nct_id": "NCT05836259",
+      "ticker": "RLAY",
+      "sponsor": "Tenaya Therapeutics",
+      "drug": "TN-201",
+      "phase": "PHASE2",
+      "status": "RECRUITING",
+      "title": "Multi-center, Open-label, Single-ascending Dose Study of Safety and Tolerability of TN-201 in Adults With Symptomatic MYBPC3 Mutation-associated HCM",
+      "change_type": null,
+      "watch_reason": "Active PHASE2 \u00b7 Infectious Disease",
+      "score": null,
+      "detected_at": null,
+      "headline": "RLAY \u00b7 Active PHASE2 \u00b7 Infectious Disease",
+      "brief": "Multi-center, Open-label, Single-ascending Dose Study of Safety and Tolerability of TN-201 in Adults With Symptomatic MYBPC3 Mutation-associated HCM",
+      "analyst_tone": "neutral",
+      "catalysts": [],
+      "news": [
+        {
+          "title": "Tenaya\u2019s new CFO gets options on 1.65M shares, with a $0.8365 exercise price - Stock Titan",
+          "url": "https://news.google.com/search?q=Tenaya%E2%80%99s+new+CFO+gets+options+on+1.65M+shares%2C+with+a+%240.8365+exercise+price+-+Stock+Titan&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-14"
+        },
+        {
+          "title": "Tenaya CFO Eric Hyllengren to Speak at Boston Conference - Stock Titan",
+          "url": "https://news.google.com/search?q=Tenaya+CFO+Eric+Hyllengren+to+Speak+at+Boston+Conference+-+Stock+Titan&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-04"
+        },
+        {
+          "title": "TNYA Q1 2026 Earnings: EPS Miss Slightly as Pipeline Advances Amid Cash Position Focus - Forward Guidance Trends - po-news-eg.net",
+          "url": "https://news.google.com/search?q=TNYA+Q1+2026+Earnings%3A+EPS+Miss+Slightly+as+Pipeline+Advances+Amid+Cash+Position+Focus+-+Forward+Guidance+Trends+-+po-news-eg.net&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-21"
+        },
+        {
+          "title": "Tenaya Therapeutics Inc. (TNYA) Q1 2026 Earnings: EPS Slightly Misses Estimates, Stock Declines as Pre-Revenue Biotech Continues Pipeline Development - One-Time Gain Impact - dars.gov.et",
+          "url": "https://news.google.com/search?q=Tenaya+Therapeutics+Inc.+%28TNYA%29+Q1+2026+Earnings%3A+EPS+Slightly+Misses+Estimates%2C+Stock+Declines+as+Pre-Revenue+Biotech+Continues+Pipeline+Development+-+One-Time&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-15"
+        }
+      ]
+    },
+    {
+      "nct_id": "NCT07044297",
+      "ticker": "MRK",
+      "sponsor": "Merck Sharp & Dohme LLC",
+      "drug": "MK-8527",
+      "phase": "PHASE3",
+      "status": "RECRUITING",
+      "title": "A Clinical Study of MK-8527 to Prevent Human Immunodeficiency Virus Type 1 (HIV-1) (MK-8527-011)",
+      "change_type": null,
+      "watch_reason": "Active PHASE3 \u00b7 Infectious Disease",
+      "score": null,
+      "detected_at": null,
+      "headline": "MRK \u00b7 Active PHASE3 \u00b7 Infectious Disease",
+      "brief": "A Clinical Study of MK-8527 to Prevent Human Immunodeficiency Virus Type 1 (HIV-1) (MK-8527-011)",
+      "analyst_tone": "neutral",
+      "catalysts": [],
+      "news": [
+        {
+          "title": "Merck Announces Initial Access Plans for Alimatravir, an Investigational Once-Monthly Oral HIV Pre-Exposure Prophylaxis in Phase 3 Development - Business Wire",
+          "url": "https://news.google.com/search?q=Merck+Announces+Initial+Access+Plans+for+Alimatravir%2C+an+Investigational+Once-Monthly+Oral+HIV+Pre-Exposure+Prophylaxis+in+Phase+3+Development+-+Business+Wire&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-24"
+        },
+        {
+          "title": "Redefining HIV Management: Emerging Antiretroviral Drug Classes and Immunologic Strategies Shaping the Future of HIV Treatment, Prevention - Contagion Live",
+          "url": "https://news.google.com/search?q=Redefining+HIV+Management%3A+Emerging+Antiretroviral+Drug+Classes+and+Immunologic+Strategies+Shaping+the+Future+of+HIV+Treatment%2C+Prevention+-+Contagion+Live&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-01"
+        },
+        {
+          "title": "Will Merck\u2019s (MRK) Early Royalty-Free HIV PrEP Licensing Strategy Redefine Its Global Health Narrative - Sahm",
+          "url": "https://news.google.com/search?q=Will+Merck%E2%80%99s+%28MRK%29+Early+Royalty-Free+HIV+PrEP+Licensing+Strategy+Redefine+Its+Global+Health+Narrative+-+Sahm&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-25"
+        },
+        {
+          "title": "Merck to Present New Data on Daily, Weekly, and Monthly Options Across its HIV Treatment and Prevention Pipeline at AIDS 2026 - Business Wire",
+          "url": "https://news.google.com/search?q=Merck+to+Present+New+Data+on+Daily%2C+Weekly%2C+and+Monthly+Options+Across+its+HIV+Treatment+and+Prevention+Pipeline+at+AIDS+2026+-+Business+Wire&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-15"
+        }
+      ]
+    },
+    {
+      "nct_id": "NCT03316560",
+      "ticker": "BEAM",
+      "sponsor": "Beacon Therapeutics",
+      "drug": "rAAV2tYF-GRK1-RPGR",
+      "phase": "PHASE2",
+      "status": "ACTIVE_NOT_RECRUITING",
+      "title": "Safety and Efficacy of rAAV2tYF-GRK1-RPGR in Subjects With X-linked Retinitis Pigmentosa Caused by RPGR Mutations",
+      "change_type": null,
+      "watch_reason": "Active PHASE2 \u00b7 Infectious Disease",
+      "score": null,
+      "detected_at": null,
+      "headline": "BEAM \u00b7 Active PHASE2 \u00b7 Infectious Disease",
+      "brief": "Safety and Efficacy of rAAV2tYF-GRK1-RPGR in Subjects With X-linked Retinitis Pigmentosa Caused by RPGR Mutations",
+      "analyst_tone": "neutral",
+      "catalysts": [],
+      "news": [
+        {
+          "title": "Beam Therapeutics Reports Q2 2026 Results and Clinical Updates for BEAM-302, Risto-cel and BEAM-304 - Quiver Quantitative",
+          "url": "https://news.google.com/search?q=Beam+Therapeutics+Reports+Q2+2026+Results+and+Clinical+Updates+for+BEAM-302%2C+Risto-cel+and+BEAM-304+-+Quiver+Quantitative&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-04"
+        },
+        {
+          "title": "Beam expects $1.2B cash plus $200M draw to fund plans into mid-2029 - Stock Titan",
+          "url": "https://news.google.com/search?q=Beam+expects+%241.2B+cash+plus+%24200M+draw+to+fund+plans+into+mid-2029+-+Stock+Titan&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-04"
+        },
+        {
+          "title": "Beam Therapeutics reports Q2 2026 results: $1.15B cash, $122.7M net loss - TradingView",
+          "url": "https://news.google.com/search?q=Beam+Therapeutics+reports+Q2+2026+results%3A+%241.15B+cash%2C+%24122.7M+net+loss+-+TradingView&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-04"
+        },
+        {
+          "title": "Beam Reports Q2 2026 Net Loss of $122.7 Million - Quiver Quantitative",
+          "url": "https://news.google.com/search?q=Beam+Reports+Q2+2026+Net+Loss+of+%24122.7+Million+-+Quiver+Quantitative&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-04"
+        }
+      ]
+    },
+    {
+      "nct_id": "NCT06275620",
+      "ticker": "BEAM",
+      "sponsor": "Beacon Therapeutics",
+      "drug": "AGTC-501 (high dose and standard corticosteroid regimen)",
+      "phase": "PHASE2",
+      "status": "ENROLLING_BY_INVITATION",
+      "title": "A Study Comparing Two Doses of AGTC-501 in Male Participants With X-linked Retinitis Pigmentosa Caused by RPGR Mutations (DAWN)",
+      "change_type": null,
+      "watch_reason": "Active PHASE2 \u00b7 Infectious Disease",
+      "score": null,
+      "detected_at": null,
+      "headline": "BEAM \u00b7 Active PHASE2 \u00b7 Infectious Disease",
+      "brief": "A Study Comparing Two Doses of AGTC-501 in Male Participants With X-linked Retinitis Pigmentosa Caused by RPGR Mutations (DAWN)",
+      "analyst_tone": "neutral",
+      "catalysts": [],
+      "news": [
+        {
+          "title": "Beam Therapeutics Reports Q2 2026 Results and Clinical Updates for BEAM-302, Risto-cel and BEAM-304 - Quiver Quantitative",
+          "url": "https://news.google.com/search?q=Beam+Therapeutics+Reports+Q2+2026+Results+and+Clinical+Updates+for+BEAM-302%2C+Risto-cel+and+BEAM-304+-+Quiver+Quantitative&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-04"
+        },
+        {
+          "title": "Beam expects $1.2B cash plus $200M draw to fund plans into mid-2029 - Stock Titan",
+          "url": "https://news.google.com/search?q=Beam+expects+%241.2B+cash+plus+%24200M+draw+to+fund+plans+into+mid-2029+-+Stock+Titan&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-04"
+        },
+        {
+          "title": "H.C. Wainwright reiterates Beam Therapeutics stock rating on BLA progress - Investing.com",
+          "url": "https://news.google.com/search?q=H.C.+Wainwright+reiterates+Beam+Therapeutics+stock+rating+on+BLA+progress+-+Investing.com&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-07"
+        },
+        {
+          "title": "Beam Therapeutics reports Q2 2026 results: $1.15B cash, $122.7M net loss - TradingView",
+          "url": "https://news.google.com/search?q=Beam+Therapeutics+reports+Q2+2026+results%3A+%241.15B+cash%2C+%24122.7M+net+loss+-+TradingView&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-04"
+        }
+      ]
+    },
+    {
+      "nct_id": "NCT04925752",
+      "ticker": "GILD",
+      "sponsor": "Gilead Sciences",
+      "drug": "Oral Lenacapavir (LEN)",
+      "phase": "PHASE3",
+      "status": "ACTIVE_NOT_RECRUITING",
+      "title": "Study of Lenacapavir for HIV Pre-Exposure Prophylaxis in People Who Are at Risk for HIV Infection",
+      "change_type": null,
+      "watch_reason": "Active PHASE3 \u00b7 Infectious Disease",
+      "score": null,
+      "detected_at": null,
+      "headline": "GILD \u00b7 Active PHASE3 \u00b7 Infectious Disease",
+      "brief": "Study of Lenacapavir for HIV Pre-Exposure Prophylaxis in People Who Are at Risk for HIV Infection",
+      "analyst_tone": "neutral",
+      "catalysts": [],
+      "news": [
+        {
+          "title": "Can Gilead's Efforts to Develop New Treatments Solidify HIV Franchise? - Yahoo Finance",
+          "url": "https://news.google.com/search?q=Can+Gilead%27s+Efforts+to+Develop+New+Treatments+Solidify+HIV+Franchise%3F+-+Yahoo+Finance&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-23"
+        },
+        {
+          "title": "Investigational Once-Weekly Oral HIV Treatment Regimen of Islatravir and Lenacapavir Maintained Virological Suppression in Adults With HIV Who Switched Antiretroviral Therapy - Business Wire",
+          "url": "https://news.google.com/search?q=Investigational+Once-Weekly+Oral+HIV+Treatment+Regimen+of+Islatravir+and+Lenacapavir+Maintained+Virological+Suppression+in+Adults+With+HIV+Who+Switched+Antiretr&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-21"
+        },
+        {
+          "title": "Gilead to Present New HIV Research at AIDS 2026 Across Prevention, Treatment and Cure - Business Wire",
+          "url": "https://news.google.com/search?q=Gilead+to+Present+New+HIV+Research+at+AIDS+2026+Across+Prevention%2C+Treatment+and+Cure+-+Business+Wire&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-21"
+        },
+        {
+          "title": "[GILD Q2 2026 Earnings Call] Gilead PrEP Sales Top $1 Billion as Yeztugo Persistence Hits 70%; HIV Growth Raised to 10% - finance.biggo.com",
+          "url": "https://news.google.com/search?q=%5BGILD+Q2+2026+Earnings+Call%5D+Gilead+PrEP+Sales+Top+%241+Billion+as+Yeztugo+Persistence+Hits+70%25%3B+HIV+Growth+Raised+to+10%25+-+finance.biggo.com&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-04"
+        }
+      ]
     }
   ],
-  "trial_count": 3
+  "trial_count": 11
 }
