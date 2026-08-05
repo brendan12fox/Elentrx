@@ -1,9 +1,7 @@
-streamlit>=1.32.0
+# Streamlit Cloud preinstalls streamlit, pandas, numpy — omit to avoid version fights.
 requests>=2.31.0
 feedparser>=6.0.0
 pyyaml>=6.0.1
-pandas>=2.2.0
-numpy>=1.26.0
 scikit-learn>=1.4.0
 joblib>=1.3.0
 rapidfuzz>=3.6.0

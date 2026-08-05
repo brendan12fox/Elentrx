@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "elentrx"
 version = "0.1.0"
 description = "Elentrx — healthcare clinical trial phase scraper and alerter"
-requires-python = ">=3.11"
+requires-python = ">=3.9"
 dependencies = []
 
 [tool.setuptools.packages.find]
