@@ -775,6 +775,12 @@ def _trial_card_html(trial: dict, quote=None) -> str:
         else ""
     )
     phase = html.escape((trial.get("phase") or "—").replace("_", " "))
+    status = html.escape(str(trial.get("status_label") or trial.get("status") or "").replace("_", " "))
+    status_tag = (
+        f'<span class="tag" style="{_TAG}background:#eff6ff;color:#1e40af;border-color:#bfdbfe;">{status}</span>'
+        if status
+        else ""
+    )
     ticker = html.escape(str(trial.get("ticker", "—")))
     quote_html = format_quote_chip(quote)
     nct_id = html.escape(str(trial.get("nct_id", "")))
@@ -802,7 +808,7 @@ def _trial_card_html(trial: dict, quote=None) -> str:
   </div>
   <div class="card-headline" style="font-size:0.95rem;font-weight:600;color:#1e293b;line-height:1.4;">{headline}</div>
   <div class="card-brief" style="font-size:0.84rem;color:#4a6278;line-height:1.6;">{brief}</div>
-  <div class="tag-row" style="{_TAG_ROW}">{score_tag}<span class="tag" style="{_TAG}">{phase}</span><span class="tag" style="{_TAG}">{reason}</span>{cat_tags}</div>
+  <div class="tag-row" style="{_TAG_ROW}">{score_tag}<span class="tag" style="{_TAG}">{phase}</span>{status_tag}<span class="tag" style="{_TAG}">{reason}</span>{cat_tags}</div>
   {links_html}
 </div>"""
 
@@ -994,6 +1000,214 @@ def render_settings_rows(items: list[tuple[str, str]]) -> None:
         f"{rows}</div>",
         unsafe_allow_html=True,
     )
+
+
+def render_home_hero(focus_sector_name: str) -> None:
+    st.markdown(
+        f"""
+<div style="background:linear-gradient(135deg,#001d3d 0%,#003566 55%,#004e89 100%);
+  border-radius:20px;padding:2rem 2.25rem;margin-bottom:1.75rem;color:#ffffff;
+  box-shadow:0 12px 40px rgba(0,29,61,0.18);">
+  <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;
+    color:#00c4a7;margin-bottom:0.5rem;">Elentrx</div>
+  <h1 style="font-size:1.75rem;font-weight:700;letter-spacing:-0.03em;margin:0 0 0.5rem 0;">
+    Clinical trial intelligence across biotech sectors
+  </h1>
+  <p style="margin:0 0 1rem 0;font-size:0.92rem;color:rgba(255,255,255,0.82);max-width:36rem;line-height:1.55;">
+    Track active trials by therapeutic area. Drill into live studies, news, and phase changes.
+  </p>
+  <span style="display:inline-block;background:rgba(0,196,167,0.15);border:1px solid rgba(0,196,167,0.45);
+    color:#7ef0df;font-size:0.75rem;font-weight:600;padding:0.35rem 0.85rem;border-radius:999px;">
+    Hourly focus · {html.escape(focus_sector_name)}
+  </span>
+</div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+def _sector_card_html(sector: dict) -> str:
+    weight = float(sector.get("activity_weight") or 0)
+    bar_pct = max(8, int(weight * 100))
+    accent_alpha = 0.35 + (weight * 0.65)
+    trials = int(sector.get("trial_count") or 0)
+    c30 = int(sector.get("changes_30d") or 0)
+    c365 = int(sector.get("changes_365d") or 0)
+    last_rel = sector.get("last_change_relative") or ""
+    empty_copy = (
+        "Awaiting first hourly scan"
+        if trials == 0 and c30 == 0
+        else (f"Last change {html.escape(last_rel)}" if last_rel else "No recent changes")
+    )
+    return f"""
+<div style="background:#f5f8fa;border:1px solid #dce4ec;border-radius:16px;padding:1.15rem 1.25rem;
+  margin-bottom:0.5rem;border-left:4px solid rgba(0,196,167,{accent_alpha:.2f});
+  box-shadow:0 2px 8px rgba(0,29,61,0.05);min-height:9.5rem;">
+  <div style="font-weight:700;font-size:1rem;color:#001d3d;margin-bottom:0.35rem;line-height:1.3;">
+    {html.escape(sector.get("name", ""))}
+  </div>
+  <div style="font-size:0.78rem;color:#4a6278;margin-bottom:0.65rem;">
+    {trials} trial{"s" if trials != 1 else ""} tracked
+  </div>
+  <div style="display:flex;gap:0.45rem;flex-wrap:wrap;margin-bottom:0.65rem;">
+    <span style="{_TAG}background:#e6faf6;color:#047857;border-color:#b8ebe3;">{c30} · 30d</span>
+    <span style="{_TAG}">{c365} · 365d</span>
+  </div>
+  <div style="height:4px;background:#e2e8f0;border-radius:99px;overflow:hidden;margin-bottom:0.45rem;">
+    <div style="height:100%;width:{bar_pct}%;background:#00c4a7;border-radius:99px;"></div>
+  </div>
+  <div style="font-size:0.72rem;color:#64748b;">{empty_copy}</div>
+</div>"""
+
+
+def render_sector_grid(sectors: list[dict], *, key_prefix: str = "sector") -> None:
+    """Sector cards with open buttons — caller sets session_state.selected_sector on click."""
+    import streamlit as st
+
+    cols_per_row = 4
+    for row_start in range(0, len(sectors), cols_per_row):
+        cols = st.columns(cols_per_row)
+        for col_idx, sector in enumerate(sectors[row_start : row_start + cols_per_row]):
+            with cols[col_idx]:
+                st.markdown(_sector_card_html(sector), unsafe_allow_html=True)
+                sid = sector.get("id", "")
+                label = "Open sector" if sector.get("trial_count") else "View sector"
+                if st.button(label, key=f"{key_prefix}_{sid}", use_container_width=True):
+                    st.session_state.selected_sector = sid
+                    st.rerun()
+
+
+def render_sector_header(sector: dict, activity: dict) -> None:
+    name = sector.get("name", "Sector")
+    trials = int(activity.get("trial_count") or 0)
+    c30 = int(activity.get("changes_30d") or 0)
+    c365 = int(activity.get("changes_365d") or 0)
+    last_rel = activity.get("last_change_relative") or "—"
+    st.markdown(
+        f"""
+<div style="background:linear-gradient(135deg,#ffffff 0%,#f0fdfb 100%);border:1px solid #b8ebe3;
+  border-radius:18px;padding:1.5rem 1.75rem;margin-bottom:1.25rem;">
+  <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;
+    color:#00c4a7;margin-bottom:0.35rem;">Sector</div>
+  <h2 style="font-size:1.45rem;font-weight:700;color:#001d3d;margin:0 0 0.75rem 0;">{html.escape(name)}</h2>
+  <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
+    <span style="{_TAG}background:#ffffff;">{trials} trials</span>
+    <span style="{_TAG}background:#e6faf6;color:#047857;border-color:#b8ebe3;">{c30} changes · 30d</span>
+    <span style="{_TAG}">{c365} changes · 365d</span>
+    <span style="{_TAG}">Last change · {html.escape(last_rel)}</span>
+  </div>
+</div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+def render_empty_sector(message: str) -> None:
+    render_empty_watchlist(message)
+
+
+def render_history_scoreboard(report: dict | None) -> None:
+    if not report:
+        st.info("Evaluation report not available yet — run model training locally.")
+        return
+    metrics = report.get("metrics", {})
+    dataset = report.get("dataset", {})
+    items = [
+        ("Accuracy", f"{metrics.get('accuracy', 0):.0%}" if metrics.get("accuracy") is not None else "—"),
+        ("F1 score", f"{metrics.get('f1', 0):.2f}" if metrics.get("f1") is not None else "—"),
+        ("ROC-AUC", f"{metrics.get('roc_auc', 0):.2f}" if metrics.get("roc_auc") is not None else "—"),
+        (
+            "Positive rate",
+            f"{dataset.get('positive_rate', 0):.0%}" if dataset.get("positive_rate") is not None else "—",
+        ),
+    ]
+    render_metric_grid(items)
+
+
+def _return_chip(ret: float | None) -> str:
+    if ret is None:
+        return ""
+    pct = ret * 100
+    positive = pct >= 0
+    fg = "#047857" if positive else "#b91c1c"
+    bg = "#ecfdf5" if positive else "#fef2f2"
+    border = "#6ee7b7" if positive else "#fecaca"
+    sign = "+" if positive else ""
+    return (
+        f'<span style="font-size:0.72rem;font-weight:700;padding:0.3rem 0.6rem;border-radius:8px;'
+        f'color:{fg};background:{bg};border:1px solid {border};white-space:nowrap;">'
+        f"{sign}{pct:.1f}% · 5d</span>"
+    )
+
+
+def render_history_picks_gallery(picks: list[dict]) -> None:
+    from src.ui.trial_data import human_change, human_phase
+
+    if not picks:
+        st.info("No favorable historical events in the dataset yet.")
+        return
+    render_section_label("Market winners — positive 5-day reactions")
+    for event in picks:
+        ret = event.get("forward_return_5d")
+        tone = (event.get("analyst_tone") or "neutral").lower()
+        fg, bg, arrow = TONE.get(tone, TONE["neutral"])
+        phase_from = human_phase(event.get("old_phase"))
+        phase_to = human_phase(event.get("new_phase"))
+        change = human_change(event.get("change_type"))
+        summary = html.escape(str(event.get("summary") or "")[:320])
+        st.markdown(
+            f"""
+<div style="{_LIST_CARD}border-left:4px solid #00c4a7;">
+  <div style="{_LIST_CARD_TOP}">
+    <span style="{_LIST_TICKER}">{html.escape(event.get("ticker", ""))}</span>
+    {_return_chip(float(ret) if ret is not None else None)}
+  </div>
+  <div style="{_LIST_META}">{html.escape(event.get("event_date", ""))} · {html.escape(change)} · {html.escape(phase_from)} → {html.escape(phase_to)}</div>
+  <div style="{_LIST_SNIPPET}">{summary}</div>
+  <div style="margin-top:0.45rem;"><span style="{_TONE_PILL}color:{fg};background:{bg};">{arrow} {tone}</span></div>
+</div>
+            """,
+            unsafe_allow_html=True,
+        )
+
+
+def render_history_browse(samples: list[dict], *, ticker_filter: str = "") -> None:
+    from src.ui.trial_data import human_change
+
+    filtered = samples
+    if ticker_filter.strip():
+        q = ticker_filter.strip().lower()
+        filtered = [
+            s
+            for s in samples
+            if q in (s.get("ticker") or "").lower()
+            or q in (s.get("sponsor") or "").lower()
+            or q in (s.get("drug") or "").lower()
+        ]
+    render_section_label(f"All events · {len(filtered)} samples")
+    if not filtered:
+        st.caption("No events match your filter.")
+        return
+    for event in filtered[:40]:
+        ret = event.get("forward_return_5d")
+        label = "Favorable" if event.get("label") == 1 else "Unfavorable"
+        label_fg = "#047857" if event.get("label") == 1 else "#64748b"
+        change = human_change(event.get("change_type"))
+        st.markdown(
+            f"""
+<div style="{_LIST_CARD}">
+  <div style="{_LIST_CARD_TOP}">
+    <span style="{_LIST_TICKER}">{html.escape(event.get("ticker", ""))}</span>
+    {_return_chip(float(ret) if ret is not None else None)}
+  </div>
+  <div style="{_LIST_META}">{html.escape(event.get("event_date", ""))} · {html.escape(change)} · <span style="color:{label_fg};font-weight:600;">{label}</span></div>
+  <div style="{_LIST_SNIPPET}">{html.escape(str(event.get("summary") or "")[:200])}</div>
+</div>
+            """,
+            unsafe_allow_html=True,
+        )
+    if len(filtered) > 40:
+        st.caption(f"Showing 40 of {len(filtered)} events.")
 
 
 def render_demo_gallery(scenarios: list, previews: dict, quotes: dict | None = None) -> None:

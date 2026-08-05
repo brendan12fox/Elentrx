@@ -6,7 +6,6 @@ import json
 import os
 from datetime import datetime, timezone
 
-import pandas as pd
 import streamlit as st
 
 from src.alert.email import email_configured, resend_configured, send_trial_alert
@@ -22,6 +21,7 @@ from src.config import DATA_DIR, FAVORABILITY_THRESHOLD, get_sector_for_hour, hy
 from src.db.schema import init_db
 from src.db.seed import seed_if_empty
 from src.ml.historical import HISTORICAL_DATASET_PATH, load_dataset
+from src.ml.progress import load_progress
 from src.pipeline.run_hourly import run_hourly
 from src.research.watchlist import (
     build_daily_digest,
@@ -29,27 +29,33 @@ from src.research.watchlist import (
     load_digest_for_display,
 )
 from src.ui.trial_data import (
+    enrich_trials_with_news,
     fetch_alerts,
-    fetch_phase_changes,
     fetch_runs,
-    fetch_trials_enriched,
-    merge_digest_with_preview,
+    fetch_sector_activity,
+    fetch_trials_for_sector,
+    get_favorable_picks,
+    load_evaluation_report,
+    load_historical_samples,
 )
 from src.ui.styles import (
     inject_styles,
     render_alert_timeline,
-    render_change_cards,
-    render_empty_watchlist,
+    render_empty_sector,
+    render_history_browse,
+    render_history_picks_gallery,
+    render_history_scoreboard,
+    render_home_hero,
     render_metric_grid,
     render_page_header,
-    render_pulse_banner,
-    render_rotation_schedule,
     render_run_cards,
+    render_rotation_schedule,
     render_section_label,
+    render_sector_grid,
+    render_sector_header,
     render_settings_rows,
     render_sidebar_brand,
     render_trial_cards_grid,
-    render_trial_list_cards,
 )
 from src.market.quotes import fetch_quotes
 
@@ -68,12 +74,10 @@ LEGAL_FILES = {
 }
 
 _NAV_LABELS = {
-    "Watchlist": "Watchlist",
-    "Trials": "Trials",
-    "Updates": "Updates",
+    "Home": "Home",
+    "History": "History",
     "Alerts": "Alerts",
-    "Activity": "Activity",
-    "Settings": "Settings",
+    "Account": "Account",
 }
 NAV_PAGES = list(_NAV_LABELS.keys())
 
@@ -105,47 +109,6 @@ def _require_login() -> None:
     st.stop()
 
 
-def account_panel() -> None:
-    user = get_user(st.session_state.user_id)
-    if not user:
-        st.error("Session expired. Please sign in again.")
-        return
-
-    render_settings_rows([
-        ("Username", user.username),
-        ("Role", "Administrator" if user.is_admin else "User"),
-        ("Alert email", user.alert_email or "Not set"),
-    ])
-
-    with st.form("alert_email_form"):
-        alert_email = st.text_input("Alert email", value=user.alert_email or "")
-        if st.form_submit_button("Save alert email"):
-            update_alert_email(user.id, alert_email)
-            st.success("Alert email updated.")
-
-    with st.form("password_form"):
-        st.markdown("**Change password**")
-        current = st.text_input("Current password", type="password")
-        new_pw = st.text_input("New password", type="password")
-        confirm = st.text_input("Confirm new password", type="password")
-        if st.form_submit_button("Update password"):
-            if not authenticate(user.username, current):
-                st.error("Current password is incorrect.")
-            elif len(new_pw) < 8:
-                st.error("New password must be at least 8 characters.")
-            elif new_pw != confirm:
-                st.error("New passwords do not match.")
-            else:
-                update_password(user.id, new_pw)
-                st.success("Password updated.")
-
-    if st.button("Sign out"):
-        _cached_digest.clear()
-        for key in ("authenticated", "user_id", "username"):
-            st.session_state.pop(key, None)
-        st.rerun()
-
-
 @st.cache_data(show_spinner=False, ttl=120)
 def _cached_quotes(tickers: tuple[str, ...]) -> dict[str, object]:
     return fetch_quotes(list(tickers))
@@ -165,9 +128,14 @@ def _cached_digest() -> tuple[dict | None, bool]:
     return digest, stale
 
 
+@st.cache_data(show_spinner=False, ttl=60)
+def _cached_sector_activity() -> list[dict]:
+    return fetch_sector_activity()
+
+
 @st.cache_data(show_spinner=False, ttl=300)
-def _cached_trials() -> list[dict]:
-    return fetch_trials_enriched(limit=200, active_first=True)
+def _cached_sector_trials(sector_id: str) -> list[dict]:
+    return fetch_trials_for_sector(sector_id, limit=80, active_first=True)
 
 
 @st.cache_data(show_spinner=False, ttl=60)
@@ -176,34 +144,24 @@ def _cached_alerts() -> list[dict]:
 
 
 @st.cache_data(show_spinner=False, ttl=60)
-def _cached_changes() -> list[dict]:
-    return fetch_phase_changes(limit=20)
-
-
-@st.cache_data(show_spinner=False, ttl=60)
 def _cached_runs() -> list[dict]:
     return fetch_runs(limit=15)
 
 
 @st.cache_data(show_spinner=False, ttl=300)
-def _cached_dataset_count() -> int:
-    return len(load_dataset())
-
-
-@st.cache_data(show_spinner=False, ttl=300)
-def _cached_eval_samples() -> list[dict]:
-    samples = load_dataset()
-    return [s.to_dict() for s in samples[:12]] if samples else []
+def _cached_historical_samples() -> list[dict]:
+    return load_historical_samples()
 
 
 def _clear_data_caches() -> None:
     """Force Streamlit panels to re-read DB / digest after a manual scan."""
     for fn in (
         _cached_digest,
-        _cached_trials,
+        _cached_sector_activity,
+        _cached_sector_trials,
         _cached_alerts,
-        _cached_changes,
         _cached_runs,
+        _cached_historical_samples,
         _cached_quotes,
     ):
         try:
@@ -305,96 +263,92 @@ def render_manual_refresh(*, key_prefix: str = "manual") -> None:
         st.rerun()
 
 
-def watchlist_panel() -> None:
-    """Instant read — full cross-sector catalogue, with AI digest enrichment when available."""
-    raw_digest, stale = _cached_digest()
-    digest, is_preview = merge_digest_with_preview(raw_digest)
-    user = get_user(st.session_state.get("user_id", 0))
-    focus, _ = get_sector_for_hour()
+def sector_detail_panel(sector_id: str) -> None:
+    sectors = load_sectors()
+    sector = next((s for s in sectors if s["id"] == sector_id), None)
+    if not sector:
+        st.session_state.pop("selected_sector", None)
+        st.rerun()
+        return
 
-    if user and user.is_admin:
-        if st.button("Rebuild full digest", type="secondary"):
-            build_daily_digest(force=True)
-            _clear_data_caches()
-            st.rerun()
+    activity = next((a for a in _cached_sector_activity() if a["id"] == sector_id), {})
 
-    with st.expander("Manual sector refresh", expanded=False):
-        render_manual_refresh(key_prefix="watchlist")
+    if st.button("← Back to sectors", key="back_to_home"):
+        st.session_state.pop("selected_sector", None)
+        st.rerun()
 
-    trials = digest.get("trials") or []
+    render_sector_header(sector, activity)
+
+    raw_digest, _ = _cached_digest()
+    trials = enrich_trials_with_news(
+        _cached_sector_trials(sector_id),
+        raw_digest,
+        max_fetch=8,
+    )
+
     if not trials:
-        render_empty_watchlist(
-            "Trial data will show here once the scraper runs. "
-            "Sample trials load automatically on first deploy."
+        render_empty_sector(
+            "No trials in this sector yet. The hourly scraper rotates through all areas — "
+            "check back after the next scan, or trigger a manual refresh from Account."
         )
         return
 
-    render_pulse_banner(
-        market_pulse=digest.get("market_pulse", ""),
-        sector_name=digest.get("focus_sector_name") or digest.get("sector_name") or focus["name"],
-        generated_at=digest.get("generated_at", ""),
-        trial_count=digest.get("trial_count", len(trials)),
-        stale=stale and not is_preview,
-        preview=is_preview,
-        sectors_covered=digest.get("sectors_covered"),
-        all_sectors=bool(digest.get("all_sectors", True)),
+    ticker_filter = st.text_input(
+        "Filter by ticker or company",
+        placeholder="e.g. LLY or Lilly",
+        key=f"sector_filter_{sector_id}",
     )
-
-    sector_options = ["All sectors"] + sorted(
-        {t.get("sector") for t in trials if t.get("sector")}
-    )
-    sector_filter = st.selectbox(
-        "Filter by sector",
-        sector_options,
-        index=0,
-        help=f"Hourly scraper is currently scanning {focus['name']}.",
-    )
-    if sector_filter != "All sectors":
-        trials = [t for t in trials if t.get("sector") == sector_filter]
-
-    render_trial_cards_grid(trials, quotes=_quotes_for(trials))
-
-
-def rotation_panel() -> None:
-    sectors = load_sectors()
-    now = datetime.now(timezone.utc)
-    current, index = get_sector_for_hour(now.hour)
-
-    render_metric_grid([
-        ("Focus now", current["name"]),
-        ("Rotation slot", f"{index + 1} of {len(sectors)}"),
-        ("Full cycle", f"Every {len(sectors)} hours"),
-    ])
-    render_manual_refresh(key_prefix="rotation")
-    st.markdown("**Upcoming schedule**")
-    render_rotation_schedule(sectors, index, now.hour)
-
-
-def trials_panel() -> None:
-    trials = _cached_trials()
-    if not trials:
-        st.info("No trials yet — the hourly scraper will populate this list.")
-        return
-
-    render_section_label(f"{len(trials)} trials from publicly traded sponsors")
-    ticker_filter = st.text_input("Filter by ticker or company", placeholder="e.g. LLY or Lilly")
     if ticker_filter.strip():
         q = ticker_filter.strip().lower()
         trials = [
-            t for t in trials
-            if q in t["ticker"].lower() or q in t["sponsor"].lower() or q in (t.get("drug") or "").lower()
+            t
+            for t in trials
+            if q in t["ticker"].lower()
+            or q in t["sponsor"].lower()
+            or q in (t.get("drug") or "").lower()
         ]
 
-    render_trial_list_cards(trials, quotes=_quotes_for(trials))
+    render_section_label(f"{len(trials)} active trials")
+    render_trial_cards_grid(trials, quotes=_quotes_for(trials))
 
 
-def changes_panel() -> None:
-    changes = _cached_changes()
-    if not changes:
-        st.info("No phase changes detected yet — these appear when trials advance or halt.")
+def home_panel() -> None:
+    selected = st.session_state.get("selected_sector")
+    if selected:
+        sector_detail_panel(selected)
         return
-    st.markdown(f"**{len(changes)} recent updates**")
-    render_change_cards(changes, quotes=_quotes_for(changes))
+
+    focus, _ = get_sector_for_hour()
+    activity = _cached_sector_activity()
+    render_home_hero(focus["name"])
+    render_section_label("Sectors — activity at a glance")
+    render_sector_grid(activity, key_prefix="home_sector")
+
+
+def history_panel() -> None:
+    report = load_evaluation_report()
+    samples = _cached_historical_samples()
+
+    render_history_scoreboard(report)
+
+    if report:
+        methodology = report.get("methodology", {})
+        ds = report.get("dataset", {})
+        st.caption(
+            f"Labels use {methodology.get('label', '5-day forward return ≥ 2%')}. "
+            f"{ds.get('total_samples', len(samples))} historical events · "
+            f"news cut off at each event date."
+        )
+
+    picks = get_favorable_picks(samples, limit=12)
+    render_history_picks_gallery(picks)
+
+    ticker_filter = st.text_input(
+        "Browse events",
+        placeholder="Filter by ticker, sponsor, or drug",
+        key="history_ticker_filter",
+    )
+    render_history_browse(samples, ticker_filter=ticker_filter)
 
 
 def _default_alert_recipient() -> str:
@@ -465,65 +419,45 @@ def alerts_panel() -> None:
     render_alert_timeline(alerts)
 
 
-def runs_panel() -> None:
-    runs = _cached_runs()
-    if not runs:
-        st.info("No pipeline runs logged yet.")
+def account_panel() -> None:
+    user = get_user(st.session_state.user_id)
+    if not user:
+        st.error("Session expired. Please sign in again.")
         return
-    st.markdown("**Recent scraper runs**")
-    render_run_cards(runs)
 
+    render_settings_rows([
+        ("Username", user.username),
+        ("Role", "Administrator" if user.is_admin else "User"),
+        ("Alert email", user.alert_email or "Not set"),
+    ])
 
-def evaluation_panel() -> None:
-    report_path = DATA_DIR / "evaluation_report.json"
-    from src.ml.progress import load_progress
+    with st.form("alert_email_form"):
+        alert_email = st.text_input("Alert email", value=user.alert_email or "")
+        if st.form_submit_button("Save alert email"):
+            update_alert_email(user.id, alert_email)
+            st.success("Alert email updated.")
 
-    live = load_progress()
-    if live and live.get("status") == "running":
-        st.info("Model training in progress…")
-        render_metric_grid([
-            ("Events processed", f"{live.get('processed', 0)}/{live.get('total_events_fetched', 0)}"),
-            ("Samples built", str(live.get("samples_built", 0))),
-            ("Searches", str(live.get("openai_searches", live.get("serper_calls", 0)))),
-            ("Time left", f"{int(live.get('eta_seconds', 0) // 60)} min" if live.get("eta_seconds") else "—"),
-        ])
+    with st.form("password_form"):
+        st.markdown("**Change password**")
+        current = st.text_input("Current password", type="password")
+        new_pw = st.text_input("New password", type="password")
+        confirm = st.text_input("Confirm new password", type="password")
+        if st.form_submit_button("Update password"):
+            if not authenticate(user.username, current):
+                st.error("Current password is incorrect.")
+            elif len(new_pw) < 8:
+                st.error("New password must be at least 8 characters.")
+            elif new_pw != confirm:
+                st.error("New passwords do not match.")
+            else:
+                update_password(user.id, new_pw)
+                st.success("Password updated.")
 
-    st.caption(
-        "How we score the model: news is cut off at each event date; "
-        "labels use 5-day stock returns after the event."
-    )
-
-    if report_path.exists():
-        report = json.loads(report_path.read_text(encoding="utf-8"))
-        metrics = report.get("metrics", {})
-        render_metric_grid([
-            ("Test accuracy", f"{metrics.get('accuracy', 0):.1%}" if metrics.get("accuracy") is not None else "—"),
-            ("F1 score", f"{metrics.get('f1', 0):.2f}" if metrics.get("f1") is not None else "—"),
-            ("ROC-AUC", f"{metrics.get('roc_auc', 0):.2f}" if metrics.get("roc_auc") is not None else "—"),
-            ("Baseline", f"{metrics.get('baseline_accuracy', 0):.1%}" if metrics.get("baseline_accuracy") is not None else "—"),
-        ])
-        ds = report.get("dataset", {})
-        st.markdown(
-            f"**Dataset:** {ds.get('total_samples', 0)} samples · "
-            f"train {ds.get('train_date_range', ['',''])[0]} → "
-            f"test {ds.get('test_date_range', ['',''])[-1]}"
-        )
-    else:
-        st.info("No evaluation report yet. Run `python -m src.ml.evaluate --rebuild` locally.")
-
-    sample_rows = _cached_eval_samples()
-    if sample_rows:
-        st.markdown(f"**Historical samples cached:** {_cached_dataset_count()}")
-        preview = pd.DataFrame(sample_rows)[
-            ["event_date", "ticker", "nct_id", "label", "analyst_tone"]
-        ].rename(columns={
-            "event_date": "Date",
-            "ticker": "Ticker",
-            "nct_id": "Trial ID",
-            "label": "Favorable",
-            "analyst_tone": "Tone",
-        })
-        st.dataframe(preview, hide_index=True, use_container_width=True)
+    if st.button("Sign out"):
+        _clear_data_caches()
+        for key in ("authenticated", "user_id", "username", "selected_sector"):
+            st.session_state.pop(key, None)
+        st.rerun()
 
 
 def config_panel() -> None:
@@ -553,26 +487,84 @@ def legal_panel() -> None:
     st.caption("Elentrx™ is a trademark of Brendan Fox. See TRADEMARKS.md for third-party marks.")
 
 
+def admin_panel() -> None:
+    user = get_user(st.session_state.get("user_id", 0))
+    if not user or not user.is_admin:
+        st.caption("Admin tools are available to administrators only.")
+        return
+
+    if st.button("Rebuild full digest", type="secondary"):
+        build_daily_digest(force=True)
+        _clear_data_caches()
+        st.rerun()
+
+    with st.expander("Manual sector refresh", expanded=False):
+        render_manual_refresh(key_prefix="account")
+
+    sectors = load_sectors()
+    now = datetime.now(timezone.utc)
+    current, index = get_sector_for_hour(now.hour)
+
+    st.markdown("**Hourly rotation**")
+    render_metric_grid([
+        ("Focus now", current["name"]),
+        ("Rotation slot", f"{index + 1} of {len(sectors)}"),
+        ("Full cycle", f"Every {len(sectors)} hours"),
+    ])
+    render_rotation_schedule(sectors, index, now.hour)
+
+    runs = _cached_runs()
+    if runs:
+        st.markdown("**Recent scraper runs**")
+        render_run_cards(runs)
+    else:
+        st.info("No pipeline runs logged yet.")
+
+    live = load_progress()
+    if live and live.get("status") == "running":
+        st.info("Model training in progress…")
+        render_metric_grid([
+            ("Events processed", f"{live.get('processed', 0)}/{live.get('total_events_fetched', 0)}"),
+            ("Samples built", str(live.get("samples_built", 0))),
+            ("Searches", str(live.get("openai_searches", live.get("serper_calls", 0)))),
+            ("Time left", f"{int(live.get('eta_seconds', 0) // 60)} min" if live.get("eta_seconds") else "—"),
+        ])
+
+    report = load_evaluation_report()
+    if report:
+        metrics = report.get("metrics", {})
+        ds = report.get("dataset", {})
+        render_metric_grid([
+            ("Test accuracy", f"{metrics.get('accuracy', 0):.1%}" if metrics.get("accuracy") is not None else "—"),
+            ("F1 score", f"{metrics.get('f1', 0):.2f}" if metrics.get("f1") is not None else "—"),
+            ("ROC-AUC", f"{metrics.get('roc_auc', 0):.2f}" if metrics.get("roc_auc") is not None else "—"),
+            ("Dataset", f"{ds.get('total_samples', 0)} samples"),
+        ])
+    elif HISTORICAL_DATASET_PATH.exists():
+        st.caption(f"Historical dataset: {len(load_dataset())} samples on disk.")
+    else:
+        st.caption("No evaluation report yet. Run `python -m src.ml.evaluate --rebuild` locally.")
+
+
 def main() -> None:
     _ensure_app_ready()
     _require_login()
     inject_styles()
 
     username = st.session_state.get("username", "user")
-    # Drop removed pages (e.g. old Demo) from session so nav stays valid.
     if st.session_state.get("nav_page") not in NAV_PAGES:
         st.session_state.nav_page = NAV_PAGES[0]
+        st.session_state.pop("selected_sector", None)
 
     with st.sidebar:
         render_sidebar_brand()
         st.caption(f"Signed in · {username}")
         if st.button("Sign out", use_container_width=True):
-            _cached_digest.clear()
-            for key in ("authenticated", "user_id", "username", "_app_ready"):
+            _clear_data_caches()
+            for key in ("authenticated", "user_id", "username", "_app_ready", "selected_sector"):
                 st.session_state.pop(key, None)
             st.rerun()
 
-    # Keep nav clear of the Streamlit header so pill tops aren't clipped.
     st.markdown(
         '<div style="height:0.75rem;"></div>'
         '<style>'
@@ -594,48 +586,35 @@ def main() -> None:
     page_key = st.session_state.nav_page
     page = _NAV_LABELS.get(page_key, page_key)
 
-    if page == "Watchlist":
-        render_page_header("Watchlist", "Daily sector digest and tracked trials")
-        watchlist_panel()
-    elif page == "Trials":
-        render_page_header("Trials", "Public biotech studies we're tracking")
-        trials_panel()
-    elif page == "Updates":
-        render_page_header("Updates", "Phase advances, completions, and halts")
-        changes_panel()
+    if page != "Home" and st.session_state.get("selected_sector"):
+        st.session_state.pop("selected_sector", None)
+
+    if page == "Home":
+        render_page_header("Home", "Sector activity and live trial drill-downs")
+        home_panel()
+    elif page == "History":
+        render_page_header("History", "Past events, market reactions, and model performance")
+        history_panel()
     elif page == "Alerts":
         render_page_header("Alerts", "Email notifications and test delivery")
         alerts_panel()
-    elif page == "Activity":
-        render_page_header("Activity", "Rotation schedule, pipeline runs, and model evaluation")
+    elif page == "Account":
+        render_page_header("Account", "Profile, configuration, and legal")
         tab = st.segmented_control(
-            "Activity section",
-            ["Rotation", "Runs", "Evaluation"],
-            default="Rotation",
+            "Account section",
+            ["Profile", "Config", "Legal", "Admin"],
+            default="Profile",
             label_visibility="collapsed",
-            key="activity_tab",
+            key="account_tab",
         )
-        if tab == "Rotation":
-            rotation_panel()
-        elif tab == "Runs":
-            runs_panel()
-        else:
-            evaluation_panel()
-    elif page == "Settings":
-        render_page_header("Settings", "Account, configuration, and legal")
-        tab = st.segmented_control(
-            "Settings section",
-            ["Account", "Config", "Legal"],
-            default="Account",
-            label_visibility="collapsed",
-            key="settings_tab",
-        )
-        if tab == "Account":
+        if tab == "Profile":
             account_panel()
         elif tab == "Config":
             config_panel()
-        else:
+        elif tab == "Legal":
             legal_panel()
+        else:
+            admin_panel()
 
 
 if __name__ == "__main__":

@@ -3,10 +3,12 @@
 from __future__ import annotations
 
 import json
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
-from src.config import get_sector_for_hour, load_sectors
+from src.config import DATA_DIR, get_sector_for_hour, load_sectors
 from src.db.schema import get_connection, init_db
+
+EVALUATION_REPORT_PATH = DATA_DIR / "evaluation_report.json"
 
 PHASE_LABELS = {
     "PHASE1": "Phase 1",
@@ -152,6 +154,256 @@ def fetch_trial_sector_counts() -> dict[str, int]:
             "SELECT sector_id, COUNT(*) AS n FROM trials GROUP BY sector_id"
         ).fetchall()
     return {str(r["sector_id"] or "other"): int(r["n"]) for r in rows}
+
+
+def format_relative_time(iso_ts: str | None) -> str:
+    """Human-readable relative time from an ISO timestamp."""
+    if not iso_ts:
+        return ""
+    try:
+        ts = iso_ts.replace("Z", "+00:00")
+        dt = datetime.fromisoformat(ts)
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        delta = datetime.now(timezone.utc) - dt
+        seconds = int(delta.total_seconds())
+        if seconds < 60:
+            return "just now"
+        if seconds < 3600:
+            return f"{seconds // 60}m ago"
+        if seconds < 86400:
+            return f"{seconds // 3600}h ago"
+        if seconds < 86400 * 30:
+            return f"{seconds // 86400}d ago"
+        return f"{seconds // (86400 * 30)}mo ago"
+    except (ValueError, TypeError):
+        return ""
+
+
+def fetch_sector_activity(days_30: int = 30, days_365: int = 365) -> list[dict]:
+    """Per-sector trial counts and phase-change activity."""
+    init_db()
+    sectors = load_sectors()
+    trial_counts = fetch_trial_sector_counts()
+    now = datetime.now(timezone.utc)
+    cutoff_30 = (now - timedelta(days=days_30)).isoformat()
+    cutoff_365 = (now - timedelta(days=days_365)).isoformat()
+
+    with get_connection() as conn:
+        changes_30 = {
+            str(r["sector_id"]): int(r["n"])
+            for r in conn.execute(
+                """
+                SELECT sector_id, COUNT(*) AS n FROM phase_changes
+                WHERE detected_at >= ? GROUP BY sector_id
+                """,
+                (cutoff_30,),
+            ).fetchall()
+        }
+        changes_365 = {
+            str(r["sector_id"]): int(r["n"])
+            for r in conn.execute(
+                """
+                SELECT sector_id, COUNT(*) AS n FROM phase_changes
+                WHERE detected_at >= ? GROUP BY sector_id
+                """,
+                (cutoff_365,),
+            ).fetchall()
+        }
+        last_changes = {
+            str(r["sector_id"]): r["last_at"]
+            for r in conn.execute(
+                "SELECT sector_id, MAX(detected_at) AS last_at FROM phase_changes GROUP BY sector_id"
+            ).fetchall()
+        }
+
+    max_30d = max([changes_30.get(s["id"], 0) for s in sectors] + [1])
+    out: list[dict] = []
+    for sector in sectors:
+        sid = sector["id"]
+        c30 = changes_30.get(sid, 0)
+        out.append(
+            {
+                "id": sid,
+                "name": sector["name"],
+                "trial_count": trial_counts.get(sid, 0),
+                "changes_30d": c30,
+                "changes_365d": changes_365.get(sid, 0),
+                "last_change_at": last_changes.get(sid),
+                "last_change_relative": format_relative_time(last_changes.get(sid)),
+                "activity_weight": c30 / max_30d if max_30d else 0.0,
+            }
+        )
+    return out
+
+
+def fetch_trials_for_sector(
+    sector_id: str,
+    limit: int = 80,
+    *,
+    active_first: bool = True,
+) -> list[dict]:
+    """Trials for one sector — same shape as fetch_trials_enriched."""
+    init_db()
+    order_sql = (
+        """
+        ORDER BY
+          CASE WHEN t.phase IN ('PHASE2', 'PHASE3', 'PHASE4') THEN 0 ELSE 1 END,
+          CASE WHEN t.overall_status IN (
+              'RECRUITING', 'ACTIVE_NOT_RECRUITING', 'ENROLLING_BY_INVITATION'
+          ) THEN 0 ELSE 1 END,
+          t.last_seen_at DESC
+        """
+        if active_first
+        else "ORDER BY t.last_seen_at DESC"
+    )
+    with get_connection() as conn:
+        rows = conn.execute(
+            f"""
+            SELECT
+                t.nct_id, t.ticker, t.sponsor, t.drug, t.sector_id,
+                t.phase, t.overall_status, t.title, t.last_seen_at,
+                (
+                    SELECT rb.summary FROM phase_changes pc
+                    JOIN research_briefs rb ON rb.phase_change_id = pc.id
+                    WHERE pc.nct_id = t.nct_id
+                    ORDER BY pc.detected_at DESC LIMIT 1
+                ) AS brief_summary,
+                (
+                    SELECT rb.analyst_tone FROM phase_changes pc
+                    JOIN research_briefs rb ON rb.phase_change_id = pc.id
+                    WHERE pc.nct_id = t.nct_id
+                    ORDER BY pc.detected_at DESC LIMIT 1
+                ) AS analyst_tone,
+                (
+                    SELECT cs.probability FROM phase_changes pc
+                    JOIN classifier_scores cs ON cs.phase_change_id = pc.id
+                    WHERE pc.nct_id = t.nct_id
+                    ORDER BY pc.detected_at DESC LIMIT 1
+                ) AS score
+            FROM trials t
+            WHERE t.sector_id = ?
+            {order_sql}
+            LIMIT ?
+            """,
+            (sector_id, limit),
+        ).fetchall()
+
+    out: list[dict] = []
+    for row in rows:
+        title = row["title"] or ""
+        brief = row["brief_summary"] or (
+            title[:220] + "…" if len(title) > 220 else title
+        ) or f"{row['sponsor']} study for {row['drug'] or 'pipeline candidate'}."
+        out.append(
+            {
+                "nct_id": row["nct_id"],
+                "ticker": row["ticker"],
+                "sponsor": row["sponsor"],
+                "drug": row["drug"],
+                "sector_id": row["sector_id"],
+                "sector": sector_name(row["sector_id"]),
+                "phase": row["phase"],
+                "phase_label": human_phase(row["phase"]),
+                "status": row["overall_status"],
+                "status_label": human_status(row["overall_status"]),
+                "title": title,
+                "last_seen_at": row["last_seen_at"],
+                "brief": brief,
+                "headline": _headline_from_trial(row["ticker"], row["drug"], row["phase"]),
+                "analyst_tone": row["analyst_tone"] or "neutral",
+                "score": float(row["score"]) if row["score"] is not None else None,
+                "watch_reason": f"{human_phase(row['phase'])} · {human_status(row['overall_status'])}",
+                "news": [],
+                "catalysts": [],
+                "preview": True,
+            }
+        )
+    return out
+
+
+def load_evaluation_report() -> dict | None:
+    if not EVALUATION_REPORT_PATH.exists():
+        return None
+    return json.loads(EVALUATION_REPORT_PATH.read_text(encoding="utf-8"))
+
+
+def load_historical_samples() -> list[dict]:
+    from src.ml.historical import load_dataset
+
+    return [s.to_dict() for s in load_dataset()]
+
+
+def get_favorable_picks(samples: list[dict], limit: int = 12) -> list[dict]:
+    """Events with positive 5-day forward returns, strongest reactions first."""
+    picks = [s for s in samples if s.get("label") == 1]
+    picks.sort(key=lambda s: float(s.get("forward_return_5d") or 0), reverse=True)
+    return picks[:limit]
+
+
+def news_map_from_digest(digest: dict | None) -> dict[str, list[dict]]:
+    if not digest:
+        return {}
+    out: dict[str, list[dict]] = {}
+    for trial in digest.get("trials") or []:
+        nct = trial.get("nct_id")
+        news = trial.get("news") or []
+        if nct and news:
+            out[nct] = news
+    return out
+
+
+def _fetch_news_for_trial_dict(trial: dict, max_results: int = 3) -> list[dict]:
+    from src.research.search import build_fallback_queries, search_news
+
+    queries = build_fallback_queries(
+        trial.get("ticker") or "",
+        trial.get("drug"),
+        trial.get("sponsor"),
+    )
+    results: list[dict] = []
+    seen_urls: set[str] = set()
+    for query in queries:
+        for hit in search_news(query, max_results=max_results):
+            if hit.url in seen_urls:
+                continue
+            seen_urls.add(hit.url)
+            results.append(
+                {
+                    "title": hit.title,
+                    "url": hit.url,
+                    "source": hit.source,
+                    "published_at": hit.published_at.isoformat() if hit.published_at else None,
+                }
+            )
+            if len(results) >= max_results:
+                return results
+    return results
+
+
+def enrich_trials_with_news(
+    trials: list[dict],
+    digest: dict | None,
+    *,
+    max_fetch: int = 8,
+) -> list[dict]:
+    """Overlay digest news; on-demand fetch for top trials missing headlines."""
+    overlay = news_map_from_digest(digest)
+    fetch_count = 0
+    enriched: list[dict] = []
+    for trial in trials:
+        row = dict(trial)
+        nct = row.get("nct_id")
+        if nct and overlay.get(nct):
+            row["news"] = overlay[nct]
+            row["preview"] = False
+        elif not row.get("news") and fetch_count < max_fetch:
+            row["news"] = _fetch_news_for_trial_dict(row)
+            if row["news"]:
+                row["preview"] = False
+            fetch_count += 1
+        enriched.append(row)
+    return enriched
 
 
 def fetch_phase_changes(limit: int = 20) -> list[dict]:
