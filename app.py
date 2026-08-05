@@ -7,60 +7,65 @@ from datetime import datetime, timezone
 
 import streamlit as st
 
-from src.alert.email import email_configured, resend_configured, send_trial_alert
-from src.ui.auth_page import render_auth_page
-from src.auth.users import (
-    authenticate,
-    ensure_bootstrap_admin,
-    get_user,
-    update_alert_email,
-    update_password,
-)
-from src.config import DATA_DIR, FAVORABILITY_THRESHOLD, get_sector_for_hour, hydrate_streamlit_secrets, load_sectors
-from src.db.schema import init_db
-from src.db.seed import seed_if_empty
-from src.research.watchlist import (
-    build_daily_digest,
-    cache_is_fresh,
-    load_digest_for_display,
-)
-from src.ui.trial_data import (
-    enrich_trials_with_news,
-    fetch_alerts,
-    fetch_runs,
-    fetch_sector_activity,
-    fetch_trials_for_sector,
-    get_favorable_picks,
-    load_evaluation_report,
-    load_historical_samples,
-)
-from src.ui.styles import (
-    inject_styles,
-    render_alert_timeline,
-    render_empty_sector,
-    render_history_browse,
-    render_history_picks_gallery,
-    render_history_scoreboard,
-    render_home_hero,
-    render_metric_grid,
-    render_page_header,
-    render_run_cards,
-    render_rotation_schedule,
-    render_section_label,
-    render_sector_grid,
-    render_sector_header,
-    render_settings_rows,
-    render_sidebar_brand,
-    render_trial_cards_grid,
-)
-from src.market.quotes import fetch_quotes
-
 st.set_page_config(
     page_title="Elentrx - Clinical Trial Alerter",
     page_icon="assets/elentrx-ui.png",
     layout="wide",
     initial_sidebar_state="expanded",
 )
+
+try:
+    from src.alert.email import email_configured, resend_configured, send_trial_alert
+    from src.ui.auth_page import render_auth_page
+    from src.auth.users import (
+        authenticate,
+        ensure_bootstrap_admin,
+        get_user,
+        update_alert_email,
+        update_password,
+    )
+    from src.config import DATA_DIR, FAVORABILITY_THRESHOLD, get_sector_for_hour, hydrate_streamlit_secrets, load_sectors
+    from src.db.schema import init_db
+    from src.db.seed import seed_if_empty
+    from src.research.watchlist import (
+        build_daily_digest,
+        cache_is_fresh,
+        load_digest_for_display,
+    )
+    from src.ui.trial_data import (
+        enrich_trials_with_news,
+        fetch_alerts,
+        fetch_runs,
+        fetch_sector_activity,
+        fetch_trials_for_sector,
+        get_favorable_picks,
+        load_evaluation_report,
+        load_historical_samples,
+    )
+    from src.ui.styles import (
+        inject_styles,
+        render_alert_timeline,
+        render_empty_sector,
+        render_history_browse,
+        render_history_picks_gallery,
+        render_history_scoreboard,
+        render_home_hero,
+        render_metric_grid,
+        render_page_header,
+        render_run_cards,
+        render_rotation_schedule,
+        render_section_label,
+        render_sector_grid,
+        render_sector_header,
+        render_settings_rows,
+        render_sidebar_brand,
+        render_trial_cards_grid,
+    )
+    from src.market.quotes import fetch_quotes
+except Exception as _import_exc:
+    st.error("Elentrx failed to import a required module.")
+    st.exception(_import_exc)
+    st.stop()
 
 LEGAL_FILES = {
     "Disclaimer": DATA_DIR.parent / "DISCLAIMER.md",
@@ -631,4 +636,3 @@ try:
     main()
 except Exception as exc:
     st.exception(exc)
-    raise
