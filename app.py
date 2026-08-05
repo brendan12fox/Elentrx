@@ -585,10 +585,10 @@ def main() -> None:
         unsafe_allow_html=True,
     )
     with st.container(border=True):
-        st.pills(
+        st.radio(
             "Navigate",
             NAV_PAGES,
-            selection_mode="single",
+            horizontal=True,
             key="nav_page",
             label_visibility="collapsed",
         )
@@ -610,12 +610,12 @@ def main() -> None:
         alerts_panel()
     elif page == "Account":
         render_page_header("Account", "Profile, configuration, and legal")
-        tab = st.segmented_control(
+        tab = st.radio(
             "Account section",
             ["Profile", "Config", "Legal", "Admin"],
-            default="Profile",
-            label_visibility="collapsed",
+            horizontal=True,
             key="account_tab",
+            label_visibility="collapsed",
         )
         if tab == "Profile":
             account_panel()
