@@ -6,13 +6,9 @@ import logging
 from dataclasses import dataclass
 from datetime import datetime, timezone
 
+import yfinance as yf
+
 logging.getLogger("yfinance").setLevel(logging.CRITICAL)
-
-
-def _yf():
-    import yfinance as yf
-
-    return yf
 
 
 @dataclass
@@ -64,14 +60,12 @@ def fetch_quote(ticker: str) -> StockQuote | None:
     if not sym:
         return None
     try:
-        yf = _yf()
         parsed = _parse_fast_info(sym, yf.Ticker(sym).fast_info)
         if parsed:
             return parsed
     except Exception:
         pass
     try:
-        yf = _yf()
         hist = yf.Ticker(sym).history(period="5d", interval="1d")
         if hist.empty:
             return None
