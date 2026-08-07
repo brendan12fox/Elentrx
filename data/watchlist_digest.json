@@ -1,115 +1,237 @@
 {
-  "cache_key": "2026-08-05",
-  "generated_at": "2026-08-05T17:38:01.173471+00:00",
-  "sector_id": "immunology",
-  "sector_name": "Immunology / Inflammation",
-  "market_pulse": "Biotech sector shows resilience with ongoing trials across various therapeutic areas. Immunology / Inflammation is this hour's scan focus, highlighting significant developments in chronic conditions.",
+  "cache_key": "2026-08-07",
+  "generated_at": "2026-08-07T04:58:15.776321+00:00",
+  "sector_id": "infectious",
+  "sector_name": "Infectious Disease",
+  "market_pulse": "Biotech trials continue to show momentum across various sectors, with significant advancements in infectious disease treatments. This hour's scan focus is on infectious disease trials, highlighting ongoing developments in vaccines and antiviral therapies.",
   "trials": [
     {
-      "nct_id": "NCT07216079",
-      "ticker": "SNY",
-      "sponsor": "Sanofi",
-      "drug": "rilzabrutinib",
+      "nct_id": "NCT06067230",
+      "ticker": "MRNA",
+      "sponsor": "ModernaTX, Inc.",
+      "drug": "mRNA-1345",
       "phase": "PHASE3",
       "status": "ACTIVE_NOT_RECRUITING",
-      "title": "Rilzabrutinib for the Adult Participants With Chronic ITP Who Have Completed Phase 3 Study in Japan",
+      "title": "A Study to Investigate the Immunogenicity and Safety of mRNA-1345 Vaccine Targeting Respiratory Syncytial Virus (RSV) in High-risk Adults",
       "change_type": null,
-      "watch_reason": "Active PHASE3 \u00b7 Immunology / Inflammation",
+      "watch_reason": "Active PHASE3 \u00b7 Infectious Disease",
       "score": null,
       "detected_at": null,
-      "headline": "Sanofi's Rilzabrutinib Trial Active in Chronic ITP",
-      "brief": "Sanofi's rilzabrutinib is currently in a Phase 3 trial for adult participants with chronic immune thrombocytopenic purpura (ITP). The trial is active but not recruiting, indicating ongoing evaluation of the drug's efficacy following previous studies.",
-      "analyst_tone": "neutral",
-      "catalysts": [
-        "Completion of trial results",
-        "Potential regulatory updates",
-        "Market response to ongoing approvals"
-      ],
-      "news": [
-        {
-          "title": "Sanofi injectable multiple myeloma drug approved (SNY:NASDAQ) - Seeking Alpha",
-          "url": "https://news.google.com/search?q=Sanofi+injectable+multiple+myeloma+drug+approved+%28SNY%3ANASDAQ%29+-+Seeking+Alpha&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-10"
-        },
-        {
-          "title": "Sanofi (ENXTPA:SAN) Could Be 21% Undervalued As FDA Clears Sarclisa Escena - Yahoo Finance",
-          "url": "https://news.google.com/search?q=Sanofi+%28ENXTPA%3ASAN%29+Could+Be+21%25+Undervalued+As+FDA+Clears+Sarclisa+Escena+-+Yahoo+Finance&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-11"
-        },
-        {
-          "title": "US FDA approves Sanofi's wearable injector form of blood cancer drug - Reuters",
-          "url": "https://news.google.com/search?q=US+FDA+approves+Sanofi%27s+wearable+injector+form+of+blood+cancer+drug+-+Reuters&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-10"
-        },
-        {
-          "title": "FDA clears Sarclisa Escena on-body injector for Sanofi (NASDAQ: SNY) - Stock Titan",
-          "url": "https://news.google.com/search?q=FDA+clears+Sarclisa+Escena+on-body+injector+for+Sanofi+%28NASDAQ%3A+SNY%29+-+Stock+Titan&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-17"
-        }
-      ]
-    },
-    {
-      "nct_id": "NCT07221838",
-      "ticker": "IONS",
-      "sponsor": "Alexion Pharmaceuticals, Inc.",
-      "drug": "Ravulizumab",
-      "phase": "PHASE4",
-      "status": "RECRUITING",
-      "title": "A Study to Investigate OCS Tapering in Adult Participants With Generalized Myasthenia Gravis Treated With Ravulizumab",
-      "change_type": null,
-      "watch_reason": "Active PHASE4 \u00b7 Immunology / Inflammation",
-      "score": null,
-      "detected_at": null,
-      "headline": "Alexion's Ravulizumab Phase 4 Study Recruiting",
-      "brief": "Alexion Pharmaceuticals is actively recruiting for a Phase 4 study of ravulizumab in adults with generalized myasthenia gravis. This study aims to investigate the effects of tapering OCS treatment, which could provide insights into long-term management strategies.",
+      "headline": "Moderna's RSV Vaccine Phase 3 Active",
+      "brief": "Moderna's mRNA-1345 vaccine for RSV is currently in Phase 3 and is actively investigating its immunogenicity and safety in high-risk adults. With recent FDA approvals for mRNA flu vaccines, investor interest in Moderna's pipeline may increase.",
       "analyst_tone": "bullish",
       "catalysts": [
-        "Interim results from ongoing recruitment",
-        "Potential for expanded indications",
-        "Market interest in myasthenia gravis therapies"
+        "Completion of Phase 3 trial",
+        "Potential FDA submission",
+        "Market response to flu vaccine approval"
       ],
       "news": [
         {
-          "title": "Biotech Stocks Need A Shot In The Arm After Brutal July: Could AstraZeneca-Bristol Myers Megadeal Be The Cure? - es.tradingview.com",
-          "url": "https://news.google.com/search?q=Biotech+Stocks+Need+A+Shot+In+The+Arm+After+Brutal+July%3A+Could+AstraZeneca-Bristol+Myers+Megadeal+Be+The+Cure%3F+-+es.tradingview.com&hl=en-US&gl=US&ceid=US:en",
+          "title": "Moderna (Nasdaq: MRNA) details Q2 loss and $950 million patent settlement - Stock Titan",
+          "url": "https://news.google.com/search?q=Moderna+%28Nasdaq%3A+MRNA%29+details+Q2+loss+and+%24950+million+patent+settlement+-+Stock+Titan&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
-          "published_at": "2026-08-03"
+          "published_at": "2026-07-31"
         },
         {
-          "title": "Weekly Buzz : Cipla , Viatris Win FDA Nod ; Boston Scientific Cuts Jobs ; argenx Snaps Up Forte Biosciences ; Johnson & Johnson , GSK Strike Deals",
-          "url": "https://www.finanznachrichten.de/nachrichten-2026-07/69186491-weekly-buzz-cipla-viatris-win-fda-nod-boston-scientific-cuts-jobs-argenx-snaps-up-forte-biosciences-johnson-johnson-gsk-strike-deals-020.htm",
-          "source": "gdelt",
-          "published_at": "2026-07-31"
+          "title": "FDA approves first mRNA flu vaccine - thehill.com",
+          "url": "https://news.google.com/search?q=FDA+approves+first+mRNA+flu+vaccine+-+thehill.com&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-06"
+        },
+        {
+          "title": "F.D.A. Approves Moderna\u2019s mRNA Flu Vaccine - The New York Times",
+          "url": "https://news.google.com/search?q=F.D.A.+Approves+Moderna%E2%80%99s+mRNA+Flu+Vaccine+-+The+New+York+Times&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-06"
+        },
+        {
+          "title": "FDA approves Moderna's mRNA flu vaccine after initial pushback - CBS News",
+          "url": "https://news.google.com/search?q=FDA+approves+Moderna%27s+mRNA+flu+vaccine+after+initial+pushback+-+CBS+News&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-06"
         }
       ]
     },
     {
-      "nct_id": "NCT06607016",
-      "ticker": "JAZZ",
-      "sponsor": "Shanghai Bao Pharmaceuticals Co., Ltd.",
-      "drug": "KJ103 for Injection",
+      "nct_id": "NCT07096193",
+      "ticker": "GILD",
+      "sponsor": "Gilead Sciences",
+      "drug": "GS-4321",
       "phase": "PHASE2",
-      "status": "ACTIVE_NOT_RECRUITING",
-      "title": "A Clinical Trial With KJ103 in Anti-GBM Disease",
+      "status": "RECRUITING",
+      "title": "Study of GS-4321 in Healthy Participants and Participants With Chronic Hepatitis Delta Virus",
       "change_type": null,
-      "watch_reason": "Active PHASE2 \u00b7 Immunology / Inflammation",
+      "watch_reason": "Active PHASE2 \u00b7 Infectious Disease",
       "score": null,
       "detected_at": null,
-      "headline": "JAZZ \u00b7 Active PHASE2 \u00b7 Immunology / Inflammation",
+      "headline": "Gilead's GS-4321 Phase 2 Recruiting",
+      "brief": "Gilead's GS-4321 is in Phase 2, targeting chronic hepatitis delta virus in healthy participants. The company has raised its full-year guidance, indicating strong sales growth and potential for upcoming regulatory approvals.",
+      "analyst_tone": "bullish",
+      "catalysts": [
+        "Completion of Phase 2 trial",
+        "Regulatory approval for GS-4321",
+        "Continued sales growth"
+      ],
+      "news": [
+        {
+          "title": "Kalshi to allow bets on clinical trials, FDA decisions - Reuters",
+          "url": "https://news.google.com/search?q=Kalshi+to+allow+bets+on+clinical+trials%2C+FDA+decisions+-+Reuters&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-16"
+        },
+        {
+          "title": "Gilead raises full-year guidance on 8% Q2 sales growth, eyes three near-term regulatory approvals - AllSci",
+          "url": "https://news.google.com/search?q=Gilead+raises+full-year+guidance+on+8%25+Q2+sales+growth%2C+eyes+three+near-term+regulatory+approvals+-+AllSci&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-05"
+        },
+        {
+          "title": "Gilead Sciences Announces Second Quarter 2026 Financial Results - businesswire.com",
+          "url": "https://news.google.com/search?q=Gilead+Sciences+Announces+Second+Quarter+2026+Financial+Results+-+businesswire.com&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-04"
+        },
+        {
+          "title": "Gilead Sciences, Inc. (GILD) Q2 FY2026 earnings call transcript - Yahoo Finance",
+          "url": "https://news.google.com/search?q=Gilead+Sciences%2C+Inc.+%28GILD%29+Q2+FY2026+earnings+call+transcript+-+Yahoo+Finance&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-04"
+        }
+      ]
+    },
+    {
+      "nct_id": "NCT07044297",
+      "ticker": "MRK",
+      "sponsor": "Merck Sharp & Dohme LLC",
+      "drug": "MK-8527",
+      "phase": "PHASE3",
+      "status": "RECRUITING",
+      "title": "A Clinical Study of MK-8527 to Prevent Human Immunodeficiency Virus Type 1 (HIV-1) (MK-8527-011)",
+      "change_type": null,
+      "watch_reason": "Active PHASE3 \u00b7 Infectious Disease",
+      "score": null,
+      "detected_at": null,
+      "headline": "Merck's MK-8527 Phase 3 Recruiting",
+      "brief": "Merck's MK-8527 is in Phase 3 for HIV prevention, actively recruiting participants. With emerging strategies in HIV management, this trial could significantly impact Merck's position in the infectious disease market.",
+      "analyst_tone": "bullish",
+      "catalysts": [
+        "Completion of recruitment",
+        "Data readout from Phase 3",
+        "Potential market launch"
+      ],
+      "news": [
+        {
+          "title": "Renee Heffron, Ph.D., M.P.H., on the case for MK-8527 | AIDS 2026 - Managed Healthcare Executive",
+          "url": "https://news.google.com/search?q=Renee+Heffron%2C+Ph.D.%2C+M.P.H.%2C+on+the+case+for+MK-8527+%7C+AIDS+2026+-+Managed+Healthcare+Executive&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-26"
+        },
+        {
+          "title": "Merck Announces Initial Access Plans for Alimatravir, an Investigational Once-Monthly Oral HIV Pre-Exposure Prophylaxis in Phase 3 Development - businesswire.com",
+          "url": "https://news.google.com/search?q=Merck+Announces+Initial+Access+Plans+for+Alimatravir%2C+an+Investigational+Once-Monthly+Oral+HIV+Pre-Exposure+Prophylaxis+in+Phase+3+Development+-+businesswire.co&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-24"
+        },
+        {
+          "title": "Redefining HIV Management: Emerging Antiretroviral Drug Classes and Immunologic Strategies Shaping the Future of HIV Treatment, Prevention - Contagion Live",
+          "url": "https://news.google.com/search?q=Redefining+HIV+Management%3A+Emerging+Antiretroviral+Drug+Classes+and+Immunologic+Strategies+Shaping+the+Future+of+HIV+Treatment%2C+Prevention+-+Contagion+Live&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-01"
+        },
+        {
+          "title": "Will Merck\u2019s (MRK) Early Royalty-Free HIV PrEP Licensing Strategy Redefine Its Global Health Narrative - Sahm",
+          "url": "https://news.google.com/search?q=Will+Merck%E2%80%99s+%28MRK%29+Early+Royalty-Free+HIV+PrEP+Licensing+Strategy+Redefine+Its+Global+Health+Narrative+-+Sahm&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-25"
+        }
+      ]
+    },
+    {
+      "nct_id": "NCT06263959",
+      "ticker": "VIR",
+      "sponsor": "Fujian Akeylink Biotechnology Co., Ltd.",
+      "drug": "GST-HG131",
+      "phase": "PHASE2",
+      "status": "RECRUITING",
+      "title": "A Randomized, Double-blind, Placebo-controlled Phase IIa Clinical Study to Evaluate the Safety and Efficacy of GST-HG131 Tablets in Patients With Chronic Hepatitis B",
+      "change_type": null,
+      "watch_reason": "Active PHASE2 \u00b7 Infectious Disease",
+      "score": null,
+      "detected_at": null,
+      "headline": "VIR's GST-HG131 Phase 2 Recruiting",
+      "brief": "Fujian Akeylink's GST-HG131 is in Phase 2 for chronic hepatitis B, currently recruiting participants. The lack of recent headlines may indicate a quieter phase, but successful outcomes could enhance investor interest.",
+      "analyst_tone": "neutral",
+      "catalysts": [
+        "Completion of recruitment",
+        "Initial data readout",
+        "Partnership opportunities"
+      ],
+      "news": []
+    },
+    {
+      "nct_id": "NCT06497504",
+      "ticker": "GSK",
+      "sponsor": "GlaxoSmithKline",
+      "drug": "Bepirovirsen",
+      "phase": "PHASE2",
+      "status": "ACTIVE_NOT_RECRUITING",
+      "title": "Study of Bepirovirsen in Participants Living With Human Immunodeficiency Virus and Chronic Hepatitis B Virus Infection (B-Focus)",
+      "change_type": null,
+      "watch_reason": "Active PHASE2 \u00b7 Infectious Disease",
+      "score": null,
+      "detected_at": null,
+      "headline": "GSK's Bepirovirsen Phase 2 Active",
+      "brief": "GSK's Bepirovirsen is in Phase 2 for HIV and hepatitis B co-infection, currently not recruiting. With GSK's recent entry into the lung cancer market, investor focus may shift, but this trial remains a key component of their infectious disease strategy.",
+      "analyst_tone": "neutral",
+      "catalysts": [
+        "Data readout from ongoing trials",
+        "Potential partnership announcements",
+        "Regulatory updates"
+      ],
+      "news": [
+        {
+          "title": "GSK enters lung cancer drug market with early FDA nod for Jideytro - Reuters",
+          "url": "https://news.google.com/search?q=GSK+enters+lung+cancer+drug+market+with+early+FDA+nod+for+Jideytro+-+Reuters&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-22"
+        },
+        {
+          "title": "GSK to seek FDA approval for Jemperli in small but high-profile cancer use after phase 2 win - Fierce Pharma",
+          "url": "https://news.google.com/search?q=GSK+to+seek+FDA+approval+for+Jemperli+in+small+but+high-profile+cancer+use+after+phase+2+win+-+Fierce+Pharma&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-13"
+        },
+        {
+          "title": "GSK\u2019s licensor Hansoh Pharma announces positive results from a second phase III trial for Ris-Rez in China - GSK",
+          "url": "https://news.google.com/search?q=GSK%E2%80%99s+licensor+Hansoh+Pharma+announces+positive+results+from+a+second+phase+III+trial+for+Ris-Rez+in+China+-+GSK&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-28"
+        },
+        {
+          "title": "FDA Approves NSCLC Treatment Acquired by GSK in Nuvalent Deal - Contract Pharma",
+          "url": "https://news.google.com/search?q=FDA+Approves+NSCLC+Treatment+Acquired+by+GSK+in+Nuvalent+Deal+-+Contract+Pharma&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-23"
+        }
+      ]
+    },
+    {
+      "nct_id": "NCT07413549",
+      "ticker": "VIR",
+      "sponsor": "Beijing Tuohua Weiye Biotechnology Co., Ltd.",
+      "drug": "Human Umbilical Cord Mesenchymal Stem Cells Injection",
+      "phase": "PHASE2",
+      "status": "RECRUITING",
+      "title": "Clinical Study of Human Umbilical Cord Mesenchymal Stem Cells Injection in Patients With Decompensated Hepatitis B Cirrhosis",
+      "change_type": null,
+      "watch_reason": "Active PHASE2 \u00b7 Infectious Disease",
+      "score": null,
+      "detected_at": null,
+      "headline": "VIR \u00b7 Active PHASE2 \u00b7 Infectious Disease",
       "brief": "Brief unavailable.",
       "analyst_tone": "neutral",
       "catalysts": [],
       "news": [
-        {
-          "title": "RedNote\u2019s AI model is first to achieve flawless score at maths Olympiad - South China Morning Post",
-          "url": "https://news.google.com/search?q=RedNote%E2%80%99s+AI+model+is+first+to+achieve+flawless+score+at+maths+Olympiad+-+South+China+Morning+Post&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-22"
-        },
         {
           "title": "China biotech sector fears policy backlash after girl dies in gene-editing trial - South China Morning Post",
           "url": "https://news.google.com/search?q=China+biotech+sector+fears+policy+backlash+after+girl+dies+in+gene-editing+trial+-+South+China+Morning+Post&hl=en-US&gl=US&ceid=US:en",
@@ -117,532 +239,427 @@
           "published_at": "2026-07-29"
         },
         {
-          "title": "Chinese drugmakers with big ambitions struggle to recruit staff for global expansion - Reuters",
-          "url": "https://news.google.com/search?q=Chinese+drugmakers+with+big+ambitions+struggle+to+recruit+staff+for+global+expansion+-+Reuters&hl=en-US&gl=US&ceid=US:en",
+          "title": "The VA could help America win the biotechnology race with China - STAT",
+          "url": "https://news.google.com/search?q=The+VA+could+help+America+win+the+biotechnology+race+with+China+-+STAT&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
-          "published_at": "2026-07-16"
+          "published_at": "2026-07-29"
         },
         {
-          "title": "Insilico Initiates Phase III Clinical Trial for Rentosertib, Its AI-Empowered TNIK Inhibitor for Idiopathic Pulmonary Fibrosis - Insilico Medicine",
-          "url": "https://news.google.com/search?q=Insilico+Initiates+Phase+III+Clinical+Trial+for+Rentosertib%2C+Its+AI-Empowered+TNIK+Inhibitor+for+Idiopathic+Pulmonary+Fibrosis+-+Insilico+Medicine&hl=en-US&gl=US&ceid=US:en",
+          "title": "Opinion | How to stop China from leapfrogging the U.S. in biotech - The Washington Post",
+          "url": "https://news.google.com/search?q=Opinion+%7C+How+to+stop+China+from+leapfrogging+the+U.S.+in+biotech+-+The+Washington+Post&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
-          "published_at": "2026-07-07"
+          "published_at": "2026-07-17"
+        },
+        {
+          "title": "Top emerging biotech hubs in 2026 - Fierce Biotech",
+          "url": "https://news.google.com/search?q=Top+emerging+biotech+hubs+in+2026+-+Fierce+Biotech&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-13"
         }
       ]
     },
     {
-      "nct_id": "NCT06112340",
-      "ticker": "BEAM",
-      "sponsor": "Sling Therapeutics, Inc.",
-      "drug": "linsitinib",
-      "phase": "PHASE3",
+      "nct_id": "NCT05836259",
+      "ticker": "RLAY",
+      "sponsor": "Tenaya Therapeutics",
+      "drug": "TN-201",
+      "phase": "PHASE2",
       "status": "RECRUITING",
-      "title": "Extension Study of Two Doses of Linsitinib in Subjects With Active, Moderate to Severe Thyroid Eye Disease (TED)",
+      "title": "Multi-center, Open-label, Single-ascending Dose Study of Safety and Tolerability of TN-201 in Adults With Symptomatic MYBPC3 Mutation-associated HCM",
       "change_type": null,
-      "watch_reason": "Active PHASE3 \u00b7 Immunology / Inflammation",
+      "watch_reason": "Active PHASE2 \u00b7 Infectious Disease",
       "score": null,
       "detected_at": null,
-      "headline": "Sling's Linsitinib Phase 3 Study Recruiting",
-      "brief": "Sling Therapeutics is recruiting for a Phase 3 extension study of linsitinib in patients with moderate to severe thyroid eye disease. Positive outcomes could enhance the drug's profile in a competitive market.",
-      "analyst_tone": "bullish",
-      "catalysts": [
-        "Initial patient enrollment metrics",
-        "Data readouts from ongoing studies",
-        "Partnership opportunities for commercialization"
-      ],
-      "news": []
-    },
-    {
-      "nct_id": "NCT04548999",
-      "ticker": "RHHBY",
-      "sponsor": "Hoffmann-La Roche",
-      "drug": "Ocrelizumab",
-      "phase": "PHASE3",
-      "status": "ACTIVE_NOT_RECRUITING",
-      "title": "A Study to Evaluate the Efficacy, Safety and Pharmacokinetics (PK) of a Higher Dose of Ocrelizumab in Adults With Primary Progressive Multiple Sclerosis (PPMS)",
-      "change_type": null,
-      "watch_reason": "Active PHASE3 \u00b7 Immunology / Inflammation",
-      "score": null,
-      "detected_at": null,
-      "headline": "Roche's Ocrelizumab Phase 3 Study Active",
-      "brief": "Hoffmann-La Roche's Phase 3 study of ocrelizumab for primary progressive multiple sclerosis is currently active but not recruiting. The focus on higher dosing could lead to significant advancements in treatment options.",
-      "analyst_tone": "neutral",
-      "catalysts": [
-        "Final results from the study",
-        "Regulatory feedback on dosing strategies",
-        "Market response to competitive landscape"
-      ],
-      "news": [
-        {
-          "title": "Parkinson's Disease Pipeline 2026: FDA Approvals and Clinical - openPR.com",
-          "url": "https://news.google.com/search?q=Parkinson%27s+Disease+Pipeline+2026%3A+FDA+Approvals+and+Clinical+-+openPR.com&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-27"
-        },
-        {
-          "title": "Amylin Analogs and Combination Therapies Clinical Trial - globenewswire.com",
-          "url": "https://news.google.com/search?q=Amylin+Analogs+and+Combination+Therapies+Clinical+Trial+-+globenewswire.com&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-28"
-        },
-        {
-          "title": "Biotechnology Market Size, Share, Trend | Growth Report [2034] - fortunebusinessinsights.com",
-          "url": "https://news.google.com/search?q=Biotechnology+Market+Size%2C+Share%2C+Trend+%7C+Growth+Report+%5B2034%5D+-+fortunebusinessinsights.com&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-13"
-        },
-        {
-          "title": "Graves Ophthalmopathy Market Expected to Witness Rapid Expansion at a CAGR of 9% During the Forecast Period (2026-2036), Driven by the Recent Approval of Viridian's LUMVOA and the Launch of Emerging Therapies | DelveInsight - PR Newswire",
-          "url": "https://news.google.com/search?q=Graves+Ophthalmopathy+Market+Expected+to+Witness+Rapid+Expansion+at+a+CAGR+of+9%25+During+the+Forecast+Period+%282026-2036%29%2C+Driven+by+the+Recent+Approval+of+Viridi&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-29"
-        }
-      ]
-    },
-    {
-      "nct_id": "NCT04961567",
-      "ticker": "BIIB",
-      "sponsor": "Biogen",
-      "drug": "Litifilimab",
-      "phase": "PHASE3",
-      "status": "ACTIVE_NOT_RECRUITING",
-      "title": "A Study to Learn About the Safety of Litifilimab (BIIB059) Injections and Whether They Can Improve Symptoms of Adult Participants Who Have Systemic Lupus Erythematosus",
-      "change_type": null,
-      "watch_reason": "Active PHASE3 \u00b7 Immunology / Inflammation",
-      "score": null,
-      "detected_at": null,
-      "headline": "Biogen's Litifilimab Study Active in Lupus",
-      "brief": "Biogen's Phase 3 study of litifilimab is focused on systemic lupus erythematosus and is currently active but not recruiting. The outcomes could significantly impact treatment paradigms for this challenging autoimmune condition.",
-      "analyst_tone": "bearish",
-      "catalysts": [
-        "Upcoming data release",
-        "Potential collaborations",
-        "Market reaction to competitive products"
-      ],
-      "news": [
-        {
-          "title": "Biogen: The Turnaround Is Real Enough To Buy (Rating Upgrade) (NASDAQ:BIIB) - Seeking Alpha",
-          "url": "https://news.google.com/search?q=Biogen%3A+The+Turnaround+Is+Real+Enough+To+Buy+%28Rating+Upgrade%29+%28NASDAQ%3ABIIB%29+-+Seeking+Alpha&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-29"
-        },
-        {
-          "title": "Biogen's Q2 Earnings Beat, New Drugs Drive Sales, 2026 Guidance Raised - TradingView",
-          "url": "https://news.google.com/search?q=Biogen%27s+Q2+Earnings+Beat%2C+New+Drugs+Drive+Sales%2C+2026+Guidance+Raised+-+TradingView&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-29"
-        },
-        {
-          "title": "FDA Approves LEQEMBI IQLIK\u00ae (lecanemab-irmb) Subcutaneous Injection as an Initiation Dose for Early Alzheimer\u2019s Disease - Biogen",
-          "url": "https://news.google.com/search?q=FDA+Approves+LEQEMBI+IQLIK%C2%AE+%28lecanemab-irmb%29+Subcutaneous+Injection+as+an+Initiation+Dose+for+Early+Alzheimer%E2%80%99s+Disease+-+Biogen&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-13"
-        },
-        {
-          "title": "FDA approves at-home starter dose of Eisai-Biogen Alzheimer's drug - Reuters",
-          "url": "https://news.google.com/search?q=FDA+approves+at-home+starter+dose+of+Eisai-Biogen+Alzheimer%27s+drug+-+Reuters&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-13"
-        }
-      ]
-    },
-    {
-      "nct_id": "NCT07196722",
-      "ticker": "JNJ",
-      "sponsor": "Janssen Research & Development, LLC",
-      "drug": "Icotrokinra",
-      "phase": "PHASE3",
-      "status": "RECRUITING",
-      "title": "A Study of Icotrokinra in Participants With Moderately to Severely Active Crohn's Disease",
-      "change_type": null,
-      "watch_reason": "Active PHASE3 \u00b7 Immunology / Inflammation",
-      "score": null,
-      "detected_at": null,
-      "headline": "JNJ \u00b7 Active PHASE3 \u00b7 Immunology / Inflammation",
+      "headline": "RLAY \u00b7 Active PHASE2 \u00b7 Infectious Disease",
       "brief": "Brief unavailable.",
       "analyst_tone": "neutral",
       "catalysts": [],
       "news": [
         {
-          "title": "J&J\u2019s bispecific combo slashes myeloma progression risk by 89% in phase 3 trial - Fierce Pharma",
-          "url": "https://news.google.com/search?q=J%26J%E2%80%99s+bispecific+combo+slashes+myeloma+progression+risk+by+89%25+in+phase+3+trial+-+Fierce+Pharma&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-23"
-        },
-        {
-          "title": "Johnson & Johnson therapy shows 42% response in head and neck cancer - Stock Titan",
-          "url": "https://news.google.com/search?q=Johnson+%26+Johnson+therapy+shows+42%25+response+in+head+and+neck+cancer+-+Stock+Titan&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-30"
-        },
-        {
-          "title": "FDA approves first interchangeable golimumab biosimilars Immgolis and Immgolis Intri - Generics and Biosimilars Initiative",
-          "url": "https://news.google.com/search?q=FDA+approves+first+interchangeable+golimumab+biosimilars+Immgolis+and+Immgolis+Intri+-+Generics+and+Biosimilars+Initiative&hl=en-US&gl=US&ceid=US:en",
+          "title": "Tenaya Therapeutics Reports Second Quarter 2026 Financial Results and Provides Business Update - The Manila Times",
+          "url": "https://news.google.com/search?q=Tenaya+Therapeutics+Reports+Second+Quarter+2026+Financial+Results+and+Provides+Business+Update+-+The+Manila+Times&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
           "published_at": "2026-08-05"
         },
         {
-          "title": "SC platforms gain as Korea and global players race to build biosimilars - CHOSUNBIZ - Chosunbiz",
-          "url": "https://news.google.com/search?q=SC+platforms+gain+as+Korea+and+global+players+race+to+build+biosimilars+-+CHOSUNBIZ+-+Chosunbiz&hl=en-US&gl=US&ceid=US:en",
+          "title": "Tenaya Therapeutics Reports Second Quarter 2026 Financial Results and Provides Business Update - GlobeNewswire",
+          "url": "https://news.google.com/search?q=Tenaya+Therapeutics+Reports+Second+Quarter+2026+Financial+Results+and+Provides+Business+Update+-+GlobeNewswire&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
-          "published_at": "2026-07-19"
-        }
-      ]
-    },
-    {
-      "nct_id": "NCT03513939",
-      "ticker": "IOVA",
-      "sponsor": "Sernova Biotherapeutics Inc.",
-      "drug": "Sernova Cell Pouch",
-      "phase": "PHASE2",
-      "status": "ACTIVE_NOT_RECRUITING",
-      "title": "A Safety, Tolerability and Efficacy Study of Sernova's Cell Pouch\u2122 for Clinical Islet Transplantation",
-      "change_type": null,
-      "watch_reason": "Active PHASE2 \u00b7 Immunology / Inflammation",
-      "score": null,
-      "detected_at": null,
-      "headline": "IOVA \u00b7 Active PHASE2 \u00b7 Immunology / Inflammation",
-      "brief": "Brief unavailable.",
-      "analyst_tone": "neutral",
-      "catalysts": [],
-      "news": [
-        {
-          "title": "Top Companies Developing Cell Therapy Treatments For Diabetes in 2026 - BioInformant",
-          "url": "https://news.google.com/search?q=Top+Companies+Developing+Cell+Therapy+Treatments+For+Diabetes+in+2026+-+BioInformant&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-30"
-        }
-      ]
-    },
-    {
-      "nct_id": "NCT07074886",
-      "ticker": "RHHBY",
-      "sponsor": "Hoffmann-La Roche",
-      "drug": "Ocrelizumab Test Formulation",
-      "phase": "PHASE2",
-      "status": "RECRUITING",
-      "title": "A Study to Assess Bioequivalence of Two Subcutaneous (SC) Formulations of Ocrelizumab in Participants With Multiple Sclerosis (MS)",
-      "change_type": null,
-      "watch_reason": "Active PHASE2 \u00b7 Immunology / Inflammation",
-      "score": null,
-      "detected_at": null,
-      "headline": "RHHBY \u00b7 Active PHASE2 \u00b7 Immunology / Inflammation",
-      "brief": "Brief unavailable.",
-      "analyst_tone": "neutral",
-      "catalysts": [],
-      "news": [
-        {
-          "title": "Parkinson's Disease Pipeline 2026: FDA Approvals and Clinical - openPR.com",
-          "url": "https://news.google.com/search?q=Parkinson%27s+Disease+Pipeline+2026%3A+FDA+Approvals+and+Clinical+-+openPR.com&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-27"
+          "published_at": "2026-08-05"
         },
         {
-          "title": "Amylin Analogs and Combination Therapies Clinical Trial - globenewswire.com",
-          "url": "https://news.google.com/search?q=Amylin+Analogs+and+Combination+Therapies+Clinical+Trial+-+globenewswire.com&hl=en-US&gl=US&ceid=US:en",
+          "title": "Tenaya\u2019s new CFO gets options on 1.65M shares, with a $0.8365 exercise price - Stock Titan",
+          "url": "https://news.google.com/search?q=Tenaya%E2%80%99s+new+CFO+gets+options+on+1.65M+shares%2C+with+a+%240.8365+exercise+price+-+Stock+Titan&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-14"
+        },
+        {
+          "title": "TNYA Q1 2026 Earnings: EPS Miss Slightly as Pipeline Advances Amid Cash Position Focus - Forward Guidance Trends - po-news-eg.net",
+          "url": "https://news.google.com/search?q=TNYA+Q1+2026+Earnings%3A+EPS+Miss+Slightly+as+Pipeline+Advances+Amid+Cash+Position+Focus+-+Forward+Guidance+Trends+-+po-news-eg.net&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-21"
+        }
+      ]
+    },
+    {
+      "nct_id": "NCT04925752",
+      "ticker": "GILD",
+      "sponsor": "Gilead Sciences",
+      "drug": "Oral Lenacapavir (LEN)",
+      "phase": "PHASE3",
+      "status": "ACTIVE_NOT_RECRUITING",
+      "title": "Study of Lenacapavir for HIV Pre-Exposure Prophylaxis in People Who Are at Risk for HIV Infection",
+      "change_type": null,
+      "watch_reason": "Active PHASE3 \u00b7 Infectious Disease",
+      "score": null,
+      "detected_at": null,
+      "headline": "GILD \u00b7 Active PHASE3 \u00b7 Infectious Disease",
+      "brief": "Brief unavailable.",
+      "analyst_tone": "neutral",
+      "catalysts": [],
+      "news": [
+        {
+          "title": "Investigational Once-Weekly Oral HIV Treatment Regimen of Islatravir and Lenacapavir Maintained Virological Suppression in Adults With HIV Who Switched Antiretroviral Therapy - Business Wire",
+          "url": "https://news.google.com/search?q=Investigational+Once-Weekly+Oral+HIV+Treatment+Regimen+of+Islatravir+and+Lenacapavir+Maintained+Virological+Suppression+in+Adults+With+HIV+Who+Switched+Antiretr&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-21"
+        },
+        {
+          "title": "Gilead, MSD share data on once-weekly oral HIV treatment - pharmaphorum",
+          "url": "https://news.google.com/search?q=Gilead%2C+MSD+share+data+on+once-weekly+oral+HIV+treatment+-+pharmaphorum&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-22"
+        },
+        {
+          "title": "Can Gilead's Efforts to Develop New Treatments Solidify HIV Franchise? - Yahoo Finance",
+          "url": "https://news.google.com/search?q=Can+Gilead%27s+Efforts+to+Develop+New+Treatments+Solidify+HIV+Franchise%3F+-+Yahoo+Finance&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-23"
+        },
+        {
+          "title": "Gilead raises full-year guidance on 8% Q2 sales growth, eyes three near-term regulatory approvals - AllSci",
+          "url": "https://news.google.com/search?q=Gilead+raises+full-year+guidance+on+8%25+Q2+sales+growth%2C+eyes+three+near-term+regulatory+approvals+-+AllSci&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-05"
+        }
+      ]
+    },
+    {
+      "nct_id": "NCT06275620",
+      "ticker": "BEAM",
+      "sponsor": "Beacon Therapeutics",
+      "drug": "AGTC-501 (high dose and standard corticosteroid regimen)",
+      "phase": "PHASE2",
+      "status": "ENROLLING_BY_INVITATION",
+      "title": "A Study Comparing Two Doses of AGTC-501 in Male Participants With X-linked Retinitis Pigmentosa Caused by RPGR Mutations (DAWN)",
+      "change_type": null,
+      "watch_reason": "Active PHASE2 \u00b7 Infectious Disease",
+      "score": null,
+      "detected_at": null,
+      "headline": "BEAM \u00b7 Active PHASE2 \u00b7 Infectious Disease",
+      "brief": "Brief unavailable.",
+      "analyst_tone": "neutral",
+      "catalysts": [],
+      "news": [
+        {
+          "title": "Beam Therapeutics Reports Q2 2026 Results and Clinical Updates for BEAM-302, Risto-cel and BEAM-304 - Quiver Quantitative",
+          "url": "https://news.google.com/search?q=Beam+Therapeutics+Reports+Q2+2026+Results+and+Clinical+Updates+for+BEAM-302%2C+Risto-cel+and+BEAM-304+-+Quiver+Quantitative&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-04"
+        },
+        {
+          "title": "Beam expects $1.2B cash plus $200M draw to fund plans into mid-2029 - Stock Titan",
+          "url": "https://news.google.com/search?q=Beam+expects+%241.2B+cash+plus+%24200M+draw+to+fund+plans+into+mid-2029+-+Stock+Titan&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-04"
+        },
+        {
+          "title": "Beam Therapeutics reports Q2 2026 results: $1.15B cash, $122.7M net loss - TradingView",
+          "url": "https://news.google.com/search?q=Beam+Therapeutics+reports+Q2+2026+results%3A+%241.15B+cash%2C+%24122.7M+net+loss+-+TradingView&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-04"
+        },
+        {
+          "title": "Beam Reports Q2 2026 Net Loss of $122.7 Million - Quiver Quantitative",
+          "url": "https://news.google.com/search?q=Beam+Reports+Q2+2026+Net+Loss+of+%24122.7+Million+-+Quiver+Quantitative&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-04"
+        }
+      ]
+    },
+    {
+      "nct_id": "NCT04706923",
+      "ticker": "JAZZ",
+      "sponsor": "SymBio Pharmaceuticals",
+      "drug": "BCV",
+      "phase": "PHASE2",
+      "status": "RECRUITING",
+      "title": "A Phase 2a Study of IV BCV in Subjects With Adenovirus Infection",
+      "change_type": null,
+      "watch_reason": "Active PHASE2 \u00b7 Infectious Disease",
+      "score": null,
+      "detected_at": null,
+      "headline": "JAZZ \u00b7 Active PHASE2 \u00b7 Infectious Disease",
+      "brief": "Brief unavailable.",
+      "analyst_tone": "neutral",
+      "catalysts": [],
+      "news": []
+    },
+    {
+      "nct_id": "NCT07109219",
+      "ticker": "AZN",
+      "sponsor": "AstraZeneca",
+      "drug": "AZD4512 monotherapy",
+      "phase": "PHASE2",
+      "status": "RECRUITING",
+      "title": "Study of AZD4512 Monotherapy or in Combination With Anticancer Agents in Participants With Acute Lymphoblastic Leukemia",
+      "change_type": null,
+      "watch_reason": "Active PHASE2 \u00b7 Infectious Disease",
+      "score": null,
+      "detected_at": null,
+      "headline": "AZN \u00b7 Active PHASE2 \u00b7 Infectious Disease",
+      "brief": "Brief unavailable.",
+      "analyst_tone": "neutral",
+      "catalysts": [],
+      "news": [
+        {
+          "title": "AstraZeneca enters exclusive global license agreement for novel oral EGFR inhibitor Zegfrovy for lung cancer with Dizal Pharmaceutical - AstraZeneca",
+          "url": "https://news.google.com/search?q=AstraZeneca+enters+exclusive+global+license+agreement+for+novel+oral+EGFR+inhibitor+Zegfrovy+for+lung+cancer+with+Dizal+Pharmaceutical+-+AstraZeneca&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-14"
+        },
+        {
+          "title": "AstraZeneca 'magic' faces rare test after trial failure, share slide - Reuters",
+          "url": "https://news.google.com/search?q=AstraZeneca+%27magic%27+faces+rare+test+after+trial+failure%2C+share+slide+-+Reuters&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-24"
+        },
+        {
+          "title": "AstraZeneca, Ionis Shares Slide After Wainua Misses Target in Heart Disease Trial - WSJ",
+          "url": "https://news.google.com/search?q=AstraZeneca%2C+Ionis+Shares+Slide+After+Wainua+Misses+Target+in+Heart+Disease+Trial+-+WSJ&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-09"
+        },
+        {
+          "title": "AstraZeneca stock drops 9% after Wainua heart drug trial fails - qz.com",
+          "url": "https://news.google.com/search?q=AstraZeneca+stock+drops+9%25+after+Wainua+heart+drug+trial+fails+-+qz.com&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-09"
+        }
+      ]
+    },
+    {
+      "nct_id": "NCT05139602",
+      "ticker": "ABBV",
+      "sponsor": "AbbVie",
+      "drug": "Lutikizumab",
+      "phase": "PHASE2",
+      "status": "ACTIVE_NOT_RECRUITING",
+      "title": "A Study to Assess Disease Activity and Safety of Subcutaneous Lutikizumab (ABT-981) in Adult Participants With Moderate to Severe Hidradenitis Suppurativa Who Have Failed Anti-Tumor Necrosis Factor (TNF) Therapy and Who Are Na\u00efve to Biologic Therapy",
+      "change_type": null,
+      "watch_reason": "Active PHASE2 \u00b7 Infectious Disease",
+      "score": null,
+      "detected_at": null,
+      "headline": "ABBV \u00b7 Active PHASE2 \u00b7 Infectious Disease",
+      "brief": "Brief unavailable.",
+      "analyst_tone": "neutral",
+      "catalysts": [],
+      "news": [
+        {
+          "title": "AbbVie (ABBV) Q1 2026 Earnings Call Transcript - Fortune",
+          "url": "https://news.google.com/search?q=AbbVie+%28ABBV%29+Q1+2026+Earnings+Call+Transcript+-+Fortune&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-01"
+        },
+        {
+          "title": "AbbVie (ABBV) Q2 2026 Earnings Call Transcript - Fortune",
+          "url": "https://news.google.com/search?q=AbbVie+%28ABBV%29+Q2+2026+Earnings+Call+Transcript+-+Fortune&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-31"
+        },
+        {
+          "title": "AbbVie (ABBV) Wins FDA Review For BOTOX Cosmetic In Jawline Treatment Push - Yahoo Finance",
+          "url": "https://news.google.com/search?q=AbbVie+%28ABBV%29+Wins+FDA+Review+For+BOTOX+Cosmetic+In+Jawline+Treatment+Push+-+Yahoo+Finance&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-04"
+        },
+        {
+          "title": "If Approved, Botox Would Be First and Only Neurotoxin for Masseter Prominence - Stock Titan",
+          "url": "https://news.google.com/search?q=If+Approved%2C+Botox+Would+Be+First+and+Only+Neurotoxin+for+Masseter+Prominence+-+Stock+Titan&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-04"
+        }
+      ]
+    },
+    {
+      "nct_id": "NCT03228667",
+      "ticker": "IBRX",
+      "sponsor": "ImmunityBio, Inc.",
+      "drug": "N-803 + Pembrolizumab",
+      "phase": "PHASE2",
+      "status": "ACTIVE_NOT_RECRUITING",
+      "title": "QUILT-3.055: A Study of Combination Immunotherapies in Patients Who Have Previously Received Treatment With Immune Checkpoint Inhibitors",
+      "change_type": null,
+      "watch_reason": "Active PHASE2 \u00b7 Infectious Disease",
+      "score": null,
+      "detected_at": null,
+      "headline": "IBRX \u00b7 Active PHASE2 \u00b7 Infectious Disease",
+      "brief": "Brief unavailable.",
+      "analyst_tone": "neutral",
+      "catalysts": [],
+      "news": [
+        {
+          "title": "IBRX Stock Jumps Overnight: UAE Grants Anktiva Broadest Approval Yet After Founder\u2019s \u2018July Birthday News\u2019 Tease - TradingView",
+          "url": "https://news.google.com/search?q=IBRX+Stock+Jumps+Overnight%3A+UAE+Grants+Anktiva+Broadest+Approval+Yet+After+Founder%E2%80%99s+%E2%80%98July+Birthday+News%E2%80%99+Tease+-+TradingView&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-30"
+        },
+        {
+          "title": "ImmunityBio Gains After UAE Approves ANKTIVA for Bladder and Lung Cancer Treatments - Yahoo Finance",
+          "url": "https://news.google.com/search?q=ImmunityBio+Gains+After+UAE+Approves+ANKTIVA+for+Bladder+and+Lung+Cancer+Treatments+-+Yahoo+Finance&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-30"
+        },
+        {
+          "title": "Anktiva Vs Keytruda: ImmunityBio Exec Chair Slams FDA For Double Standards In Approvals - Stocktwits",
+          "url": "https://news.google.com/search?q=Anktiva+Vs+Keytruda%3A+ImmunityBio+Exec+Chair+Slams+FDA+For+Double+Standards+In+Approvals+-+Stocktwits&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
           "published_at": "2026-07-28"
         },
         {
-          "title": "Biotechnology Market Size, Share, Trend | Growth Report [2034] - fortunebusinessinsights.com",
-          "url": "https://news.google.com/search?q=Biotechnology+Market+Size%2C+Share%2C+Trend+%7C+Growth+Report+%5B2034%5D+-+fortunebusinessinsights.com&hl=en-US&gl=US&ceid=US:en",
+          "title": "The Bull Case For ImmunityBio (IBRX) Could Change Following ANKTIVA\u2019s Broad UAE Approval - Learn Why - simplywall.st",
+          "url": "https://news.google.com/search?q=The+Bull+Case+For+ImmunityBio+%28IBRX%29+Could+Change+Following+ANKTIVA%E2%80%99s+Broad+UAE+Approval+-+Learn+Why+-+simplywall.st&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
-          "published_at": "2026-07-13"
-        },
-        {
-          "title": "Graves Ophthalmopathy Market Expected to Witness Rapid Expansion at a CAGR of 9% During the Forecast Period (2026-2036), Driven by the Recent Approval of Viridian's LUMVOA and the Launch of Emerging Therapies | DelveInsight - PR Newswire",
-          "url": "https://news.google.com/search?q=Graves+Ophthalmopathy+Market+Expected+to+Witness+Rapid+Expansion+at+a+CAGR+of+9%25+During+the+Forecast+Period+%282026-2036%29%2C+Driven+by+the+Recent+Approval+of+Viridi&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-29"
+          "published_at": "2026-07-31"
         }
       ]
     },
     {
-      "nct_id": "NCT07187531",
-      "ticker": "IOVA",
-      "sponsor": "SAb Biotherapeutics, Inc.",
-      "drug": "High Dose SAB-142",
-      "phase": "PHASE2",
-      "status": "RECRUITING",
-      "title": "SAFety and Efficacy of Human Anti-thymocyte ImmunoGlobUlin SAB-142 ARresting Progression of Type 1 Diabetes",
+      "nct_id": "NCT05630755",
+      "ticker": "MRK",
+      "sponsor": "Merck Sharp & Dohme LLC",
+      "drug": "DOR/ISL",
+      "phase": "PHASE3",
+      "status": "ACTIVE_NOT_RECRUITING",
+      "title": "A Switch to Doravirine/Islatravir (DOR/ISL) in Participants With Human Immunodeficiency Virus Type 1 (HIV-1) Who Are Virologically Suppressed on Bictegravir/Emtricitabine/Tenofovir Alafenamide (BIC/FTC/TAF) (MK-8591A-052)",
       "change_type": null,
-      "watch_reason": "Active PHASE2 \u00b7 Immunology / Inflammation",
+      "watch_reason": "Active PHASE3 \u00b7 Infectious Disease",
       "score": null,
       "detected_at": null,
-      "headline": "IOVA \u00b7 Active PHASE2 \u00b7 Immunology / Inflammation",
+      "headline": "MRK \u00b7 Active PHASE3 \u00b7 Infectious Disease",
       "brief": "Brief unavailable.",
       "analyst_tone": "neutral",
       "catalysts": [],
       "news": [
         {
-          "title": "Breakthrough T1D Awards Grant to Support PRISE\u2011hATG Study of SAB\u2011142 in Stage 3 Type 1 Diabetes - globenewswire.com",
-          "url": "https://news.google.com/search?q=Breakthrough+T1D+Awards+Grant+to+Support+PRISE%E2%80%91hATG+Study+of+SAB%E2%80%91142+in+Stage+3+Type+1+Diabetes+-+globenewswire.com&hl=en-US&gl=US&ceid=US:en",
+          "title": "Redefining HIV Management: Emerging Antiretroviral Drug Classes and Immunologic Strategies Shaping the Future of HIV Treatment, Prevention - Contagion Live",
+          "url": "https://news.google.com/search?q=Redefining+HIV+Management%3A+Emerging+Antiretroviral+Drug+Classes+and+Immunologic+Strategies+Shaping+the+Future+of+HIV+Treatment%2C+Prevention+-+Contagion+Live&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
-          "published_at": "2026-07-07"
+          "published_at": "2026-08-01"
         },
         {
-          "title": "Akari adds former AACR president Patricia LoRusso to advisory board - Stock Titan",
-          "url": "https://news.google.com/search?q=Akari+adds+former+AACR+president+Patricia+LoRusso+to+advisory+board+-+Stock+Titan&hl=en-US&gl=US&ceid=US:en",
+          "title": "Investigational Once-Weekly Oral HIV Treatment Regimen of Islatravir and Lenacapavir Maintained Virological Suppression in Adults With HIV Who Switched Antiretroviral Therapy - Business Wire",
+          "url": "https://news.google.com/search?q=Investigational+Once-Weekly+Oral+HIV+Treatment+Regimen+of+Islatravir+and+Lenacapavir+Maintained+Virological+Suppression+in+Adults+With+HIV+Who+Switched+Antiretr&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
-          "published_at": "2026-07-07"
+          "published_at": "2026-07-21"
         },
         {
-          "title": "SABS Q1 2026 Earnings: EPS Misses Estimates as Development-Stage Biotech Faces Headwinds - Earnings Call Q&A - po-news-eg.net",
-          "url": "https://news.google.com/search?q=SABS+Q1+2026+Earnings%3A+EPS+Misses+Estimates+as+Development-Stage+Biotech+Faces+Headwinds+-+Earnings+Call+Q%26A+-+po-news-eg.net&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-19"
-        },
-        {
-          "title": "Orchestra BioMed: Nearing The First Of Two Pivotal Readouts (NASDAQ:OBIO) - Seeking Alpha",
-          "url": "https://news.google.com/search?q=Orchestra+BioMed%3A+Nearing+The+First+Of+Two+Pivotal+Readouts+%28NASDAQ%3AOBIO%29+-+Seeking+Alpha&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-22"
-        }
-      ]
-    },
-    {
-      "nct_id": "NCT07039422",
-      "ticker": "NVS",
-      "sponsor": "Novartis Pharmaceuticals",
-      "drug": "Ianalumab",
-      "phase": "PHASE2",
-      "status": "RECRUITING",
-      "title": "Study of Ianalumab in Adults With Primary Immune Thrombocytopenia (ITP) and Warm-antibody Autoimmune Hemolytic Anemia (wAIHA) Who Have Previously Benefited From Ianalumab",
-      "change_type": null,
-      "watch_reason": "Active PHASE2 \u00b7 Immunology / Inflammation",
-      "score": null,
-      "detected_at": null,
-      "headline": "NVS \u00b7 Active PHASE2 \u00b7 Immunology / Inflammation",
-      "brief": "Brief unavailable.",
-      "analyst_tone": "neutral",
-      "catalysts": [],
-      "news": [
-        {
-          "title": "Novartis gains full FDA nod for Fabhalta in kidney disorder IgAN - Fierce Pharma",
-          "url": "https://news.google.com/search?q=Novartis+gains+full+FDA+nod+for+Fabhalta+in+kidney+disorder+IgAN+-+Fierce+Pharma&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-17"
-        },
-        {
-          "title": "This Novartis Drug Could Help Delay Dialysis\u2014FDA Grants Full Approval - Benzinga",
-          "url": "https://news.google.com/search?q=This+Novartis+Drug+Could+Help+Delay+Dialysis%E2%80%94FDA+Grants+Full+Approval+-+Benzinga&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-17"
-        },
-        {
-          "title": "Novartis' Pluvicto Gets US FDA Nod for Metastatic Prostate Cancer Treatment - moomoo.com",
-          "url": "https://news.google.com/search?q=Novartis%27+Pluvicto+Gets+US+FDA+Nod+for+Metastatic+Prostate+Cancer+Treatment+-+moomoo.com&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-08-02"
-        },
-        {
-          "title": "Novartis' Pluvicto leaps ahead into earlier manifestation of prostate cancer - Fierce Pharma",
-          "url": "https://news.google.com/search?q=Novartis%27+Pluvicto+leaps+ahead+into+earlier+manifestation+of+prostate+cancer+-+Fierce+Pharma&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-08-03"
-        }
-      ]
-    },
-    {
-      "nct_id": "NCT06977581",
-      "ticker": "PFE",
-      "sponsor": "Pfizer",
-      "drug": "PF-07275315",
-      "phase": "PHASE2",
-      "status": "RECRUITING",
-      "title": "A Study to Learn About the Study Medicine Called PF-07275315 in People With Moderate-To-Severe Asthma",
-      "change_type": null,
-      "watch_reason": "Active PHASE2 \u00b7 Immunology / Inflammation",
-      "score": null,
-      "detected_at": null,
-      "headline": "PFE \u00b7 Active PHASE2 \u00b7 Immunology / Inflammation",
-      "brief": "Brief unavailable.",
-      "analyst_tone": "neutral",
-      "catalysts": [],
-      "news": [
-        {
-          "title": "Pfizer (PFE) Announces FDA Approval of PADCEV plus Keytruda in MIBC - Yahoo Finance",
-          "url": "https://news.google.com/search?q=Pfizer+%28PFE%29+Announces+FDA+Approval+of+PADCEV+plus+Keytruda+in+MIBC+-+Yahoo+Finance&hl=en-US&gl=US&ceid=US:en",
+          "title": "Merck to Present New Data on Daily, Weekly, and Monthly Options Across its HIV Treatment and Prevention Pipeline at AIDS 2026 - Business Wire",
+          "url": "https://news.google.com/search?q=Merck+to+Present+New+Data+on+Daily%2C+Weekly%2C+and+Monthly+Options+Across+its+HIV+Treatment+and+Prevention+Pipeline+at+AIDS+2026+-+Business+Wire&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
           "published_at": "2026-07-15"
         },
         {
-          "title": "Pfizer's prostate cancer drug combination gets US FDA priority review - Reuters",
-          "url": "https://news.google.com/search?q=Pfizer%27s+prostate+cancer+drug+combination+gets+US+FDA+priority+review+-+Reuters&hl=en-US&gl=US&ceid=US:en",
+          "title": "Merck gets US FDA nod for first-in-its-class oral cholesterol drug - Reuters",
+          "url": "https://news.google.com/search?q=Merck+gets+US+FDA+nod+for+first-in-its-class+oral+cholesterol+drug+-+Reuters&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
-          "published_at": "2026-07-22"
-        },
-        {
-          "title": "FDA Grants Priority Review for Pfizer\u2019s TALZENNA Plus XTANDI for the Treatment of Metastatic Prostate Cancer - Business Wire",
-          "url": "https://news.google.com/search?q=FDA+Grants+Priority+Review+for+Pfizer%E2%80%99s+TALZENNA+Plus+XTANDI+for+the+Treatment+of+Metastatic+Prostate+Cancer+-+Business+Wire&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-22"
-        },
-        {
-          "title": "Is Pfizer (PFE) Undervalued On Its FDA Priority Review In Prostate Cancer? - simplywall.st",
-          "url": "https://news.google.com/search?q=Is+Pfizer+%28PFE%29+Undervalued+On+Its+FDA+Priority+Review+In+Prostate+Cancer%3F+-+simplywall.st&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-27"
+          "published_at": "2026-07-16"
         }
       ]
     },
     {
-      "nct_id": "NCT07024563",
-      "ticker": "IONS",
-      "sponsor": "Alexion Pharmaceuticals, Inc.",
-      "drug": "Ravulizumab",
+      "nct_id": "NCT07348692",
+      "ticker": "SNY",
+      "sponsor": "Sanofi",
+      "drug": "PCV21 vaccine",
       "phase": "PHASE3",
       "status": "RECRUITING",
-      "title": "Study of Ravulizumab in Pediatric Participants With Primary IgAN",
+      "title": "Lot-to-lot Consistency Study of a 21-valent Pneumococcal Conjugate Vaccine in Healthy Infants From 2 Months of Age",
       "change_type": null,
-      "watch_reason": "Active PHASE3 \u00b7 Immunology / Inflammation",
+      "watch_reason": "Active PHASE3 \u00b7 Infectious Disease",
       "score": null,
       "detected_at": null,
-      "headline": "IONS \u00b7 Active PHASE3 \u00b7 Immunology / Inflammation",
+      "headline": "SNY \u00b7 Active PHASE3 \u00b7 Infectious Disease",
       "brief": "Brief unavailable.",
       "analyst_tone": "neutral",
       "catalysts": [],
       "news": [
         {
-          "title": "Biotech Stocks Need A Shot In The Arm After Brutal July: Could AstraZeneca-Bristol Myers Megadeal Be The Cure? - es.tradingview.com",
-          "url": "https://news.google.com/search?q=Biotech+Stocks+Need+A+Shot+In+The+Arm+After+Brutal+July%3A+Could+AstraZeneca-Bristol+Myers+Megadeal+Be+The+Cure%3F+-+es.tradingview.com&hl=en-US&gl=US&ceid=US:en",
+          "title": "US FDA approves Sanofi's wearable injector form of blood cancer drug - Reuters",
+          "url": "https://news.google.com/search?q=US+FDA+approves+Sanofi%27s+wearable+injector+form+of+blood+cancer+drug+-+Reuters&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
-          "published_at": "2026-08-03"
+          "published_at": "2026-07-10"
         },
         {
-          "title": "Weekly Buzz : Cipla , Viatris Win FDA Nod ; Boston Scientific Cuts Jobs ; argenx Snaps Up Forte Biosciences ; Johnson & Johnson , GSK Strike Deals",
-          "url": "https://www.finanznachrichten.de/nachrichten-2026-07/69186491-weekly-buzz-cipla-viatris-win-fda-nod-boston-scientific-cuts-jobs-argenx-snaps-up-forte-biosciences-johnson-johnson-gsk-strike-deals-020.htm",
-          "source": "gdelt",
-          "published_at": "2026-07-31"
+          "title": "Sanofi injectable multiple myeloma drug approved (SNY:NASDAQ) - Seeking Alpha",
+          "url": "https://news.google.com/search?q=Sanofi+injectable+multiple+myeloma+drug+approved+%28SNY%3ANASDAQ%29+-+Seeking+Alpha&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-10"
+        },
+        {
+          "title": "Sanofi snags FDA thumbs up for Sarclisa as 1st cancer drug delivered by on-body injector - Fierce Pharma",
+          "url": "https://news.google.com/search?q=Sanofi+snags+FDA+thumbs+up+for+Sarclisa+as+1st+cancer+drug+delivered+by+on-body+injector+-+Fierce+Pharma&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-10"
+        },
+        {
+          "title": "Hansoh meets Phase 3 SCLC goal; FDA approves Sanofi on-body injector - Endpoints News",
+          "url": "https://news.google.com/search?q=Hansoh+meets+Phase+3+SCLC+goal%3B+FDA+approves+Sanofi+on-body+injector+-+Endpoints+News&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-10"
         }
       ]
     },
     {
-      "nct_id": "NCT05837897",
-      "ticker": "TAK",
-      "sponsor": "Takeda",
-      "drug": "Vedolizumab IV",
-      "phase": "PHASE3",
-      "status": "RECRUITING",
-      "title": "A Study of Vedolizumab in Adult Participants With Moderate to Severe Crohn's Disease",
-      "change_type": null,
-      "watch_reason": "Active PHASE3 \u00b7 Immunology / Inflammation",
-      "score": null,
-      "detected_at": null,
-      "headline": "TAK \u00b7 Active PHASE3 \u00b7 Immunology / Inflammation",
-      "brief": "Brief unavailable.",
-      "analyst_tone": "neutral",
-      "catalysts": [],
-      "news": [
-        {
-          "title": "Takeda Pharmaceutical Q1 Earnings Call Highlights - TradingView",
-          "url": "https://news.google.com/search?q=Takeda+Pharmaceutical+Q1+Earnings+Call+Highlights+-+TradingView&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-30"
-        },
-        {
-          "title": "Takeda unveils secondary endpoint data from Phase III PsO pill trials - Clinical Trials Arena",
-          "url": "https://news.google.com/search?q=Takeda+unveils+secondary+endpoint+data+from+Phase+III+PsO+pill+trials+-+Clinical+Trials+Arena&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-17"
-        },
-        {
-          "title": "Takeda Announces FY2026 First Quarter Results, Near-Term Launch Preparations and Pipeline Progress on Track - Business Wire",
-          "url": "https://news.google.com/search?q=Takeda+Announces+FY2026+First+Quarter+Results%2C+Near-Term+Launch+Preparations+and+Pipeline+Progress+on+Track+-+Business+Wire&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-30"
-        },
-        {
-          "title": "Takeda scraps another phase 2 celiac disease therapy, narrowing pipeline to one - Fierce Biotech",
-          "url": "https://news.google.com/search?q=Takeda+scraps+another+phase+2+celiac+disease+therapy%2C+narrowing+pipeline+to+one+-+Fierce+Biotech&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-30"
-        }
-      ]
-    },
-    {
-      "nct_id": "NCT06143878",
-      "ticker": "JNJ",
-      "sponsor": "Janssen Research & Development, LLC",
-      "drug": "JNJ-77242113",
+      "nct_id": "NCT06903338",
+      "ticker": "VIR",
+      "sponsor": "Vir Biotechnology, Inc.",
+      "drug": "Tobevibart",
       "phase": "PHASE3",
       "status": "ACTIVE_NOT_RECRUITING",
-      "title": "A Study of JNJ-77242113 for the Treatment of Participants With Moderate to Severe Plaque Psoriasis",
+      "title": "A Study to Evaluate Tobevibart + Elebsiran in Chronic HDV Infection",
       "change_type": null,
-      "watch_reason": "Active PHASE3 \u00b7 Immunology / Inflammation",
+      "watch_reason": "Active PHASE3 \u00b7 Infectious Disease",
       "score": null,
       "detected_at": null,
-      "headline": "JNJ \u00b7 Active PHASE3 \u00b7 Immunology / Inflammation",
+      "headline": "VIR \u00b7 Active PHASE3 \u00b7 Infectious Disease",
       "brief": "Brief unavailable.",
       "analyst_tone": "neutral",
       "catalysts": [],
       "news": [
         {
-          "title": "J&J\u2019s bispecific combo slashes myeloma progression risk by 89% in phase 3 trial - Fierce Pharma",
-          "url": "https://news.google.com/search?q=J%26J%E2%80%99s+bispecific+combo+slashes+myeloma+progression+risk+by+89%25+in+phase+3+trial+-+Fierce+Pharma&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-23"
-        },
-        {
-          "title": "Johnson & Johnson therapy shows 42% response in head and neck cancer - Stock Titan",
-          "url": "https://news.google.com/search?q=Johnson+%26+Johnson+therapy+shows+42%25+response+in+head+and+neck+cancer+-+Stock+Titan&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-30"
-        },
-        {
-          "title": "FDA approves first interchangeable golimumab biosimilars Immgolis and Immgolis Intri - Generics and Biosimilars Initiative",
-          "url": "https://news.google.com/search?q=FDA+approves+first+interchangeable+golimumab+biosimilars+Immgolis+and+Immgolis+Intri+-+Generics+and+Biosimilars+Initiative&hl=en-US&gl=US&ceid=US:en",
+          "title": "Vir Biotechnology Provides Corporate Update and Reports Second Quarter 2026 Financial Results - Business Wire",
+          "url": "https://news.google.com/search?q=Vir+Biotechnology+Provides+Corporate+Update+and+Reports+Second+Quarter+2026+Financial+Results+-+Business+Wire&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
           "published_at": "2026-08-05"
         },
         {
-          "title": "SC platforms gain as Korea and global players race to build biosimilars - CHOSUNBIZ - Chosunbiz",
-          "url": "https://news.google.com/search?q=SC+platforms+gain+as+Korea+and+global+players+race+to+build+biosimilars+-+CHOSUNBIZ+-+Chosunbiz&hl=en-US&gl=US&ceid=US:en",
+          "title": "Vir Biotechnology Q2 Earnings Call Highlights - TradingView",
+          "url": "https://news.google.com/search?q=Vir+Biotechnology+Q2+Earnings+Call+Highlights+-+TradingView&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
-          "published_at": "2026-07-19"
-        }
-      ]
-    },
-    {
-      "nct_id": "NCT05636176",
-      "ticker": "NVO",
-      "sponsor": "Novo Nordisk A/S",
-      "drug": "Ziltivekimab",
-      "phase": "PHASE3",
-      "status": "ACTIVE_NOT_RECRUITING",
-      "title": "A Research Study to Look at How Ziltivekimab Works Compared to Placebo in People With Heart Failure and Inflammation",
-      "change_type": null,
-      "watch_reason": "Active PHASE3 \u00b7 Immunology / Inflammation",
-      "score": null,
-      "detected_at": null,
-      "headline": "NVO \u00b7 Active PHASE3 \u00b7 Immunology / Inflammation",
-      "brief": "Brief unavailable.",
-      "analyst_tone": "neutral",
-      "catalysts": [],
-      "news": [
-        {
-          "title": "Novo Nordisk ziltivekimab heart drug fails phase 3 trial - Yahoo Finance",
-          "url": "https://news.google.com/search?q=Novo+Nordisk+ziltivekimab+heart+drug+fails+phase+3+trial+-+Yahoo+Finance&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-31"
+          "published_at": "2026-08-06"
         },
         {
-          "title": "Novo Nordisk Shares Drop After Drug Candidate Fails in Trial - WSJ",
-          "url": "https://news.google.com/search?q=Novo+Nordisk+Shares+Drop+After+Drug+Candidate+Fails+in+Trial+-+WSJ&hl=en-US&gl=US&ceid=US:en",
+          "title": "Vir Biotechnology: Multiple Catalysts In Hepatitis And Oncology Ahead (NASDAQ:VIR) - Seeking Alpha",
+          "url": "https://news.google.com/search?q=Vir+Biotechnology%3A+Multiple+Catalysts+In+Hepatitis+And+Oncology+Ahead+%28NASDAQ%3AVIR%29+-+Seeking+Alpha&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
-          "published_at": "2026-07-31"
+          "published_at": "2026-07-16"
         },
         {
-          "title": "Novo Nordisk shares dive after heart medicine fails trial, dealing another blow to its pipeline - CNBC",
-          "url": "https://news.google.com/search?q=Novo+Nordisk+shares+dive+after+heart+medicine+fails+trial%2C+dealing+another+blow+to+its+pipeline+-+CNBC&hl=en-US&gl=US&ceid=US:en",
+          "title": "Vir Biotechnology posts $238.9M Q2 revenue, $80.1M net income; $1.01B cash runway into H2 2028 - TradingView",
+          "url": "https://news.google.com/search?q=Vir+Biotechnology+posts+%24238.9M+Q2+revenue%2C+%2480.1M+net+income%3B+%241.01B+cash+runway+into+H2+2028+-+TradingView&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
-          "published_at": "2026-07-31"
-        },
-        {
-          "title": "Ziltivekimab lowered inflammation markers, not major heart events - Stock Titan",
-          "url": "https://news.google.com/search?q=Ziltivekimab+lowered+inflammation+markers%2C+not+major+heart+events+-+Stock+Titan&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-31"
+          "published_at": "2026-08-05"
         }
       ]
     }
