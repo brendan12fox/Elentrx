@@ -1,605 +1,446 @@
 {
-  "cache_key": "2026-08-07",
-  "generated_at": "2026-08-07T04:58:15.776321+00:00",
-  "sector_id": "infectious",
-  "sector_name": "Infectious Disease",
-  "market_pulse": "Biotech trials continue to show momentum across various sectors, with significant advancements in infectious disease treatments. This hour's scan focus is on infectious disease trials, highlighting ongoing developments in vaccines and antiviral therapies.",
+  "cache_key": "2026-08-08",
+  "generated_at": "2026-08-08T10:29:38.485626+00:00",
+  "sector_id": "cns",
+  "sector_name": "CNS / Neurology",
+  "market_pulse": "Biotech trials are gaining momentum across various sectors, with notable advancements in CNS / Neurology. This hour's focus highlights ongoing studies that could significantly impact treatment paradigms.",
   "trials": [
     {
-      "nct_id": "NCT06067230",
-      "ticker": "MRNA",
-      "sponsor": "ModernaTX, Inc.",
-      "drug": "mRNA-1345",
-      "phase": "PHASE3",
-      "status": "ACTIVE_NOT_RECRUITING",
-      "title": "A Study to Investigate the Immunogenicity and Safety of mRNA-1345 Vaccine Targeting Respiratory Syncytial Virus (RSV) in High-risk Adults",
-      "change_type": null,
-      "watch_reason": "Active PHASE3 \u00b7 Infectious Disease",
-      "score": null,
-      "detected_at": null,
-      "headline": "Moderna's RSV Vaccine Phase 3 Active",
-      "brief": "Moderna's mRNA-1345 vaccine for RSV is currently in Phase 3 and is actively investigating its immunogenicity and safety in high-risk adults. With recent FDA approvals for mRNA flu vaccines, investor interest in Moderna's pipeline may increase.",
-      "analyst_tone": "bullish",
-      "catalysts": [
-        "Completion of Phase 3 trial",
-        "Potential FDA submission",
-        "Market response to flu vaccine approval"
-      ],
-      "news": [
-        {
-          "title": "Moderna (Nasdaq: MRNA) details Q2 loss and $950 million patent settlement - Stock Titan",
-          "url": "https://news.google.com/search?q=Moderna+%28Nasdaq%3A+MRNA%29+details+Q2+loss+and+%24950+million+patent+settlement+-+Stock+Titan&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-31"
-        },
-        {
-          "title": "FDA approves first mRNA flu vaccine - thehill.com",
-          "url": "https://news.google.com/search?q=FDA+approves+first+mRNA+flu+vaccine+-+thehill.com&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-08-06"
-        },
-        {
-          "title": "F.D.A. Approves Moderna\u2019s mRNA Flu Vaccine - The New York Times",
-          "url": "https://news.google.com/search?q=F.D.A.+Approves+Moderna%E2%80%99s+mRNA+Flu+Vaccine+-+The+New+York+Times&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-08-06"
-        },
-        {
-          "title": "FDA approves Moderna's mRNA flu vaccine after initial pushback - CBS News",
-          "url": "https://news.google.com/search?q=FDA+approves+Moderna%27s+mRNA+flu+vaccine+after+initial+pushback+-+CBS+News&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-08-06"
-        }
-      ]
-    },
-    {
-      "nct_id": "NCT07096193",
-      "ticker": "GILD",
-      "sponsor": "Gilead Sciences",
-      "drug": "GS-4321",
-      "phase": "PHASE2",
-      "status": "RECRUITING",
-      "title": "Study of GS-4321 in Healthy Participants and Participants With Chronic Hepatitis Delta Virus",
-      "change_type": null,
-      "watch_reason": "Active PHASE2 \u00b7 Infectious Disease",
-      "score": null,
-      "detected_at": null,
-      "headline": "Gilead's GS-4321 Phase 2 Recruiting",
-      "brief": "Gilead's GS-4321 is in Phase 2, targeting chronic hepatitis delta virus in healthy participants. The company has raised its full-year guidance, indicating strong sales growth and potential for upcoming regulatory approvals.",
-      "analyst_tone": "bullish",
-      "catalysts": [
-        "Completion of Phase 2 trial",
-        "Regulatory approval for GS-4321",
-        "Continued sales growth"
-      ],
-      "news": [
-        {
-          "title": "Kalshi to allow bets on clinical trials, FDA decisions - Reuters",
-          "url": "https://news.google.com/search?q=Kalshi+to+allow+bets+on+clinical+trials%2C+FDA+decisions+-+Reuters&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-16"
-        },
-        {
-          "title": "Gilead raises full-year guidance on 8% Q2 sales growth, eyes three near-term regulatory approvals - AllSci",
-          "url": "https://news.google.com/search?q=Gilead+raises+full-year+guidance+on+8%25+Q2+sales+growth%2C+eyes+three+near-term+regulatory+approvals+-+AllSci&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-08-05"
-        },
-        {
-          "title": "Gilead Sciences Announces Second Quarter 2026 Financial Results - businesswire.com",
-          "url": "https://news.google.com/search?q=Gilead+Sciences+Announces+Second+Quarter+2026+Financial+Results+-+businesswire.com&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-08-04"
-        },
-        {
-          "title": "Gilead Sciences, Inc. (GILD) Q2 FY2026 earnings call transcript - Yahoo Finance",
-          "url": "https://news.google.com/search?q=Gilead+Sciences%2C+Inc.+%28GILD%29+Q2+FY2026+earnings+call+transcript+-+Yahoo+Finance&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-08-04"
-        }
-      ]
-    },
-    {
-      "nct_id": "NCT07044297",
+      "nct_id": "NCT04165070",
       "ticker": "MRK",
       "sponsor": "Merck Sharp & Dohme LLC",
-      "drug": "MK-8527",
-      "phase": "PHASE3",
+      "drug": "Pembrolizumab",
+      "phase": "PHASE2",
       "status": "RECRUITING",
-      "title": "A Clinical Study of MK-8527 to Prevent Human Immunodeficiency Virus Type 1 (HIV-1) (MK-8527-011)",
+      "title": "KEYMAKER-U01 Substudy 01A: Efficacy and Safety Study of Pembrolizumab (MK-3475) With or Without Chemotherapy When Used With Investigational Agents in Treatment-na\u00efve Participants With Stage IV Non-small Cell Lung Cancer (NSCLC) (MK-3475-01A/KEYMAKER-U01A)",
       "change_type": null,
-      "watch_reason": "Active PHASE3 \u00b7 Infectious Disease",
+      "watch_reason": "Active PHASE2 \u00b7 CNS / Neurology",
       "score": null,
       "detected_at": null,
-      "headline": "Merck's MK-8527 Phase 3 Recruiting",
-      "brief": "Merck's MK-8527 is in Phase 3 for HIV prevention, actively recruiting participants. With emerging strategies in HIV management, this trial could significantly impact Merck's position in the infectious disease market.",
+      "headline": "Merck's Pembrolizumab Trial in CNS Shows Promise",
+      "brief": "Merck's Phase 2 trial of Pembrolizumab is actively recruiting participants, aiming to assess its efficacy and safety in treatment-na\u00efve patients with advanced cancer. The collaboration with other investigational agents could enhance its therapeutic profile.",
       "analyst_tone": "bullish",
       "catalysts": [
-        "Completion of recruitment",
-        "Data readout from Phase 3",
-        "Potential market launch"
-      ],
-      "news": [
-        {
-          "title": "Renee Heffron, Ph.D., M.P.H., on the case for MK-8527 | AIDS 2026 - Managed Healthcare Executive",
-          "url": "https://news.google.com/search?q=Renee+Heffron%2C+Ph.D.%2C+M.P.H.%2C+on+the+case+for+MK-8527+%7C+AIDS+2026+-+Managed+Healthcare+Executive&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-26"
-        },
-        {
-          "title": "Merck Announces Initial Access Plans for Alimatravir, an Investigational Once-Monthly Oral HIV Pre-Exposure Prophylaxis in Phase 3 Development - businesswire.com",
-          "url": "https://news.google.com/search?q=Merck+Announces+Initial+Access+Plans+for+Alimatravir%2C+an+Investigational+Once-Monthly+Oral+HIV+Pre-Exposure+Prophylaxis+in+Phase+3+Development+-+businesswire.co&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-24"
-        },
-        {
-          "title": "Redefining HIV Management: Emerging Antiretroviral Drug Classes and Immunologic Strategies Shaping the Future of HIV Treatment, Prevention - Contagion Live",
-          "url": "https://news.google.com/search?q=Redefining+HIV+Management%3A+Emerging+Antiretroviral+Drug+Classes+and+Immunologic+Strategies+Shaping+the+Future+of+HIV+Treatment%2C+Prevention+-+Contagion+Live&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-08-01"
-        },
-        {
-          "title": "Will Merck\u2019s (MRK) Early Royalty-Free HIV PrEP Licensing Strategy Redefine Its Global Health Narrative - Sahm",
-          "url": "https://news.google.com/search?q=Will+Merck%E2%80%99s+%28MRK%29+Early+Royalty-Free+HIV+PrEP+Licensing+Strategy+Redefine+Its+Global+Health+Narrative+-+Sahm&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-25"
-        }
-      ]
-    },
-    {
-      "nct_id": "NCT06263959",
-      "ticker": "VIR",
-      "sponsor": "Fujian Akeylink Biotechnology Co., Ltd.",
-      "drug": "GST-HG131",
-      "phase": "PHASE2",
-      "status": "RECRUITING",
-      "title": "A Randomized, Double-blind, Placebo-controlled Phase IIa Clinical Study to Evaluate the Safety and Efficacy of GST-HG131 Tablets in Patients With Chronic Hepatitis B",
-      "change_type": null,
-      "watch_reason": "Active PHASE2 \u00b7 Infectious Disease",
-      "score": null,
-      "detected_at": null,
-      "headline": "VIR's GST-HG131 Phase 2 Recruiting",
-      "brief": "Fujian Akeylink's GST-HG131 is in Phase 2 for chronic hepatitis B, currently recruiting participants. The lack of recent headlines may indicate a quieter phase, but successful outcomes could enhance investor interest.",
-      "analyst_tone": "neutral",
-      "catalysts": [
-        "Completion of recruitment",
-        "Initial data readout",
-        "Partnership opportunities"
-      ],
-      "news": []
-    },
-    {
-      "nct_id": "NCT06497504",
-      "ticker": "GSK",
-      "sponsor": "GlaxoSmithKline",
-      "drug": "Bepirovirsen",
-      "phase": "PHASE2",
-      "status": "ACTIVE_NOT_RECRUITING",
-      "title": "Study of Bepirovirsen in Participants Living With Human Immunodeficiency Virus and Chronic Hepatitis B Virus Infection (B-Focus)",
-      "change_type": null,
-      "watch_reason": "Active PHASE2 \u00b7 Infectious Disease",
-      "score": null,
-      "detected_at": null,
-      "headline": "GSK's Bepirovirsen Phase 2 Active",
-      "brief": "GSK's Bepirovirsen is in Phase 2 for HIV and hepatitis B co-infection, currently not recruiting. With GSK's recent entry into the lung cancer market, investor focus may shift, but this trial remains a key component of their infectious disease strategy.",
-      "analyst_tone": "neutral",
-      "catalysts": [
-        "Data readout from ongoing trials",
+        "Trial results expected in Q4 2024",
         "Potential partnership announcements",
-        "Regulatory updates"
+        "Regulatory updates on Pembrolizumab"
       ],
       "news": [
         {
-          "title": "GSK enters lung cancer drug market with early FDA nod for Jideytro - Reuters",
-          "url": "https://news.google.com/search?q=GSK+enters+lung+cancer+drug+market+with+early+FDA+nod+for+Jideytro+-+Reuters&hl=en-US&gl=US&ceid=US:en",
+          "title": "Phanes Therapeutics Announces Expansion of Clinical Trial Collaboration and Supply Agreement with Merck to Evaluate Spevatamig in Combination with KEYTRUDA\u00ae (Pembrolizumab) and Chemotherapy for Treatment of Biliary Tract Cancer - Yahoo Finance",
+          "url": "https://news.google.com/search?q=Phanes+Therapeutics+Announces+Expansion+of+Clinical+Trial+Collaboration+and+Supply+Agreement+with+Merck+to+Evaluate+Spevatamig+in+Combination+with+KEYTRUDA%C2%AE+%28Pe&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
-          "published_at": "2026-07-22"
+          "published_at": "2026-07-21"
         },
         {
-          "title": "GSK to seek FDA approval for Jemperli in small but high-profile cancer use after phase 2 win - Fierce Pharma",
-          "url": "https://news.google.com/search?q=GSK+to+seek+FDA+approval+for+Jemperli+in+small+but+high-profile+cancer+use+after+phase+2+win+-+Fierce+Pharma&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-13"
-        },
-        {
-          "title": "GSK\u2019s licensor Hansoh Pharma announces positive results from a second phase III trial for Ris-Rez in China - GSK",
-          "url": "https://news.google.com/search?q=GSK%E2%80%99s+licensor+Hansoh+Pharma+announces+positive+results+from+a+second+phase+III+trial+for+Ris-Rez+in+China+-+GSK&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-28"
-        },
-        {
-          "title": "FDA Approves NSCLC Treatment Acquired by GSK in Nuvalent Deal - Contract Pharma",
-          "url": "https://news.google.com/search?q=FDA+Approves+NSCLC+Treatment+Acquired+by+GSK+in+Nuvalent+Deal+-+Contract+Pharma&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-23"
-        }
-      ]
-    },
-    {
-      "nct_id": "NCT07413549",
-      "ticker": "VIR",
-      "sponsor": "Beijing Tuohua Weiye Biotechnology Co., Ltd.",
-      "drug": "Human Umbilical Cord Mesenchymal Stem Cells Injection",
-      "phase": "PHASE2",
-      "status": "RECRUITING",
-      "title": "Clinical Study of Human Umbilical Cord Mesenchymal Stem Cells Injection in Patients With Decompensated Hepatitis B Cirrhosis",
-      "change_type": null,
-      "watch_reason": "Active PHASE2 \u00b7 Infectious Disease",
-      "score": null,
-      "detected_at": null,
-      "headline": "VIR \u00b7 Active PHASE2 \u00b7 Infectious Disease",
-      "brief": "Brief unavailable.",
-      "analyst_tone": "neutral",
-      "catalysts": [],
-      "news": [
-        {
-          "title": "China biotech sector fears policy backlash after girl dies in gene-editing trial - South China Morning Post",
-          "url": "https://news.google.com/search?q=China+biotech+sector+fears+policy+backlash+after+girl+dies+in+gene-editing+trial+-+South+China+Morning+Post&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-29"
-        },
-        {
-          "title": "The VA could help America win the biotechnology race with China - STAT",
-          "url": "https://news.google.com/search?q=The+VA+could+help+America+win+the+biotechnology+race+with+China+-+STAT&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-29"
-        },
-        {
-          "title": "Opinion | How to stop China from leapfrogging the U.S. in biotech - The Washington Post",
-          "url": "https://news.google.com/search?q=Opinion+%7C+How+to+stop+China+from+leapfrogging+the+U.S.+in+biotech+-+The+Washington+Post&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-17"
-        },
-        {
-          "title": "Top emerging biotech hubs in 2026 - Fierce Biotech",
-          "url": "https://news.google.com/search?q=Top+emerging+biotech+hubs+in+2026+-+Fierce+Biotech&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-13"
-        }
-      ]
-    },
-    {
-      "nct_id": "NCT05836259",
-      "ticker": "RLAY",
-      "sponsor": "Tenaya Therapeutics",
-      "drug": "TN-201",
-      "phase": "PHASE2",
-      "status": "RECRUITING",
-      "title": "Multi-center, Open-label, Single-ascending Dose Study of Safety and Tolerability of TN-201 in Adults With Symptomatic MYBPC3 Mutation-associated HCM",
-      "change_type": null,
-      "watch_reason": "Active PHASE2 \u00b7 Infectious Disease",
-      "score": null,
-      "detected_at": null,
-      "headline": "RLAY \u00b7 Active PHASE2 \u00b7 Infectious Disease",
-      "brief": "Brief unavailable.",
-      "analyst_tone": "neutral",
-      "catalysts": [],
-      "news": [
-        {
-          "title": "Tenaya Therapeutics Reports Second Quarter 2026 Financial Results and Provides Business Update - The Manila Times",
-          "url": "https://news.google.com/search?q=Tenaya+Therapeutics+Reports+Second+Quarter+2026+Financial+Results+and+Provides+Business+Update+-+The+Manila+Times&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-08-05"
-        },
-        {
-          "title": "Tenaya Therapeutics Reports Second Quarter 2026 Financial Results and Provides Business Update - GlobeNewswire",
-          "url": "https://news.google.com/search?q=Tenaya+Therapeutics+Reports+Second+Quarter+2026+Financial+Results+and+Provides+Business+Update+-+GlobeNewswire&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-08-05"
-        },
-        {
-          "title": "Tenaya\u2019s new CFO gets options on 1.65M shares, with a $0.8365 exercise price - Stock Titan",
-          "url": "https://news.google.com/search?q=Tenaya%E2%80%99s+new+CFO+gets+options+on+1.65M+shares%2C+with+a+%240.8365+exercise+price+-+Stock+Titan&hl=en-US&gl=US&ceid=US:en",
+          "title": "Kelun-Biotech Announces Phase III Study of Sacituzumab Tirumotecan (sac-TMT) in Combination with Pembrolizumab as First-Line Treatment for PD-L1-Negative Non-Squamous NSCLC Met Primary Endpoint - PR Newswire",
+          "url": "https://news.google.com/search?q=Kelun-Biotech+Announces+Phase+III+Study+of+Sacituzumab+Tirumotecan+%28sac-TMT%29+in+Combination+with+Pembrolizumab+as+First-Line+Treatment+for+PD-L1-Negative+Non-Sq&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
           "published_at": "2026-07-14"
         },
         {
-          "title": "TNYA Q1 2026 Earnings: EPS Miss Slightly as Pipeline Advances Amid Cash Position Focus - Forward Guidance Trends - po-news-eg.net",
-          "url": "https://news.google.com/search?q=TNYA+Q1+2026+Earnings%3A+EPS+Miss+Slightly+as+Pipeline+Advances+Amid+Cash+Position+Focus+-+Forward+Guidance+Trends+-+po-news-eg.net&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-21"
-        }
-      ]
-    },
-    {
-      "nct_id": "NCT04925752",
-      "ticker": "GILD",
-      "sponsor": "Gilead Sciences",
-      "drug": "Oral Lenacapavir (LEN)",
-      "phase": "PHASE3",
-      "status": "ACTIVE_NOT_RECRUITING",
-      "title": "Study of Lenacapavir for HIV Pre-Exposure Prophylaxis in People Who Are at Risk for HIV Infection",
-      "change_type": null,
-      "watch_reason": "Active PHASE3 \u00b7 Infectious Disease",
-      "score": null,
-      "detected_at": null,
-      "headline": "GILD \u00b7 Active PHASE3 \u00b7 Infectious Disease",
-      "brief": "Brief unavailable.",
-      "analyst_tone": "neutral",
-      "catalysts": [],
-      "news": [
-        {
-          "title": "Investigational Once-Weekly Oral HIV Treatment Regimen of Islatravir and Lenacapavir Maintained Virological Suppression in Adults With HIV Who Switched Antiretroviral Therapy - Business Wire",
-          "url": "https://news.google.com/search?q=Investigational+Once-Weekly+Oral+HIV+Treatment+Regimen+of+Islatravir+and+Lenacapavir+Maintained+Virological+Suppression+in+Adults+With+HIV+Who+Switched+Antiretr&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-21"
-        },
-        {
-          "title": "Gilead, MSD share data on once-weekly oral HIV treatment - pharmaphorum",
-          "url": "https://news.google.com/search?q=Gilead%2C+MSD+share+data+on+once-weekly+oral+HIV+treatment+-+pharmaphorum&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-22"
-        },
-        {
-          "title": "Can Gilead's Efforts to Develop New Treatments Solidify HIV Franchise? - Yahoo Finance",
-          "url": "https://news.google.com/search?q=Can+Gilead%27s+Efforts+to+Develop+New+Treatments+Solidify+HIV+Franchise%3F+-+Yahoo+Finance&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-23"
-        },
-        {
-          "title": "Gilead raises full-year guidance on 8% Q2 sales growth, eyes three near-term regulatory approvals - AllSci",
-          "url": "https://news.google.com/search?q=Gilead+raises+full-year+guidance+on+8%25+Q2+sales+growth%2C+eyes+three+near-term+regulatory+approvals+-+AllSci&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-08-05"
-        }
-      ]
-    },
-    {
-      "nct_id": "NCT06275620",
-      "ticker": "BEAM",
-      "sponsor": "Beacon Therapeutics",
-      "drug": "AGTC-501 (high dose and standard corticosteroid regimen)",
-      "phase": "PHASE2",
-      "status": "ENROLLING_BY_INVITATION",
-      "title": "A Study Comparing Two Doses of AGTC-501 in Male Participants With X-linked Retinitis Pigmentosa Caused by RPGR Mutations (DAWN)",
-      "change_type": null,
-      "watch_reason": "Active PHASE2 \u00b7 Infectious Disease",
-      "score": null,
-      "detected_at": null,
-      "headline": "BEAM \u00b7 Active PHASE2 \u00b7 Infectious Disease",
-      "brief": "Brief unavailable.",
-      "analyst_tone": "neutral",
-      "catalysts": [],
-      "news": [
-        {
-          "title": "Beam Therapeutics Reports Q2 2026 Results and Clinical Updates for BEAM-302, Risto-cel and BEAM-304 - Quiver Quantitative",
-          "url": "https://news.google.com/search?q=Beam+Therapeutics+Reports+Q2+2026+Results+and+Clinical+Updates+for+BEAM-302%2C+Risto-cel+and+BEAM-304+-+Quiver+Quantitative&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-08-04"
-        },
-        {
-          "title": "Beam expects $1.2B cash plus $200M draw to fund plans into mid-2029 - Stock Titan",
-          "url": "https://news.google.com/search?q=Beam+expects+%241.2B+cash+plus+%24200M+draw+to+fund+plans+into+mid-2029+-+Stock+Titan&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-08-04"
-        },
-        {
-          "title": "Beam Therapeutics reports Q2 2026 results: $1.15B cash, $122.7M net loss - TradingView",
-          "url": "https://news.google.com/search?q=Beam+Therapeutics+reports+Q2+2026+results%3A+%241.15B+cash%2C+%24122.7M+net+loss+-+TradingView&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-08-04"
-        },
-        {
-          "title": "Beam Reports Q2 2026 Net Loss of $122.7 Million - Quiver Quantitative",
-          "url": "https://news.google.com/search?q=Beam+Reports+Q2+2026+Net+Loss+of+%24122.7+Million+-+Quiver+Quantitative&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-08-04"
-        }
-      ]
-    },
-    {
-      "nct_id": "NCT04706923",
-      "ticker": "JAZZ",
-      "sponsor": "SymBio Pharmaceuticals",
-      "drug": "BCV",
-      "phase": "PHASE2",
-      "status": "RECRUITING",
-      "title": "A Phase 2a Study of IV BCV in Subjects With Adenovirus Infection",
-      "change_type": null,
-      "watch_reason": "Active PHASE2 \u00b7 Infectious Disease",
-      "score": null,
-      "detected_at": null,
-      "headline": "JAZZ \u00b7 Active PHASE2 \u00b7 Infectious Disease",
-      "brief": "Brief unavailable.",
-      "analyst_tone": "neutral",
-      "catalysts": [],
-      "news": []
-    },
-    {
-      "nct_id": "NCT07109219",
-      "ticker": "AZN",
-      "sponsor": "AstraZeneca",
-      "drug": "AZD4512 monotherapy",
-      "phase": "PHASE2",
-      "status": "RECRUITING",
-      "title": "Study of AZD4512 Monotherapy or in Combination With Anticancer Agents in Participants With Acute Lymphoblastic Leukemia",
-      "change_type": null,
-      "watch_reason": "Active PHASE2 \u00b7 Infectious Disease",
-      "score": null,
-      "detected_at": null,
-      "headline": "AZN \u00b7 Active PHASE2 \u00b7 Infectious Disease",
-      "brief": "Brief unavailable.",
-      "analyst_tone": "neutral",
-      "catalysts": [],
-      "news": [
-        {
-          "title": "AstraZeneca enters exclusive global license agreement for novel oral EGFR inhibitor Zegfrovy for lung cancer with Dizal Pharmaceutical - AstraZeneca",
-          "url": "https://news.google.com/search?q=AstraZeneca+enters+exclusive+global+license+agreement+for+novel+oral+EGFR+inhibitor+Zegfrovy+for+lung+cancer+with+Dizal+Pharmaceutical+-+AstraZeneca&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-14"
-        },
-        {
-          "title": "AstraZeneca 'magic' faces rare test after trial failure, share slide - Reuters",
-          "url": "https://news.google.com/search?q=AstraZeneca+%27magic%27+faces+rare+test+after+trial+failure%2C+share+slide+-+Reuters&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-24"
-        },
-        {
-          "title": "AstraZeneca, Ionis Shares Slide After Wainua Misses Target in Heart Disease Trial - WSJ",
-          "url": "https://news.google.com/search?q=AstraZeneca%2C+Ionis+Shares+Slide+After+Wainua+Misses+Target+in+Heart+Disease+Trial+-+WSJ&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-09"
-        },
-        {
-          "title": "AstraZeneca stock drops 9% after Wainua heart drug trial fails - qz.com",
-          "url": "https://news.google.com/search?q=AstraZeneca+stock+drops+9%25+after+Wainua+heart+drug+trial+fails+-+qz.com&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-09"
-        }
-      ]
-    },
-    {
-      "nct_id": "NCT05139602",
-      "ticker": "ABBV",
-      "sponsor": "AbbVie",
-      "drug": "Lutikizumab",
-      "phase": "PHASE2",
-      "status": "ACTIVE_NOT_RECRUITING",
-      "title": "A Study to Assess Disease Activity and Safety of Subcutaneous Lutikizumab (ABT-981) in Adult Participants With Moderate to Severe Hidradenitis Suppurativa Who Have Failed Anti-Tumor Necrosis Factor (TNF) Therapy and Who Are Na\u00efve to Biologic Therapy",
-      "change_type": null,
-      "watch_reason": "Active PHASE2 \u00b7 Infectious Disease",
-      "score": null,
-      "detected_at": null,
-      "headline": "ABBV \u00b7 Active PHASE2 \u00b7 Infectious Disease",
-      "brief": "Brief unavailable.",
-      "analyst_tone": "neutral",
-      "catalysts": [],
-      "news": [
-        {
-          "title": "AbbVie (ABBV) Q1 2026 Earnings Call Transcript - Fortune",
-          "url": "https://news.google.com/search?q=AbbVie+%28ABBV%29+Q1+2026+Earnings+Call+Transcript+-+Fortune&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-08-01"
-        },
-        {
-          "title": "AbbVie (ABBV) Q2 2026 Earnings Call Transcript - Fortune",
-          "url": "https://news.google.com/search?q=AbbVie+%28ABBV%29+Q2+2026+Earnings+Call+Transcript+-+Fortune&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-31"
-        },
-        {
-          "title": "AbbVie (ABBV) Wins FDA Review For BOTOX Cosmetic In Jawline Treatment Push - Yahoo Finance",
-          "url": "https://news.google.com/search?q=AbbVie+%28ABBV%29+Wins+FDA+Review+For+BOTOX+Cosmetic+In+Jawline+Treatment+Push+-+Yahoo+Finance&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-08-04"
-        },
-        {
-          "title": "If Approved, Botox Would Be First and Only Neurotoxin for Masseter Prominence - Stock Titan",
-          "url": "https://news.google.com/search?q=If+Approved%2C+Botox+Would+Be+First+and+Only+Neurotoxin+for+Masseter+Prominence+-+Stock+Titan&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-08-04"
-        }
-      ]
-    },
-    {
-      "nct_id": "NCT03228667",
-      "ticker": "IBRX",
-      "sponsor": "ImmunityBio, Inc.",
-      "drug": "N-803 + Pembrolizumab",
-      "phase": "PHASE2",
-      "status": "ACTIVE_NOT_RECRUITING",
-      "title": "QUILT-3.055: A Study of Combination Immunotherapies in Patients Who Have Previously Received Treatment With Immune Checkpoint Inhibitors",
-      "change_type": null,
-      "watch_reason": "Active PHASE2 \u00b7 Infectious Disease",
-      "score": null,
-      "detected_at": null,
-      "headline": "IBRX \u00b7 Active PHASE2 \u00b7 Infectious Disease",
-      "brief": "Brief unavailable.",
-      "analyst_tone": "neutral",
-      "catalysts": [],
-      "news": [
-        {
-          "title": "IBRX Stock Jumps Overnight: UAE Grants Anktiva Broadest Approval Yet After Founder\u2019s \u2018July Birthday News\u2019 Tease - TradingView",
-          "url": "https://news.google.com/search?q=IBRX+Stock+Jumps+Overnight%3A+UAE+Grants+Anktiva+Broadest+Approval+Yet+After+Founder%E2%80%99s+%E2%80%98July+Birthday+News%E2%80%99+Tease+-+TradingView&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-30"
-        },
-        {
-          "title": "ImmunityBio Gains After UAE Approves ANKTIVA for Bladder and Lung Cancer Treatments - Yahoo Finance",
-          "url": "https://news.google.com/search?q=ImmunityBio+Gains+After+UAE+Approves+ANKTIVA+for+Bladder+and+Lung+Cancer+Treatments+-+Yahoo+Finance&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-30"
-        },
-        {
-          "title": "Anktiva Vs Keytruda: ImmunityBio Exec Chair Slams FDA For Double Standards In Approvals - Stocktwits",
-          "url": "https://news.google.com/search?q=Anktiva+Vs+Keytruda%3A+ImmunityBio+Exec+Chair+Slams+FDA+For+Double+Standards+In+Approvals+-+Stocktwits&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-28"
-        },
-        {
-          "title": "The Bull Case For ImmunityBio (IBRX) Could Change Following ANKTIVA\u2019s Broad UAE Approval - Learn Why - simplywall.st",
-          "url": "https://news.google.com/search?q=The+Bull+Case+For+ImmunityBio+%28IBRX%29+Could+Change+Following+ANKTIVA%E2%80%99s+Broad+UAE+Approval+-+Learn+Why+-+simplywall.st&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-31"
-        }
-      ]
-    },
-    {
-      "nct_id": "NCT05630755",
-      "ticker": "MRK",
-      "sponsor": "Merck Sharp & Dohme LLC",
-      "drug": "DOR/ISL",
-      "phase": "PHASE3",
-      "status": "ACTIVE_NOT_RECRUITING",
-      "title": "A Switch to Doravirine/Islatravir (DOR/ISL) in Participants With Human Immunodeficiency Virus Type 1 (HIV-1) Who Are Virologically Suppressed on Bictegravir/Emtricitabine/Tenofovir Alafenamide (BIC/FTC/TAF) (MK-8591A-052)",
-      "change_type": null,
-      "watch_reason": "Active PHASE3 \u00b7 Infectious Disease",
-      "score": null,
-      "detected_at": null,
-      "headline": "MRK \u00b7 Active PHASE3 \u00b7 Infectious Disease",
-      "brief": "Brief unavailable.",
-      "analyst_tone": "neutral",
-      "catalysts": [],
-      "news": [
-        {
-          "title": "Redefining HIV Management: Emerging Antiretroviral Drug Classes and Immunologic Strategies Shaping the Future of HIV Treatment, Prevention - Contagion Live",
-          "url": "https://news.google.com/search?q=Redefining+HIV+Management%3A+Emerging+Antiretroviral+Drug+Classes+and+Immunologic+Strategies+Shaping+the+Future+of+HIV+Treatment%2C+Prevention+-+Contagion+Live&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-08-01"
-        },
-        {
-          "title": "Investigational Once-Weekly Oral HIV Treatment Regimen of Islatravir and Lenacapavir Maintained Virological Suppression in Adults With HIV Who Switched Antiretroviral Therapy - Business Wire",
-          "url": "https://news.google.com/search?q=Investigational+Once-Weekly+Oral+HIV+Treatment+Regimen+of+Islatravir+and+Lenacapavir+Maintained+Virological+Suppression+in+Adults+With+HIV+Who+Switched+Antiretr&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-21"
-        },
-        {
-          "title": "Merck to Present New Data on Daily, Weekly, and Monthly Options Across its HIV Treatment and Prevention Pipeline at AIDS 2026 - Business Wire",
-          "url": "https://news.google.com/search?q=Merck+to+Present+New+Data+on+Daily%2C+Weekly%2C+and+Monthly+Options+Across+its+HIV+Treatment+and+Prevention+Pipeline+at+AIDS+2026+-+Business+Wire&hl=en-US&gl=US&ceid=US:en",
+          "title": "KEYTRUDA\u00ae (pembrolizumab) as Monotherapy Significantly Improved Progression-Free Survival (PFS) in Certain Patients With Advanced or Recurrent Endometrial Cancer With Mismatch Repair Deficient (dMMR) Tumors Compared to Chemotherapy - Business Wire",
+          "url": "https://news.google.com/search?q=KEYTRUDA%C2%AE+%28pembrolizumab%29+as+Monotherapy+Significantly+Improved+Progression-Free+Survival+%28PFS%29+in+Certain+Patients+With+Advanced+or+Recurrent+Endometrial+Cance&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
           "published_at": "2026-07-15"
         },
         {
-          "title": "Merck gets US FDA nod for first-in-its-class oral cholesterol drug - Reuters",
-          "url": "https://news.google.com/search?q=Merck+gets+US+FDA+nod+for+first-in-its-class+oral+cholesterol+drug+-+Reuters&hl=en-US&gl=US&ceid=US:en",
+          "title": "Merck advances sac-TMT into first-line lung cancer redesign after endometrial Phase III win - AllSci",
+          "url": "https://news.google.com/search?q=Merck+advances+sac-TMT+into+first-line+lung+cancer+redesign+after+endometrial+Phase+III+win+-+AllSci&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
-          "published_at": "2026-07-16"
+          "published_at": "2026-08-05"
         }
       ]
     },
     {
-      "nct_id": "NCT07348692",
-      "ticker": "SNY",
-      "sponsor": "Sanofi",
-      "drug": "PCV21 vaccine",
+      "nct_id": "NCT05738486",
+      "ticker": "LLY",
+      "sponsor": "Eli Lilly and Company",
+      "drug": "Donanemab",
       "phase": "PHASE3",
-      "status": "RECRUITING",
-      "title": "Lot-to-lot Consistency Study of a 21-valent Pneumococcal Conjugate Vaccine in Healthy Infants From 2 Months of Age",
+      "status": "ACTIVE_NOT_RECRUITING",
+      "title": "A Study of Different Donanemab (LY3002813) Dosing Regimens in Adults With Early Alzheimer's Disease (TRAILBLAZER-ALZ 6)",
       "change_type": null,
-      "watch_reason": "Active PHASE3 \u00b7 Infectious Disease",
+      "watch_reason": "Active PHASE3 \u00b7 CNS / Neurology",
       "score": null,
       "detected_at": null,
-      "headline": "SNY \u00b7 Active PHASE3 \u00b7 Infectious Disease",
+      "headline": "Eli Lilly's Donanemab Progressing in Alzheimer's Study",
+      "brief": "Eli Lilly's Phase 3 trial for Donanemab is currently active but not recruiting, focusing on different dosing regimens for early Alzheimer's patients. Positive outcomes could lead to significant market opportunities in neurodegenerative diseases.",
+      "analyst_tone": "bullish",
+      "catalysts": [
+        "Data presentation at AAIC 2026",
+        "FDA approval discussions",
+        "Potential licensing agreements"
+      ],
+      "news": [
+        {
+          "title": "Lilly to present Alzheimer's disease diagnostic and therapeutic research at AAIC 2026, including new data on P-tau217 blood tests and amyloid-targeting treatment - investor.lilly.com",
+          "url": "https://news.google.com/search?q=Lilly+to+present+Alzheimer%27s+disease+diagnostic+and+therapeutic+research+at+AAIC+2026%2C+including+new+data+on+P-tau217+blood+tests+and+amyloid-targeting+treatmen&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-09"
+        },
+        {
+          "title": "Eli Lilly is reinventing the pharma business - The Economist",
+          "url": "https://news.google.com/search?q=Eli+Lilly+is+reinventing+the+pharma+business+-+The+Economist&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-15"
+        },
+        {
+          "title": "Lilly, with new data, to seek FDA approval of obesity drug retatrutide - BioPharma Dive",
+          "url": "https://news.google.com/search?q=Lilly%2C+with+new+data%2C+to+seek+FDA+approval+of+obesity+drug+retatrutide+-+BioPharma+Dive&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-23"
+        },
+        {
+          "title": "Eli Lilly to allow more patients to apply for special access to unapproved obesity drug - STAT",
+          "url": "https://news.google.com/search?q=Eli+Lilly+to+allow+more+patients+to+apply+for+special+access+to+unapproved+obesity+drug+-+STAT&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-03"
+        }
+      ]
+    },
+    {
+      "nct_id": "NCT06798896",
+      "ticker": "SUPN",
+      "sponsor": "Supernus Pharmaceuticals, Inc.",
+      "drug": "SPN-817",
+      "phase": "PHASE2",
+      "status": "RECRUITING",
+      "title": "RENAISSANCE 2: SPN-817 Phase 2, Double-Blind, Placebo-Controlled Study in Adults With Focal Onset Seizures",
+      "change_type": null,
+      "watch_reason": "Active PHASE2 \u00b7 CNS / Neurology",
+      "score": null,
+      "detected_at": null,
+      "headline": "Supernus' SPN-817 Targets Focal Onset Seizures",
+      "brief": "Supernus Pharmaceuticals is actively recruiting for its Phase 2 trial of SPN-817, which aims to evaluate its efficacy in adults with focal onset seizures. The trial's success could position SPN-817 as a key player in the epilepsy market.",
+      "analyst_tone": "bullish",
+      "catalysts": [
+        "Interim results expected in Q1 2025",
+        "Potential partnerships with epilepsy organizations",
+        "Market expansion strategies"
+      ],
+      "news": [
+        {
+          "title": "Q2 2026 Supernus Pharmaceuticals Inc Earnings Call Transcript - GuruFocus",
+          "url": "https://news.google.com/search?q=Q2+2026+Supernus+Pharmaceuticals+Inc+Earnings+Call+Transcript+-+GuruFocus&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-06"
+        },
+        {
+          "title": "Supernus Pharmaceuticals Inc (SUPN) (Q2 2026) Earnings Call Highlights: Strong Revenue Growth ... By GuruFocus - ca.investing.com",
+          "url": "https://news.google.com/search?q=Supernus+Pharmaceuticals+Inc+%28SUPN%29+%28Q2+2026%29+Earnings+Call+Highlights%3A+Strong+Revenue+Growth+...+By+GuruFocus+-+ca.investing.com&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-04"
+        },
+        {
+          "title": "Supernus and Indivior Agree to All-Stock Merger of Equals - Stock Titan",
+          "url": "https://news.google.com/search?q=Supernus+and+Indivior+Agree+to+All-Stock+Merger+of+Equals+-+Stock+Titan&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-03"
+        },
+        {
+          "title": "Non-Stimulant ADHD Drug Qelbree Reaches 3 Million Prescriptions - Stock Titan",
+          "url": "https://news.google.com/search?q=Non-Stimulant+ADHD+Drug+Qelbree+Reaches+3+Million+Prescriptions+-+Stock+Titan&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-14"
+        }
+      ]
+    },
+    {
+      "nct_id": "NCT05395624",
+      "ticker": "BEAM",
+      "sponsor": "Ashvattha Therapeutics, Inc.",
+      "drug": "18F-OP-801",
+      "phase": "PHASE2",
+      "status": "RECRUITING",
+      "title": "Safety, PK and Biodistribution of 18F-OP-801 in Patients With ALS, AD, MS, PD and Healthy Volunteers",
+      "change_type": null,
+      "watch_reason": "Active PHASE2 \u00b7 CNS / Neurology",
+      "score": null,
+      "detected_at": null,
+      "headline": "Ashvattha's 18F-OP-801 Targets ALS and More",
+      "brief": "Ashvattha Therapeutics is recruiting for its Phase 2 trial of 18F-OP-801, which assesses safety and biodistribution in patients with ALS and other CNS conditions. This trial could provide critical insights into the drug's potential across multiple neurological disorders.",
+      "analyst_tone": "neutral",
+      "catalysts": [
+        "Initial safety data in Q3 2025",
+        "Collaboration opportunities",
+        "Market interest in ALS treatments"
+      ],
+      "news": []
+    },
+    {
+      "nct_id": "NCT03796962",
+      "ticker": "REGN",
+      "sponsor": "Xenon Pharmaceuticals Inc.",
+      "drug": "XEN1101",
+      "phase": "PHASE2",
+      "status": "ACTIVE_NOT_RECRUITING",
+      "title": "A Study to Evaluate XEN1101 as Adjunctive Therapy in Focal Epilepsy",
+      "change_type": null,
+      "watch_reason": "Active PHASE2 \u00b7 CNS / Neurology",
+      "score": null,
+      "detected_at": null,
+      "headline": "Xenon's XEN1101 in Focal Epilepsy Trial",
+      "brief": "Xenon Pharmaceuticals' Phase 2 trial for XEN1101 is currently not recruiting, focusing on its role as adjunctive therapy in focal epilepsy. The upcoming FDA filing could be a significant catalyst for the company's stock.",
+      "analyst_tone": "bullish",
+      "catalysts": [
+        "FDA filing expected in Q3 2026",
+        "Webcast for results and updates",
+        "Potential licensing deals"
+      ],
+      "news": [
+        {
+          "title": "FDA Pre-NDA Progress On Azetukalner Could Be A Game Changer For Xenon Pharmaceuticals (XENE) - simplywall.st",
+          "url": "https://news.google.com/search?q=FDA+Pre-NDA+Progress+On+Azetukalner+Could+Be+A+Game+Changer+For+Xenon+Pharmaceuticals+%28XENE%29+-+simplywall.st&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-07"
+        },
+        {
+          "title": "Xenon\u2019s epilepsy drug FDA filing is on track for Q3 2026 - Stock Titan",
+          "url": "https://news.google.com/search?q=Xenon%E2%80%99s+epilepsy+drug+FDA+filing+is+on+track+for+Q3+2026+-+Stock+Titan&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-06"
+        },
+        {
+          "title": "Xenon plans Aug. 6 webcast for results and business update - Stock Titan",
+          "url": "https://news.google.com/search?q=Xenon+plans+Aug.+6+webcast+for+results+and+business+update+-+Stock+Titan&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-30"
+        },
+        {
+          "title": "Xenon Pharmaceuticals earnings on deck as FDA approval push nears - Investing.com",
+          "url": "https://news.google.com/search?q=Xenon+Pharmaceuticals+earnings+on+deck+as+FDA+approval+push+nears+-+Investing.com&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-06"
+        }
+      ]
+    },
+    {
+      "nct_id": "NCT07424404",
+      "ticker": "BMY",
+      "sponsor": "Karuna Therapeutics, Inc., a Bristol Myers Squibb company",
+      "drug": "KarXT",
+      "phase": "PHASE3",
+      "status": "RECRUITING",
+      "title": "A Study to Evaluate the Long-term Safety and Tolerability of KarXT and KarX-EC for the Treatment of Schizophrenia and Autism-Related Irritability in Adolescents, Respectively",
+      "change_type": null,
+      "watch_reason": "Active PHASE3 \u00b7 CNS / Neurology",
+      "score": null,
+      "detected_at": null,
+      "headline": "BMY \u00b7 Active PHASE3 \u00b7 CNS / Neurology",
       "brief": "Brief unavailable.",
       "analyst_tone": "neutral",
       "catalysts": [],
       "news": [
         {
-          "title": "US FDA approves Sanofi's wearable injector form of blood cancer drug - Reuters",
-          "url": "https://news.google.com/search?q=US+FDA+approves+Sanofi%27s+wearable+injector+form+of+blood+cancer+drug+-+Reuters&hl=en-US&gl=US&ceid=US:en",
+          "title": "Dementia-related Psychosis Market Gearing Up for Outstanding Expansion at a CAGR of 26.2% During the Forecast Period (2026-2036) | DelveInsight - PR Newswire UK",
+          "url": "https://news.google.com/search?q=Dementia-related+Psychosis+Market+Gearing+Up+for+Outstanding+Expansion+at+a+CAGR+of+26.2%25+During+the+Forecast+Period+%282026-2036%29+%7C+DelveInsight+-+PR+Newswire+UK&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
-          "published_at": "2026-07-10"
+          "published_at": "2026-08-03"
         },
+        {
+          "title": "This startup thinks humans in clinical trials could become a \u2018formality\u2019 - Pharma Voice",
+          "url": "https://news.google.com/search?q=This+startup+thinks+humans+in+clinical+trials+could+become+a+%E2%80%98formality%E2%80%99+-+Pharma+Voice&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-16"
+        },
+        {
+          "title": "Galimedix is keeping the amyloid hypothesis alive - Pharma Voice",
+          "url": "https://news.google.com/search?q=Galimedix+is+keeping+the+amyloid+hypothesis+alive+-+Pharma+Voice&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-14"
+        }
+      ]
+    },
+    {
+      "nct_id": "NCT07467993",
+      "ticker": "NVS",
+      "sponsor": "Novartis Pharmaceuticals",
+      "drug": "GXV813",
+      "phase": "PHASE2",
+      "status": "RECRUITING",
+      "title": "Study to Assess the Safety, Tolerability, and Treatment Response of GXV813 in Hospitalized Adults With Schizophrenia",
+      "change_type": null,
+      "watch_reason": "Active PHASE2 \u00b7 CNS / Neurology",
+      "score": null,
+      "detected_at": null,
+      "headline": "NVS \u00b7 Active PHASE2 \u00b7 CNS / Neurology",
+      "brief": "Brief unavailable.",
+      "analyst_tone": "neutral",
+      "catalysts": [],
+      "news": [
+        {
+          "title": "Novartis gains full FDA nod for Fabhalta in kidney disorder IgAN - Fierce Pharma",
+          "url": "https://news.google.com/search?q=Novartis+gains+full+FDA+nod+for+Fabhalta+in+kidney+disorder+IgAN+-+Fierce+Pharma&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-17"
+        },
+        {
+          "title": "Novartis (SWX:NOVN) Wins FDA Approval For Pluvicto In Earlier Prostate Cancer - Yahoo Finance",
+          "url": "https://news.google.com/search?q=Novartis+%28SWX%3ANOVN%29+Wins+FDA+Approval+For+Pluvicto+In+Earlier+Prostate+Cancer+-+Yahoo+Finance&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-02"
+        },
+        {
+          "title": "This Novartis Drug Could Help Delay Dialysis\u2014FDA Grants Full Approval - Benzinga",
+          "url": "https://news.google.com/search?q=This+Novartis+Drug+Could+Help+Delay+Dialysis%E2%80%94FDA+Grants+Full+Approval+-+Benzinga&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-17"
+        },
+        {
+          "title": "Novartis Wins FDA Approval for Expanded Prostate Cancer Treatment For Pluvicto - Moomoo",
+          "url": "https://news.google.com/search?q=Novartis+Wins+FDA+Approval+for+Expanded+Prostate+Cancer+Treatment+For+Pluvicto+-+Moomoo&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-31"
+        }
+      ]
+    },
+    {
+      "nct_id": "NCT07288567",
+      "ticker": "BMY",
+      "sponsor": "Bristol-Myers Squibb",
+      "drug": "KarXT",
+      "phase": "PHASE3",
+      "status": "RECRUITING",
+      "title": "A Study to Evaluate the Efficacy and Safety of KarXT for the Treatment of Schizophrenia in Adolescents (EMERGENT TEEN)",
+      "change_type": null,
+      "watch_reason": "Active PHASE3 \u00b7 CNS / Neurology",
+      "score": null,
+      "detected_at": null,
+      "headline": "BMY \u00b7 Active PHASE3 \u00b7 CNS / Neurology",
+      "brief": "Brief unavailable.",
+      "analyst_tone": "neutral",
+      "catalysts": [],
+      "news": [
+        {
+          "title": "Bristol-Myers Squibb Co Stock (BMY) Closed Up by 3.07% on Jul 13: Key Drivers Unveiled - TradingKey",
+          "url": "https://news.google.com/search?q=Bristol-Myers+Squibb+Co+Stock+%28BMY%29+Closed+Up+by+3.07%25+on+Jul+13%3A+Key+Drivers+Unveiled+-+TradingKey&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-13"
+        },
+        {
+          "title": "Real-World and Long-Term Trial Data Show Xanomeline/Trospium Cuts Hospitalizations, Antipsychotic Burden in Schizophrenia - Psychiatric Times",
+          "url": "https://news.google.com/search?q=Real-World+and+Long-Term+Trial+Data+Show+Xanomeline%2FTrospium+Cuts+Hospitalizations%2C+Antipsychotic+Burden+in+Schizophrenia+-+Psychiatric+Times&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-30"
+        },
+        {
+          "title": "A Glimpse of the Future from the Alzheimer\u2019s Association International Conference - Being Patient",
+          "url": "https://news.google.com/search?q=A+Glimpse+of+the+Future+from+the+Alzheimer%E2%80%99s+Association+International+Conference+-+Being+Patient&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-21"
+        },
+        {
+          "title": "Bristol-Myers Squibb (BMY) Q2 2026 Earnings Call Transcript - The Globe and Mail",
+          "url": "https://news.google.com/search?q=Bristol-Myers+Squibb+%28BMY%29+Q2+2026+Earnings+Call+Transcript+-+The+Globe+and+Mail&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-31"
+        }
+      ]
+    },
+    {
+      "nct_id": "NCT07105111",
+      "ticker": "NBIX",
+      "sponsor": "Neurocrine Biosciences",
+      "drug": "Valbenazine",
+      "phase": "PHASE4",
+      "status": "RECRUITING",
+      "title": "A Study to Evaluate the Effectiveness of Valbenazine in Adult Participants With Tardive Dyskinesia (TD) Who Remain Symptomatic While Receiving or After Stopping a Vesicular Monoamine Transporter 2 (VMAT2) Inhibitor",
+      "change_type": null,
+      "watch_reason": "Active PHASE4 \u00b7 CNS / Neurology",
+      "score": null,
+      "detected_at": null,
+      "headline": "NBIX \u00b7 Active PHASE4 \u00b7 CNS / Neurology",
+      "brief": "Brief unavailable.",
+      "analyst_tone": "neutral",
+      "catalysts": [],
+      "news": [
+        {
+          "title": "Neurocrine Biosciences Reports Second-Quarter 2026 Financial Results - PR Newswire",
+          "url": "https://news.google.com/search?q=Neurocrine+Biosciences+Reports+Second-Quarter+2026+Financial+Results+-+PR+Newswire&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-30"
+        },
+        {
+          "title": "Neurocrine\u2019s Investigational Obesity Drug Targets Three Receptors - Stock Titan",
+          "url": "https://news.google.com/search?q=Neurocrine%E2%80%99s+Investigational+Obesity+Drug+Targets+Three+Receptors+-+Stock+Titan&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-07"
+        },
+        {
+          "title": "Neurocrine Biosciences Announces Initiation of Phase 1 Clinical Study Evaluating NBIP-'1968, a GLP-1/GIP/Glucagon Receptor Triple Agonist - PR Newswire",
+          "url": "https://news.google.com/search?q=Neurocrine+Biosciences+Announces+Initiation+of+Phase+1+Clinical+Study+Evaluating+NBIP-%271968%2C+a+GLP-1%2FGIP%2FGlucagon+Receptor+Triple+Agonist+-+PR+Newswire&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-07"
+        },
+        {
+          "title": "Here's Why You Should Add Savara Stock to Your Portfolio Now - TradingView",
+          "url": "https://news.google.com/search?q=Here%27s+Why+You+Should+Add+Savara+Stock+to+Your+Portfolio+Now+-+TradingView&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-22"
+        }
+      ]
+    },
+    {
+      "nct_id": "NCT07216703",
+      "ticker": "MRK",
+      "sponsor": "Merck Sharp & Dohme LLC",
+      "drug": "Pembrolizumab",
+      "phase": "PHASE3",
+      "status": "RECRUITING",
+      "title": "A Clinical Study of Sacituzumab Tirumotecan (MK-2870) in Combination With Pembrolizumab (MK-3475) as First-line Maintenance Treatment of Cervical Cancer (MK-2870-036/TroFuse-036/GOG-3123/ENGOT-cx22)",
+      "change_type": null,
+      "watch_reason": "Active PHASE3 \u00b7 CNS / Neurology",
+      "score": null,
+      "detected_at": null,
+      "headline": "MRK \u00b7 Active PHASE3 \u00b7 CNS / Neurology",
+      "brief": "Brief unavailable.",
+      "analyst_tone": "neutral",
+      "catalysts": [],
+      "news": [
+        {
+          "title": "Phanes Therapeutics Announces Expansion of Clinical Trial Collaboration and Supply Agreement with Merck to Evaluate Spevatamig in Combination with KEYTRUDA\u00ae (Pembrolizumab) and Chemotherapy for Treatment of Biliary Tract Cancer - Yahoo Finance",
+          "url": "https://news.google.com/search?q=Phanes+Therapeutics+Announces+Expansion+of+Clinical+Trial+Collaboration+and+Supply+Agreement+with+Merck+to+Evaluate+Spevatamig+in+Combination+with+KEYTRUDA%C2%AE+%28Pe&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-21"
+        },
+        {
+          "title": "Kelun-Biotech Announces Phase III Study of Sacituzumab Tirumotecan (sac-TMT) in Combination with Pembrolizumab as First-Line Treatment for PD-L1-Negative Non-Squamous NSCLC Met Primary Endpoint - PR Newswire",
+          "url": "https://news.google.com/search?q=Kelun-Biotech+Announces+Phase+III+Study+of+Sacituzumab+Tirumotecan+%28sac-TMT%29+in+Combination+with+Pembrolizumab+as+First-Line+Treatment+for+PD-L1-Negative+Non-Sq&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-14"
+        },
+        {
+          "title": "KEYTRUDA\u00ae (pembrolizumab) as Monotherapy Significantly Improved Progression-Free Survival (PFS) in Certain Patients With Advanced or Recurrent Endometrial Cancer With Mismatch Repair Deficient (dMMR) Tumors Compared to Chemotherapy - Business Wire",
+          "url": "https://news.google.com/search?q=KEYTRUDA%C2%AE+%28pembrolizumab%29+as+Monotherapy+Significantly+Improved+Progression-Free+Survival+%28PFS%29+in+Certain+Patients+With+Advanced+or+Recurrent+Endometrial+Cance&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-15"
+        },
+        {
+          "title": "Merck advances sac-TMT into first-line lung cancer redesign after endometrial Phase III win - AllSci",
+          "url": "https://news.google.com/search?q=Merck+advances+sac-TMT+into+first-line+lung+cancer+redesign+after+endometrial+Phase+III+win+-+AllSci&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-05"
+        }
+      ]
+    },
+    {
+      "nct_id": "NCT04879628",
+      "ticker": "SNY",
+      "sponsor": "Sanofi",
+      "drug": "SAR441344 IV",
+      "phase": "PHASE2",
+      "status": "ACTIVE_NOT_RECRUITING",
+      "title": "Proof-of-concept Study for SAR441344 (Frexalimab) in Relapsing Multiple Sclerosis",
+      "change_type": null,
+      "watch_reason": "Active PHASE2 \u00b7 CNS / Neurology",
+      "score": null,
+      "detected_at": null,
+      "headline": "SNY \u00b7 Active PHASE2 \u00b7 CNS / Neurology",
+      "brief": "Brief unavailable.",
+      "analyst_tone": "neutral",
+      "catalysts": [],
+      "news": [
         {
           "title": "Sanofi injectable multiple myeloma drug approved (SNY:NASDAQ) - Seeking Alpha",
           "url": "https://news.google.com/search?q=Sanofi+injectable+multiple+myeloma+drug+approved+%28SNY%3ANASDAQ%29+-+Seeking+Alpha&hl=en-US&gl=US&ceid=US:en",
@@ -607,8 +448,14 @@
           "published_at": "2026-07-10"
         },
         {
-          "title": "Sanofi snags FDA thumbs up for Sarclisa as 1st cancer drug delivered by on-body injector - Fierce Pharma",
-          "url": "https://news.google.com/search?q=Sanofi+snags+FDA+thumbs+up+for+Sarclisa+as+1st+cancer+drug+delivered+by+on-body+injector+-+Fierce+Pharma&hl=en-US&gl=US&ceid=US:en",
+          "title": "Sanofi (ENXTPA:SAN) Could Be 21% Undervalued As FDA Clears Sarclisa Escena - Yahoo Finance",
+          "url": "https://news.google.com/search?q=Sanofi+%28ENXTPA%3ASAN%29+Could+Be+21%25+Undervalued+As+FDA+Clears+Sarclisa+Escena+-+Yahoo+Finance&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-11"
+        },
+        {
+          "title": "US FDA approves Sanofi's wearable injector form of blood cancer drug - Reuters",
+          "url": "https://news.google.com/search?q=US+FDA+approves+Sanofi%27s+wearable+injector+form+of+blood+cancer+drug+-+Reuters&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
           "published_at": "2026-07-10"
         },
@@ -621,33 +468,33 @@
       ]
     },
     {
-      "nct_id": "NCT06903338",
-      "ticker": "VIR",
-      "sponsor": "Vir Biotechnology, Inc.",
-      "drug": "Tobevibart",
+      "nct_id": "NCT04130997",
+      "ticker": "PFE",
+      "sponsor": "TG Therapeutics, Inc.",
+      "drug": "Ublituximab",
       "phase": "PHASE3",
       "status": "ACTIVE_NOT_RECRUITING",
-      "title": "A Study to Evaluate Tobevibart + Elebsiran in Chronic HDV Infection",
+      "title": "An Extension Study of Ublituximab in Participants With Relapsing Multiple Sclerosis",
       "change_type": null,
-      "watch_reason": "Active PHASE3 \u00b7 Infectious Disease",
+      "watch_reason": "Active PHASE3 \u00b7 CNS / Neurology",
       "score": null,
       "detected_at": null,
-      "headline": "VIR \u00b7 Active PHASE3 \u00b7 Infectious Disease",
+      "headline": "PFE \u00b7 Active PHASE3 \u00b7 CNS / Neurology",
       "brief": "Brief unavailable.",
       "analyst_tone": "neutral",
       "catalysts": [],
       "news": [
         {
-          "title": "Vir Biotechnology Provides Corporate Update and Reports Second Quarter 2026 Financial Results - Business Wire",
-          "url": "https://news.google.com/search?q=Vir+Biotechnology+Provides+Corporate+Update+and+Reports+Second+Quarter+2026+Financial+Results+-+Business+Wire&hl=en-US&gl=US&ceid=US:en",
+          "title": "Kolon\u2019s cell-based gene therapy fails ph.3 osteoarthritis test - Fierce Biotech",
+          "url": "https://news.google.com/search?q=Kolon%E2%80%99s+cell-based+gene+therapy+fails+ph.3+osteoarthritis+test+-+Fierce+Biotech&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
-          "published_at": "2026-08-05"
+          "published_at": "2026-07-20"
         },
         {
-          "title": "Vir Biotechnology Q2 Earnings Call Highlights - TradingView",
-          "url": "https://news.google.com/search?q=Vir+Biotechnology+Q2+Earnings+Call+Highlights+-+TradingView&hl=en-US&gl=US&ceid=US:en",
+          "title": "AstraZeneca Pressure Puts Krystal Biotech, TG Therapeutics And Gilead Stocks In Focus - simplywall.st",
+          "url": "https://news.google.com/search?q=AstraZeneca+Pressure+Puts+Krystal+Biotech%2C+TG+Therapeutics+And+Gilead+Stocks+In+Focus+-+simplywall.st&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
-          "published_at": "2026-08-06"
+          "published_at": "2026-07-27"
         },
         {
           "title": "Vir Biotechnology: Multiple Catalysts In Hepatitis And Oncology Ahead (NASDAQ:VIR) - Seeking Alpha",
@@ -656,10 +503,182 @@
           "published_at": "2026-07-16"
         },
         {
-          "title": "Vir Biotechnology posts $238.9M Q2 revenue, $80.1M net income; $1.01B cash runway into H2 2028 - TradingView",
-          "url": "https://news.google.com/search?q=Vir+Biotechnology+posts+%24238.9M+Q2+revenue%2C+%2480.1M+net+income%3B+%241.01B+cash+runway+into+H2+2028+-+TradingView&hl=en-US&gl=US&ceid=US:en",
+          "title": "The \u2018Placebo Response\u2019 That Hindered TG-C Puts Korean Biotech on Edge - asiae.co.kr",
+          "url": "https://news.google.com/search?q=The+%E2%80%98Placebo+Response%E2%80%99+That+Hindered+TG-C+Puts+Korean+Biotech+on+Edge+-+asiae.co.kr&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-24"
+        }
+      ]
+    },
+    {
+      "nct_id": "NCT04548999",
+      "ticker": "RHHBY",
+      "sponsor": "Hoffmann-La Roche",
+      "drug": "Ocrelizumab",
+      "phase": "PHASE3",
+      "status": "ACTIVE_NOT_RECRUITING",
+      "title": "A Study to Evaluate the Efficacy, Safety and Pharmacokinetics (PK) of a Higher Dose of Ocrelizumab in Adults With Primary Progressive Multiple Sclerosis (PPMS)",
+      "change_type": null,
+      "watch_reason": "Active PHASE3 \u00b7 CNS / Neurology",
+      "score": null,
+      "detected_at": null,
+      "headline": "RHHBY \u00b7 Active PHASE3 \u00b7 CNS / Neurology",
+      "brief": "Brief unavailable.",
+      "analyst_tone": "neutral",
+      "catalysts": [],
+      "news": [
+        {
+          "title": "Parkinson's Disease Pipeline 2026: FDA Approvals and Clinical - openPR.com",
+          "url": "https://news.google.com/search?q=Parkinson%27s+Disease+Pipeline+2026%3A+FDA+Approvals+and+Clinical+-+openPR.com&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-27"
+        },
+        {
+          "title": "Amylin Analogs and Combination Therapies Clinical Trial - GlobeNewswire",
+          "url": "https://news.google.com/search?q=Amylin+Analogs+and+Combination+Therapies+Clinical+Trial+-+GlobeNewswire&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-28"
+        },
+        {
+          "title": "Biotechnology Market Size, Share, Trend | Growth Report [2034] - Fortune Business Insights",
+          "url": "https://news.google.com/search?q=Biotechnology+Market+Size%2C+Share%2C+Trend+%7C+Growth+Report+%5B2034%5D+-+Fortune+Business+Insights&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-20"
+        },
+        {
+          "title": "Graves Ophthalmopathy Market Expected to Witness Rapid Expansion at a CAGR of 9% During the Forecast Period (2026-2036), Driven by the Recent Approval of Viridian's LUMVOA and the Launch of Emerging Therapies | DelveInsight - PR Newswire",
+          "url": "https://news.google.com/search?q=Graves+Ophthalmopathy+Market+Expected+to+Witness+Rapid+Expansion+at+a+CAGR+of+9%25+During+the+Forecast+Period+%282026-2036%29%2C+Driven+by+the+Recent+Approval+of+Viridi&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-29"
+        }
+      ]
+    },
+    {
+      "nct_id": "NCT07220252",
+      "ticker": "PFE",
+      "sponsor": "TG Therapeutics, Inc.",
+      "drug": "Ublituximab",
+      "phase": "PHASE3",
+      "status": "RECRUITING",
+      "title": "Study to Assess Effects of Ublituximab in Pediatric Participants With Relapsing Forms of Multiple Sclerosis",
+      "change_type": null,
+      "watch_reason": "Active PHASE3 \u00b7 CNS / Neurology",
+      "score": null,
+      "detected_at": null,
+      "headline": "PFE \u00b7 Active PHASE3 \u00b7 CNS / Neurology",
+      "brief": "Brief unavailable.",
+      "analyst_tone": "neutral",
+      "catalysts": [],
+      "news": [
+        {
+          "title": "Kolon\u2019s cell-based gene therapy fails ph.3 osteoarthritis test - Fierce Biotech",
+          "url": "https://news.google.com/search?q=Kolon%E2%80%99s+cell-based+gene+therapy+fails+ph.3+osteoarthritis+test+-+Fierce+Biotech&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-20"
+        },
+        {
+          "title": "AstraZeneca Pressure Puts Krystal Biotech, TG Therapeutics And Gilead Stocks In Focus - simplywall.st",
+          "url": "https://news.google.com/search?q=AstraZeneca+Pressure+Puts+Krystal+Biotech%2C+TG+Therapeutics+And+Gilead+Stocks+In+Focus+-+simplywall.st&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-27"
+        },
+        {
+          "title": "Vir Biotechnology: Multiple Catalysts In Hepatitis And Oncology Ahead (NASDAQ:VIR) - Seeking Alpha",
+          "url": "https://news.google.com/search?q=Vir+Biotechnology%3A+Multiple+Catalysts+In+Hepatitis+And+Oncology+Ahead+%28NASDAQ%3AVIR%29+-+Seeking+Alpha&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-16"
+        },
+        {
+          "title": "The \u2018Placebo Response\u2019 That Hindered TG-C Puts Korean Biotech on Edge - asiae.co.kr",
+          "url": "https://news.google.com/search?q=The+%E2%80%98Placebo+Response%E2%80%99+That+Hindered+TG-C+Puts+Korean+Biotech+on+Edge+-+asiae.co.kr&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-24"
+        }
+      ]
+    },
+    {
+      "nct_id": "NCT05877963",
+      "ticker": "PFE",
+      "sponsor": "TG Therapeutics, Inc.",
+      "drug": "Ublituximab",
+      "phase": "PHASE3",
+      "status": "RECRUITING",
+      "title": "Study to Evaluate Safety, Efficacy and Pharmacokinetics (PK) of a Modified Regimen of Ublituximab",
+      "change_type": null,
+      "watch_reason": "Active PHASE3 \u00b7 CNS / Neurology",
+      "score": null,
+      "detected_at": null,
+      "headline": "PFE \u00b7 Active PHASE3 \u00b7 CNS / Neurology",
+      "brief": "Brief unavailable.",
+      "analyst_tone": "neutral",
+      "catalysts": [],
+      "news": [
+        {
+          "title": "Kolon\u2019s cell-based gene therapy fails ph.3 osteoarthritis test - Fierce Biotech",
+          "url": "https://news.google.com/search?q=Kolon%E2%80%99s+cell-based+gene+therapy+fails+ph.3+osteoarthritis+test+-+Fierce+Biotech&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-20"
+        },
+        {
+          "title": "AstraZeneca Pressure Puts Krystal Biotech, TG Therapeutics And Gilead Stocks In Focus - simplywall.st",
+          "url": "https://news.google.com/search?q=AstraZeneca+Pressure+Puts+Krystal+Biotech%2C+TG+Therapeutics+And+Gilead+Stocks+In+Focus+-+simplywall.st&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-27"
+        },
+        {
+          "title": "Vir Biotechnology: Multiple Catalysts In Hepatitis And Oncology Ahead (NASDAQ:VIR) - Seeking Alpha",
+          "url": "https://news.google.com/search?q=Vir+Biotechnology%3A+Multiple+Catalysts+In+Hepatitis+And+Oncology+Ahead+%28NASDAQ%3AVIR%29+-+Seeking+Alpha&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-16"
+        },
+        {
+          "title": "The \u2018Placebo Response\u2019 That Hindered TG-C Puts Korean Biotech on Edge - asiae.co.kr",
+          "url": "https://news.google.com/search?q=The+%E2%80%98Placebo+Response%E2%80%99+That+Hindered+TG-C+Puts+Korean+Biotech+on+Edge+-+asiae.co.kr&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-24"
+        }
+      ]
+    },
+    {
+      "nct_id": "NCT06335173",
+      "ticker": "JAZZ",
+      "sponsor": "Acumen Pharmaceuticals",
+      "drug": "sabirnetug",
+      "phase": "PHASE2",
+      "status": "ACTIVE_NOT_RECRUITING",
+      "title": "A Study to Evaluate Efficacy and Safety of Intravenous Sabirnetug in Participants With Early Alzheimer's Disease (ALTITUDE-AD)",
+      "change_type": null,
+      "watch_reason": "Active PHASE2 \u00b7 CNS / Neurology",
+      "score": null,
+      "detected_at": null,
+      "headline": "JAZZ \u00b7 Active PHASE2 \u00b7 CNS / Neurology",
+      "brief": "Brief unavailable.",
+      "analyst_tone": "neutral",
+      "catalysts": [],
+      "news": [
+        {
+          "title": "Acumen Pharmaceuticals and Unlearn Collaborate to Explore Analyses of Alzheimer's Disease Clinical Programs - Yahoo Finance",
+          "url": "https://news.google.com/search?q=Acumen+Pharmaceuticals+and+Unlearn+Collaborate+to+Explore+Analyses+of+Alzheimer%27s+Disease+Clinical+Programs+-+Yahoo+Finance&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-09"
+        },
+        {
+          "title": "Alzheimer\u2019s drug developer Acumen sets Aug. 12 webcast at 8 a.m. - Stock Titan",
+          "url": "https://news.google.com/search?q=Alzheimer%E2%80%99s+drug+developer+Acumen+sets+Aug.+12+webcast+at+8+a.m.+-+Stock+Titan&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
           "published_at": "2026-08-05"
+        },
+        {
+          "title": "ABOS|Acumen Pharmaceuticals Inc|Price:2.285|Chg%:+0.045 - TradingKey",
+          "url": "https://news.google.com/search?q=ABOS%7CAcumen+Pharmaceuticals+Inc%7CPrice%3A2.285%7CChg%25%3A%2B0.045+-+TradingKey&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-07"
+        },
+        {
+          "title": "Acumen Pharmaceuticals, Inc. (ABOS) stock price, news, quote and history - sg.finance.yahoo.com",
+          "url": "https://news.google.com/search?q=Acumen+Pharmaceuticals%2C+Inc.+%28ABOS%29+stock+price%2C+news%2C+quote+and+history+-+sg.finance.yahoo.com&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-07"
         }
       ]
     }
