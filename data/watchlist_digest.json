@@ -1,90 +1,53 @@
 {
-  "cache_key": "2026-08-08",
-  "generated_at": "2026-08-08T10:29:38.485626+00:00",
-  "sector_id": "cns",
-  "sector_name": "CNS / Neurology",
-  "market_pulse": "Biotech trials are gaining momentum across various sectors, with notable advancements in CNS / Neurology. This hour's focus highlights ongoing studies that could significantly impact treatment paradigms.",
+  "cache_key": "2026-08-09",
+  "generated_at": "2026-08-09T13:59:47.296196+00:00",
+  "sector_id": "rare",
+  "sector_name": "Rare Disease / Orphan",
+  "market_pulse": "Biotech trial momentum remains strong across various sectors, with significant activity in Rare Disease / Orphan. Today's focus highlights several key trials that could impact market dynamics.",
   "trials": [
     {
-      "nct_id": "NCT04165070",
-      "ticker": "MRK",
-      "sponsor": "Merck Sharp & Dohme LLC",
-      "drug": "Pembrolizumab",
+      "nct_id": "NCT06088979",
+      "ticker": "NVS",
+      "sponsor": "Tourmaline Bio, Inc., a Novartis Company",
+      "drug": "TOUR006 - 20 MG",
       "phase": "PHASE2",
-      "status": "RECRUITING",
-      "title": "KEYMAKER-U01 Substudy 01A: Efficacy and Safety Study of Pembrolizumab (MK-3475) With or Without Chemotherapy When Used With Investigational Agents in Treatment-na\u00efve Participants With Stage IV Non-small Cell Lung Cancer (NSCLC) (MK-3475-01A/KEYMAKER-U01A)",
+      "status": "ACTIVE_NOT_RECRUITING",
+      "title": "A Study to Investigate Efficacy and Safety of TOUR006 in Participants 18 to 80 Years of Age With Thyroid Eye Disease",
       "change_type": null,
-      "watch_reason": "Active PHASE2 \u00b7 CNS / Neurology",
+      "watch_reason": "Active PHASE2 \u00b7 Rare Disease / Orphan",
       "score": null,
       "detected_at": null,
-      "headline": "Merck's Pembrolizumab Trial in CNS Shows Promise",
-      "brief": "Merck's Phase 2 trial of Pembrolizumab is actively recruiting participants, aiming to assess its efficacy and safety in treatment-na\u00efve patients with advanced cancer. The collaboration with other investigational agents could enhance its therapeutic profile.",
-      "analyst_tone": "bullish",
+      "headline": "Novartis' TOUR006 Targets Thyroid Eye Disease",
+      "brief": "Tourmaline Bio, a Novartis Company, is advancing its Phase 2 trial of TOUR006 for Thyroid Eye Disease. The trial is currently active but not recruiting, indicating ongoing evaluation of safety and efficacy.",
+      "analyst_tone": "neutral",
       "catalysts": [
-        "Trial results expected in Q4 2024",
-        "Potential partnership announcements",
-        "Regulatory updates on Pembrolizumab"
+        "Potential trial results announcement",
+        "Regulatory updates",
+        "Market expansion plans"
       ],
-      "news": [
-        {
-          "title": "Phanes Therapeutics Announces Expansion of Clinical Trial Collaboration and Supply Agreement with Merck to Evaluate Spevatamig in Combination with KEYTRUDA\u00ae (Pembrolizumab) and Chemotherapy for Treatment of Biliary Tract Cancer - Yahoo Finance",
-          "url": "https://news.google.com/search?q=Phanes+Therapeutics+Announces+Expansion+of+Clinical+Trial+Collaboration+and+Supply+Agreement+with+Merck+to+Evaluate+Spevatamig+in+Combination+with+KEYTRUDA%C2%AE+%28Pe&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-21"
-        },
-        {
-          "title": "Kelun-Biotech Announces Phase III Study of Sacituzumab Tirumotecan (sac-TMT) in Combination with Pembrolizumab as First-Line Treatment for PD-L1-Negative Non-Squamous NSCLC Met Primary Endpoint - PR Newswire",
-          "url": "https://news.google.com/search?q=Kelun-Biotech+Announces+Phase+III+Study+of+Sacituzumab+Tirumotecan+%28sac-TMT%29+in+Combination+with+Pembrolizumab+as+First-Line+Treatment+for+PD-L1-Negative+Non-Sq&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-14"
-        },
-        {
-          "title": "KEYTRUDA\u00ae (pembrolizumab) as Monotherapy Significantly Improved Progression-Free Survival (PFS) in Certain Patients With Advanced or Recurrent Endometrial Cancer With Mismatch Repair Deficient (dMMR) Tumors Compared to Chemotherapy - Business Wire",
-          "url": "https://news.google.com/search?q=KEYTRUDA%C2%AE+%28pembrolizumab%29+as+Monotherapy+Significantly+Improved+Progression-Free+Survival+%28PFS%29+in+Certain+Patients+With+Advanced+or+Recurrent+Endometrial+Cance&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-15"
-        },
-        {
-          "title": "Merck advances sac-TMT into first-line lung cancer redesign after endometrial Phase III win - AllSci",
-          "url": "https://news.google.com/search?q=Merck+advances+sac-TMT+into+first-line+lung+cancer+redesign+after+endometrial+Phase+III+win+-+AllSci&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-08-05"
-        }
-      ]
+      "news": []
     },
     {
-      "nct_id": "NCT05738486",
+      "nct_id": "NCT07218380",
       "ticker": "LLY",
       "sponsor": "Eli Lilly and Company",
-      "drug": "Donanemab",
+      "drug": "Vepugratinib",
       "phase": "PHASE3",
-      "status": "ACTIVE_NOT_RECRUITING",
-      "title": "A Study of Different Donanemab (LY3002813) Dosing Regimens in Adults With Early Alzheimer's Disease (TRAILBLAZER-ALZ 6)",
+      "status": "RECRUITING",
+      "title": "A Study of Vepugratinib (LY3866288) in Participants With Cancer in the Urinary Tract",
       "change_type": null,
-      "watch_reason": "Active PHASE3 \u00b7 CNS / Neurology",
+      "watch_reason": "Active PHASE3 \u00b7 Rare Disease / Orphan",
       "score": null,
       "detected_at": null,
-      "headline": "Eli Lilly's Donanemab Progressing in Alzheimer's Study",
-      "brief": "Eli Lilly's Phase 3 trial for Donanemab is currently active but not recruiting, focusing on different dosing regimens for early Alzheimer's patients. Positive outcomes could lead to significant market opportunities in neurodegenerative diseases.",
+      "headline": "Eli Lilly's Vepugratinib in Phase 3 for Urinary Tract Cancer",
+      "brief": "Eli Lilly's Phase 3 trial of Vepugratinib is actively recruiting participants with urinary tract cancer. Recent headlines suggest a strong pipeline, although focus remains on obesity drug developments.",
       "analyst_tone": "bullish",
       "catalysts": [
-        "Data presentation at AAIC 2026",
-        "FDA approval discussions",
-        "Potential licensing agreements"
+        "FDA approval filing",
+        "Data release from ongoing trials",
+        "Market access updates"
       ],
       "news": [
-        {
-          "title": "Lilly to present Alzheimer's disease diagnostic and therapeutic research at AAIC 2026, including new data on P-tau217 blood tests and amyloid-targeting treatment - investor.lilly.com",
-          "url": "https://news.google.com/search?q=Lilly+to+present+Alzheimer%27s+disease+diagnostic+and+therapeutic+research+at+AAIC+2026%2C+including+new+data+on+P-tau217+blood+tests+and+amyloid-targeting+treatmen&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-09"
-        },
-        {
-          "title": "Eli Lilly is reinventing the pharma business - The Economist",
-          "url": "https://news.google.com/search?q=Eli+Lilly+is+reinventing+the+pharma+business+-+The+Economist&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-15"
-        },
         {
           "title": "Lilly, with new data, to seek FDA approval of obesity drug retatrutide - BioPharma Dive",
           "url": "https://news.google.com/search?q=Lilly%2C+with+new+data%2C+to+seek+FDA+approval+of+obesity+drug+retatrutide+-+BioPharma+Dive&hl=en-US&gl=US&ceid=US:en",
@@ -96,261 +59,237 @@
           "url": "https://news.google.com/search?q=Eli+Lilly+to+allow+more+patients+to+apply+for+special+access+to+unapproved+obesity+drug+-+STAT&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
           "published_at": "2026-08-03"
+        },
+        {
+          "title": "Eli Lilly says it will file for approval of next-generation obesity drug in 2027 as it clears two more trials - CNBC",
+          "url": "https://news.google.com/search?q=Eli+Lilly+says+it+will+file+for+approval+of+next-generation+obesity+drug+in+2027+as+it+clears+two+more+trials+-+CNBC&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-23"
+        },
+        {
+          "title": "Lilly announces more next-gen obesity drug data, plans Q1 2027 FDA application - Reuters",
+          "url": "https://news.google.com/search?q=Lilly+announces+more+next-gen+obesity+drug+data%2C+plans+Q1+2027+FDA+application+-+Reuters&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-24"
         }
       ]
     },
     {
-      "nct_id": "NCT06798896",
-      "ticker": "SUPN",
-      "sponsor": "Supernus Pharmaceuticals, Inc.",
-      "drug": "SPN-817",
-      "phase": "PHASE2",
+      "nct_id": "NCT04528082",
+      "ticker": "AMGN",
+      "sponsor": "Amgen",
+      "drug": "Apremilast",
+      "phase": "PHASE3",
       "status": "RECRUITING",
-      "title": "RENAISSANCE 2: SPN-817 Phase 2, Double-Blind, Placebo-Controlled Study in Adults With Focal Onset Seizures",
+      "title": "Apremilast Pediatric Study in Children With Active Oral Ulcers Associated With Beh\u00e7et's Disease",
       "change_type": null,
-      "watch_reason": "Active PHASE2 \u00b7 CNS / Neurology",
+      "watch_reason": "Active PHASE3 \u00b7 Rare Disease / Orphan",
       "score": null,
       "detected_at": null,
-      "headline": "Supernus' SPN-817 Targets Focal Onset Seizures",
-      "brief": "Supernus Pharmaceuticals is actively recruiting for its Phase 2 trial of SPN-817, which aims to evaluate its efficacy in adults with focal onset seizures. The trial's success could position SPN-817 as a key player in the epilepsy market.",
+      "headline": "Amgen's Apremilast Pediatric Study Underway",
+      "brief": "Amgen is recruiting for a Phase 3 study of Apremilast in children with Beh\u00e7et's Disease. The trial's progress is critical as it could enhance Amgen's pediatric offerings in rare diseases.",
       "analyst_tone": "bullish",
       "catalysts": [
-        "Interim results expected in Q1 2025",
-        "Potential partnerships with epilepsy organizations",
-        "Market expansion strategies"
+        "Trial enrollment milestones",
+        "Data publication",
+        "Potential partnership announcements"
       ],
       "news": [
         {
-          "title": "Q2 2026 Supernus Pharmaceuticals Inc Earnings Call Transcript - GuruFocus",
-          "url": "https://news.google.com/search?q=Q2+2026+Supernus+Pharmaceuticals+Inc+Earnings+Call+Transcript+-+GuruFocus&hl=en-US&gl=US&ceid=US:en",
+          "title": "AMGEN ANNOUNCES 2026 THIRD QUARTER DIVIDEND - Amgen",
+          "url": "https://news.google.com/search?q=AMGEN+ANNOUNCES+2026+THIRD+QUARTER+DIVIDEND+-+Amgen&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-30"
+        },
+        {
+          "title": "AMGEN REPORTS SECOND QUARTER 2026 FINANCIAL RESULTS - Amgen",
+          "url": "https://news.google.com/search?q=AMGEN+REPORTS+SECOND+QUARTER+2026+FINANCIAL+RESULTS+-+Amgen&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-05"
+        },
+        {
+          "title": "Amgen submits new data to challenge FDA's proposal to withdraw Tavneos - Reuters",
+          "url": "https://news.google.com/search?q=Amgen+submits+new+data+to+challenge+FDA%27s+proposal+to+withdraw+Tavneos+-+Reuters&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-24"
+        },
+        {
+          "title": "Amgen makes case to continue selling drug that FDA links to deaths - The Business Journals",
+          "url": "https://news.google.com/search?q=Amgen+makes+case+to+continue+selling+drug+that+FDA+links+to+deaths+-+The+Business+Journals&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-28"
+        }
+      ]
+    },
+    {
+      "nct_id": "NCT06634420",
+      "ticker": "NTLA",
+      "sponsor": "Intellia Therapeutics",
+      "drug": "NTLA-2002",
+      "phase": "PHASE3",
+      "status": "ACTIVE_NOT_RECRUITING",
+      "title": "HAELO: A Phase 3 Study to Evaluate NTLA-2002 in Participants With Hereditary Angioedema (HAE)",
+      "change_type": null,
+      "watch_reason": "Active PHASE3 \u00b7 Rare Disease / Orphan",
+      "score": null,
+      "detected_at": null,
+      "headline": "Intellia's NTLA-2002 for Hereditary Angioedema",
+      "brief": "Intellia Therapeutics is in Phase 3 with NTLA-2002 for hereditary angioedema, currently not recruiting. The company plans a U.S. launch in 2027 if FDA approval is granted.",
+      "analyst_tone": "bullish",
+      "catalysts": [
+        "FDA approval timeline",
+        "Partnership developments",
+        "Market entry strategies"
+      ],
+      "news": [
+        {
+          "title": "Intellia Therapeutics Announces Second Quarter 2026 Financial Results and Business Updates - Intellia Therapeutics",
+          "url": "https://news.google.com/search?q=Intellia+Therapeutics+Announces+Second+Quarter+2026+Financial+Results+and+Business+Updates+-+Intellia+Therapeutics&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
           "published_at": "2026-08-06"
         },
         {
-          "title": "Supernus Pharmaceuticals Inc (SUPN) (Q2 2026) Earnings Call Highlights: Strong Revenue Growth ... By GuruFocus - ca.investing.com",
-          "url": "https://news.google.com/search?q=Supernus+Pharmaceuticals+Inc+%28SUPN%29+%28Q2+2026%29+Earnings+Call+Highlights%3A+Strong+Revenue+Growth+...+By+GuruFocus+-+ca.investing.com&hl=en-US&gl=US&ceid=US:en",
+          "title": "Intellia plans first-half 2027 U.S. launch if FDA approves hereditary angioedema treatment - Stock Titan",
+          "url": "https://news.google.com/search?q=Intellia+plans+first-half+2027+U.S.+launch+if+FDA+approves+hereditary+angioedema+treatment+-+Stock+Titan&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-06"
+        },
+        {
+          "title": "Why Is NTLA Stock Jumping 5% Premarket Today? - Stocktwits",
+          "url": "https://news.google.com/search?q=Why+Is+NTLA+Stock+Jumping+5%25+Premarket+Today%3F+-+Stocktwits&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-08"
+        },
+        {
+          "title": "4 Best CRISPR Companies to Buy in 2026 and How to Invest - The Motley Fool",
+          "url": "https://news.google.com/search?q=4+Best+CRISPR+Companies+to+Buy+in+2026+and+How+to+Invest+-+The+Motley+Fool&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-14"
+        }
+      ]
+    },
+    {
+      "nct_id": "NCT04624659",
+      "ticker": "BEAM",
+      "sponsor": "Forma Therapeutics, Inc.",
+      "drug": "Etavopivat Tablets Low dose",
+      "phase": "PHASE3",
+      "status": "ACTIVE_NOT_RECRUITING",
+      "title": "A Study of Etavopivat in Adults and Adolescents With Sickle Cell Disease (HIBISCUS)",
+      "change_type": null,
+      "watch_reason": "Active PHASE3 \u00b7 Rare Disease / Orphan",
+      "score": null,
+      "detected_at": null,
+      "headline": "Beam's Etavopivat in Sickle Cell Disease",
+      "brief": "Forma Therapeutics is conducting a Phase 3 trial of Etavopivat for sickle cell disease, currently not recruiting. The study's outcomes could significantly impact treatment options in this rare disease space.",
+      "analyst_tone": "neutral",
+      "catalysts": [
+        "Trial results announcement",
+        "Regulatory feedback",
+        "Market strategy updates"
+      ],
+      "news": [
+        {
+          "title": "Beam Therapeutics (NASDAQ: BEAM) details Q2 loss, $1.2B cash and pipeline plans - Stock Titan",
+          "url": "https://news.google.com/search?q=Beam+Therapeutics+%28NASDAQ%3A+BEAM%29+details+Q2+loss%2C+%241.2B+cash+and+pipeline+plans+-+Stock+Titan&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
           "published_at": "2026-08-04"
         },
         {
-          "title": "Supernus and Indivior Agree to All-Stock Merger of Equals - Stock Titan",
-          "url": "https://news.google.com/search?q=Supernus+and+Indivior+Agree+to+All-Stock+Merger+of+Equals+-+Stock+Titan&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-08-03"
-        },
-        {
-          "title": "Non-Stimulant ADHD Drug Qelbree Reaches 3 Million Prescriptions - Stock Titan",
-          "url": "https://news.google.com/search?q=Non-Stimulant+ADHD+Drug+Qelbree+Reaches+3+Million+Prescriptions+-+Stock+Titan&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-14"
-        }
-      ]
-    },
-    {
-      "nct_id": "NCT05395624",
-      "ticker": "BEAM",
-      "sponsor": "Ashvattha Therapeutics, Inc.",
-      "drug": "18F-OP-801",
-      "phase": "PHASE2",
-      "status": "RECRUITING",
-      "title": "Safety, PK and Biodistribution of 18F-OP-801 in Patients With ALS, AD, MS, PD and Healthy Volunteers",
-      "change_type": null,
-      "watch_reason": "Active PHASE2 \u00b7 CNS / Neurology",
-      "score": null,
-      "detected_at": null,
-      "headline": "Ashvattha's 18F-OP-801 Targets ALS and More",
-      "brief": "Ashvattha Therapeutics is recruiting for its Phase 2 trial of 18F-OP-801, which assesses safety and biodistribution in patients with ALS and other CNS conditions. This trial could provide critical insights into the drug's potential across multiple neurological disorders.",
-      "analyst_tone": "neutral",
-      "catalysts": [
-        "Initial safety data in Q3 2025",
-        "Collaboration opportunities",
-        "Market interest in ALS treatments"
-      ],
-      "news": []
-    },
-    {
-      "nct_id": "NCT03796962",
-      "ticker": "REGN",
-      "sponsor": "Xenon Pharmaceuticals Inc.",
-      "drug": "XEN1101",
-      "phase": "PHASE2",
-      "status": "ACTIVE_NOT_RECRUITING",
-      "title": "A Study to Evaluate XEN1101 as Adjunctive Therapy in Focal Epilepsy",
-      "change_type": null,
-      "watch_reason": "Active PHASE2 \u00b7 CNS / Neurology",
-      "score": null,
-      "detected_at": null,
-      "headline": "Xenon's XEN1101 in Focal Epilepsy Trial",
-      "brief": "Xenon Pharmaceuticals' Phase 2 trial for XEN1101 is currently not recruiting, focusing on its role as adjunctive therapy in focal epilepsy. The upcoming FDA filing could be a significant catalyst for the company's stock.",
-      "analyst_tone": "bullish",
-      "catalysts": [
-        "FDA filing expected in Q3 2026",
-        "Webcast for results and updates",
-        "Potential licensing deals"
-      ],
-      "news": [
-        {
-          "title": "FDA Pre-NDA Progress On Azetukalner Could Be A Game Changer For Xenon Pharmaceuticals (XENE) - simplywall.st",
-          "url": "https://news.google.com/search?q=FDA+Pre-NDA+Progress+On+Azetukalner+Could+Be+A+Game+Changer+For+Xenon+Pharmaceuticals+%28XENE%29+-+simplywall.st&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-08-07"
-        },
-        {
-          "title": "Xenon\u2019s epilepsy drug FDA filing is on track for Q3 2026 - Stock Titan",
-          "url": "https://news.google.com/search?q=Xenon%E2%80%99s+epilepsy+drug+FDA+filing+is+on+track+for+Q3+2026+-+Stock+Titan&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-08-06"
-        },
-        {
-          "title": "Xenon plans Aug. 6 webcast for results and business update - Stock Titan",
-          "url": "https://news.google.com/search?q=Xenon+plans+Aug.+6+webcast+for+results+and+business+update+-+Stock+Titan&hl=en-US&gl=US&ceid=US:en",
+          "title": "Crescent Biopharma Reports Q2 2026 Results and Advances Clinical Development of CR-001, CR-002 and CR-003 - Quiver Quantitative",
+          "url": "https://news.google.com/search?q=Crescent+Biopharma+Reports+Q2+2026+Results+and+Advances+Clinical+Development+of+CR-001%2C+CR-002+and+CR-003+-+Quiver+Quantitative&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
           "published_at": "2026-07-30"
         },
         {
-          "title": "Xenon Pharmaceuticals earnings on deck as FDA approval push nears - Investing.com",
-          "url": "https://news.google.com/search?q=Xenon+Pharmaceuticals+earnings+on+deck+as+FDA+approval+push+nears+-+Investing.com&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-08-06"
-        }
-      ]
-    },
-    {
-      "nct_id": "NCT07424404",
-      "ticker": "BMY",
-      "sponsor": "Karuna Therapeutics, Inc., a Bristol Myers Squibb company",
-      "drug": "KarXT",
-      "phase": "PHASE3",
-      "status": "RECRUITING",
-      "title": "A Study to Evaluate the Long-term Safety and Tolerability of KarXT and KarX-EC for the Treatment of Schizophrenia and Autism-Related Irritability in Adolescents, Respectively",
-      "change_type": null,
-      "watch_reason": "Active PHASE3 \u00b7 CNS / Neurology",
-      "score": null,
-      "detected_at": null,
-      "headline": "BMY \u00b7 Active PHASE3 \u00b7 CNS / Neurology",
-      "brief": "Brief unavailable.",
-      "analyst_tone": "neutral",
-      "catalysts": [],
-      "news": [
-        {
-          "title": "Dementia-related Psychosis Market Gearing Up for Outstanding Expansion at a CAGR of 26.2% During the Forecast Period (2026-2036) | DelveInsight - PR Newswire UK",
-          "url": "https://news.google.com/search?q=Dementia-related+Psychosis+Market+Gearing+Up+for+Outstanding+Expansion+at+a+CAGR+of+26.2%25+During+the+Forecast+Period+%282026-2036%29+%7C+DelveInsight+-+PR+Newswire+UK&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-08-03"
-        },
-        {
-          "title": "This startup thinks humans in clinical trials could become a \u2018formality\u2019 - Pharma Voice",
-          "url": "https://news.google.com/search?q=This+startup+thinks+humans+in+clinical+trials+could+become+a+%E2%80%98formality%E2%80%99+-+Pharma+Voice&hl=en-US&gl=US&ceid=US:en",
+          "title": "Vir Biotechnology: Multiple Catalysts In Hepatitis And Oncology Ahead (NASDAQ:VIR) - Seeking Alpha",
+          "url": "https://news.google.com/search?q=Vir+Biotechnology%3A+Multiple+Catalysts+In+Hepatitis+And+Oncology+Ahead+%28NASDAQ%3AVIR%29+-+Seeking+Alpha&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
           "published_at": "2026-07-16"
         },
         {
-          "title": "Galimedix is keeping the amyloid hypothesis alive - Pharma Voice",
-          "url": "https://news.google.com/search?q=Galimedix+is+keeping+the+amyloid+hypothesis+alive+-+Pharma+Voice&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-14"
-        }
-      ]
-    },
-    {
-      "nct_id": "NCT07467993",
-      "ticker": "NVS",
-      "sponsor": "Novartis Pharmaceuticals",
-      "drug": "GXV813",
-      "phase": "PHASE2",
-      "status": "RECRUITING",
-      "title": "Study to Assess the Safety, Tolerability, and Treatment Response of GXV813 in Hospitalized Adults With Schizophrenia",
-      "change_type": null,
-      "watch_reason": "Active PHASE2 \u00b7 CNS / Neurology",
-      "score": null,
-      "detected_at": null,
-      "headline": "NVS \u00b7 Active PHASE2 \u00b7 CNS / Neurology",
-      "brief": "Brief unavailable.",
-      "analyst_tone": "neutral",
-      "catalysts": [],
-      "news": [
-        {
-          "title": "Novartis gains full FDA nod for Fabhalta in kidney disorder IgAN - Fierce Pharma",
-          "url": "https://news.google.com/search?q=Novartis+gains+full+FDA+nod+for+Fabhalta+in+kidney+disorder+IgAN+-+Fierce+Pharma&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-17"
-        },
-        {
-          "title": "Novartis (SWX:NOVN) Wins FDA Approval For Pluvicto In Earlier Prostate Cancer - Yahoo Finance",
-          "url": "https://news.google.com/search?q=Novartis+%28SWX%3ANOVN%29+Wins+FDA+Approval+For+Pluvicto+In+Earlier+Prostate+Cancer+-+Yahoo+Finance&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-08-02"
-        },
-        {
-          "title": "This Novartis Drug Could Help Delay Dialysis\u2014FDA Grants Full Approval - Benzinga",
-          "url": "https://news.google.com/search?q=This+Novartis+Drug+Could+Help+Delay+Dialysis%E2%80%94FDA+Grants+Full+Approval+-+Benzinga&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-17"
-        },
-        {
-          "title": "Novartis Wins FDA Approval for Expanded Prostate Cancer Treatment For Pluvicto - Moomoo",
-          "url": "https://news.google.com/search?q=Novartis+Wins+FDA+Approval+for+Expanded+Prostate+Cancer+Treatment+For+Pluvicto+-+Moomoo&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-31"
-        }
-      ]
-    },
-    {
-      "nct_id": "NCT07288567",
-      "ticker": "BMY",
-      "sponsor": "Bristol-Myers Squibb",
-      "drug": "KarXT",
-      "phase": "PHASE3",
-      "status": "RECRUITING",
-      "title": "A Study to Evaluate the Efficacy and Safety of KarXT for the Treatment of Schizophrenia in Adolescents (EMERGENT TEEN)",
-      "change_type": null,
-      "watch_reason": "Active PHASE3 \u00b7 CNS / Neurology",
-      "score": null,
-      "detected_at": null,
-      "headline": "BMY \u00b7 Active PHASE3 \u00b7 CNS / Neurology",
-      "brief": "Brief unavailable.",
-      "analyst_tone": "neutral",
-      "catalysts": [],
-      "news": [
-        {
-          "title": "Bristol-Myers Squibb Co Stock (BMY) Closed Up by 3.07% on Jul 13: Key Drivers Unveiled - TradingKey",
-          "url": "https://news.google.com/search?q=Bristol-Myers+Squibb+Co+Stock+%28BMY%29+Closed+Up+by+3.07%25+on+Jul+13%3A+Key+Drivers+Unveiled+-+TradingKey&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-13"
-        },
-        {
-          "title": "Real-World and Long-Term Trial Data Show Xanomeline/Trospium Cuts Hospitalizations, Antipsychotic Burden in Schizophrenia - Psychiatric Times",
-          "url": "https://news.google.com/search?q=Real-World+and+Long-Term+Trial+Data+Show+Xanomeline%2FTrospium+Cuts+Hospitalizations%2C+Antipsychotic+Burden+in+Schizophrenia+-+Psychiatric+Times&hl=en-US&gl=US&ceid=US:en",
+          "title": "Crescent Biopharma reports Q2 2026 net loss $24.8M, cash $171.6M and $143.7M public offering - TradingView",
+          "url": "https://news.google.com/search?q=Crescent+Biopharma+reports+Q2+2026+net+loss+%2424.8M%2C+cash+%24171.6M+and+%24143.7M+public+offering+-+TradingView&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
           "published_at": "2026-07-30"
-        },
+        }
+      ]
+    },
+    {
+      "nct_id": "NCT06953466",
+      "ticker": "JAZZ",
+      "sponsor": "Quoin Pharmaceuticals",
+      "drug": "QRX003, 4% Lotion",
+      "phase": "PHASE3",
+      "status": "RECRUITING",
+      "title": "Clinical Study of QRX003 Lotion in Subjects With Netherton Syndrome",
+      "change_type": null,
+      "watch_reason": "Active PHASE3 \u00b7 Rare Disease / Orphan",
+      "score": null,
+      "detected_at": null,
+      "headline": "JAZZ \u00b7 Active PHASE3 \u00b7 Rare Disease / Orphan",
+      "brief": "Brief unavailable.",
+      "analyst_tone": "neutral",
+      "catalysts": [],
+      "news": [
         {
-          "title": "A Glimpse of the Future from the Alzheimer\u2019s Association International Conference - Being Patient",
-          "url": "https://news.google.com/search?q=A+Glimpse+of+the+Future+from+the+Alzheimer%E2%80%99s+Association+International+Conference+-+Being+Patient&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-21"
-        },
-        {
-          "title": "Bristol-Myers Squibb (BMY) Q2 2026 Earnings Call Transcript - The Globe and Mail",
-          "url": "https://news.google.com/search?q=Bristol-Myers+Squibb+%28BMY%29+Q2+2026+Earnings+Call+Transcript+-+The+Globe+and+Mail&hl=en-US&gl=US&ceid=US:en",
+          "title": "Quoin Pharmaceuticals (NASDAQ:QNRX) gets FDA clearance for Phase 2 study in ultra-rare peeling skin syndrome - Kalkine",
+          "url": "https://news.google.com/search?q=Quoin+Pharmaceuticals+%28NASDAQ%3AQNRX%29+gets+FDA+clearance+for+Phase+2+study+in+ultra-rare+peeling+skin+syndrome+-+Kalkine&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
           "published_at": "2026-07-31"
         }
       ]
     },
     {
-      "nct_id": "NCT07105111",
+      "nct_id": "NCT07441395",
+      "ticker": "IONS",
+      "sponsor": "Corvus Pharmaceuticals, Inc.",
+      "drug": "Soquelitinib",
+      "phase": "PHASE2",
+      "status": "RECRUITING",
+      "title": "Study to Evaluate Soquelitinib in Participants With Moderate to Severe AD",
+      "change_type": null,
+      "watch_reason": "Active PHASE2 \u00b7 Rare Disease / Orphan",
+      "score": null,
+      "detected_at": null,
+      "headline": "IONS \u00b7 Active PHASE2 \u00b7 Rare Disease / Orphan",
+      "brief": "Brief unavailable.",
+      "analyst_tone": "neutral",
+      "catalysts": [],
+      "news": [
+        {
+          "title": "Corvus Pharmaceuticals earnings up next as trial progress eyed - Investing.com",
+          "url": "https://news.google.com/search?q=Corvus+Pharmaceuticals+earnings+up+next+as+trial+progress+eyed+-+Investing.com&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-06"
+        },
+        {
+          "title": "Is Corvus Pharmaceuticals (CRVS) Undervalued After A Wider Q2 Loss? - simplywall.st",
+          "url": "https://news.google.com/search?q=Is+Corvus+Pharmaceuticals+%28CRVS%29+Undervalued+After+A+Wider+Q2+Loss%3F+-+simplywall.st&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-08"
+        },
+        {
+          "title": "Earnings call transcript: Corvus posts wider Q2 2026 loss as trials advance - Investing.com",
+          "url": "https://news.google.com/search?q=Earnings+call+transcript%3A+Corvus+posts+wider+Q2+2026+loss+as+trials+advance+-+Investing.com&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-06"
+        }
+      ]
+    },
+    {
+      "nct_id": "NCT06312189",
       "ticker": "NBIX",
       "sponsor": "Neurocrine Biosciences",
       "drug": "Valbenazine",
-      "phase": "PHASE4",
-      "status": "RECRUITING",
-      "title": "A Study to Evaluate the Effectiveness of Valbenazine in Adult Participants With Tardive Dyskinesia (TD) Who Remain Symptomatic While Receiving or After Stopping a Vesicular Monoamine Transporter 2 (VMAT2) Inhibitor",
+      "phase": "PHASE3",
+      "status": "ENROLLING_BY_INVITATION",
+      "title": "Long-term Study to Evaluate Safety and Tolerability of Valbenazine in Participants With Chorea Associated With Huntington Disease in Canada",
       "change_type": null,
-      "watch_reason": "Active PHASE4 \u00b7 CNS / Neurology",
+      "watch_reason": "Active PHASE3 \u00b7 Rare Disease / Orphan",
       "score": null,
       "detected_at": null,
-      "headline": "NBIX \u00b7 Active PHASE4 \u00b7 CNS / Neurology",
+      "headline": "NBIX \u00b7 Active PHASE3 \u00b7 Rare Disease / Orphan",
       "brief": "Brief unavailable.",
       "analyst_tone": "neutral",
       "catalysts": [],
@@ -368,161 +307,75 @@
           "published_at": "2026-08-07"
         },
         {
+          "title": "[10-Q] NEUROCRINE BIOSCIENCES INC Quarterly Earnings Report - Stock Titan",
+          "url": "https://news.google.com/search?q=%5B10-Q%5D+NEUROCRINE+BIOSCIENCES+INC+Quarterly+Earnings+Report+-+Stock+Titan&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-31"
+        },
+        {
           "title": "Neurocrine Biosciences Announces Initiation of Phase 1 Clinical Study Evaluating NBIP-'1968, a GLP-1/GIP/Glucagon Receptor Triple Agonist - PR Newswire",
           "url": "https://news.google.com/search?q=Neurocrine+Biosciences+Announces+Initiation+of+Phase+1+Clinical+Study+Evaluating+NBIP-%271968%2C+a+GLP-1%2FGIP%2FGlucagon+Receptor+Triple+Agonist+-+PR+Newswire&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
           "published_at": "2026-08-07"
-        },
-        {
-          "title": "Here's Why You Should Add Savara Stock to Your Portfolio Now - TradingView",
-          "url": "https://news.google.com/search?q=Here%27s+Why+You+Should+Add+Savara+Stock+to+Your+Portfolio+Now+-+TradingView&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-22"
         }
       ]
     },
     {
-      "nct_id": "NCT07216703",
-      "ticker": "MRK",
-      "sponsor": "Merck Sharp & Dohme LLC",
-      "drug": "Pembrolizumab",
-      "phase": "PHASE3",
-      "status": "RECRUITING",
-      "title": "A Clinical Study of Sacituzumab Tirumotecan (MK-2870) in Combination With Pembrolizumab (MK-3475) as First-line Maintenance Treatment of Cervical Cancer (MK-2870-036/TroFuse-036/GOG-3123/ENGOT-cx22)",
+      "nct_id": "NCT04687020",
+      "ticker": "BBIO",
+      "sponsor": "NS Pharma, Inc.",
+      "drug": "Viltolarsen",
+      "phase": "PHASE4",
+      "status": "ACTIVE_NOT_RECRUITING",
+      "title": "Long-term Use of Viltolarsen in Boys With Duchenne Muscular Dystrophy in Clinical Practice (VILT-502)",
       "change_type": null,
-      "watch_reason": "Active PHASE3 \u00b7 CNS / Neurology",
+      "watch_reason": "Active PHASE4 \u00b7 Rare Disease / Orphan",
       "score": null,
       "detected_at": null,
-      "headline": "MRK \u00b7 Active PHASE3 \u00b7 CNS / Neurology",
+      "headline": "BBIO \u00b7 Active PHASE4 \u00b7 Rare Disease / Orphan",
       "brief": "Brief unavailable.",
       "analyst_tone": "neutral",
       "catalysts": [],
       "news": [
         {
-          "title": "Phanes Therapeutics Announces Expansion of Clinical Trial Collaboration and Supply Agreement with Merck to Evaluate Spevatamig in Combination with KEYTRUDA\u00ae (Pembrolizumab) and Chemotherapy for Treatment of Biliary Tract Cancer - Yahoo Finance",
-          "url": "https://news.google.com/search?q=Phanes+Therapeutics+Announces+Expansion+of+Clinical+Trial+Collaboration+and+Supply+Agreement+with+Merck+to+Evaluate+Spevatamig+in+Combination+with+KEYTRUDA%C2%AE+%28Pe&hl=en-US&gl=US&ceid=US:en",
+          "title": "An iPSC-derived neural progenitor cell therapy for subacute spinal cord injury: a phase 1 trial with long-term follow-up - Nature",
+          "url": "https://news.google.com/search?q=An+iPSC-derived+neural+progenitor+cell+therapy+for+subacute+spinal+cord+injury%3A+a+phase+1+trial+with+long-term+follow-up+-+Nature&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
           "published_at": "2026-07-21"
         },
         {
-          "title": "Kelun-Biotech Announces Phase III Study of Sacituzumab Tirumotecan (sac-TMT) in Combination with Pembrolizumab as First-Line Treatment for PD-L1-Negative Non-Squamous NSCLC Met Primary Endpoint - PR Newswire",
-          "url": "https://news.google.com/search?q=Kelun-Biotech+Announces+Phase+III+Study+of+Sacituzumab+Tirumotecan+%28sac-TMT%29+in+Combination+with+Pembrolizumab+as+First-Line+Treatment+for+PD-L1-Negative+Non-Sq&hl=en-US&gl=US&ceid=US:en",
+          "title": "Biotechnology and National Security: Washington\u2019s Expanding Scrutiny of the Life Sciences - Mayer Brown",
+          "url": "https://news.google.com/search?q=Biotechnology+and+National+Security%3A+Washington%E2%80%99s+Expanding+Scrutiny+of+the+Life+Sciences+-+Mayer+Brown&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
-          "published_at": "2026-07-14"
+          "published_at": "2026-08-07"
         },
         {
-          "title": "KEYTRUDA\u00ae (pembrolizumab) as Monotherapy Significantly Improved Progression-Free Survival (PFS) in Certain Patients With Advanced or Recurrent Endometrial Cancer With Mismatch Repair Deficient (dMMR) Tumors Compared to Chemotherapy - Business Wire",
-          "url": "https://news.google.com/search?q=KEYTRUDA%C2%AE+%28pembrolizumab%29+as+Monotherapy+Significantly+Improved+Progression-Free+Survival+%28PFS%29+in+Certain+Patients+With+Advanced+or+Recurrent+Endometrial+Cance&hl=en-US&gl=US&ceid=US:en",
+          "title": "BIOCON LIMITED. (BIOCON.NS) stock price, news, quote and history - Yahoo Finance Australia",
+          "url": "https://news.google.com/search?q=BIOCON+LIMITED.+%28BIOCON.NS%29+stock+price%2C+news%2C+quote+and+history+-+Yahoo+Finance+Australia&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
-          "published_at": "2026-07-15"
+          "published_at": "2026-08-07"
         },
         {
-          "title": "Merck advances sac-TMT into first-line lung cancer redesign after endometrial Phase III win - AllSci",
-          "url": "https://news.google.com/search?q=Merck+advances+sac-TMT+into+first-line+lung+cancer+redesign+after+endometrial+Phase+III+win+-+AllSci&hl=en-US&gl=US&ceid=US:en",
+          "title": "Karen Oldfield named CEO of Accelerate Nova Scotia, an agency without an office, staff, budget, or much of a reason for existing, and she got the job without competing for it - Halifax Examiner",
+          "url": "https://news.google.com/search?q=Karen+Oldfield+named+CEO+of+Accelerate+Nova+Scotia%2C+an+agency+without+an+office%2C+staff%2C+budget%2C+or+much+of+a+reason+for+existing%2C+and+she+got+the+job+without+co&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
-          "published_at": "2026-08-05"
+          "published_at": "2026-07-13"
         }
       ]
     },
     {
-      "nct_id": "NCT04879628",
-      "ticker": "SNY",
-      "sponsor": "Sanofi",
-      "drug": "SAR441344 IV",
-      "phase": "PHASE2",
-      "status": "ACTIVE_NOT_RECRUITING",
-      "title": "Proof-of-concept Study for SAR441344 (Frexalimab) in Relapsing Multiple Sclerosis",
-      "change_type": null,
-      "watch_reason": "Active PHASE2 \u00b7 CNS / Neurology",
-      "score": null,
-      "detected_at": null,
-      "headline": "SNY \u00b7 Active PHASE2 \u00b7 CNS / Neurology",
-      "brief": "Brief unavailable.",
-      "analyst_tone": "neutral",
-      "catalysts": [],
-      "news": [
-        {
-          "title": "Sanofi injectable multiple myeloma drug approved (SNY:NASDAQ) - Seeking Alpha",
-          "url": "https://news.google.com/search?q=Sanofi+injectable+multiple+myeloma+drug+approved+%28SNY%3ANASDAQ%29+-+Seeking+Alpha&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-10"
-        },
-        {
-          "title": "Sanofi (ENXTPA:SAN) Could Be 21% Undervalued As FDA Clears Sarclisa Escena - Yahoo Finance",
-          "url": "https://news.google.com/search?q=Sanofi+%28ENXTPA%3ASAN%29+Could+Be+21%25+Undervalued+As+FDA+Clears+Sarclisa+Escena+-+Yahoo+Finance&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-11"
-        },
-        {
-          "title": "US FDA approves Sanofi's wearable injector form of blood cancer drug - Reuters",
-          "url": "https://news.google.com/search?q=US+FDA+approves+Sanofi%27s+wearable+injector+form+of+blood+cancer+drug+-+Reuters&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-10"
-        },
-        {
-          "title": "Hansoh meets Phase 3 SCLC goal; FDA approves Sanofi on-body injector - Endpoints News",
-          "url": "https://news.google.com/search?q=Hansoh+meets+Phase+3+SCLC+goal%3B+FDA+approves+Sanofi+on-body+injector+-+Endpoints+News&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-10"
-        }
-      ]
-    },
-    {
-      "nct_id": "NCT04130997",
-      "ticker": "PFE",
-      "sponsor": "TG Therapeutics, Inc.",
-      "drug": "Ublituximab",
-      "phase": "PHASE3",
-      "status": "ACTIVE_NOT_RECRUITING",
-      "title": "An Extension Study of Ublituximab in Participants With Relapsing Multiple Sclerosis",
-      "change_type": null,
-      "watch_reason": "Active PHASE3 \u00b7 CNS / Neurology",
-      "score": null,
-      "detected_at": null,
-      "headline": "PFE \u00b7 Active PHASE3 \u00b7 CNS / Neurology",
-      "brief": "Brief unavailable.",
-      "analyst_tone": "neutral",
-      "catalysts": [],
-      "news": [
-        {
-          "title": "Kolon\u2019s cell-based gene therapy fails ph.3 osteoarthritis test - Fierce Biotech",
-          "url": "https://news.google.com/search?q=Kolon%E2%80%99s+cell-based+gene+therapy+fails+ph.3+osteoarthritis+test+-+Fierce+Biotech&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-20"
-        },
-        {
-          "title": "AstraZeneca Pressure Puts Krystal Biotech, TG Therapeutics And Gilead Stocks In Focus - simplywall.st",
-          "url": "https://news.google.com/search?q=AstraZeneca+Pressure+Puts+Krystal+Biotech%2C+TG+Therapeutics+And+Gilead+Stocks+In+Focus+-+simplywall.st&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-27"
-        },
-        {
-          "title": "Vir Biotechnology: Multiple Catalysts In Hepatitis And Oncology Ahead (NASDAQ:VIR) - Seeking Alpha",
-          "url": "https://news.google.com/search?q=Vir+Biotechnology%3A+Multiple+Catalysts+In+Hepatitis+And+Oncology+Ahead+%28NASDAQ%3AVIR%29+-+Seeking+Alpha&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-16"
-        },
-        {
-          "title": "The \u2018Placebo Response\u2019 That Hindered TG-C Puts Korean Biotech on Edge - asiae.co.kr",
-          "url": "https://news.google.com/search?q=The+%E2%80%98Placebo+Response%E2%80%99+That+Hindered+TG-C+Puts+Korean+Biotech+on+Edge+-+asiae.co.kr&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-24"
-        }
-      ]
-    },
-    {
-      "nct_id": "NCT04548999",
+      "nct_id": "NCT05987449",
       "ticker": "RHHBY",
       "sponsor": "Hoffmann-La Roche",
-      "drug": "Ocrelizumab",
-      "phase": "PHASE3",
-      "status": "ACTIVE_NOT_RECRUITING",
-      "title": "A Study to Evaluate the Efficacy, Safety and Pharmacokinetics (PK) of a Higher Dose of Ocrelizumab in Adults With Primary Progressive Multiple Sclerosis (PPMS)",
+      "drug": "NXT007",
+      "phase": "PHASE2",
+      "status": "RECRUITING",
+      "title": "A Study to Evaluate the Safety, Tolerability, Pharmacokinetics, Pharmacodynamics, and Efficacy of NXT007 in Persons With Severe or Moderate Hemophilia A",
       "change_type": null,
-      "watch_reason": "Active PHASE3 \u00b7 CNS / Neurology",
+      "watch_reason": "Active PHASE2 \u00b7 Rare Disease / Orphan",
       "score": null,
       "detected_at": null,
-      "headline": "RHHBY \u00b7 Active PHASE3 \u00b7 CNS / Neurology",
+      "headline": "RHHBY \u00b7 Active PHASE2 \u00b7 Rare Disease / Orphan",
       "brief": "Brief unavailable.",
       "analyst_tone": "neutral",
       "catalysts": [],
@@ -554,131 +407,199 @@
       ]
     },
     {
-      "nct_id": "NCT07220252",
+      "nct_id": "NCT05132582",
       "ticker": "PFE",
-      "sponsor": "TG Therapeutics, Inc.",
-      "drug": "Ublituximab",
+      "sponsor": "Seagen, a wholly owned subsidiary of Pfizer",
+      "drug": "Tucatinib",
       "phase": "PHASE3",
-      "status": "RECRUITING",
-      "title": "Study to Assess Effects of Ublituximab in Pediatric Participants With Relapsing Forms of Multiple Sclerosis",
+      "status": "ACTIVE_NOT_RECRUITING",
+      "title": "A Study of Tucatinib or Placebo With Trastuzumab and Pertuzumab for Metastatic HER2+ Breast Cancer",
       "change_type": null,
-      "watch_reason": "Active PHASE3 \u00b7 CNS / Neurology",
+      "watch_reason": "Active PHASE3 \u00b7 Rare Disease / Orphan",
       "score": null,
       "detected_at": null,
-      "headline": "PFE \u00b7 Active PHASE3 \u00b7 CNS / Neurology",
+      "headline": "PFE \u00b7 Active PHASE3 \u00b7 Rare Disease / Orphan",
       "brief": "Brief unavailable.",
       "analyst_tone": "neutral",
       "catalysts": [],
       "news": [
         {
-          "title": "Kolon\u2019s cell-based gene therapy fails ph.3 osteoarthritis test - Fierce Biotech",
-          "url": "https://news.google.com/search?q=Kolon%E2%80%99s+cell-based+gene+therapy+fails+ph.3+osteoarthritis+test+-+Fierce+Biotech&hl=en-US&gl=US&ceid=US:en",
+          "title": "as Neoadjuvant and Adjuvant Treatment for Muscle-Invasive Bladder Cancer Regardless of Cisplatin Eligibility - Business Wire",
+          "url": "https://news.google.com/search?q=as+Neoadjuvant+and+Adjuvant+Treatment+for+Muscle-Invasive+Bladder+Cancer+Regardless+of+Cisplatin+Eligibility+-+Business+Wire&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
-          "published_at": "2026-07-20"
+          "published_at": "2026-07-10"
         },
         {
-          "title": "AstraZeneca Pressure Puts Krystal Biotech, TG Therapeutics And Gilead Stocks In Focus - simplywall.st",
-          "url": "https://news.google.com/search?q=AstraZeneca+Pressure+Puts+Krystal+Biotech%2C+TG+Therapeutics+And+Gilead+Stocks+In+Focus+-+simplywall.st&hl=en-US&gl=US&ceid=US:en",
+          "title": "PFE Stock Reacts To Mixed Topline Results For Seagen-Origin Cancer Drug - Stocktwits",
+          "url": "https://news.google.com/search?q=PFE+Stock+Reacts+To+Mixed+Topline+Results+For+Seagen-Origin+Cancer+Drug+-+Stocktwits&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
-          "published_at": "2026-07-27"
+          "published_at": "2026-08-07"
         },
         {
-          "title": "Vir Biotechnology: Multiple Catalysts In Hepatitis And Oncology Ahead (NASDAQ:VIR) - Seeking Alpha",
-          "url": "https://news.google.com/search?q=Vir+Biotechnology%3A+Multiple+Catalysts+In+Hepatitis+And+Oncology+Ahead+%28NASDAQ%3AVIR%29+-+Seeking+Alpha&hl=en-US&gl=US&ceid=US:en",
+          "title": "Pfizer Vs. Amgen: Bet That Pfizer's Seagen Integration Leads to Long-Term Oncology Alpha Over Amgen - 24/7 Wall St.",
+          "url": "https://news.google.com/search?q=Pfizer+Vs.+Amgen%3A+Bet+That+Pfizer%27s+Seagen+Integration+Leads+to+Long-Term+Oncology+Alpha+Over+Amgen+-+24%2F7+Wall+St.&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
-          "published_at": "2026-07-16"
+          "published_at": "2026-07-14"
         },
         {
-          "title": "The \u2018Placebo Response\u2019 That Hindered TG-C Puts Korean Biotech on Edge - asiae.co.kr",
-          "url": "https://news.google.com/search?q=The+%E2%80%98Placebo+Response%E2%80%99+That+Hindered+TG-C+Puts+Korean+Biotech+on+Edge+-+asiae.co.kr&hl=en-US&gl=US&ceid=US:en",
+          "title": "Pfizer keeps cutting, eliminating costs and programs as pipeline delivers mixed results - Endpoints News",
+          "url": "https://news.google.com/search?q=Pfizer+keeps+cutting%2C+eliminating+costs+and+programs+as+pipeline+delivers+mixed+results+-+Endpoints+News&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
-          "published_at": "2026-07-24"
+          "published_at": "2026-08-04"
         }
       ]
     },
     {
-      "nct_id": "NCT05877963",
-      "ticker": "PFE",
-      "sponsor": "TG Therapeutics, Inc.",
-      "drug": "Ublituximab",
+      "nct_id": "NCT06960213",
+      "ticker": "ACAD",
+      "sponsor": "ADARx Pharmaceuticals, Inc.",
+      "drug": "ADX-324",
       "phase": "PHASE3",
       "status": "RECRUITING",
-      "title": "Study to Evaluate Safety, Efficacy and Pharmacokinetics (PK) of a Modified Regimen of Ublituximab",
+      "title": "STOP-HAE: A Phase 3 Study of ADX-324 in HAE",
       "change_type": null,
-      "watch_reason": "Active PHASE3 \u00b7 CNS / Neurology",
+      "watch_reason": "Active PHASE3 \u00b7 Rare Disease / Orphan",
       "score": null,
       "detected_at": null,
-      "headline": "PFE \u00b7 Active PHASE3 \u00b7 CNS / Neurology",
+      "headline": "ACAD \u00b7 Active PHASE3 \u00b7 Rare Disease / Orphan",
       "brief": "Brief unavailable.",
       "analyst_tone": "neutral",
       "catalysts": [],
-      "news": [
-        {
-          "title": "Kolon\u2019s cell-based gene therapy fails ph.3 osteoarthritis test - Fierce Biotech",
-          "url": "https://news.google.com/search?q=Kolon%E2%80%99s+cell-based+gene+therapy+fails+ph.3+osteoarthritis+test+-+Fierce+Biotech&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-20"
-        },
-        {
-          "title": "AstraZeneca Pressure Puts Krystal Biotech, TG Therapeutics And Gilead Stocks In Focus - simplywall.st",
-          "url": "https://news.google.com/search?q=AstraZeneca+Pressure+Puts+Krystal+Biotech%2C+TG+Therapeutics+And+Gilead+Stocks+In+Focus+-+simplywall.st&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-27"
-        },
-        {
-          "title": "Vir Biotechnology: Multiple Catalysts In Hepatitis And Oncology Ahead (NASDAQ:VIR) - Seeking Alpha",
-          "url": "https://news.google.com/search?q=Vir+Biotechnology%3A+Multiple+Catalysts+In+Hepatitis+And+Oncology+Ahead+%28NASDAQ%3AVIR%29+-+Seeking+Alpha&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-16"
-        },
-        {
-          "title": "The \u2018Placebo Response\u2019 That Hindered TG-C Puts Korean Biotech on Edge - asiae.co.kr",
-          "url": "https://news.google.com/search?q=The+%E2%80%98Placebo+Response%E2%80%99+That+Hindered+TG-C+Puts+Korean+Biotech+on+Edge+-+asiae.co.kr&hl=en-US&gl=US&ceid=US:en",
-          "source": "google_news_rss",
-          "published_at": "2026-07-24"
-        }
-      ]
+      "news": []
     },
     {
-      "nct_id": "NCT06335173",
-      "ticker": "JAZZ",
-      "sponsor": "Acumen Pharmaceuticals",
-      "drug": "sabirnetug",
+      "nct_id": "NCT06772597",
+      "ticker": "IONS",
+      "sponsor": "Rhythm Pharmaceuticals, Inc.",
+      "drug": "Setmelanotide",
       "phase": "PHASE2",
       "status": "ACTIVE_NOT_RECRUITING",
-      "title": "A Study to Evaluate Efficacy and Safety of Intravenous Sabirnetug in Participants With Early Alzheimer's Disease (ALTITUDE-AD)",
+      "title": "A Study of Setmelanotide in Patients With Prader-Willi Syndrome",
       "change_type": null,
-      "watch_reason": "Active PHASE2 \u00b7 CNS / Neurology",
+      "watch_reason": "Active PHASE2 \u00b7 Rare Disease / Orphan",
       "score": null,
       "detected_at": null,
-      "headline": "JAZZ \u00b7 Active PHASE2 \u00b7 CNS / Neurology",
+      "headline": "IONS \u00b7 Active PHASE2 \u00b7 Rare Disease / Orphan",
       "brief": "Brief unavailable.",
       "analyst_tone": "neutral",
       "catalysts": [],
       "news": [
         {
-          "title": "Acumen Pharmaceuticals and Unlearn Collaborate to Explore Analyses of Alzheimer's Disease Clinical Programs - Yahoo Finance",
-          "url": "https://news.google.com/search?q=Acumen+Pharmaceuticals+and+Unlearn+Collaborate+to+Explore+Analyses+of+Alzheimer%27s+Disease+Clinical+Programs+-+Yahoo+Finance&hl=en-US&gl=US&ceid=US:en",
+          "title": "Rhythm Pharmaceuticals Announces Preliminary Data from - GlobeNewswire",
+          "url": "https://news.google.com/search?q=Rhythm+Pharmaceuticals+Announces+Preliminary+Data+from+-+GlobeNewswire&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
-          "published_at": "2026-07-09"
+          "published_at": "2026-08-04"
         },
         {
-          "title": "Alzheimer\u2019s drug developer Acumen sets Aug. 12 webcast at 8 a.m. - Stock Titan",
-          "url": "https://news.google.com/search?q=Alzheimer%E2%80%99s+drug+developer+Acumen+sets+Aug.+12+webcast+at+8+a.m.+-+Stock+Titan&hl=en-US&gl=US&ceid=US:en",
+          "title": "Double shot of Vistagen\u2019s anxiety nasal spray misses in ph. 2 - Fierce Biotech",
+          "url": "https://news.google.com/search?q=Double+shot+of+Vistagen%E2%80%99s+anxiety+nasal+spray+misses+in+ph.+2+-+Fierce+Biotech&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-06"
+        },
+        {
+          "title": "Beat AML\u00ae Study Provides New Data on 14-Day vs. 28-Day Venetoclax-Azacitidine Treatment in AML - PR Newswire",
+          "url": "https://news.google.com/search?q=Beat+AML%C2%AE+Study+Provides+New+Data+on+14-Day+vs.+28-Day+Venetoclax-Azacitidine+Treatment+in+AML+-+PR+Newswire&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-07-30"
+        },
+        {
+          "title": "Rhythm Pharmaceuticals (RYTM) Reports Promising RM 718 Data, Is The Upside Already Priced In? - simplywall.st",
+          "url": "https://news.google.com/search?q=Rhythm+Pharmaceuticals+%28RYTM%29+Reports+Promising+RM+718+Data%2C+Is+The+Upside+Already+Priced+In%3F+-+simplywall.st&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-08"
+        }
+      ]
+    },
+    {
+      "nct_id": "NCT06247085",
+      "ticker": "TVTX",
+      "sponsor": "Travere Therapeutics, Inc.",
+      "drug": "Pegtibatinase",
+      "phase": "PHASE3",
+      "status": "RECRUITING",
+      "title": "A Study to Investigate Efficacy and Safety of Pegtibatinase Compared With Placebo in Participants \u226512 to \u226465 Years of Age With Classical Homocystinuria (HCU) Due to Cystathionine Beta Synthase Deficiency Receiving Standard of Care Treatment",
+      "change_type": null,
+      "watch_reason": "Active PHASE3 \u00b7 Rare Disease / Orphan",
+      "score": null,
+      "detected_at": null,
+      "headline": "TVTX \u00b7 Active PHASE3 \u00b7 Rare Disease / Orphan",
+      "brief": "Brief unavailable.",
+      "analyst_tone": "neutral",
+      "catalysts": [],
+      "news": [
+        {
+          "title": "Travere Therapeutics Reports Second Quarter 2026 Financial Results - Business Wire",
+          "url": "https://news.google.com/search?q=Travere+Therapeutics+Reports+Second+Quarter+2026+Financial+Results+-+Business+Wire&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-04"
+        },
+        {
+          "title": "Travere Therapeutics (NASDAQ: TVTX) grows FILSPARI sales and issues $525M converts - Stock Titan",
+          "url": "https://news.google.com/search?q=Travere+Therapeutics+%28NASDAQ%3A+TVTX%29+grows+FILSPARI+sales+and+issues+%24525M+converts+-+Stock+Titan&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-04"
+        },
+        {
+          "title": "Travere Therapeutics Q2 Earnings: Why I'm Downgrading To Hold (Again) (NASDAQ:TVTX) - Seeking Alpha",
+          "url": "https://news.google.com/search?q=Travere+Therapeutics+Q2+Earnings%3A+Why+I%27m+Downgrading+To+Hold+%28Again%29+%28NASDAQ%3ATVTX%29+-+Seeking+Alpha&hl=en-US&gl=US&ceid=US:en",
+          "source": "google_news_rss",
+          "published_at": "2026-08-06"
+        },
+        {
+          "title": "Travere Q2 2026 slides: FILSPARI sales surge 96% on FSGS launch - Investing.com",
+          "url": "https://news.google.com/search?q=Travere+Q2+2026+slides%3A+FILSPARI+sales+surge+96%25+on+FSGS+launch+-+Investing.com&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
           "published_at": "2026-08-05"
-        },
+        }
+      ]
+    },
+    {
+      "nct_id": "NCT02616484",
+      "ticker": "PFE",
+      "sponsor": "Saol Therapeutics Inc",
+      "drug": "Dichloroacetate (DCA)",
+      "phase": "PHASE3",
+      "status": "ACTIVE_NOT_RECRUITING",
+      "title": "Trial of Dichloroacetate in Pyruvate Dehydrogenase Complex Deficiency:",
+      "change_type": null,
+      "watch_reason": "Active PHASE3 \u00b7 Rare Disease / Orphan",
+      "score": null,
+      "detected_at": null,
+      "headline": "PFE \u00b7 Active PHASE3 \u00b7 Rare Disease / Orphan",
+      "brief": "Brief unavailable.",
+      "analyst_tone": "neutral",
+      "catalysts": [],
+      "news": [
         {
-          "title": "ABOS|Acumen Pharmaceuticals Inc|Price:2.285|Chg%:+0.045 - TradingKey",
-          "url": "https://news.google.com/search?q=ABOS%7CAcumen+Pharmaceuticals+Inc%7CPrice%3A2.285%7CChg%25%3A%2B0.045+-+TradingKey&hl=en-US&gl=US&ceid=US:en",
+          "title": "FDA scientists question Capricor data; Legend CEO steps down - BioPharma Dive",
+          "url": "https://news.google.com/search?q=FDA+scientists+question+Capricor+data%3B+Legend+CEO+steps+down+-+BioPharma+Dive&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
-          "published_at": "2026-08-07"
-        },
+          "published_at": "2026-07-27"
+        }
+      ]
+    },
+    {
+      "nct_id": "NCT07204938",
+      "ticker": "BMRN",
+      "sponsor": "Astria Therapeutics, Inc.",
+      "drug": "navenibart",
+      "phase": "PHASE3",
+      "status": "ENROLLING_BY_INVITATION",
+      "title": "A Long-Term Study of Navenibart in Participants With Hereditary Angioedema",
+      "change_type": null,
+      "watch_reason": "Active PHASE3 \u00b7 Rare Disease / Orphan",
+      "score": null,
+      "detected_at": null,
+      "headline": "BMRN \u00b7 Active PHASE3 \u00b7 Rare Disease / Orphan",
+      "brief": "Brief unavailable.",
+      "analyst_tone": "neutral",
+      "catalysts": [],
+      "news": [
         {
-          "title": "Acumen Pharmaceuticals, Inc. (ABOS) stock price, news, quote and history - sg.finance.yahoo.com",
-          "url": "https://news.google.com/search?q=Acumen+Pharmaceuticals%2C+Inc.+%28ABOS%29+stock+price%2C+news%2C+quote+and+history+-+sg.finance.yahoo.com&hl=en-US&gl=US&ceid=US:en",
+          "title": "This startup thinks humans in clinical trials could become a \u2018formality\u2019 - pharmavoice.com",
+          "url": "https://news.google.com/search?q=This+startup+thinks+humans+in+clinical+trials+could+become+a+%E2%80%98formality%E2%80%99+-+pharmavoice.com&hl=en-US&gl=US&ceid=US:en",
           "source": "google_news_rss",
-          "published_at": "2026-08-07"
+          "published_at": "2026-07-16"
         }
       ]
     }
